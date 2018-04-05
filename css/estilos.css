@@ -1,0 +1,127 @@
+body{
+	font-family: 'Signika', sans-serif;
+	color: black;
+	background-color: #ffa31a;
+}
+header img{
+	display: inline-block;
+	margin-left: 40%;
+}
+table{
+	width: 100%;
+}
+
+
+/*THIS IS THE REGISTER SECTION*/
+
+#seccionReg{
+	margin-top: 0.5%;
+	background: radial-gradient(rgba(0,0,0,0.1),rgba(0,0,0,1));
+	background-color: #534a51;
+	width: 30%;
+	padding: 5%;
+}
+#seccionReg article{
+	background-color: white;
+	color: black;
+	text-align: center;
+	width: 100%;
+	padding: 1%;
+	padding-bottom: 5%;
+}
+#seccionReg article img{
+	width: 150px;
+	height: 100px;
+	margin-right: 27%;
+}
+#opos{
+	margin-left: 30%;
+}
+#formularioRegistro{
+	background: radial-gradient(rgba(0,0,0,0.1),rgba(0,0,0,1));
+	background-color: #534a51;
+	color: black;
+}
+#tablaRegistro td{
+	display: block;
+	margin-left: 5%;
+}
+#td1{
+	margin-left: 23%;
+	color: #595959;
+	text-align: left;
+}
+#boton{
+	border-style: solid;
+	border-color: white;
+	box-shadow: 2px 2px 5px 5px #888888;
+	background-color: #ffa31a;
+	padding: 5%;
+	padding-left: 15%;
+	padding-right: 15%;
+	margin-top: 1%;
+	margin: 0 auto;
+}
+#boton:hover{
+	box-shadow: 2px 2px 5px 5px #a6a6a6;
+	margin: 0 auto;		
+}
+
+
+
+
+/*THIS IS THE USERS SECTION*/
+
+#seccionPart{
+	margin-top: 0.5%;
+	background: radial-gradient(rgba(0,0,0,0.1),rgba(0,0,0,1));
+	background-color: #534a51;
+	padding: 5%;
+}
+#h1part{
+	text-align: center;
+	color: white;
+}
+#tablaParticipantes{
+	border-collapse: collapse;
+	border: solid white;
+	color: white;
+}
+#tablaParticipantes td{
+	border-color: white;
+	border-style: solid;
+	border-width: 2px;
+	text-align: center;
+}
+
+/*THIS IS THE PLAY SECTION*/
+
+
+
+
+/*  THIS IS THE FOOTER*/
+
+footer{
+	background: radial-gradient(rgba(0,0,0,0.1),rgba(0,0,0,1));
+	background-color: #534a51;
+	color: white;
+	height: 100%;
+	text-align: center;
+	vertical-align: center;
+	margin-top: 0.5%;
+	margin-bottom: -100%;
+}
+
+footer p{
+	line-height:70px;
+	text-align:center;	
+}
+footer a:hover {
+    text-decoration: underline;
+    text-decoration-color: #ffa31a;
+}
+
+footer a{
+    color: black;
+    text-decoration: none;
+}
