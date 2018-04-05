@@ -20,6 +20,7 @@ table{
 	background-color: #534a51;
 	width: 30%;
 	padding: 5%;
+	padding-right: 7%;
 }
 #seccionReg article{
 	background-color: white;
@@ -96,7 +97,14 @@ table{
 
 /*THIS IS THE PLAY SECTION*/
 
-
+#sectionPlay{
+	margin-top: 0.5%;
+	background: radial-gradient(rgba(0,0,0,0.1),rgba(0,0,0,1));
+	background-color: #534a51;
+	width: 30%;
+	padding: 5%;
+	padding-right: 7%;
+}
 
 
 /*  THIS IS THE FOOTER*/
