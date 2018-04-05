@@ -12,15 +12,42 @@ table{
 }
 
 
+
+/*THIS IS THE USERS SECTION*/
+
+#seccionPart{
+	margin-top: 0.5%;
+	background: radial-gradient(rgba(0,0,0,0.1),rgba(0,0,0,1));
+	background-color: #534a51;
+	padding: 5%;
+}
+#h1part{
+	text-align: center;
+	color: white;
+}
+#tablaParticipantes{
+	border-collapse: collapse;
+	border: solid white;
+	color: white;
+}
+#tablaParticipantes td{
+	border-color: white;
+	border-style: solid;
+	border-width: 2px;
+	text-align: center;
+}
+
 /*THIS IS THE REGISTER SECTION*/
 
 #seccionReg{
 	margin-top: 0.5%;
+	margin-bottom: 0.5%;
 	background: radial-gradient(rgba(0,0,0,0.1),rgba(0,0,0,1));
 	background-color: #534a51;
 	width: 30%;
 	padding: 5%;
 	padding-right: 7%;
+	float: left;
 }
 #seccionReg article{
 	background-color: white;
@@ -71,40 +98,20 @@ table{
 
 
 
-/*THIS IS THE USERS SECTION*/
-
-#seccionPart{
-	margin-top: 0.5%;
-	background: radial-gradient(rgba(0,0,0,0.1),rgba(0,0,0,1));
-	background-color: #534a51;
-	padding: 5%;
-}
-#h1part{
-	text-align: center;
-	color: white;
-}
-#tablaParticipantes{
-	border-collapse: collapse;
-	border: solid white;
-	color: white;
-}
-#tablaParticipantes td{
-	border-color: white;
-	border-style: solid;
-	border-width: 2px;
-	text-align: center;
-}
 
 /*THIS IS THE PLAY SECTION*/
 
 #sectionPlay{
 	margin-top: 0.5%;
+	margin-bottom: 0.5%;
 	background: radial-gradient(rgba(0,0,0,0.1),rgba(0,0,0,1));
 	background-color: #534a51;
 	width: 30%;
 	padding: 5%;
 	padding-right: 7%;
+	float: right;
 }
+
 
 
 /*  THIS IS THE FOOTER*/
@@ -116,8 +123,8 @@ footer{
 	height: 100%;
 	text-align: center;
 	vertical-align: center;
-	margin-top: 0.5%;
 	margin-bottom: -100%;
+	clear: left;
 }
 
 footer p{
