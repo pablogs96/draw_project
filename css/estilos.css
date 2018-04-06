@@ -12,7 +12,6 @@ table{
 }
 
 
-
 /*THIS IS THE USERS SECTION*/
 
 #seccionPart{
@@ -29,6 +28,8 @@ table{
 	border-collapse: collapse;
 	border: solid white;
 	color: white;
+	width: 50%;
+	margin-left: 25%;
 }
 #tablaParticipantes td{
 	border-color: white;
@@ -37,6 +38,7 @@ table{
 	text-align: center;
 }
 
+
 /*THIS IS THE REGISTER SECTION*/
 
 #seccionReg{
@@ -44,7 +46,8 @@ table{
 	margin-bottom: 0.5%;
 	background: radial-gradient(rgba(0,0,0,0.1),rgba(0,0,0,1));
 	background-color: #534a51;
-	width: 30%;
+	width: 37.5%;
+	height: 407.5px;
 	padding: 5%;
 	padding-right: 7%;
 	float: left;
@@ -66,18 +69,22 @@ table{
 	margin-left: 30%;
 }
 #formularioRegistro{
-	background: radial-gradient(rgba(0,0,0,0.1),rgba(0,0,0,1));
-	background-color: #534a51;
+	background-color: white;
 	color: black;
 }
 #tablaRegistro td{
 	display: block;
 	margin-left: 5%;
 }
-#td1{
-	margin-left: 23%;
+#tdName{
+	margin-right: 22%;
 	color: #595959;
-	text-align: left;
+	text-align: center;
+}
+#tdMail{
+	margin-right: 25%;
+	color: #595959;
+	text-align: center;
 }
 #boton{
 	border-style: solid;
@@ -104,12 +111,54 @@ table{
 #sectionPlay{
 	margin-top: 0.5%;
 	margin-bottom: 0.5%;
-	background: radial-gradient(rgba(0,0,0,0.1),rgba(0,0,0,1));
+	background: radial-gradient(rgba(0,0,0,0),rgba(0,0,0,1));
 	background-color: #534a51;
-	width: 30%;
+	width: 37.5%;
+	height: 407.5px;
 	padding: 5%;
 	padding-right: 7%;
 	float: right;
+}
+
+#articlePlay{
+	background-color: white;
+	height: 200px;
+	padding: 2%;
+	margin-top: 5%;
+}
+
+#play{
+	border-style: solid;
+	border-color: white;
+	box-shadow: 2px 2px 5px 5px #888888;
+	background-color: #ffa31a;
+	padding: 5%;
+	padding-left: 15%;
+	padding-right: 15%;
+	margin: 0 auto;
+}
+#play:hover{
+	box-shadow: 2px 2px 5px 5px #a6a6a6;
+}
+
+#articleButPlay{
+	background-color: white;
+	text-align: center;
+	width: 100%;
+	padding: 1%;
+	padding-bottom: 5%;
+}
+
+#info{
+	text-align: center;
+	text-indent: 5%;
+	margin-right: 7%;
+}
+
+#out{
+	background-color: black;
+	color: white;
+	margin-top: 5%;
 }
 
 
