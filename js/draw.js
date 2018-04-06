@@ -22,9 +22,9 @@ function addToLocal() {
         // Store
         localStorage.setItem("name", name);
         localStorage.setItem("mail", mail);
-        refreshTable();
-        // Retrieve
-        //document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+        //retrieve
+        document.getElementById("tdName").innerHTML = localStorage.getItem("name");
+        document.getElementById("tdMail").innerHTML = localStorage.getItem("mail");
     } else {
         document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
     }
@@ -46,16 +46,30 @@ function refreshTable(){
     var td2 =document.createElement("td");
     var td3 =document.createElement("td");
 
-    var del = document.createElement("BUTTON");
-    var ima = document.createElement("img");
-    ima.setAttribute("src", "../img/delete.png");
-    ima.setAttribute("height", "50");
-    ima.setAttribute("width", "50");
-    ima.setAttribute("alt", "Delete");
-    ima.setAttribute("onclick", "deleteFromTable()");
-    del.appendChild(ima);
+    td.setAttribute("id", "tdName");
 
-    td3.appendChild(del);
+    td2.setAttribute("id", "tdMail");
+
+    td3.setAttribute("onmouseenter", "transformToDele()");
+    td3.setAttribute("onmouseleave", "transformToTick()");
+    td3.setAttribute("onclick", "deleteRow(this)");
+    td3.setAttribute("id", "imgtd");
+
+    var tick = document.createElement("img");
+    tick.setAttribute("src", "../img/tick.png");
+    tick.setAttribute("height", "50");
+    tick.setAttribute("width", "50");
+    tick.setAttribute("alt", "Delete");
+    tick.setAttribute("id", "tick");
+    td3.appendChild(tick);
+
+    // Retrieve from localStorage
+    localname = document.getElementById("tdName").innerHTML = localStorage.getItem("name");
+    localmail = document.getElementById("tdMail").innerHTML = localStorage.getItem("mail");
+
+    td.appendChild(localname);
+    td2.appendChild(localmail);
+
     tr.appendChild(td);
     tr.appendChild(td2);
     tr.appendChild(td3);
