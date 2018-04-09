@@ -9,23 +9,20 @@
 	<body>
 		<header>
 			<a href="https://www.opositatest.com/" target="_blank"><img src="../img/logo.png" alt="logo" title="Opositatest" height="100" width="400"></a>
-			<hr />
+			<h1>SORTEO SEMANAL</h1>
 		</header>
 		<main>
 			<section id="seccionPart">
 				<h1 id="h1part">PARTICIPANTES DEL SORTEO</h1>
 				<table id="tablaParticipantes">
-					<tbody>
+					<thead>
 						<tr>
 							<th>NOMBRE</th>
 							<th>E-MAIL</th>
 							<th>PARTICIPACIÓN</th>
 						</tr>
-						<!--<tr>
-							<td>Pablo</td>
-							<td>pablo.garcia.saleta@gmail.com</td>
-							<td id="imgtd" onmouseenter="transformToDele()" onmouseleave="transformToTick()" onclick="deleteRow(this)"><img id="tick" src="../img/tick.png" alt="delete" title="delete" height="50" width="50"></td>
-						</tr>-->
+					</thead>
+					<tbody id="body">
 					</tbody>
 				</table>
 			</section>
@@ -33,23 +30,23 @@
 				<article>
 					<img id="opos" src="../img/logoOpo.jpeg" alt="logo" title="Opositates">
 					<h1>ÚNETE AL SORTEO</h1>
-					<form name="formularioRegistro" id="formularioRegistro">
+					<form id="formularioRegistro">
 						<hr />
 						<table id="tablaRegistro">
 							<tr>
 								<td id="tdName"><label>Nombre * &nbsp;</label></td>
-								<td><input type="text" name="nombre" id="nombre" maxlength="10" required></td>
+								<td><input type="text" name="nombre" id="txtName" maxlength="10" required></td>
 							</tr>			
 							<tr>
 								<td id="tdMail"><label>E-mail * &nbsp;</label></td>
-								<td><input type="email" name="email" id="email" maxlength="50" placeholder="Ej: contacto@opositatest.com" required></td>
+								<td><input type="email" name="email" id="txtEmail" maxlength="50" placeholder="Ej: contacto@opositatest.com" required></td>
 							</tr>
 							
 						</table>
 						<hr />
 						<table>
 							<tr>
-								<td><input id="boton" type="submit" value="UNIRSE" onclick="addToLocal()"></td>
+								<td><input id="boton" type="submit" value="UNIRSE" onclick="addToLocal()" value="Add"></td> <!--onclick="addToLocal()"-->
 							</tr>	
 						</table>
 					</form>				
@@ -58,7 +55,7 @@
 			<section id="sectionPlay">
 				<article id="articleButPlay">
 					<p id="info">Participando en este sorteo ganarás la lujosa obligación de llevar la organización de la pizarra o de convocar la reunión matutina.</p>
-					<input id="play" type="submit" value="SORTEAR" onclick="addToLocal()">
+					<input id="play" type="submit" value="SORTEAR" onclick="">
 					<textarea id="out" rows="13" cols="80" readonly="true"></textarea>
 				</article>
 				

@@ -3,14 +3,14 @@ body{
 	color: black;
 	background-color: #ffa31a;
 }
-header img{
-	display: inline-block;
-	margin-left: 40%;
-}
 table{
 	width: 100%;
 }
 
+header h1{
+	float: right;
+	margin-right: 45%;
+}
 
 /*THIS IS THE USERS SECTION*/
 
