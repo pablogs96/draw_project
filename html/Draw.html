@@ -6,7 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/estilos.css">
 		<title>Sorteo pizarra</title>
 	</head>
-	<body>
+	<body onload="createTable()">
 		<header>
 			<a href="https://www.opositatest.com/" target="_blank"><img src="../img/logo.png" alt="logo" title="Opositatest" height="100" width="400"></a>
 			<h1>SORTEO SEMANAL</h1>
@@ -46,7 +46,7 @@
 						<hr />
 						<table>
 							<tr>
-								<td><input id="boton" type="submit" value="UNIRSE" onclick="addToLocal()" value="Add"></td> <!--onclick="addToLocal()"-->
+								<td><input id="boton" type="button" value="UNIRSE" onclick="addToLocal()" value="Add"></td>
 							</tr>	
 						</table>
 					</form>				
@@ -54,9 +54,8 @@
 			</section>
 			<section id="sectionPlay">
 				<article id="articleButPlay">
-					<p id="info">Participando en este sorteo ganarás la lujosa obligación de llevar la organización de la pizarra o de convocar la reunión matutina.</p>
-					<input id="play" type="submit" value="SORTEAR" onclick="">
-					<textarea id="out" rows="13" cols="80" readonly="true"></textarea>
+					<input id="play" type="button" value="SORTEAR" onclick="">
+					<textarea id="out" maxrows="13" cols="80" readonly="true"></textarea>
 				</article>
 				
 			</section>
