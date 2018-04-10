@@ -75,7 +75,6 @@ function clearForm(){
 
     // FUNCION PARA CONTROLAR QUE NO SE REPITAN LOS EMAILS
 function checkEmail(email, aNames){
-    console.log("email",email, "array",aNames);
     for (i = 0; i < aNames.length; i++) {
         var saved = aNames[i].email;
         if (email === saved) {
@@ -88,6 +87,7 @@ function checkEmail(email, aNames){
     // FUNCION PARA CARGAR LOS DATOS DEL LOCALSTORAGE EN LA TABLA AL CARGAR LA PAGINA
 
 function createTable(){
+    limpiarConsola();
     clearForm();
     var aNames = [];
     // retrieve data from localstorage
@@ -95,7 +95,7 @@ function createTable(){
     //aNames = JSON.parse(retrievedUser);
     // if empty data 
     if (retrievedUser == null){
-        alert("No hay datos guardados, se mostrará un tabla vacía.");
+        console.log("No hay datos guardados, se mostrará un tabla vacía.");
     // if data retrieved
     } else {
         console.log("Cargando datos en la tabla....");
@@ -108,22 +108,19 @@ function createTable(){
 
     // FUNCION PARA SACAR MENSAJES POR LA CONSOLA
 function showMessage(){
-    var text = " ->OpositaTest: Iniciando sorteo de la pizarra...\n->OpositaTest: ";
-    var area=document.getElementById("out").value = text;
+    
 }
 
         // FUNCION PARA ELIMINAR DATOS DEL LOCALSTORAGE CORRESPONDIENTES A LA FILA SELECCIONADA
 function RemoveFromLocal(img){
     // get the position of the row in the table
     var row = img.parentNode.parentNode.rowIndex;
-    console.log("fila de la imagen: " + row);
     // get the id of the row from localStorage
     var aNames = [];
     var retrievedUser = localStorage.getItem("aNames");
     aNames = JSON.parse(retrievedUser);
     // search id in array, its position is the row number minus 1
     var pos = row - 1;
-    //console.log("posicion: ", pos);
     // delete position in the array
     aNames.splice(pos,1);
     // update localStorage
@@ -190,3 +187,90 @@ function transformToTick(img){
     //document.getElementsByTagName("img").src= "../img/delete.png";
     img.setAttribute("src", "../img/delete.png");
 }
+    // FUNCION PARA GENERAR UN ALEATORIO
+function aleatorio(a,b) {
+    return Math.round(Math.random()*(b-a)+parseInt(a));
+}
+
+    // FUNCION PARA LA PIZARRA
+function sorteoPizarra(){
+    var aNames = [];    
+    var retrievedUser = localStorage.getItem("aNames");
+    if (retrievedUser == null){
+        alert("No hay datos guardados. Introduzca datos en el formulario para poder realizar el sorteo.");
+    } else {
+        aNames = JSON.parse(retrievedUser);
+        if ((aNames.length == 0) || (aNames.length == 1)) {
+            alert("Introduzca al menos dos participantes para poder realizar el sorteo.");
+        } else {
+            var min = 0;
+            var size = aNames.length;
+            var max = size -1;
+            var random = aleatorio(min, max );
+            var nombre = aNames[random].nombre;
+            var email = aNames[random].email;
+            var texto = "'" + nombre + "', con email: '" + email + "'. ¡Enhorabuena!:)";
+            return texto;
+        }
+    }
+}
+
+    // FUNCION PARA LA REUNION
+function sorteoReunion(){
+    var aNames = [];    
+    var retrievedUser = localStorage.getItem("aNames");
+    if (retrievedUser == null){
+        alert("No hay datos guardados. Introduzca datos en el formulario para poder realizar el sorteo.");
+    } else {
+        aNames = JSON.parse(retrievedUser);
+        if ((aNames.length == 0) || (aNames.length == 1)) {
+            alert("Introduzca al menos dos participantes para poder realizar el sorteo.");
+        } else {
+            var min = 0;
+            var size = aNames.length;
+            var max = size -1;
+            var random = aleatorio(min, max );
+            var nombre = aNames[random].nombre;
+            var email = aNames[random].email;
+            var texto = "'" + nombre + "', con email: '" + email + "'. ¡Enhorabuena!:)";
+            return texto;
+        }
+    }
+}
+
+    // FUNCION PARA LIMPIAR LA CONSOLA
+function limpiarConsola() {
+    document.getElementById("out").value = "";
+}
+
+    // FUNCION PARA EL TEXTO DE LA CONSOLA
+function setAreaText (){
+    limpiarConsola();
+    var a = sorteoPizarra();
+    var b = sorteoReunion();
+    if (b !== a){
+        var text = "->OpositaTest: Iniciando sorteo de la pizarra...\n->OpositaTest: El ganador es ...\n->OpositaTest: " + a;
+        text += "\n->OpositaTest: ...\n->OpositaTest: ...\n->OpositaTest: ...\n->OpositaTest: Iniciando sorteo de la reunión ...\n->OpositaTest: El ganador es ...\n->OpositaTest: " + b;
+        escribir("out", text, 100);
+    } else{
+        setAreaText();
+    }
+}
+
+    //FUNCION PARA INTERVALO DE TIMEPO AL ESCRIBIR
+function escribir(contenedor,writer,speed){
+
+   longitud = writer.length;
+
+   var area = document.getElementById(contenedor);
+   var i=0;
+   tiempo = setInterval(function(){
+      area.value = area.value.substr(0,area.value.length-1) + writer.charAt(i)+ " ";
+      if(i >= longitud){
+         clearInterval(tiempo);
+         area.value = area.value.substr(0,longitud);
+         return true;
+      } else {
+         i++;
+      }},speed);
+};

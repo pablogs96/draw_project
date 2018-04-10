@@ -159,6 +159,8 @@ header h1{
 	background-color: black;
 	color: white;
 	margin-top: 5%;
+	resize: none;
+	padding: 1%;
 }
 
 
