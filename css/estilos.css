@@ -37,6 +37,10 @@ header h1{
 	border-width: 2px;
 	text-align: center;
 }
+#body tr:hover{
+	background-color: lightgrey;
+	color: black;
+}
 
 
 /*THIS IS THE REGISTER SECTION*/

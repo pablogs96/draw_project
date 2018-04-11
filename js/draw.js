@@ -37,7 +37,7 @@ function addToLocal() {
                     AddRow(nombre, email);
                     // clear form
                     clearForm();
-                } else if (checkEmail(email, aNames)) {
+                } else if (checkEmail(email, aNames, aNames.length)) {
                     // get array length
                     var size = aNames.length;
                     // get the last id
@@ -74,15 +74,15 @@ function clearForm(){
 
 
     // FUNCION PARA CONTROLAR QUE NO SE REPITAN LOS EMAILS
-function checkEmail(email, aNames){
-    for (i = 0; i < aNames.length; i++) {
+function checkEmail(email, aNames, length){
+    for (i = 0; i <= (aNames.length -1); i++) {
         var saved = aNames[i].email;
-        if (email === saved) {
+        if (email === saved) {    
             return false;
-        } else {
-            return true;
         }
+        
     }
+    return true;
 }
     // FUNCION PARA CARGAR LOS DATOS DEL LOCALSTORAGE EN LA TABLA AL CARGAR LA PAGINA
 
@@ -200,8 +200,9 @@ function sorteoPizarra(){
         alert("No hay datos guardados. Introduzca datos en el formulario para poder realizar el sorteo.");
     } else {
         aNames = JSON.parse(retrievedUser);
-        if ((aNames.length == 0) || (aNames.length == 1)) {
-            alert("Introduzca al menos dos participantes para poder realizar el sorteo.");
+        if (aNames.length <= 1) {
+            alert("Introduzca al menos dos participantes para poder realizar el sorteo."); 
+            return false;
         } else {
             var min = 0;
             var size = aNames.length;
@@ -219,23 +220,15 @@ function sorteoPizarra(){
 function sorteoReunion(){
     var aNames = [];    
     var retrievedUser = localStorage.getItem("aNames");
-    if (retrievedUser == null){
-        alert("No hay datos guardados. Introduzca datos en el formulario para poder realizar el sorteo.");
-    } else {
-        aNames = JSON.parse(retrievedUser);
-        if ((aNames.length == 0) || (aNames.length == 1)) {
-            alert("Introduzca al menos dos participantes para poder realizar el sorteo.");
-        } else {
-            var min = 0;
-            var size = aNames.length;
-            var max = size -1;
-            var random = aleatorio(min, max );
-            var nombre = aNames[random].nombre;
-            var email = aNames[random].email;
-            var texto = "'" + nombre + "', con email: '" + email + "'. ¡Enhorabuena!:)";
-            return texto;
-        }
-    }
+    aNames = JSON.parse(retrievedUser);
+    var min = 0;
+    var size = aNames.length;
+    var max = size -1;
+    var random = aleatorio(min, max);
+    var nombre = aNames[random].nombre;
+    var email = aNames[random].email;
+    var texto = "'" + nombre + "', con email: '" + email + "'. ¡Enhorabuena!:)";
+    return texto;
 }
 
     // FUNCION PARA LIMPIAR LA CONSOLA
@@ -247,11 +240,17 @@ function limpiarConsola() {
 function setAreaText (){
     limpiarConsola();
     var a = sorteoPizarra();
-    var b = sorteoReunion();
+    if (a !== false) {
+        var b = sorteoReunion();
+    }
+    if (a===false || b===false) {
+        return;
+    }
     if (b !== a){
         var text = "->OpositaTest: Iniciando sorteo de la pizarra...\n->OpositaTest: El ganador es ...\n->OpositaTest: " + a;
-        text += "\n->OpositaTest: ...\n->OpositaTest: ...\n->OpositaTest: ...\n->OpositaTest: Iniciando sorteo de la reunión ...\n->OpositaTest: El ganador es ...\n->OpositaTest: " + b;
-        escribir("out", text, 100);
+        text += "\n->OpositaTest: ...\n->OpositaTest: ...\n->OpositaTest: Iniciando sorteo de la reunión ...\n->OpositaTest: El ganador es ...\n->OpositaTest: " + b
+         + "\n->Opositatest: Hasta la semana que viene!";
+        escribir("out", text, 80);
     } else{
         setAreaText();
     }
