@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script type="text/javascript" src="../js/draw.js"></script>
 		<link rel="stylesheet" type="text/css" href="../css/estilos.css">
 		<title>Sorteo pizarra</title>
@@ -14,12 +15,12 @@
 		<main>
 			<section id="seccionPart">
 				<h1 id="h1part">PARTICIPANTES DEL SORTEO</h1>
-				<table id="tablaParticipantes">
+				<table id="tablaParticipantes" class="part">
 					<thead>
 						<tr>
 							<th>NOMBRE</th>
 							<th>E-MAIL</th>
-							<th>PARTICIPACIÓN</th>
+							<th><input type="button" name="esconder" id="esconder" value="Hide/Show" class="ocultar"></th>
 						</tr>
 					</thead>
 					<tbody id="body">
@@ -46,7 +47,7 @@
 						<hr />
 						<table>
 							<tr>
-								<td><input id="boton" type="button" value="UNIRSE" onclick="addToLocal()" value="Add"></td>
+								<td><input id="boton" type="button" value="UNIRSE" onclick="mostrar()" value="Add"></td>
 							</tr>	
 						</table>
 					</form>				

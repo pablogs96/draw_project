@@ -19,27 +19,49 @@ header h1{
 	background: radial-gradient(rgba(0,0,0,0.1),rgba(0,0,0,1));
 	background-color: #534a51;
 	padding: 5%;
+	min-height: 400px;
 }
 #h1part{
 	text-align: center;
 	color: white;
+	margin-top: -3%;
 }
 #tablaParticipantes{
 	border-collapse: collapse;
-	border: solid white;
 	color: white;
-	width: 50%;
+	width: 850px;
 	margin-left: 25%;
 }
-#tablaParticipantes td{
-	border-color: white;
-	border-style: solid;
+#tablaParticipantes thead{
+	border-collapse: collapse;
+	min-width: 850px;
+	min-height: 21px;
+}
+#body td{
 	border-width: 2px;
 	text-align: center;
+	border-radius: 48px 48px 48px 48px;
+	border: 0px solid #000000;
+}
+#body tr{
+	opacity: 0.5;
+	border-collapse: collapse;
+	border-bottom: solid grey 0.5px;
+
 }
 #body tr:hover{
-	background-color: lightgrey;
-	color: black;
+	opacity: 1;
+}
+
+#esconder{
+	border-radius: 200px 200px 200px 200px;
+	border: 0px solid #000000;	
+	height: 100px;
+	width: 100px;
+	background-color: #ffa31a;
+}
+#esconder:hover{
+	box-shadow: -5px -5px 50px 10px grey;
 }
 
 

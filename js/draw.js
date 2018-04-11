@@ -106,11 +106,6 @@ function createTable(){
     }
 }
 
-    // FUNCION PARA SACAR MENSAJES POR LA CONSOLA
-function showMessage(){
-    
-}
-
         // FUNCION PARA ELIMINAR DATOS DEL LOCALSTORAGE CORRESPONDIENTES A LA FILA SELECCIONADA
 function RemoveFromLocal(img){
     // get the position of the row in the table
@@ -135,12 +130,13 @@ function RemoveFromLocal(img){
 function Remove(img) {
     //Determine the reference of the Row using the Button.
     var row = img.parentNode.parentNode;
-    var name = row.getElementsByTagName("TD")[0].innerHTML;
+    //var name = row.getElementsByTagName("TD")[0].innerHTML;
     //Get the reference of the Table.
-    var table = document.getElementById("tablaParticipantes");
+    //var table = document.getElementById("tablaParticipantes");
 
     //Delete the Table row using it's Index.
-    table.deleteRow(row.rowIndex);
+    $('#tablaParticipantes tr').eq(row.rowIndex).fadeOut(1000);
+    //table.deleteRow(row.rowIndex);
 }
 
     //  FUNCION PARA AÑADIR A LA TABLA LA FILA CON LOS DATOS INTRODUCIDOS
@@ -151,6 +147,9 @@ function AddRow(name, email) {
 
     //Add Row.
     var row = tBody.insertRow(-1);
+    $('#tablaParticipantes tr').eq(row.rowIndex).hide();
+    $('#tablaParticipantes tr').eq(row.rowIndex).fadeIn(1000);
+
 
     //Add Name cell.
     var cell = row.insertCell(-1);
@@ -273,3 +272,23 @@ function escribir(contenedor,writer,speed){
          i++;
       }},speed);
 };
+
+$(document).ready(function(){
+    $(".ocultar").click(function(){
+        $("#body td").fadeToggle(2000);
+    });
+});
+
+function toggletable(){
+    $("#boton").click(function(){
+        $("#body td").fadeToggle(2000);
+    });
+}
+
+function mostrar() {
+    $("#boton").click(function(){
+        $("#body td").fadeIn(2000);
+    });
+    addToLocal();
+}
+
