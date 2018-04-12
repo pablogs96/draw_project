@@ -274,8 +274,8 @@ function setAreaText (){
         var text = "->OpositaTest: Iniciando sorteo de la pizarra...\n->OpositaTest: El ganador es ...\n->OpositaTest: " + a.texto;
         text += "\n->OpositaTest: ...\n->OpositaTest: ...\n->OpositaTest: Iniciando sorteo de la reunión ...\n->OpositaTest: El ganador es ...\n->OpositaTest: " + b.texto
          + "\n->Opositatest: Hasta la semana que viene!";
-        $("#out").val(text);
-        //escribir("out", text, 50);
+        //$("#out").val(text);
+        escribir("out", text, 50);
         modificarFila(a.email);
         modificarFila(b.email);
     } else{

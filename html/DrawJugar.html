@@ -1,23 +1,233 @@
 <!DOCTYPE html>
+
 <html>
+
+
+
 	<head>
-		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+		 <!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+		<!-- Popper JS -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> 
+		<script type="text/javascript" src="../js/draw.js"></script>
+		<!--<link rel="stylesheet" type="text/css" href="../css/estilos.css">-->
 		<title>Sorteo pizarra</title>
 	</head>
-	<body>
+
+
+
+	<body id="pageTop" onload="createTable()">
+
+
+
+		<!-- NAVIGATION-->
+		<nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+	      <div class="container">
+	        <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+	        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+	          Menu
+	          <i class="fa fa-bars"></i>
+	        </button>
+	        <div class="collapse navbar-collapse" id="navbarResponsive">
+	          <ul class="navbar-nav ml-auto">
+	            <li class="nav-item mx-0 mx-lg-1">
+	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio" href="#unirse">Unirse</a>
+	            </li>
+	            <li class="nav-item mx-0 mx-lg-1">
+	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about" href="participantes">Participantes</a>
+	            </li>
+	            <li class="nav-item mx-0 mx-lg-1">
+	              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact" href="sorteo">Sorteo</a>
+	            </li>
+	          </ul>
+	        </div>
+	      </div>
+	    </nav>
+
+
+
+
+		<!-- HEADER-->
 		<header>
-			<img src="logoOpositatest" alt="logo" title="Opositates" height="20" width="20">
+			<a href="https://www.opositatest.com/" target="_blank"><img src="../img/logo.png" alt="logo" title="Opositatest" height="100" width="400"></a>
+			<h1>SORTEO SEMANAL</h1>
 		</header>
-		<nav>
-			<ul id="menu">
-				<li><a href="DrawRegistro.html" id="actual">UNIRSE</li>
-				<li><a href="DrawJugar.html">JUGAR</li>
-			</ul>
-		</nav>
+
+
+
+
+
+		<!-- REGISTER GRID SECTION-->
+
+
+
+
+
+
+		<!-- PARTICIPANTES GRID SECTION-->
+
+
+
+
+
+
+		<!-- SORTEO GRID SECTION-->
+
+
+
+
+
+
+
+		<!-- FOOTER-->
+		<footer>
+			<p>2014-2018&copy; <a href="https://www.opositatest.com/" target="_blank">OpositaTest</a>. Todos los derechos reservados.</p>
+
+		<footer class="footer text-center">
+	      <div class="container">
+	        <div class="row">
+	          <div class="col-md-4 mb-5 mb-lg-0">
+	            <h4 class="text-uppercase mb-4">Location</h4>
+	            <p class="lead mb-0">2215 John Daniel Drive
+	              <br>Clark, MO 65243</p>
+	          </div>
+	          <div class="col-md-4 mb-5 mb-lg-0">
+	            <h4 class="text-uppercase mb-4">Around the Web</h4>
+	            <ul class="list-inline mb-0">
+	              <li class="list-inline-item">
+	                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+	                  <i class="fa fa-fw fa-facebook"></i>
+	                </a>
+	              </li>
+	              <li class="list-inline-item">
+	                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+	                  <i class="fa fa-fw fa-google-plus"></i>
+	                </a>
+	              </li>
+	              <li class="list-inline-item">
+	                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+	                  <i class="fa fa-fw fa-twitter"></i>
+	                </a>
+	              </li>
+	              <li class="list-inline-item">
+	                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+	                  <i class="fa fa-fw fa-linkedin"></i>
+	                </a>
+	              </li>
+	              <li class="list-inline-item">
+	                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+	                  <i class="fa fa-fw fa-dribbble"></i>
+	                </a>
+	              </li>
+	            </ul>
+	          </div>
+	          <div class="col-md-4">
+	            <h4 class="text-uppercase mb-4">About Freelancer</h4>
+	            <p class="lead mb-0">Freelance is a free to use, open source Bootstrap theme created by
+	              <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+	          </div>
+	        </div>
+	        <div class="row">
+	        	<div class="col-md-4 mb-5 mb-lg-0">
+	            <h4 class="text-uppercase mb-4">OPOSITATEST TAMBIÉN ESTÁ EN:</h4>
+	            <a class="btn btn-dark" href="https://itunes.apple.com/es/app/opositatest/id1182367247?mt=8&utm_source=www.opositatest.com&utm_medium=banner&utm_content=footer_links"></a>
+	            <a class="btn btn-dark" href="https://itunes.apple.com/es/app/opositatest/id1182367247?mt=8&utm_source=www.opositatest.com&utm_medium=banner&utm_content=footer_links"></a>
+	          </div>
+	        </div>
+	      </div>
+	    </footer>
+
+		    <div class="copyright py-4 text-center text-white">
+		      <div class="container">
+		        <small>2014-2018&copy; <a href="https://www.opositatest.com/" target="_blank">OpositaTest</a>. Todos los derechos reservados.</small>
+		      </div>
+		    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		<main>
-			<section id="sectionRegistro">
+			<section id="seccionPart">
+				<h1 id="h1part">PARTICIPANTES DEL SORTEO</h1>
+				<table id="tablaParticipantes" class="part">
+					<thead>
+						<tr>
+							<th>NOMBRE</th>
+							<th>E-MAIL</th>
+							<th><input type="button" name="esconder" id="esconder" value="Hide/Show" class="ocultar"></th>
+						</tr>
+					</thead>
+					<tbody id="body">
+					</tbody>
+				</table>
+			</section>
+			<section id="seccionReg">
+				<article>
+					<img id="opos" src="../img/logoOpo.jpeg" alt="logo" title="Opositates">
+					<h1>ÚNETE AL SORTEO</h1>
+					<form id="formularioRegistro">
+						<hr />
+						<table id="tablaRegistro">
+							<tr>
+								<td id="tdName"><label>Nombre * &nbsp;</label></td>
+								<td><input type="text" name="nombre" id="txtName" maxlength="50" required></td>
+							</tr>			
+							<tr>
+								<td id="tdMail"><label>E-mail * &nbsp;</label></td>
+								<td><input type="email" name="email" id="txtEmail" maxlength="50" placeholder="Ej: contacto@opositatest.com" required></td>
+							</tr>
+							
+						</table>
+						<hr />
+						<table>
+							<tr>
+								<td><input id="boton" type="button" value="UNIRSE" onclick="mostrar()" value="Add"></td>
+							</tr>	
+						</table>
+					</form>				
+				</article>
+			</section>
+			<section id="sectionPlay">
+				<article id="articleButPlay">
+					<input id="play" type="button" value="SORTEAR" onclick="setAreaText ();">
+					<textarea id="out" rows="17" maxrows="17" cols="80" readonly="true"></textarea>
+				</article>
 				
 			</section>
 		</main>
+		
 	</body>
 </html> 
