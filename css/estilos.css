@@ -19,7 +19,7 @@ header h1{
 	background: radial-gradient(rgba(0,0,0,0.1),rgba(0,0,0,1));
 	background-color: #534a51;
 	padding: 5%;
-	min-height: 400px;
+	min-height: 500px;
 }
 #h1part{
 	text-align: center;
@@ -34,8 +34,10 @@ header h1{
 }
 #tablaParticipantes thead{
 	border-collapse: collapse;
-	min-width: 850px;
-	min-height: 21px;
+	min-width: 900px;
+	min-height: 25px;
+	max-width: 900px;
+	max-height: 25px;
 }
 #body td{
 	border-width: 2px;
@@ -56,9 +58,10 @@ header h1{
 #esconder{
 	border-radius: 200px 200px 200px 200px;
 	border: 0px solid #000000;	
-	height: 100px;
-	width: 100px;
+	height: 90px;
+	width: 90px;
 	background-color: #ffa31a;
+	margin-bottom: 8px;
 }
 #esconder:hover{
 	box-shadow: -5px -5px 50px 10px grey;
