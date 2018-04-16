@@ -7,9 +7,47 @@ table{
 	width: 100%;
 }
 
+header div{
+	padding-bottom: 1%;
+}
+#aimg{
+	float: left;
+}
 header h1{
-	float: right;
-	margin-right: 45%;
+	width: 50%;
+	padding: 0;
+	margin-left: 25%;
+	text-align: center;
+}
+
+#nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    width: 100%;
+    
+    background-color: #333;
+}
+
+#nav li {
+    float: left;
+}
+
+#nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#nav li a:hover {
+    background-color: #4CAF50;
 }
 
 /*THIS IS THE USERS SECTION*/
@@ -17,60 +55,77 @@ header h1{
 #seccionPart{
 	margin-top: 0.5%;
 	background: radial-gradient(rgba(0,0,0,0.1),rgba(0,0,0,1));
-	background-color: #534a51;
+	background-color: #6c6069;
 	padding: 5%;
+	min-height: 500px;
 }
 #h1part{
 	text-align: center;
 	color: white;
+	margin-top: -3%;
 }
 #tablaParticipantes{
 	border-collapse: collapse;
-	border: solid white;
 	color: white;
-	width: 50%;
+	width: 850px;
 	margin-left: 25%;
 }
-#tablaParticipantes td{
-	border-color: white;
-	border-style: solid;
+#tablaParticipantes thead{
+	border-collapse: collapse;
+	min-width: 900px;
+	min-height: 25px;
+	max-width: 900px;
+	max-height: 25px;
+}
+#body td{
 	border-width: 2px;
 	text-align: center;
+	border-radius: 48px 48px 48px 48px;
+	border: 0px solid #000000;
+}
+#body tr{
+	opacity: 0.5;
+	border-collapse: collapse;
+	border-bottom: solid grey 0.5px;
+
 }
 #body tr:hover{
-	background-color: lightgrey;
-	color: black;
+	opacity: 1;
 }
 
+#esconder{
+	border-radius: 200px 200px 200px 200px;
+	border: 0px solid #000000;	
+	height: 90px;
+	width: 90px;
+	background-color: #ffa31a;
+	margin-bottom: 8px;
+}
+#esconder:hover{
+	box-shadow: -5px -5px 50px 10px grey;
+}
 
 /*THIS IS THE REGISTER SECTION*/
 
 #seccionReg{
-	margin-top: 0.5%;
 	margin-bottom: 0.5%;
 	background: radial-gradient(rgba(0,0,0,0.1),rgba(0,0,0,1));
-	background-color: #534a51;
-	width: 37.5%;
-	height: 407.5px;
+	background-color: #6c6069;
 	padding: 5%;
 	padding-right: 7%;
-	float: left;
 }
 #seccionReg article{
 	background-color: white;
 	color: black;
 	text-align: center;
-	width: 100%;
 	padding: 1%;
 	padding-bottom: 5%;
+	margin-left: 25%;
+	margin-right: 25%;
 }
 #seccionReg article img{
 	width: 150px;
 	height: 100px;
-	margin-right: 27%;
-}
-#opos{
-	margin-left: 30%;
 }
 #formularioRegistro{
 	background-color: white;
@@ -78,32 +133,26 @@ header h1{
 }
 #tablaRegistro td{
 	display: block;
-	margin-left: 5%;
 }
 #tdName{
-	margin-right: 22%;
 	color: #595959;
-	text-align: center;
+	text-align: justify-all;
 }
 #tdMail{
-	margin-right: 25%;
 	color: #595959;
-	text-align: center;
+	text-align: justify-all;
 }
 #boton{
 	border-style: solid;
 	border-color: white;
 	box-shadow: 2px 2px 5px 5px #888888;
 	background-color: #ffa31a;
-	padding: 5%;
-	padding-left: 15%;
-	padding-right: 15%;
-	margin-top: 1%;
-	margin: 0 auto;
+	padding: 2%;
+	padding-left: 3%;
+	padding-right: 3%;
 }
 #boton:hover{
 	box-shadow: 2px 2px 5px 5px #a6a6a6;
-	margin: 0 auto;		
 }
 
 
@@ -115,20 +164,20 @@ header h1{
 #sectionPlay{
 	margin-top: 0.5%;
 	margin-bottom: 0.5%;
-	background: radial-gradient(rgba(0,0,0,0),rgba(0,0,0,1));
-	background-color: #534a51;
-	width: 37.5%;
-	height: 407.5px;
+	background: radial-gradient(rgba(0,0,0,0.1),rgba(0,0,0,1));
+	background-color: #6c6069;
 	padding: 5%;
 	padding-right: 7%;
-	float: right;
 }
 
-#articlePlay{
-	background-color: white;
-	height: 200px;
-	padding: 2%;
-	margin-top: 5%;
+#articleButPlay{
+	background-color: transparent;
+	color: black;
+	text-align: center;
+	padding: 1%;
+	padding-bottom: 5%;
+	margin-left: 25%;
+	margin-right: 25%;
 }
 
 #play{
@@ -137,20 +186,12 @@ header h1{
 	box-shadow: 2px 2px 5px 5px #888888;
 	background-color: #ffa31a;
 	padding: 5%;
-	padding-left: 15%;
-	padding-right: 15%;
+	padding-left: 10%;
+	padding-right: 10%;
 	margin: 0 auto;
 }
 #play:hover{
 	box-shadow: 2px 2px 5px 5px #a6a6a6;
-}
-
-#articleButPlay{
-	background-color: white;
-	text-align: center;
-	width: 100%;
-	padding: 1%;
-	padding-bottom: 5%;
 }
 
 #info{

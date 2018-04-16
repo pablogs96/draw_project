@@ -2,33 +2,29 @@
 <html>
 	<head>
 		<meta charset="UTF-8"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script type="text/javascript" src="../js/draw.js"></script>
 		<link rel="stylesheet" type="text/css" href="../css/estilos.css">
 		<title>Sorteo pizarra</title>
 	</head>
 	<body onload="createTable()">
-		<header>
-			<a href="https://www.opositatest.com/" target="_blank"><img src="../img/logo.png" alt="logo" title="Opositatest" height="100" width="400"></a>
-			<h1>SORTEO SEMANAL</h1>
+		<header id="home">
+			<div>
+				<a id="aimg" href="https://www.opositatest.com/" target="_blank"><img src="../img/logo.png" alt="logo" title="Opositatest" height="100" width="380"></a>
+				<h1>SORTEO SEMANAL</h1>
+			</div>
 		</header>
-		<main>
-			<section id="seccionPart">
-				<h1 id="h1part">PARTICIPANTES DEL SORTEO</h1>
-				<table id="tablaParticipantes">
-					<thead>
-						<tr>
-							<th>NOMBRE</th>
-							<th>E-MAIL</th>
-							<th>PARTICIPACIÓN</th>
-						</tr>
-					</thead>
-					<tbody id="body">
-					</tbody>
-				</table>
-			</section>
-			<section id="seccionReg">
+		<ul id="nav">
+		  <li><a class="active" href="#seccionReg">Unirse</a></li>
+		  <li><a href="#sectionPlay">Sorteo</a></li>
+		  <li><a href="#seccionPart">Participantes</a></li>
+		</ul>
+		<div>
+			<section id="seccionReg" name="seccionReg">
 				<article>
-					<img id="opos" src="../img/logoOpo.jpeg" alt="logo" title="Opositates">
+					<div>
+						<img id="opos" src="../img/logoOpo.jpeg" alt="logo" title="OpositaTest" height="150" width="100">
+					</div>
 					<h1>ÚNETE AL SORTEO</h1>
 					<form id="formularioRegistro">
 						<hr />
@@ -46,18 +42,35 @@
 						<hr />
 						<table>
 							<tr>
-								<td><input id="boton" type="button" value="UNIRSE" onclick="addToLocal()" value="Add"></td>
+								<td><input id="boton" type="button" value="UNIRSE" onclick="mostrar()" value="Add"></td>
 							</tr>	
 						</table>
 					</form>				
 				</article>
 			</section>
-			<section id="sectionPlay">
+		</div>
+		<div>
+			<section id="sectionPlay" name="sectionPlay">
 				<article id="articleButPlay">
 					<input id="play" type="button" value="SORTEAR" onclick="setAreaText ();">
 					<textarea id="out" rows="17" maxrows="17" cols="80" readonly="true"></textarea>
 				</article>
-				
+			</section>
+		</div>
+		<main>
+			<section id="seccionPart" name="seccionPart">
+				<h1 id="h1part">PARTICIPANTES DEL SORTEO</h1>
+				<table id="tablaParticipantes" class="part">
+					<thead>
+						<tr>
+							<th>NOMBRE</th>
+							<th>E-MAIL</th>
+							<th><input type="button" name="esconder" id="esconder" value="Hide/Show" class="ocultar"></th>
+						</tr>
+					</thead>
+					<tbody id="body">
+					</tbody>
+				</table>
 			</section>
 		</main>
 	</body>
