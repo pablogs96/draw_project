@@ -1,3 +1,10 @@
+    // FUNCIÓN DEL BOTON MOSTRAR
+function mostrar() {
+    $("#boton").click(function(){
+        $("#body td").fadeIn(2000);
+    });
+    addToLocal();
+}
     // FUNCION PARA AÑADIR LOS DATOS INTRODUCIDOS EN EL FORM AL LOCAL STORAGE DEL BROWSER
 function addToLocal() {
 	if (typeof(Storage) !== "undefined") {
@@ -106,11 +113,6 @@ function createTable(){
     }
 }
 
-    // FUNCION PARA SACAR MENSAJES POR LA CONSOLA
-function showMessage(){
-    
-}
-
         // FUNCION PARA ELIMINAR DATOS DEL LOCALSTORAGE CORRESPONDIENTES A LA FILA SELECCIONADA
 function RemoveFromLocal(img){
     // get the position of the row in the table
@@ -135,11 +137,11 @@ function RemoveFromLocal(img){
 function Remove(img) {
     //Determine the reference of the Row using the Button.
     var row = img.parentNode.parentNode;
-    var name = row.getElementsByTagName("TD")[0].innerHTML;
     //Get the reference of the Table.
     var table = document.getElementById("tablaParticipantes");
 
     //Delete the Table row using it's Index.
+    //$('#tablaParticipantes tr').eq(row.rowIndex).fadeOut(500);
     table.deleteRow(row.rowIndex);
 }
 
@@ -151,6 +153,9 @@ function AddRow(name, email) {
 
     //Add Row.
     var row = tBody.insertRow(-1);
+    $('#tablaParticipantes tr').eq(row.rowIndex).hide();
+    $('#tablaParticipantes tr').eq(row.rowIndex).fadeIn(1000);
+
 
     //Add Name cell.
     var cell = row.insertCell(-1);
@@ -179,12 +184,10 @@ function AddRow(name, email) {
     // FUNCIONES ARA TRANSFORMAR LA IMAGEN AL PASAR POR ENCIMA
 
 function transformToDele(img){
-    //document.getElementsByTagName("img").src= "../img/tick.png";
     img.setAttribute("src", "../img/tick.png");
 }
 
 function transformToTick(img){
-    //document.getElementsByTagName("img").src= "../img/delete.png";
     img.setAttribute("src", "../img/delete.png");
 }
     // FUNCION PARA GENERAR UN ALEATORIO
@@ -198,60 +201,88 @@ function sorteoPizarra(){
     var retrievedUser = localStorage.getItem("aNames");
     if (retrievedUser == null){
         alert("No hay datos guardados. Introduzca datos en el formulario para poder realizar el sorteo.");
+        return false;
     } else {
         aNames = JSON.parse(retrievedUser);
         if (aNames.length <= 1) {
             alert("Introduzca al menos dos participantes para poder realizar el sorteo."); 
             return false;
         } else {
-            var min = 0;
             var size = aNames.length;
+            var min = 0;
             var max = size -1;
-            var random = aleatorio(min, max );
+
+            var random = aleatorio(min, max);
+
             var nombre = aNames[random].nombre;
             var email = aNames[random].email;
-            var texto = "'" + nombre + "', con email: '" + email + "'. ¡Enhorabuena!:)";
-            return texto;
+
+            if (addPizarra(aNames[random])){
+                var texto = "'" + nombre + "', con email: '" + email + "'. ¡Enhorabuena!:)";
+                var obj = {"texto": texto, "random": random, "email": email};
+                return obj;
+            } else {
+                return sorteoPizarra();
+            }
+            
         }
     }
 }
 
     // FUNCION PARA LA REUNION
 function sorteoReunion(){
-    var aNames = [];    
+    var aNames = [];
+
     var retrievedUser = localStorage.getItem("aNames");
     aNames = JSON.parse(retrievedUser);
-    var min = 0;
+
     var size = aNames.length;
+    var min = 0;
     var max = size -1;
     var random = aleatorio(min, max);
     var nombre = aNames[random].nombre;
     var email = aNames[random].email;
-    var texto = "'" + nombre + "', con email: '" + email + "'. ¡Enhorabuena!:)";
-    return texto;
+
+
+    if (addReunion(aNames[random])){
+        var texto = "'" + nombre + "', con email: '" + email + "'. ¡Enhorabuena!:)";
+        var obj = {"texto": texto, "random": random, "email": email};
+        return obj;
+    } else {
+        return sorteoReunion();
+    }
 }
 
     // FUNCION PARA LIMPIAR LA CONSOLA
 function limpiarConsola() {
-    document.getElementById("out").value = "";
+    //document.getElementById("out").value = "";
+    $("#out").val("");
 }
 
     // FUNCION PARA EL TEXTO DE LA CONSOLA
 function setAreaText (){
+    desmodificarFilas();
     limpiarConsola();
     var a = sorteoPizarra();
     if (a !== false) {
         var b = sorteoReunion();
     }
-    if (a===false || b===false) {
+    if (a===false) {
         return;
     }
-    if (b !== a){
-        var text = "->OpositaTest: Iniciando sorteo de la pizarra...\n->OpositaTest: El ganador es ...\n->OpositaTest: " + a;
-        text += "\n->OpositaTest: ...\n->OpositaTest: ...\n->OpositaTest: Iniciando sorteo de la reunión ...\n->OpositaTest: El ganador es ...\n->OpositaTest: " + b
+    if (b.texto !== a.texto){
+        var text = "->OpositaTest: Iniciando sorteo de la pizarra...\n->OpositaTest: El ganador es ...\n->OpositaTest: " + a.texto;
+        text += "\n->OpositaTest: ...\n->OpositaTest: ...\n->OpositaTest: Iniciando sorteo de la reunión ...\n->OpositaTest: El ganador es ...\n->OpositaTest: " + b.texto
          + "\n->Opositatest: Hasta la semana que viene!";
-        escribir("out", text, 80);
+        //$("#out").val(text);
+        escribir("out", text, 50);
+        modificarFila(a.email);
+        modificarFila(b.email);
     } else{
+        var pizarra = [];
+        localStorage.setItem('pizarra', JSON.stringify(pizarra));
+        var reunion = [];
+        localStorage.setItem('reunion', JSON.stringify(reunion));
         setAreaText();
     }
 }
@@ -273,3 +304,82 @@ function escribir(contenedor,writer,speed){
          i++;
       }},speed);
 };
+
+function addPizarra(aNames){
+    var pizarra = [];
+    var retrievedPizarra = localStorage.getItem("pizarra");
+    if (retrievedPizarra == null){
+        pizarra.push({"nombre": aNames.nombre, "email": aNames.email, "id": aNames.id});
+        // create array in localStorage
+        localStorage.setItem('pizarra', JSON.stringify(pizarra));
+        return true;
+    } else {
+        pizarra = JSON.parse(retrievedPizarra);
+        if (pizarra.length === 0){
+            pizarra.push({"nombre": aNames.nombre, "email": aNames.email, "id": aNames.id});
+            // create array in localStorage
+            localStorage.setItem('pizarra', JSON.stringify(pizarra));
+            return true;
+        } else if(pizarra.length === 1){
+            if (aNames.email === pizarra[0].email){
+                return false;
+            } else {
+                pizarra.splice(0, 1);
+                pizarra.push({"nombre": aNames.nombre, "email": aNames.email, "id": aNames.id});
+                localStorage.setItem('pizarra', JSON.stringify(pizarra));
+                return true;
+            }
+        }
+    }
+}
+
+function addReunion(aNames){
+    var reunion = [];
+    var retrievedreunion = localStorage.getItem("reunion");
+    if (retrievedreunion == null){
+        reunion.push({"nombre": aNames.nombre, "email": aNames.email, "id": aNames.id});
+        // create array in localStorage
+        localStorage.setItem('reunion', JSON.stringify(reunion));
+        return true;
+    } else {
+        reunion = JSON.parse(retrievedreunion);
+        if (reunion.length === 0){
+            reunion.push({"nombre": aNames.nombre, "email": aNames.email, "id": aNames.id});
+            // create array in localStorage
+            localStorage.setItem('reunion', JSON.stringify(reunion));
+            return true;
+        } else if(reunion.length === 1){
+            if (aNames.email === reunion[0].email){
+                return false;
+            } else {
+                reunion.splice(0, 1);
+                reunion.push({"nombre": aNames.nombre, "email": aNames.email, "id": aNames.id});
+                localStorage.setItem('reunion', JSON.stringify(reunion));
+                return true;
+            }
+        }
+    }
+}
+
+$(document).ready(function(){
+    $(".ocultar").click(function(){
+        $("#body td").fadeToggle(2000);
+    });
+});
+
+function toggletable(){
+    $("#boton").click(function(){
+        $("#body td").fadeToggle(2000);
+    });
+}
+
+function modificarFila(email){
+    var tableRow = $("td").filter(function() {
+        return $(this).text() == email;
+    }).closest("tr");
+    tableRow.css({"font-size": "120%", "color": "red", "opacity": "0.7"});
+}
+
+function desmodificarFilas(){
+    $("#body tr").css({"font-size": "14px", "color": "black", "opacity": "0.3"});
+}
