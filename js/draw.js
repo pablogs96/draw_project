@@ -1,4 +1,4 @@
-    // FUNCION QUE SE CARGA ONLOAD
+    // FUNCIÓN DEL BOTON MOSTRAR
 function mostrar() {
     $("#boton").click(function(){
         $("#body td").fadeIn(2000);
@@ -374,20 +374,12 @@ function toggletable(){
 }
 
 function modificarFila(email){
-    //var img = &("")
-    //var tr = $("#body tr:eq(index)");
-    //console.log("*** " + objeto + "--->" + tr);
-    //var table = document.getElementById("tablaParticipantes");
-    //var row = table.getElementsByTagName("TR")[index];
-    //row.animate({fontSize:"3em"}, "slow");
-    //var fila = $("TR:contains('email')").css({"opacity": "1", "font-size": "120%"});
-    //var fila = $("TABLE:contains('email')").css({"backgorund-color", "blue"});
     var tableRow = $("td").filter(function() {
         return $(this).text() == email;
     }).closest("tr");
-    tableRow.css({"font-size": "120%", "color": "red", "opacity": "0.9"});
+    tableRow.css({"font-size": "120%", "color": "red", "opacity": "0.7"});
 }
 
 function desmodificarFilas(){
-    $("#body tr").css({"font-size": "14px", "color": "white", "opacity": "1"});
+    $("#body tr").css({"font-size": "14px", "color": "black", "opacity": "0.3"});
 }
