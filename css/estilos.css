@@ -11,3 +11,11 @@
 #play:hover{
 	box-shadow: 2px 2px 5px 5px #a6a6a6;
 }
+
+.links a{
+	color: white;
+} 
+
+.links a:hover{
+	text-decoration: none;
+}
