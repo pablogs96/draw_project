@@ -19,3 +19,13 @@
 .links a:hover{
 	text-decoration: none;
 }
+@media screen and (min-width: 575px) {
+	.pull-right {
+	float: right;
+	}
+}
+@media screen and (min-width: 575px) {
+	.pull-left {
+		float: left;
+	}
+}

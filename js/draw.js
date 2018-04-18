@@ -181,7 +181,7 @@ function AddRow(name, email) {
     cell.appendChild(tick);
 }
 
-    // FUNCIONES ARA TRANSFORMAR LA IMAGEN AL PASAR POR ENCIMA
+    // FUNCIONES PARA TRANSFORMAR LA IMAGEN AL PASAR POR ENCIMA
 
 function transformToDele(img){
     img.setAttribute("src", "../img/tick.png");
@@ -255,7 +255,6 @@ function sorteoReunion(){
 
     // FUNCION PARA LIMPIAR LA CONSOLA
 function limpiarConsola() {
-    //document.getElementById("out").value = "";
     $("#out").val("");
 }
 
@@ -377,9 +376,9 @@ function modificarFila(email){
     var tableRow = $("td").filter(function() {
         return $(this).text() == email;
     }).closest("tr");
-    tableRow.css({"font-size": "120%", "color": "red", "opacity": "0.7"});
+    tableRow.css({"color": "red"});
 }
 
 function desmodificarFilas(){
-    $("#body tr").css({"font-size": "14px", "color": "black", "opacity": "0.3"});
+    $("#body tr").css({"color": "black"});
 }
