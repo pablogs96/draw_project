@@ -1,0 +1,31 @@
+/*THIS IS THE USERS SECTION*/
+#body tr{
+	opacity: 0.6;
+
+}
+#body tr:hover{
+	opacity: 1;
+}
+/*THIS IS THE PLAY SECTION*/
+
+#play:hover{
+	box-shadow: 2px 2px 5px 5px #a6a6a6;
+}
+
+.links a{
+	color: white;
+} 
+
+.links a:hover{
+	text-decoration: none;
+}
+@media screen and (min-width: 575px) {
+	.pull-right {
+	float: right;
+	}
+}
+@media screen and (min-width: 575px) {
+	.pull-left {
+		float: left;
+	}
+}
