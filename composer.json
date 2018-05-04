@@ -16,6 +16,7 @@
         "symfony/orm-pack": "^1.0",
         "symfony/process": "^4.0",
         "symfony/security-bundle": "^4.0",
+        "symfony/serializer": "^4.0",
         "symfony/serializer-pack": "*",
         "symfony/swiftmailer-bundle": "^3.2",
         "symfony/twig-bundle": "^4.0",
@@ -76,6 +77,6 @@
             "id": "",
             "allow-contrib": false
         },
-        "symfony.id": "01CBYEPVZ7DRSW61FNKS611FCM"
+        "symfony.id": "01CCJQ2EQAW5ZFZJY44THFHSSS"
     }
 }

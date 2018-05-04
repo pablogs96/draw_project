@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PreguntaRepository")
@@ -11,14 +12,14 @@ class Pregunta
 {
     /**
      * Many Preguntas have One Encuesta.
-     * @ManyToOne(targetEntity="Encuesta", inversedBy="preguntas")
-     * @JoinColumn(name="encuesta_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Encuesta", inversedBy="preguntas")
+     * @ORM\JoinColumn(name="encuesta_id", referencedColumnName="id")
      */
     private $encuesta;
 
     /**
      * One Pregunta has Many Respuestas.
-     * @OneToMany(targetEntity="Respuesta", mappedBy="pregunta")
+     * @ORM\OneToMany(targetEntity="Respuesta", mappedBy="pregunta")
      */
     private $respuestas;
 
@@ -72,4 +73,37 @@ class Pregunta
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getEncuesta()
+    {
+        return $this->encuesta;
+    }
+
+    /**
+     * @param mixed $encuesta
+     */
+    public function setEncuesta($encuesta): void
+    {
+        $this->encuesta = $encuesta;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRespuestas()
+    {
+        return $this->respuestas;
+    }
+
+    /**
+     * @param mixed $respuestas
+     */
+    public function setRespuestas($respuestas): void
+    {
+        $this->respuestas = $respuestas;
+    }
+
 }

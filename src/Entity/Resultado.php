@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ResultadoRepository")
  */
@@ -11,8 +12,8 @@ class Resultado
 {
     /**
      * Many Resultados have One Encuesta.
-     * @ManyToOne(targetEntity="Encuesta", inversedBy="resultados")
-     * @JoinColumn(name="encuesta_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Encuesta", inversedBy="resultados")
+     * @ORM\JoinColumn(name="encuesta_id", referencedColumnName="id")
      */
     private $encuesta;
 
@@ -37,11 +38,6 @@ class Resultado
      * @ORM\Column(type="string", length=255)
      */
     private $explanation;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $rank;
 
     /**
      * @ORM\Column(type="integer")
@@ -117,4 +113,21 @@ class Resultado
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getEncuesta()
+    {
+        return $this->encuesta;
+    }
+
+    /**
+     * @param mixed $encuesta
+     */
+    public function setEncuesta($encuesta): void
+    {
+        $this->encuesta = $encuesta;
+    }
+
 }

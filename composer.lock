@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2a446c847b61959c3410431cc5feed25",
-    "content-hash": "d7d1b2185fb2cb026fb6ecd08fd035c3",
+    "hash": "17690d9a0368d323491d9a273621dc57",
+    "content-hash": "d268cb3d1db8e4131d60d86b4922205a",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2519,16 +2519,16 @@
         },
         {
             "name": "symfony/form",
-            "version": "v4.0.8",
+            "version": "v4.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/form.git",
-                "reference": "8605af5a9181d44637de5706e32d8ab9caee799e"
+                "reference": "1ddddddaf43a812aee6fb5795dc8b3ee3117c0a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/form/zipball/8605af5a9181d44637de5706e32d8ab9caee799e",
-                "reference": "8605af5a9181d44637de5706e32d8ab9caee799e",
+                "url": "https://api.github.com/repos/symfony/form/zipball/1ddddddaf43a812aee6fb5795dc8b3ee3117c0a1",
+                "reference": "1ddddddaf43a812aee6fb5795dc8b3ee3117c0a1",
                 "shasum": ""
             },
             "require": {
@@ -2595,7 +2595,7 @@
             ],
             "description": "Symfony Form Component",
             "homepage": "https://symfony.com",
-            "time": "2018-04-06 07:35:43"
+            "time": "2018-04-20 10:04:09"
         },
         {
             "name": "symfony/framework-bundle",
@@ -3832,7 +3832,7 @@
         },
         {
             "name": "symfony/serializer",
-            "version": "v4.0.8",
+            "version": "v4.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/serializer.git",

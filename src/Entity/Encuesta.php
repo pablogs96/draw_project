@@ -12,19 +12,19 @@ class Encuesta
 {
     /**
      * One Encuesta has Many Preguntas.
-     * @OneToMany(targetEntity="Pregunta", mappedBy="encuesta")
+     * @ORM\OneToMany(targetEntity="Pregunta", mappedBy="encuesta")
      */
     private $preguntas;
 
     /**
      * One Encuesta has Many Resultados.
-     * @OneToMany(targetEntity="Resultado", mappedBy="encuesta")
+     * @ORM\OneToMany(targetEntity="Resultado", mappedBy="encuesta")
      */
     private $resultados;
 
     /**
      * One Encuesta has Many Comentarios.
-     * @OneToMany(targetEntity="Comentario", mappedBy="encuesta")
+     * @ORM\OneToMany(targetEntity="Comentario", mappedBy="encuesta")
      */
     private $comentarios;
 
@@ -62,4 +62,53 @@ class Encuesta
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPreguntas()
+    {
+        return $this->preguntas;
+    }
+
+    /**
+     * @param mixed $preguntas
+     */
+    public function setPreguntas($preguntas): void
+    {
+        $this->preguntas = $preguntas;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getResultados()
+    {
+        return $this->resultados;
+    }
+
+    /**
+     * @param mixed $resultados
+     */
+    public function setResultados($resultados): void
+    {
+        $this->resultados = $resultados;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getComentarios()
+    {
+        return $this->comentarios;
+    }
+
+    /**
+     * @param mixed $comentarios
+     */
+    public function setComentarios($comentarios): void
+    {
+        $this->comentarios = $comentarios;
+    }
+
 }

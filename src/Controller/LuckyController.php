@@ -13,12 +13,11 @@ class LuckyController extends Controller
       */
     public function number($id)
     {
-        $passed = $id;
-        $number = mt_rand(0, 100);
+        $entityManager = $this->getDoctrine()->getManager();
+        $encuesta = $entityManager->getRepository(Encuesta::class)->find($id);
 
         return $this->render('lucky/number.html.twig', array(
-            'number' => $number,
-            'parametro' => $passed,
+            'encuesta' => $encuesta
         ));
     }
 }

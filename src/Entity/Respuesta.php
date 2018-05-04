@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\RespuestaRepository")
  */
@@ -11,8 +12,8 @@ class Respuesta
 {
     /**
      * Many Respuestas have One Pregunta.
-     * @ManyToOne(targetEntity="Pregunta", inversedBy="respuestas")
-     * @JoinColumn(name="pregunta_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Pregunta", inversedBy="respuestas")
+     * @ORM\JoinColumn(name="pregunta_id", referencedColumnName="id")
      */
     private $pregunta;
 
@@ -61,4 +62,21 @@ class Respuesta
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPregunta()
+    {
+        return $this->pregunta;
+    }
+
+    /**
+     * @param mixed $pregunta
+     */
+    public function setPregunta($pregunta): void
+    {
+        $this->pregunta = $pregunta;
+    }
+
 }

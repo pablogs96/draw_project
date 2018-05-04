@@ -8,6 +8,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Comentario;
 use App\Entity\Encuesta;
 use App\Entity\Pregunta;
 use App\Entity\Respuesta;
@@ -34,38 +35,37 @@ class AppFixtures extends Fixture
             $encuesta = new Encuesta();
             $encuesta->setTitle('Encuesta '.$i);
             $manager->persist($encuesta);
-        }
-
-        // create 8 preguntas
-        for ($i = 1; $i <= 8; $i++) {
-            foreach ($Pimages as $img) {
+            for ($j = 1; $j <= 4; $j++) {
                 $pregunta = new Pregunta();
-                $pregunta->setImage($img);
-                $pregunta->setText('pregunta '.$i);
+                $pregunta->setImage($Pimages[0]);
+                $pregunta->setText('pregunta '. $j);
+                $pregunta->setEncuesta($encuesta);
                 $manager->persist($pregunta);
+                for ($h = 1; $h <= 4; $h++) {
+                    $respuesta = new Respuesta();
+                    $respuesta->setText('Respuesta '.$h.' de la pregunta '.$j.' de la encuesta '.$i);
+                    $respuesta->setvalue(mt_rand(0, 5));
+                    $respuesta->setPregunta($pregunta);
+                    $manager->persist($respuesta);
+                }
+            }
+            for ($j = 1; $j <= 3; $j++){
+                $resultado = new Resultado();
+                $resultado->setText('Resultado '.$j);
+                $resultado->setImage('http://images.yodibujo.es/_uploads/_tiny_galerie/20130414/lisa-simpson-hija_6zs.jpg');
+                $resultado->setExplanation('Explanation '.$j);
+                $resultado->setMinVal(mt_rand(0, 10));
+                $resultado->setMaxVal(mt_rand(10, 20));
+                $resultado->setEncuesta($encuesta);
+                $manager->persist($resultado);
+            }
+            for ($j = 1; $j <= 4; $j++){
+                $coment = new Comentario();
+                $coment->setText('Comentario '.$j.' de la encuesta '.$i);
+                $coment->setEncuesta($encuesta);
+                $manager->persist($coment);
             }
         }
-
-        // create 32 respuestas
-        for ($i = 1; $i <= 32; $i++) {
-            $respuesta = new Respuesta();
-            $respuesta->setText('Respuesta '.$i);
-            $respuesta->setvalue(mt_rand(0, 10));
-            $manager->persist($respuesta);
-        }
-
-        //create 32*3 resultados (96) resultados
-        for ($i = 1; $i < 96; $i++){
-            $resultado = new Resultado();
-            $resultado->setText('Resultado '.$i);
-            $resultado->setImage('http://images.yodibujo.es/_uploads/_tiny_galerie/20130414/lisa-simpson-hija_6zs.jpg');
-            $resultado->setExplanation('Explanation '.$i);
-            $resultado->setMinVal(mt_rand(0, 10));
-            $resultado->setMaxVal(mt_rand(10, 20));
-            $manager->persist($resultado);
-        }
-
-
         $manager->flush();
     }
 }
