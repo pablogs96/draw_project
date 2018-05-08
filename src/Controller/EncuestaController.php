@@ -92,9 +92,9 @@ class EncuestaController extends Controller
 
         $size = count($encuestas);
         $min = 1;
-        $max = 3;
+        $max = 4;
 
-        $encuestas_3 = [$encuestas[0], $encuestas[1], $encuestas[2]];
+        $encuestas_3 = [$encuestas[0], $encuestas[1], $encuestas[2], $encuestas[3]];
 
         return $this->render('encuesta/mostrarEncuestas.html.twig', array('encuestas' => $encuestas_3, 'size' => $size, 'min' => $min, 'max' => $max));
     }

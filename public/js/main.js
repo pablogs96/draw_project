@@ -24,7 +24,6 @@ function navbar(){
 	        $('#nav').addClass('navbar-dark');
 	        $('#nav').css("background-color", "black");
 	        $("#nav").animate({height: "60px"});
-	        $("#logoTop").css("filter", "invert(100%)");
 	        key = false;
     	}
     } else if (!key){
@@ -33,7 +32,6 @@ function navbar(){
 	        $('#nav').css("background-color", "#EDDBF3");
 	        $('#nav').addClass('navbar-light');
 	        $("#nav").animate({height: "85px"});
-            $("#logoTop").css("filter", "none");
 	        key = true;
 	    }
     }  
@@ -44,14 +42,12 @@ function navbar(){
 	        $('#nav').addClass('navbar-dark');
 	        $('#nav').css("background-color", "black");
 	        $("#nav").css("height", "60px");
-            $("#logoTop").css("filter", "invert(100%)");
 	        key = false;
     	} else if (stop < encuesta) {
 	    	$("#nav").removeClass("navbar-dark");
 	        $('#nav').css("background-color", "#EDDBF3");
 	        $('#nav').addClass('navbar-light');
 	        $("#nav").css("height", "85px");
-            $("#logoTop").css("filter", "none");
 	        key = true;
 	    }
     }  	
