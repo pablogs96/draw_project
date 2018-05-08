@@ -9,21 +9,98 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-    <script>
-        var encuesta = {{ encuesta|raw }};
-    </script>
     <script src="{{ asset('js/main.js') }}"></script>
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Secular+One" rel="stylesheet" />
 </head>
 
 <body>
-
 <!-- BARRA DE NAVEGACION -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top navSize" id="nav" style="background-color: #EDDBF3;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="true" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse navbar-center" id="navbarToggler">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home">HOME<span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/home/encuestas">ENCUESTAS</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/home/sorteo">SORTEO</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 <!-- SECCION DE EXPLICACION -->
+    <header id="header">
+        <div class="container-fluid bg-warning" style="padding-top:150px;padding-bottom:70px">
+            <div class="row justify-content-center">
+                <a href="https://www.opositatest.com/"></a>
+            </div>
+            <div class="row text-center justify-content-center" style="padding-bottom: 20px">
+                <h1><b>¡BIENVENIDO A IDENTIFICATEST!</b></h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-sm-6 col-10">
+                    <h5>En esta web encontrarás múltiples encuestas con las que podrás divertirte respondiendo y averiguando tus resultados. Después de realizar una encuesta tendrás la
+                    opción de unirte a un sorteo de manera totalmente gratuita. Mucha suerte y espero que disfrutes de esta web!</h5>
+                </div>
+            </div>
+            <div class="row">
+            </div>
+        </div>
+    </header>
 <!-- SECCION DE ENCUESTAS -->
+    <section>
+        <div id="edge" class="container-fluid text-center" style="padding-top:100px;padding-bottom:70px;">
+            <h1>ALGUNAS DE NUESTRAS ENCUESTAS</h1>
+            <a href="/home/encuestas" type="button" class="btn btn-warning">Ver todas las encuestas</a>
+            <hr>
+        </div>
+        <div class="row justify-content-center text-center">
+            {% for encuesta in encuestas %}
+                <div class="col-md-6 col-lg-4" id="portfolio">
+                    <h1 id="h1po">{{ encuesta.title }}</h1>
+                    <a href="/home/encuesta/{{ encuesta.id }}"><img src={{ encuesta.img }} id="imgPort"></a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
 <!-- SECCION DE COLABORADORES -->
+    <section>
+        <div id="section3" class="container-fluid text-center bg-warning" style="padding-top:100px;padding-bottom:70px;">
+            <div class="row justify-content-center text-center">
+                <h1>NUESTROS COLABORADORES</h1>
+            </div>
+            <hr>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-sm-6 text-right">
+                    <a href="https://www.opositatest.com/"><img src="../../img/logo.png" class="img-fluid" width="400px" alt="logo" id="logoTop"></a>
+                </div>
+                <div class="col-sm-6 text-left">
+                    <a href="http://www.liceolapaz.com"><img src="../../img/logo_liceo.png" class="img-fluid" width="200px" height="200px" alt="logo" id=""></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
 <!-- SECCION DE SOBRE MI -->
+<section>
+    <div id="section3" class="container-fluid text-center" style="padding-top:100px;padding-bottom:70px; background-color: white">
+        <h1>SOBRE MÍ</h1>
+        <hr>
+    </div>
+</section>
 <!-- FOOTER -->
+    <footer>
+        <div class="container-fluid text-center">
+            <p>2018&copy; Pablo García Saleta. Todos los derechos reservados. | <a href="" target="_blank">Compártenos</a></p>
+        </div>
+    </footer>
 </body>
 </html>

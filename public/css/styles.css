@@ -42,10 +42,10 @@ footer {
   } 
 }
 
-@media screen and (max-width: 390px) {
-  .btn-width {
-    width: 200px;
-  } 
+@media screen and (max-width: 1000px) {
+  .btn-responsive{
+    max-width:234px;
+  }
 }
 
 @media screen and (min-width: 1100px) {
@@ -58,4 +58,16 @@ footer {
   .navSize{
     height: 100px;
   }
+}
+
+#portfolio {
+    padding-bottom: 50px;
+}
+
+#imgPort{
+    width: 300px;
+}
+
+#imgPort:hover{
+    filter: opacity(50%);
 }

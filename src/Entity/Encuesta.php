@@ -46,6 +46,11 @@ class Encuesta
      */
     private $title;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $img;
+
     public function getId()
     {
         return $this->id;
@@ -109,6 +114,18 @@ class Encuesta
     public function setComentarios($comentarios): void
     {
         $this->comentarios = $comentarios;
+    }
+
+    public function getImg(): ?string
+    {
+        return $this->img;
+    }
+
+    public function setImg(string $img): self
+    {
+        $this->img = $img;
+
+        return $this;
     }
 
 }

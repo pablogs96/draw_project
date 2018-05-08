@@ -19,6 +19,22 @@ class EncuestaRepository extends ServiceEntityRepository
         parent::__construct($registry, Encuesta::class);
     }
 
+    /**
+     * @param $min, $max
+     * @return Encuesta[]
+     */
+    public function findBetween($min, $max): array
+    {
+        $qb = $this->createQueryBuilder('enc')
+            ->Where('enc.id BETWEEN :min AND :max')
+            ->setParameter('min', $min)
+            ->setParameter('max', $max)
+            ->orderBy('enc.id', 'ASC')
+            ->getQuery();
+
+        return $qb->execute();
+    }
+
 //    /**
 //     * @return Encuesta[] Returns an array of Encuesta objects
 //     */

@@ -13,6 +13,7 @@
         var encuesta = {{ encuesta|raw }};
     </script>
   <script src="{{ asset('js/main.js') }}"></script>
+  <script src="{{ asset('js/encuesta.js') }}"></script>
   <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Secular+One" rel="stylesheet" />
 </head>
@@ -25,22 +26,19 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="true" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#https://www.opositatest.com/"><img src="../img/logo.png" class="img-fluid" width="200px" height="200px" alt="logo" id="logoTop"></a>
-
   <div class="collapse navbar-collapse navbar-center" id="navbarToggler">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
       <li class="nav-item active">
-        <a class="nav-link" href="#home">HOME<span class="sr-only"></span></a>
+        <a class="nav-link" href="/home">HOME<span class="sr-only"></span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#sectionTemas">TEMAS</a>
+        <a class="nav-link" href="/home/encuestas">ENCUESTAS</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">SORTEO</a>
+        <a class="nav-link" href="/home/sorteo">SORTEO</a>
       </li>
     </ul>
   </div>
-  <a class="navbar navbar-right" href="#https://www.opositatest.com/"><img src="../img/logo_liceo.png" class="img-fluid" width="80px" height="80px" alt="logo" id=""></a>
 </nav>
 
 <!-- modal box to subscription-->
@@ -53,6 +51,14 @@
       </div>
       <div class="modal-body justify-content-center text-center" style="background-color: #EDDBF3">
         <form action="">
+            <div class="row justify-content-center text-center">
+                <div class="col-8">
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre">
+                    </div>
+                </div>
+            </div>
           <div class="row justify-content-center text-center">
             <div class="col-8">
               <div class="form-group">
@@ -86,10 +92,10 @@
 
 <section id="top">
   <div class="container-fluid" style="padding-top:100px;padding-bottom:70px; background-color: black">
-    <div class="row justify-content-center text-white text-center" id="encuesta" style="padding-bottom:20px; padding-top: 20px">
+    <div class="row justify-content-center text-white text-center" id="edge" style="padding-bottom:20px; padding-top: 20px">
     </div>
     <div class="row">
-      <div class="col-sm-8 container-fluid rounded" style="height: 850px; padding-top:50px; background-color: #EDDBF3; height: auto; width: auto;">
+      <div class="col-sm-8 container-fluid justify-content-center text-center rounded" style="height: 850px; padding-top:50px; background-color: #EDDBF3; height: auto; width: auto;">
         <div class="row justify-content-center text-center" id="titulo_encuesta" style="padding-bottom:20px">
         </div>
         <div class="row justify-content-center" id="img_encuesta" style="padding-bottom:20px">
@@ -98,7 +104,7 @@
           <div class="col-sm-6" id="pregunta">
           </div>
         </div>
-        <div class="row justify-content-center" id="div_respuestas" style="padding-bottom:20px">
+        <div class="row justify-content-center text-center" id="div_respuestas" style="padding-bottom:20px">
         </div>
       </div>
     </div>
@@ -139,7 +145,7 @@
 <!-- Footer-->
 <footer>
   <div class="container-fluid text-center">
-    <p>2014-2018&copy; Pablo García Saleta. Todos los derechos reservados. | <a href="" target="_blank">Compártenos</a></p>
+    <p>2018&copy; Pablo García Saleta. Todos los derechos reservados. | <a href="" target="_blank">Compártenos</a></p>
   </div>
 </footer>
 </body>

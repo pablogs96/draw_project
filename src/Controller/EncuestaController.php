@@ -4,6 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Comentario;
 use App\Entity\Encuesta;
+use App\Repository\EncuestaRepository;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -63,13 +66,66 @@ class EncuestaController extends Controller
      * @Route ("/home", name="home")
      */
     public function homeAction(){
+        $entityManager = $this->getDoctrine()->getManager();
+        $encuestas = $entityManager->getRepository(Encuesta::class)->findAll();
 
+        $size = count($encuestas);
+
+        $encuestas6 = [$encuestas[$size-1], $encuestas[$size-2], $encuestas[$size-3], $encuestas[$size-4], $encuestas[$size-5], $encuestas[$size-6]];
+
+        return $this->render('encuesta/home.html.twig', array('encuestas' => $encuestas6));
     }
 
     /**
      * @Route ("/home/sorteo", name="sorteo")
      */
     public function sorteoAction(){
+        return $this->render('encuesta/sorteo.html.twig');
+    }
 
+    /**
+     * @Route ("/home/encuestas", name="encuestas")
+     */
+    public function showEncuestas(){
+        $entityManager = $this->getDoctrine()->getManager();
+        $encuestas = $entityManager->getRepository(Encuesta::class)->findAll();
+
+        $size = count($encuestas);
+        $min = 1;
+        $max = 3;
+
+        $encuestas_3 = [$encuestas[0], $encuestas[1], $encuestas[2]];
+
+        return $this->render('encuesta/mostrarEncuestas.html.twig', array('encuestas' => $encuestas_3, 'size' => $size, 'min' => $min, 'max' => $max));
+    }
+
+    /**
+     * @Route ("/home/encuestas/next-prev", name="encuestasN")
+     * @param Request $request
+     * @return Response
+     */
+    public function pagination(Request $request){
+        $min = $request->query->get('min');
+        $max = $request->query->get('max');
+
+        $entityManager = $this->getDoctrine()->getManager();
+        /** @var EncuestaRepository $encuestaRespository */
+        $encuestaRespository = $entityManager->getRepository(Encuesta::class);
+        $encuestas = $encuestaRespository->findBetween($min, $max);
+
+
+        //parseamos $encuestas
+        $encoder = new JsonEncoder();
+        $normalizer = new ObjectNormalizer();
+
+        $normalizer->setCircularReferenceHandler(function ($encuestas) {
+            return $encuestas->getId();
+        });
+
+        $serializer = new Serializer(array($normalizer), array($encoder));
+        $jsonContent = $serializer->serialize($encuestas, 'json');
+
+        //return new Response($jsonContent);
+        return new JsonResponse($jsonContent);
     }
 }
