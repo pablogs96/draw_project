@@ -19,6 +19,9 @@
 <script>
     var min = {{ min }};
     var max = {{ max }};
+    $(document).ready(function () {
+        $("#prev").hide();
+    });
 </script>
 
 <!-- Barra navegación-->
@@ -41,6 +44,7 @@
         </ul>
     </div>
 </nav>
+
     <div class="container justify-content-center text-center" style="padding-top:150px;padding-bottom:20px;">
 
         <div class="row justify-content-center text-center" id="edge" STYLE="padding-bottom:70px">
@@ -61,19 +65,28 @@
             {% endfor %}
         </div>
     </div>
+
     <div class="container" id="paginador">
-        <ul class="pagination justify-content-center" id="menu">
-            <li class="page-item"><input type="button" class="page-link" onclick="previous()" id="prev" value="Anterior"></li>
-            <li class="page-item"><input type="button" class="page-link" onclick="next()" id="next" value="Siguiente"></li>
-        </ul>
+        <div class="row">
+            <div class="col-sm-10 col-6">
+                <ul class="pagination" id="menu">
+                    <li class="page-item"><input type="button" class="page-link" onclick="previous()" id="prev" value="Anterior"></li>
+                </ul>
+            </div>
+            <div class="col-sm-2 col-6">
+                <ul class="pagination ul-pos" id="menu">
+                    <li class="page-item"><input type="button" class="page-link" onclick="next()" id="next" value="Siguiente"></li>
+                </ul>
+            </div>
+        </div>
     </div>
 
 <script>
     function previous(){
         if (min === 1) {
-            //showMessage("primera");
-            $("#prev").disabled = "disabled";
+            $("#prev").hide();
         } else {
+            $("#prev").fadeIn(1000);
             var data = {"min": min - 4, "max": max - 4};
             $.ajax({
                 data:  data, //datos que se envian a traves de ajax
@@ -91,9 +104,9 @@
 
     function next(){
         if (max === {{ size }}) {
-            console.log("se esta mostrando la ultima");
-            console.log("ey");
+            $("#next").hide();
         } else {
+            $("#next").fadeIn(1000);
             var data = {"min": min + 4, "max": max + 4};
             $.ajax({
                 data:  data, //datos que se envian a traves de ajax
@@ -162,9 +175,15 @@
         if (max === {{ size }}) {
             console.log("se esta mostrando la ultima");
             console.log("ey");
-        } else if (min === 1) {
+            $("#next").hide();
+        } else {
+            $("#next").fadeIn(1000);
+        }
+        if (min === 1) {
             console.log("se esta mostrando la primera");
-            // $("#prev").attr("onclick", "showMessage('primera')");
+            $("#prev").hide();
+        } else {
+            $("#prev").fadeIn(1000);
         }
     }
 

@@ -3,12 +3,23 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SorteoRepository")
  */
 class Sorteo
 {
+    /**
+     * One Sorteo has Many Usuarios.
+     * @ORM\OneToMany(targetEntity="Usuario", mappedBy="sorteo")
+     */
+    private $usuario;
+
+    public function __construct() {
+        $this->usuario = new ArrayCollection();
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -35,6 +46,12 @@ class Sorteo
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $ganador;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $fecha;
+
 
     public function getId()
     {
@@ -87,5 +104,33 @@ class Sorteo
         $this->ganador = $ganador;
 
         return $this;
+    }
+
+    public function getFecha(): ?\DateTimeInterface
+    {
+        return $this->fecha;
+    }
+
+    public function setFecha(\DateTimeInterface $fecha): self
+    {
+        $this->fecha = $fecha;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUsuario()
+    {
+        return $this->usuario;
+    }
+
+    /**
+     * @param mixed $usuario
+     */
+    public function setUsuario($usuario): void
+    {
+        $this->usuario = $usuario;
     }
 }

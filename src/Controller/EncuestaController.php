@@ -77,13 +77,6 @@ class EncuestaController extends Controller
     }
 
     /**
-     * @Route ("/home/sorteo", name="sorteo")
-     */
-    public function sorteoAction(){
-        return $this->render('encuesta/sorteo.html.twig');
-    }
-
-    /**
      * @Route ("/home/encuestas", name="encuestas")
      */
     public function showEncuestas(){

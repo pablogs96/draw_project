@@ -29,10 +29,10 @@
   </button>
   <div class="collapse navbar-collapse navbar-center" id="navbarToggler">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="/home">HOME<span class="sr-only"></span></a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="/home/encuestas">ENCUESTAS</a>
       </li>
       <li class="nav-item">
@@ -56,7 +56,7 @@
                 <div class="col-8">
                     <div class="form-group">
                         <label for="nombre">Nombre:</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre">
+                        <input type="text" class="form-control" id="userName" name="nombre">
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@
             <div class="col-8">
               <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" name="email">
+                <input type="email" class="form-control" id="userEmail" name="email">
               </div>
             </div>
           </div>
@@ -72,7 +72,7 @@
             <div class="col-8">
               <div class="form-group">
                 <label for="pwd">Contaseña:</label>
-                <input type="password" class="form-control" id="pwd" name="pwd">
+                <input type="password" class="form-control" id="userPass" name="pwd">
               </div>
             </div>
           </div>
@@ -82,7 +82,7 @@
         </form>
       </div>
       <div class="modal-footer justify-content-center" style="background-color:  #EDDBF3">
-        <button type="submit" class="btn btn-success">Unirse</button>
+        <button type="button" class="btn btn-success" onclick="addUser(nombre, email, pwd)">Unirse</button>
         <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
       </div>
     </div>
@@ -142,7 +142,6 @@
             </div>
           </div>
         </div>
-      </div>
       </div>
 </section>
 

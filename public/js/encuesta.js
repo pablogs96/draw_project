@@ -111,7 +111,6 @@ function imprimirSolucion(pos){
             var redo = document.createElement("a");
             redo.setAttribute("type", "button");
             redo.setAttribute("class", "btn btn-primary");
-            redo.setAttribute("onclick", "playAgain()");
             redo.setAttribute("style", "padding: 15px;");
             redo.setAttribute("href", "/home/encuesta/" + encuesta.id);
             redo.innerHTML = "Volver a jugar";
@@ -119,7 +118,6 @@ function imprimirSolucion(pos){
             var btnSorteo = document.createElement("button");
             btnSorteo.setAttribute("type", "button");
             btnSorteo.setAttribute("class", "btn btn-warning btn-lg");
-            btnSorteo.setAttribute("onclick", "suscrption()");
             btnSorteo.setAttribute("style", "padding: 12px;");
             btnSorteo.setAttribute("data-toggle", "modal");
             btnSorteo.setAttribute("data-target", "#myModal");
@@ -318,14 +316,23 @@ function progress(newWidth){
     $("#PBar").val(newWidth + "%");
 }
 
-//funcion que vuelve al principio de la encuesta actual
-function playAgain() {
-
-}
-
-//funcion que muestra el formulario de suscripcion al sorteo
-function suscrption() {
-
+//funcion que hace la llamada ajax para añadir usuario
+function addUser() {
+    $userName = $("#userName").val();
+    $userEmail = $("#userEmail").val();
+    $userPass = $("#userPass").val();
+    $userdata = {"name": $userName, "mail": $userEmail, "pass": $userPass};
+    $.ajax({
+        data:  $userdata, //datos que se envian a traves de ajax
+        url:   '/home/sorteo/add', //archivo que recibe la peticion
+        type:  'post', //método de envio
+        beforeSend: function () {
+            console.log("Añadiendo usuario...");
+        },
+        success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+            alert("Success");
+        }
+    });
 }
 
 // GETTERS Y SETTERS

@@ -10,6 +10,13 @@ use Doctrine\ORM\Mapping as ORM;
 class Usuario
 {
     /**
+     * Many Usuarios have One Sorteo.
+     * @ORM\ManyToOne(targetEntity="Sorteo", inversedBy="usuario")
+     * @ORM\JoinColumn(name="sorteo_id", referencedColumnName="id")
+     */
+    private $sorteo;
+
+    /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -70,5 +77,21 @@ class Usuario
         $this->password = $password;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSorteo()
+    {
+        return $this->sorteo;
+    }
+
+    /**
+     * @param mixed $sorteo
+     */
+    public function setsorteo($sorteo): void
+    {
+        $this->sorteo = $sorteo;
     }
 }

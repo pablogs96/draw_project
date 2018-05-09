@@ -71,3 +71,18 @@ footer {
 #imgPort:hover{
     filter: opacity(50%);
 }
+
+@media screen and (min-width: 576px) {
+  .unirse-pos {
+    text-align: right;
+  }
+  .borrarse-pos{
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .ul-pos{
+    margin-left: 45px;
+  }
+}
