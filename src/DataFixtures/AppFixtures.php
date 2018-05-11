@@ -34,7 +34,7 @@ class AppFixtures extends Fixture
             ];
 
         // create 2 encuestas
-        for ($i = 1; $i <= 13; $i++) {
+        for ($i = 1; $i <= 15; $i++) {
             $encuesta = new Encuesta();
             $encuesta->setTitle('Encuesta '.$i);
             $encuesta->setImg('http://www.freakingnews.com/pictures/37000/Homer-Asleep-on-a-Sofa-37122.jpg');

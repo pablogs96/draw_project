@@ -32,6 +32,8 @@ class SorteoController extends Controller
         /** @var Sorteo $sorteo_actual */
         $sorteo_actual = $sorteo[0];
 
+        dump($sorteo_actual);
+
         $id = $sorteo_actual->getId();
 
         /** @var Sorteo $aux */
@@ -41,9 +43,12 @@ class SorteoController extends Controller
             }
         }
 
-        $size = count($sorteos);
-        $min = 1;
-        $max = 4;
+        $size = count($historial);
+        $min = $size - 3;
+        $max = $size;
+
+        dump($min);
+        dump($max);
 
         $reverse_historial = array_reverse($historial);
 
@@ -133,11 +138,17 @@ class SorteoController extends Controller
         dump($min);
         dump($max);
 
+        if ($min < 1) {
+            $min = 1;
+        }
+
+        dump($min);
+        dump($max);
+
         $entityManager = $this->getDoctrine()->getManager();
         /** @var SorteoRepository $sorteoRespository */
         $sorteoRespository = $entityManager->getRepository(Sorteo::class);
         $sorteos = $sorteoRespository->findBetween($min, $max);
-
 
         //parseamos $encuestas
         $encoder = new JsonEncoder();
@@ -160,6 +171,8 @@ class SorteoController extends Controller
         $newUser->setEmail($data[1]);
         $newUser->setPassword($data[2]);
         $newUser->setsorteo($sorteoActual);
+        dump("addUser");
+        dump($newUser);
 
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($newUser);
@@ -175,6 +188,7 @@ class SorteoController extends Controller
 
             $premios = $entityManager->getRepository(Premio::class)->findAll();
             /** @var Premio $randomPremio */
+            dump("createSorteo");
             $randomPremio = $premios[rand(0, count($premios) - 1)];
 
             $newSorteo = new Sorteo();
@@ -196,8 +210,14 @@ class SorteoController extends Controller
 
         $users = $entityManager->getRepository(Usuario::class)->findBy(array('sorteo' => $sorteo_actual));
 
+        dump("runSorteo");
+        dump($sorteo_actual);
+        dump($users);
+
         /** @var Usuario $userWinner */
         $userWinner = $users[rand(0, count($users) - 1)];
+        dump("ganador");
+        dump($userWinner);
         $sorteo_actual->setGanador($userWinner->getNombre());
         }
 }

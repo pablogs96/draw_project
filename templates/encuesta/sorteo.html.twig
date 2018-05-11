@@ -122,7 +122,7 @@
             <div class="col-9 text-left" style="margin-bottom: 50px">
                 <div class="list-group">
                     <button type="button" class="list-group-item list-group-item-action text-dark text-center" style="background-color: chartreuse">
-                        SORTEO ACTUAL
+                        SORTEO ACTUAL ( {{ actual.id }} )
                     </button>
                     <button type="button" class="list-group-item list-group-item-action"><b>PREMIO:</b> {{ actual.premio }}</button>
                     <button type="button" class="list-group-item list-group-item-action"><b>PARTICIPANTES:</b> 50</button>
@@ -194,10 +194,10 @@
     //funciones para la paginacion del historial
     function previous(){
         if (min === 1) {
-            $("#prev").hide();
+            $("#next").hide();
         } else {
             $("#prev").fadeIn(1000);
-            var data = {"min": min - 4, "max": max - 4};
+            var data = {"min": min + 4, "max": max + 4};
             $.ajax({
                 data:  data, //datos que se envian a traves de ajax
                 url:   '/home/sorteo/historial', //archivo que recibe la peticion
@@ -213,23 +213,22 @@
     }
 
     function next(){
-        if (max === {{ size }}) {
-            $("#next").hide();
-        } else {
-            $("#next").fadeIn(1000);
-            var data = {"min": min + 4, "max": max + 4};
-            $.ajax({
-                data:  data, //datos que se envian a traves de ajax
-                url:   '/home/sorteo/historial', //archivo que recibe la peticion
-                type:  'get', //método de envio
-                beforeSend: function () {
-                    console.log("Procesando, espere por favor...");
-                },
-                success:  function (np_sorteos) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-                    cambiar(np_sorteos);
-                }
-            });
+        if (min === max) {
+            max = max -1;
+            min = min -4;
         }
+        var data = {"min": min - 4, "max": max - 4};
+        $.ajax({
+            data:  data, //datos que se envian a traves de ajax
+            url:   '/home/sorteo/historial', //archivo que recibe la peticion
+            type:  'get', //método de envio
+            beforeSend: function () {
+                console.log("Procesando, espere por favor...");
+            },
+            success:  function (np_sorteos) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+                cambiar(np_sorteos);
+            }
+        });
     }
 
     function cambiar(np_sorteos){
@@ -252,7 +251,6 @@
         $(h3T).hide().appendTo(divT).fadeIn(1000);
 
         for (var i = 0; i < $sorteos2.length; i++){
-            console.log($sorteos2[i]);
 
             //sorteos
             var row = document.createElement("div");
@@ -268,12 +266,12 @@
             var b1 = document.createElement("button");
             b1.setAttribute("type", "button");
             b1.setAttribute("class", "list-group-item list-group-item-action bg-warning text-dark text-center");
-            b1.setAttribute("value", "SORTEO " + $sorteos2[i].id);
+            b1.innerHTML = "SORTEO " + $sorteos2[i].id;
 
             var b2 = document.createElement("button");
             b2.setAttribute("type", "button");
             b2.setAttribute("class", "list-group-item list-group-item-action");
-            b2.value = "Premio: " + $sorteos2[i].premio;
+            b2.innerHTML = "Premio: " + $sorteos2[i].premio;
 
             var b3 = document.createElement("button");
             b3.setAttribute("type", "button");
@@ -283,12 +281,16 @@
             var b4 = document.createElement("button");
             b4.setAttribute("type", "button");
             b4.setAttribute("class", "list-group-item list-group-item-action");
-            b4.value = "Fecha: " + $sorteos2[i].fecha;
+            b4.innerHTML = "Fecha: ";
+
+            console.log($sorteos2[i].fecha.toString());
+            console.log($sorteos2[i].fecha);
+
 
             var b5 = document.createElement("button");
             b5.setAttribute("type", "button");
             b5.setAttribute("class", "list-group-item list-group-item-action");
-            b5.value = "Ganador: " + $sorteos2[i].ganador;
+            b5.innerHTML = "Ganador: " + $sorteos2[i].ganador;
 
 
 
