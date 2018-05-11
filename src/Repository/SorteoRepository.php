@@ -19,6 +19,22 @@ class SorteoRepository extends ServiceEntityRepository
         parent::__construct($registry, Sorteo::class);
     }
 
+    /**
+     * @param $min, $max
+     * @return Sorteo[]
+     */
+    public function findBetween($min, $max): array
+    {
+        $qb = $this->createQueryBuilder('sor')
+            ->Where('sor.id BETWEEN :min AND :max')
+            ->setParameter('min', $min)
+            ->setParameter('max', $max)
+            ->orderBy('sor.id', 'DESC')
+            ->getQuery();
+
+        return $qb->execute();
+    }
+
 //    /**
 //     * @return Sorteo[] Returns an array of Sorteo objects
 //     */

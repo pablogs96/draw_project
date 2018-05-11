@@ -121,6 +121,7 @@ function imprimirSolucion(pos){
             btnSorteo.setAttribute("style", "padding: 12px;");
             btnSorteo.setAttribute("data-toggle", "modal");
             btnSorteo.setAttribute("data-target", "#myModal");
+            btnSorteo.setAttribute("onclick", "limpiarModal()")
             btnSorteo.innerHTML = "Suscríbete al sorteo";
 
             var col = document.createElement("div");
@@ -174,6 +175,14 @@ function limpiarSalida(){
     $("#img_encuesta").empty();
     $("#pregunta").empty();
     $("#div_respuestas").empty();
+}
+
+//funcion que limpialosinputs del modal
+function limpiarModal() {
+    $("#userName").val("");
+    $("#userEmail").val("");
+    $("#userPass").val("");
+
 }
 
 // funcion que saca por pantalla los comentarios ya guardados
@@ -330,10 +339,48 @@ function addUser() {
             console.log("Añadiendo usuario...");
         },
         success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-            alert("Success");
+            // $("#myModal").modal('hide');
+            limpiarModal();
+            showAlert("¡ENHORABUENA!", response);
         }
     });
 }
+
+// funcion que crea una alerta para avisar de que se ha suscrito correctamente
+function showAlert(title, message) {
+    $("#myModal").empty();
+    var al = document.createElement("div");
+    al.setAttribute("class", "bg-success text-white rounded");
+    al.setAttribute("role", "alert");
+    al.setAttribute("style", "margin: 350px 650px 0px 650px; padding: 0.5%");
+
+    var al_title = document.createElement("h4");
+    al_title.setAttribute("class", "text-center");
+    al_title.innerText = title;
+
+    var al_p = document.createElement("p");
+    al_p.setAttribute("class", "text-center");
+    al_p.innerText = message;
+
+    var row = document.createElement("row");
+    row.setAttribute("class", "row justify-content-center");
+
+    var redir = document.createElement("a");
+    redir.setAttribute("class", "btn btn-warning btn-large text-center");
+    redir.setAttribute("type", "button");
+    redir.setAttribute("href", "/home/sorteo");
+    redir.innerText = "ver sorteo";
+
+
+    $(al_title).hide().appendTo(al).fadeIn(1000);
+    $(al_p).hide().appendTo(al).fadeIn(1000);
+    $(row).hide().appendTo(al).fadeIn(1000);
+    $(redir).hide().appendTo(row).fadeIn(1000);
+
+
+    $(al).hide().appendTo("#myModal").fadeIn(1000);
+}
+
 
 // GETTERS Y SETTERS
 function setEPos(EPos){

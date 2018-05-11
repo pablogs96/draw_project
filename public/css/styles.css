@@ -68,9 +68,6 @@ footer {
     width: 300px;
 }
 
-#imgPort:hover{
-    filter: opacity(50%);
-}
 
 @media screen and (min-width: 576px) {
   .unirse-pos {
@@ -85,4 +82,29 @@ footer {
   .ul-pos{
     margin-left: 45px;
   }
+    .sizedimg {
+        height: 220px;
+    }
+}
+
+@media screen and (max-width: 990px) {
+    .sizedh1{
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .sizedPageTitle{
+        font-size: 25px;
+    }
+}
+
+#portLink {
+    text-decoration: none;
+    padding: 2%;
+    color: black;
+}
+
+#portLink:hover {
+    filter: opacity(65%);
 }

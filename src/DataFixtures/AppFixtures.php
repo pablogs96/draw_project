@@ -11,6 +11,7 @@ namespace App\DataFixtures;
 use App\Entity\Comentario;
 use App\Entity\Encuesta;
 use App\Entity\Pregunta;
+use App\Entity\Premio;
 use App\Entity\Respuesta;
 use App\Entity\Resultado;
 use App\Entity\Sorteo;
@@ -33,7 +34,7 @@ class AppFixtures extends Fixture
             ];
 
         // create 2 encuestas
-        for ($i = 1; $i <= 12; $i++) {
+        for ($i = 1; $i <= 13; $i++) {
             $encuesta = new Encuesta();
             $encuesta->setTitle('Encuesta '.$i);
             $encuesta->setImg('http://www.freakingnews.com/pictures/37000/Homer-Asleep-on-a-Sofa-37122.jpg');
@@ -73,7 +74,7 @@ class AppFixtures extends Fixture
         for($i = 1; $i <= 5; $i++) {
             $sorteo = new Sorteo();
             $sorteo->setImg("https://www.trafalgar.com/~/media/images/home/destinations/north-america/hawaii/2016-licensed-images/hawaii-maui-2016-r-117211856.jpg?la=en&h=450&w=450&mw=450");
-            $sorteo->setFecha(new \DateTime('2018-0'.$i.'-28T00:00:00'));
+            $sorteo->setFecha(new \DateTime('2018-0'.$i.'-1T00:00:00'));
             $sorteo->setPremio("Viaje a Hawai");
             $manager->persist($sorteo);
             for ($j = 1; $j <= 10; $j ++) {
@@ -88,26 +89,17 @@ class AppFixtures extends Fixture
             /** @var Usuario $ganador */
             $h = $j - 1;
             $ganador = $manager->getRepository(Usuario::class)->findOneBy(['email' => "usuario".$h.$i."@gmail.com"]);
-            $sorteo->setGanador($ganador->getId());
+            $sorteo->setGanador($ganador->getNombre()." con email: ".$ganador->getEmail());
             $manager->persist($sorteo);
         }
         $manager->flush();
 
-        for ($i = 6; $i <= 6; $i ++) {
-            $sorteo = new Sorteo();
-            $sorteo->setImg("https://www.trafalgar.com/~/media/images/home/destinations/north-america/hawaii/2016-licensed-images/hawaii-maui-2016-r-117211856.jpg?la=en&h=450&w=450&mw=450");
-            $sorteo->setFecha(new \DateTime('2018-0'.$i.'-28T00:00:00'));
-            $sorteo->setPremio("Viaje a Hawai");
-            $manager->persist($sorteo);
-            for ($j = 1; $j <= 10; $j ++) {
-                $usuario = new Usuario();
-                $usuario->setEmail("usuario".$j.$i."@gmail.com");
-                $usuario->setNombre("Usuario ".$j.$i);
-                $usuario->setPassword("1234");
-                $usuario->setsorteo($sorteo);
-                $manager->persist($usuario);
-            }
-            $manager->flush();
+        for ($i = 1; $i <= 5; $i ++){
+            $premio = new Premio();
+            $premio->setTitle("Viaje a Hawai para ".$i." personas");
+            $premio->setImagen("https://www.trafalgar.com/~/media/images/home/destinations/north-america/hawaii/2016-licensed-images/hawaii-maui-2016-r-117211856.jpg?la=en&h=450&w=450&mw=450");
+            $manager->persist($premio);
         }
+        $manager->flush();
     }
 }

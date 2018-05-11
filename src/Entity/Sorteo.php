@@ -38,11 +38,6 @@ class Sorteo
     private $premio;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $numero_usuarios;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $ganador;
@@ -51,6 +46,11 @@ class Sorteo
      * @ORM\Column(type="datetime")
      */
     private $fecha;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $participantes;
 
 
     public function getId()
@@ -78,18 +78,6 @@ class Sorteo
     public function setPremio(string $premio): self
     {
         $this->premio = $premio;
-
-        return $this;
-    }
-
-    public function getNumeroUsuarios(): ?int
-    {
-        return $this->numero_usuarios;
-    }
-
-    public function setNumeroUsuarios(?int $numero_usuarios): self
-    {
-        $this->numero_usuarios = $numero_usuarios;
 
         return $this;
     }
@@ -132,5 +120,17 @@ class Sorteo
     public function setUsuario($usuario): void
     {
         $this->usuario = $usuario;
+    }
+
+    public function getParticipantes(): ?int
+    {
+        return $this->participantes;
+    }
+
+    public function setParticipantes(?int $participantes): self
+    {
+        $this->participantes = $participantes;
+
+        return $this;
     }
 }

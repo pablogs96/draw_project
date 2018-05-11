@@ -87,9 +87,9 @@ class EncuestaController extends Controller
         $min = 1;
         $max = 4;
 
-        $encuestas_3 = [$encuestas[0], $encuestas[1], $encuestas[2], $encuestas[3]];
+        $encuestas_ = [$encuestas[0], $encuestas[1], $encuestas[2], $encuestas[3]];
 
-        return $this->render('encuesta/mostrarEncuestas.html.twig', array('encuestas' => $encuestas_3, 'size' => $size, 'min' => $min, 'max' => $max));
+        return $this->render('encuesta/mostrarEncuestas.html.twig', array('encuestas' => $encuestas_, 'size' => $size, 'min' => $min, 'max' => $max));
     }
 
     /**
@@ -100,6 +100,9 @@ class EncuestaController extends Controller
     public function pagination(Request $request){
         $min = $request->query->get('min');
         $max = $request->query->get('max');
+
+        dump($min);
+        dump($max);
 
         $entityManager = $this->getDoctrine()->getManager();
         /** @var EncuestaRepository $encuestaRespository */
@@ -118,6 +121,7 @@ class EncuestaController extends Controller
         $serializer = new Serializer(array($normalizer), array($encoder));
         $jsonContent = $serializer->serialize($encuestas, 'json');
 
+        dump($jsonContent);
         //return new Response($jsonContent);
         return new JsonResponse($jsonContent);
     }
