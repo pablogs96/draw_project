@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sorteos Ganados</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/loginJS.js') }}"></script>
+    <link href="{{ asset('css/loginStyles.css') }}" rel="stylesheet" />
+</head>
+<body style="background-color: black">
+
+<div class="row justify-content-center text-center" id="edge" style="padding-bottom:70px; padding-top: 5%; color: white">
+    <h1 class="sizedPageTitle">ACCESO A MIS SORTEOS</h1>
+</div>
+
+    <div class="container" style="color: white; margin-bottom: 5%; background-color: #EDDBF3; padding: 2%; color: black">
+        <form action="">
+            <div class="row justify-content-center text-center">
+                <div class="col-8">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control input-class" id="usermail" name="email">
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center text-center">
+                <div class="col-8">
+                    <div class="form-group">
+                        <label for="pwd">Contaseña:</label>
+                        <input type="password" class="form-control input-class" id="userpass" name="pwd">
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center text-center" style="padding-top: 2%">
+                <a href="/home/sorteo/area-personal" style="margin-right: 2%"><button type="button" class="btn btn-success">Aceptar</button></a>
+                <a href="/home/sorteo"><button type="button" class="btn btn-warning">Cancelar</button></a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

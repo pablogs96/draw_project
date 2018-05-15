@@ -182,6 +182,7 @@ function limpiarModal() {
     $("#userName").val("");
     $("#userEmail").val("");
     $("#userPass").val("");
+    $("#validate").attr('checked', 'false');
 
 }
 
@@ -330,20 +331,29 @@ function addUser() {
     $userName = $("#userName").val();
     $userEmail = $("#userEmail").val();
     $userPass = $("#userPass").val();
-    $userdata = {"name": $userName, "mail": $userEmail, "pass": $userPass};
-    $.ajax({
-        data:  $userdata, //datos que se envian a traves de ajax
-        url:   '/home/sorteo/add', //archivo que recibe la peticion
-        type:  'post', //método de envio
-        beforeSend: function () {
-            console.log("Añadiendo usuario...");
-        },
-        success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-            // $("#myModal").modal('hide');
-            limpiarModal();
-            showAlert("¡ENHORABUENA!", response);
+    $check = $("#validate");
+    if ($userName !== "") {
+        if ($userEmail !== "") {
+            if ($userPass !== "") {
+                if ($check.is(':checked')){
+                    $userdata = {"name": $userName, "mail": $userEmail, "pass": $userPass};
+                    $.ajax({
+                        data:  $userdata, //datos que se envian a traves de ajax
+                        url:   '/home/sorteo/add', //archivo que recibe la peticion
+                        type:  'post', //método de envio
+                        beforeSend: function () {
+                            console.log("Añadiendo usuario...");
+                        },
+                        success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+                            limpiarModal();
+                            console.log(response);
+                            showAlert(response[0], response[1]);
+                        }
+                    });
+                }
+            }
         }
-    });
+    }
 }
 
 // funcion que crea una alerta para avisar de que se ha suscrito correctamente

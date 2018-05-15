@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -10,16 +11,6 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Sorteo
 {
-    /**
-     * One Sorteo has Many Usuarios.
-     * @ORM\OneToMany(targetEntity="Usuario", mappedBy="sorteo")
-     */
-    private $usuario;
-
-    public function __construct() {
-        $this->usuario = new ArrayCollection();
-    }
-
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -36,21 +27,26 @@ class Sorteo
      * @ORM\Column(type="string", length=255)
      */
     private $premio;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $ganador;
-
+    
     /**
      * @ORM\Column(type="datetime")
      */
     private $fecha;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\ManyToMany(targetEntity="App\Entity\Usuario", inversedBy="sorteos")
      */
-    private $participantes;
+    private $usuarios;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Usuario", inversedBy="sorteos_ganados")
+     */
+    private $ganador;
+
+    public function __construct()
+    {
+        $this->usuarios = new ArrayCollection();
+    }
 
 
     public function getId()
@@ -82,18 +78,6 @@ class Sorteo
         return $this;
     }
 
-    public function getGanador(): ?string
-    {
-        return $this->ganador;
-    }
-
-    public function setGanador(?string $ganador): self
-    {
-        $this->ganador = $ganador;
-
-        return $this;
-    }
-
     public function getFecha(): ?\DateTimeInterface
     {
         return $this->fecha;
@@ -107,29 +91,39 @@ class Sorteo
     }
 
     /**
-     * @return mixed
+     * @return Collection|Usuario[]
      */
-    public function getUsuario()
+    public function getUsuarios(): Collection
     {
-        return $this->usuario;
+        return $this->usuarios;
     }
 
-    /**
-     * @param mixed $usuario
-     */
-    public function setUsuario($usuario): void
+    public function addUsuario(Usuario $usuario): self
     {
-        $this->usuario = $usuario;
+        if (!$this->usuarios->contains($usuario)) {
+            $this->usuarios[] = $usuario;
+        }
+
+        return $this;
     }
 
-    public function getParticipantes(): ?int
+    public function removeUsuario(Usuario $usuario): self
     {
-        return $this->participantes;
+        if ($this->usuarios->contains($usuario)) {
+            $this->usuarios->removeElement($usuario);
+        }
+
+        return $this;
     }
 
-    public function setParticipantes(?int $participantes): self
+    public function getGanador(): ?Usuario
     {
-        $this->participantes = $participantes;
+        return $this->ganador;
+    }
+
+    public function setGanador(?Usuario $ganador): self
+    {
+        $this->ganador = $ganador;
 
         return $this;
     }

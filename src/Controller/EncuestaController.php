@@ -79,7 +79,7 @@ class EncuestaController extends Controller
     /**
      * @Route ("/home/encuestas", name="encuestas")
      */
-    public function showEncuestas(){
+    public function showEncuestasAction(){
         $entityManager = $this->getDoctrine()->getManager();
         $encuestas = $entityManager->getRepository(Encuesta::class)->findAll();
 
@@ -101,9 +101,6 @@ class EncuestaController extends Controller
         $min = $request->query->get('min');
         $max = $request->query->get('max');
 
-        dump($min);
-        dump($max);
-
         $entityManager = $this->getDoctrine()->getManager();
         /** @var EncuestaRepository $encuestaRespository */
         $encuestaRespository = $entityManager->getRepository(Encuesta::class);
@@ -121,8 +118,6 @@ class EncuestaController extends Controller
         $serializer = new Serializer(array($normalizer), array($encoder));
         $jsonContent = $serializer->serialize($encuestas, 'json');
 
-        dump($jsonContent);
-        //return new Response($jsonContent);
         return new JsonResponse($jsonContent);
     }
 }

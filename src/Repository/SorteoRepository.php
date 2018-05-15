@@ -23,12 +23,12 @@ class SorteoRepository extends ServiceEntityRepository
      * @param $min, $max
      * @return Sorteo[]
      */
-    public function findBetween($min, $max): array
+    public function findBetween($max, $min): array
     {
         $qb = $this->createQueryBuilder('sor')
             ->Where('sor.id BETWEEN :min AND :max')
-            ->setParameter('min', $min)
-            ->setParameter('max', $max)
+            ->setParameter('min', $max)
+            ->setParameter('max', $min)
             ->orderBy('sor.id', 'DESC')
             ->getQuery();
 

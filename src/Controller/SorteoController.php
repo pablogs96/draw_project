@@ -16,6 +16,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
+use Doctrine\Common\Collections\ArrayCollection;
+use App\Exceptions\AlreadySubscribedException;
+use App\Exceptions\PasswordIncorrectException;
+use App\Exceptions\UserNotFoundException;
 
 class SorteoController extends Controller
 {
@@ -23,7 +27,8 @@ class SorteoController extends Controller
     /**
      * @Route ("/home/sorteo", name="sorteo")
      */
-    public function sorteoAction(){
+    public function sorteoAction()
+    {
         $entityManager = $this->getDoctrine()->getManager();
 
         $sorteos = $entityManager->getRepository(Sorteo::class)->findAll();
@@ -32,37 +37,32 @@ class SorteoController extends Controller
         /** @var Sorteo $sorteo_actual */
         $sorteo_actual = $sorteo[0];
 
-        dump($sorteo_actual);
-
         $id = $sorteo_actual->getId();
 
         /** @var Sorteo $aux */
         foreach ($sorteos as $aux) {
-            if($aux->getId() != $id) {
+            if ($aux->getId() != $id) {
                 $historial [] = $aux;
             }
         }
 
         $size = count($historial);
-        $min = $size - 3;
-        $max = $size;
-
-        dump($min);
-        dump($max);
+        $min = $size;
+        $max = $size - 3;
 
         $reverse_historial = array_reverse($historial);
 
         $hist = [$reverse_historial[0], $reverse_historial[1], $reverse_historial[2], $reverse_historial[3]];
-
-        dump($hist);
 
         return $this->render('encuesta/sorteo.html.twig', array('historial' => $hist, 'actual' => $sorteo_actual, 'size' => $size, 'min' => $min, 'max' => $max));
     }
 
     /**
      * @Route ("/home/sorteo/add", name="subscription")
+     * @throws \Exception
      */
-    public function subsciptionAction(){
+    public function subsciptionAction()
+    {
         //get data from ajax
         $userData = [$_POST['name'], $_POST['mail'], $_POST['pass']];
 
@@ -74,56 +74,60 @@ class SorteoController extends Controller
         /** @var Sorteo $sorteo_actual */
         $sorteo_actual = $sorteo[0];
 
-        dump($sorteo_actual);
-
-
         // fecha de hoy
         /** @var datetime $date */
         $date = new DateTime();
-        dump($date);
         // fecha sorteo_actual
         $fecha_sorteo = $sorteo_actual->getFecha();
-        dump($fecha_sorteo);
 
 
         //añadir, crear o ejecutar
         if ($date < $fecha_sorteo) {
-            dump("date<fecha");
             if ($sorteo_actual->getGanador()) {
-                // fecha sorteo mayor que la actual y con ganador
-                // no deberia de entrar nunca aqui
-                return new Response();
+                // SORTEO ACTIVO CON GANADOR ---> error, no debería de pasar nunca
+
+                dump("neno");
+                $respuesta = "¡Vaya! Parece que ha habido un error.";
+                $titulo = "ERROR";
+                $data = [$titulo, $respuesta];
+                return new JsonResponse($data);
             } else {
-                // fecha sorteo mayor que la actual y sin ganador
-                // añado usuario a sorteo y devuelvo datos actualizados al session
-                $this->addUser($userData, $sorteo_actual);
-                $respuesta = "Ya estás inscrito al sorteo. ¡Mucha suerte!";
-                return new JsonResponse($respuesta);
+                // SORTEO ACTIVO SIN GANADOR ---> añado usuario a sorteo
+
+                try {
+                    $this->addUser($userData, $sorteo_actual);
+                    $respuesta = "Te has inscrito al sorteo. ¡Mucha suerte!";
+                    $titulo ="ENHORABUENA";
+                    $data = [$titulo, $respuesta];
+                }catch (PasswordIncorrectException $pie ) {
+                    $titulo ="ERROR";
+                    $respuesta = $pie->getMessage();
+                    $data = [$titulo, $respuesta];
+                }catch (AlreadySubscribedException $ase) {
+                    $titulo ="ERROR";
+                    $respuesta = $ase->getMessage();
+                    $data = [$titulo, $respuesta];
+                }
+                return new JsonResponse($data);
             }
-            } else if ($date >= $fecha_sorteo) {
-            dump("date>fecha");
-            if ($sorteo_actual->getGanador()){
-                //fecha sorteo menor o igual que la actual y con ganador
-                // no deberia de entrar
-                dump("ERROR 2");
-                //creo sorteo
+        } else if ($date >= $fecha_sorteo) {
+            if ($sorteo_actual->getGanador()) {
+                // SORTEO NO ACTIVO (FECHA MENOR) Y CON GANADOR ---> creo sorteo/añado usuario
+
                 /** @var Sorteo $newSorteo */
                 $newSorteo = $this->createSorteo($fecha_sorteo);
-                //añado usuario
-                $this->addUser($userData, $newSorteo);
-                $respuesta = "Atención: El sorteo anterior ha caducado. Te has inscrito a un nuevo sorteo. ¡Mucha suerte!";
-                return new JsonResponse($respuesta);
+
+                return $this->beforeAdding($newSorteo, $userData);
             } else {
-                //fecha sorteo menor o igual que la actual y sin ganador
-                //ejecuto sorteo
+                // SORTEO NO ACTIVO (FECHA MENOR) Y SIN GANADOR ---> ejecuto sorteo/creo sorteo/añado usuario
+
+
                 $this->runSorteo($sorteo_actual);
-                //creo sorteo
+
                 /** @var Sorteo $newSorteo */
                 $newSorteo = $this->createSorteo($fecha_sorteo);
-                //añado usuario
-                $this->addUser($userData, $newSorteo);
-                $respuesta = "Atención: El sorteo anterior ha caducado. Te has inscrito a un nuevo sorteo. ¡Mucha suerte! eee";
-                return new Response($respuesta);
+
+                return $this->beforeAdding($newSorteo, $userData);
             }
         }
     }
@@ -131,56 +135,107 @@ class SorteoController extends Controller
     /**
      * @Route ("/home/sorteo/historial", name="historial")
      */
-    public function historialAction(Request $request) {
+    public function historialAction(Request $request)
+    {
         $min = $request->query->get('min');
         $max = $request->query->get('max');
 
-        dump($min);
-        dump($max);
-
-        if ($min < 1) {
-            $min = 1;
-        }
-
-        dump($min);
-        dump($max);
 
         $entityManager = $this->getDoctrine()->getManager();
         /** @var SorteoRepository $sorteoRespository */
         $sorteoRespository = $entityManager->getRepository(Sorteo::class);
-        $sorteos = $sorteoRespository->findBetween($min, $max);
+
+        $sorteos = $sorteoRespository->findAll();
+
+        /** @var Sorteo $last */
+        $last = $sorteos[count($sorteos) - 1];
+
+        if ($min == $last->getId()) {
+            $min = $min - 1;
+        }
+
+        $show_sorteos = $sorteoRespository->findBetween($max, $min);
 
         //parseamos $encuestas
         $encoder = new JsonEncoder();
         $normalizer = new ObjectNormalizer();
 
-        $normalizer->setCircularReferenceHandler(function ($sorteos) {
-            return $sorteos->getId();
+        $normalizer->setCircularReferenceHandler(function ($show_sorteos) {
+            return $show_sorteos->getId();
         });
 
         $serializer = new Serializer(array($normalizer), array($encoder));
-        $jsonContent = $serializer->serialize($sorteos, 'json');
+        $jsonContent = $serializer->serialize($show_sorteos, 'json');
 
-        dump($jsonContent);
         return new JsonResponse($jsonContent);
     }
 
-    private function addUser($data, Sorteo $sorteoActual){
-        $newUser = new Usuario();
-        $newUser->setNombre($data[0]);
-        $newUser->setEmail($data[1]);
-        $newUser->setPassword($data[2]);
-        $newUser->setsorteo($sorteoActual);
-        dump("addUser");
-        dump($newUser);
-
+    /**
+     *@throws \Exception
+     */
+    private function addUser($data, Sorteo $sorteoActual)
+    {
         $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($newUser);
-        $entityManager->flush();
+        /** @var Usuario $usuario */
+        $usuario = $entityManager->getRepository(Usuario::class)->findOneBy(array('email' => $data[1]));
 
+        if (!$usuario) {
+            // NO EXISTE USUARIO EN BD ---> lo añado
+
+
+            $pass = $data[2];
+            $coded = password_hash($pass, PASSWORD_BCRYPT);
+            $newUser = new Usuario();
+            $newUser->setNombre($data[0]);
+            $newUser->setEmail($data[1]);
+            $newUser->setPassword($coded);
+            $newUser->addSorteo($sorteoActual);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($newUser);
+            $entityManager->flush();
+            return true;
+        } else if ($usuario) {
+            // EXISTE USUARIO EN BD ---> compruebo contraseña correcta
+
+            $hash = $usuario->getPassword();
+
+            if (password_verify($data[2], $hash)) {
+                // CONTRASEÑA CORRECTA ---> compruebo que no este en el sorteo actual
+                $num = 0;
+                $sorteos = $usuario->getSorteos()->getValues();
+                /** @var Sorteo $sorteo */
+                foreach ($sorteos as $sorteo) {
+                    if ($sorteo->getId() === $sorteoActual->getId()) {
+                        $num = $num + 1;
+                    } else {
+                        $num = $num + 0;
+                    }
+                }
+
+                if ($num === 0) {
+                    // NO TIENE EL SORTEO ASOCIADO
+
+                    $usuario->setNombre($data[0]);
+                    $usuario->addSorteo($sorteoActual);
+
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $entityManager->persist($usuario);
+                    $entityManager->flush();
+                    return true;
+                } else {
+                    // YA ESTA INSCRITO EN EL SORTEO
+                    throw new AlreadySubscribedException('¡Ya estás inscrito en el sorteo!');
+                }
+            } else {
+                // CONTRASEÑA INCORRECTA
+                throw new PasswordIncorrectException('Ha habido un error al añadirte al sorteo, comprueba tu email y contraseña');
+            }
+        }
     }
 
-    private function createSorteo($fecha_sorteo){
+    private function createSorteo($fecha_sorteo)
+    {
         try {
             $newFecha = $fecha_sorteo->add(new DateInterval('P1M'));
 
@@ -188,7 +243,6 @@ class SorteoController extends Controller
 
             $premios = $entityManager->getRepository(Premio::class)->findAll();
             /** @var Premio $randomPremio */
-            dump("createSorteo");
             $randomPremio = $premios[rand(0, count($premios) - 1)];
 
             $newSorteo = new Sorteo();
@@ -205,19 +259,119 @@ class SorteoController extends Controller
         }
     }
 
-    private function runSorteo(Sorteo $sorteo_actual) {
+    private function runSorteo(Sorteo $sorteo_actual)
+    {
+        $usuarios_sorteo = $sorteo_actual->getUsuarios();
+        /** @var Usuario $ganador */
+        $ganador = $usuarios_sorteo[rand(0, count($usuarios_sorteo) - 1)];
+
+        $sorteo_actual->setGanador($ganador);
+
         $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($sorteo_actual);
+        $entityManager->flush();
+    }
 
-        $users = $entityManager->getRepository(Usuario::class)->findBy(array('sorteo' => $sorteo_actual));
-
-        dump("runSorteo");
-        dump($sorteo_actual);
-        dump($users);
-
-        /** @var Usuario $userWinner */
-        $userWinner = $users[rand(0, count($users) - 1)];
-        dump("ganador");
-        dump($userWinner);
-        $sorteo_actual->setGanador($userWinner->getNombre());
+    /**
+     * @param $newSorteo
+     * @param $userData
+     * @return Response
+     * @throws \Exception
+     */
+    private function beforeAdding($newSorteo, $userData): Response
+    {
+        try {
+            if ($newSorteo) {
+                $this->addUser($userData, $newSorteo);
+            }
+            $respuesta = "Atención: El sorteo anterior ha caducado. Te has inscrito a un nuevo sorteo. ¡Mucha suerte!";
+            $titulo ="ENHORABUENA";
+            $data = [$titulo, $respuesta];
+        }catch (PasswordIncorrectException $pie ) {
+            $titulo ="ERROR";
+            $respuesta = $pie->getMessage();
+            $data = [$titulo, $respuesta];
+        }catch (AlreadySubscribedException $ase) {
+            $titulo ="ERROR";
+            $respuesta = $ase->getMessage();
+            $data = [$titulo, $respuesta];
         }
+
+        return new JsonResponse($data);
+    }
+
+    /**
+     * @Route ("/home/sorteo/leave", name="borrar")
+     */
+    public function borrarUserAction() {
+        //get data from ajax
+        $userData = [$_POST['mail'], $_POST['pass']];
+
+        $entityManager = $this->getDoctrine()->getManager();
+        /** @var Usuario $user */
+        $user = $entityManager->getRepository(Usuario::class)->findOneBy(array('email' => $userData[0]));
+        $sort = $entityManager->getRepository(Sorteo::class)->findBy(array(), array('fecha' => 'DESC'), 1, 0);
+
+        /** @var Sorteo $actual */
+        $actual = $sort[0];
+        $num = 0;
+
+        try{
+            if ($user){
+                $hash = $user->getPassword();
+                if (password_verify($userData[1], $hash)){
+                    $sorteos = $user->getSorteos();
+                    if (!empty($sorteos)) {
+                        foreach ($sorteos as $sorteo){
+                            if ($sorteo->getId() == $actual->getId()){
+                                $num += 1;
+                            } else {
+                                $num += 0;
+                            }
+                        }
+                    } else {
+                        throw new UserNotFoundException("El usuario no está registrado en ningún sorteo");
+                    }
+                    if ($num == 0 ) {
+                        $titulo = "ERROR";
+                        $respuesta = "Este usuario no está inscrito al sorteo actual";
+                    } else if ($num > 0) {
+                        $user->removeSorteo($actual);
+                        $entityManager->persist($user);
+                        $entityManager->flush();
+                        $titulo = "¡Operación realizada con éxito!";
+                        $respuesta = "Has sido borrado del sorteo actual";
+                        $data = [$titulo, $respuesta];
+                    }
+                } else {
+                    throw new PasswordIncorrectException("Contraseña incorrecta. Introduzca de nuevo su contraseña.");
+                }
+            } else {
+                throw new UserNotFoundException("El usuario no está registrado en ningún sorteo");
+            }
+        }catch (PasswordIncorrectException $pie){
+            $titulo = "ERROR";
+            $respuesta = $pie->getMessage();
+            $data = [$titulo, $respuesta];
+        }catch (UserNotFoundException $unfe){
+            $titulo = "ERROR";
+            $respuesta = $unfe->getMessage();
+            $data = [$titulo, $respuesta];
+        }
+        return new JsonResponse($data);
+    }
+
+    /**
+     * @route ("/home/sorteo/area-personal", name="profile")
+     */
+    public function comprobarSorteoAction(){
+        return $this->render('encuesta/comprobarSorteo.html.twig');
+    }
+
+    /**
+     * @route ("/home/sorteo/login", name="login")
+     */
+    public function loginAction(){
+        return $this->render('encuesta/login.html.twig');
+    }
 }

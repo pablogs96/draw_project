@@ -34,7 +34,7 @@ class AppFixtures extends Fixture
             ];
 
         // create 2 encuestas
-        for ($i = 1; $i <= 15; $i++) {
+        for ($i = 1; $i <= 17; $i++) {
             $encuesta = new Encuesta();
             $encuesta->setTitle('Encuesta '.$i);
             $encuesta->setImg('http://www.freakingnews.com/pictures/37000/Homer-Asleep-on-a-Sofa-37122.jpg');
@@ -71,7 +71,7 @@ class AppFixtures extends Fixture
             }
         }
 
-        for($i = 1; $i <= 5; $i++) {
+        for($i = 1; $i <= 6; $i++) {
             $sorteo = new Sorteo();
             $sorteo->setImg("https://www.trafalgar.com/~/media/images/home/destinations/north-america/hawaii/2016-licensed-images/hawaii-maui-2016-r-117211856.jpg?la=en&h=450&w=450&mw=450");
             $sorteo->setFecha(new \DateTime('2018-0'.$i.'-1T00:00:00'));
@@ -79,18 +79,23 @@ class AppFixtures extends Fixture
             $manager->persist($sorteo);
             for ($j = 1; $j <= 10; $j ++) {
                 $usuario = new Usuario();
-                $usuario->setEmail("usuario".$j.$i."@gmail.com");
-                $usuario->setNombre("Usuario ".$j.$i);
-                $usuario->setPassword("1234");
-                $usuario->setsorteo($sorteo);
+                $usuario->setEmail("usuario".$j.".".$i."@gmail.com");
+                $usuario->setNombre("Usuario ".$j.".".$i);
+                $coded = password_hash("1234", PASSWORD_BCRYPT);
+                $usuario->setPassword($coded);
+                $usuario->addSorteo($sorteo);
                 $manager->persist($usuario);
             }
             $manager->flush();
-            /** @var Usuario $ganador */
-            $h = $j - 1;
-            $ganador = $manager->getRepository(Usuario::class)->findOneBy(['email' => "usuario".$h.$i."@gmail.com"]);
-            $sorteo->setGanador($ganador->getNombre()." con email: ".$ganador->getEmail());
+
+            /** @var Sorteo $selfSorteo */
+            $selfSorteo = $manager->getRepository(Sorteo::class)->find($i);
+
+            $usuarios_sorteo = $selfSorteo->getUsuarios();
+            $ganador = $usuarios_sorteo[mt_rand(0, count($usuarios_sorteo) - 1)];
+            $sorteo->setGanador($ganador);
             $manager->persist($sorteo);
+
         }
         $manager->flush();
 

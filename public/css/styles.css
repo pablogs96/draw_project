@@ -25,7 +25,7 @@ footer {
     height: auto;
     padding: 15px;
   }
-  .row.content {height:auto;} 
+  .row.content {height:auto;}
 }
 
 @media screen and (min-width: 767px) {
@@ -33,13 +33,13 @@ footer {
     position: absolute;
     left: 50%;
     transform: translatex(-50%)
-  } 
+  }
 }
 
 @media screen and (min-width: 390px) and (max-width: 1100px) {
   .btn-width {
     width: 300px;
-  } 
+  }
 }
 
 @media screen and (max-width: 1000px) {
@@ -51,7 +51,7 @@ footer {
 @media screen and (min-width: 1100px) {
   .btn-width {
     width: 400px;
-  } 
+  }
 }
 
 @media screen and (min-width: 990px) {
@@ -107,4 +107,21 @@ footer {
 
 #portLink:hover {
     filter: opacity(65%);
+}
+
+@media screen and (min-width: 1000px) {
+    .input-class {
+        padding: 5px;
+        width: 350px;
+        border: 1px solid #6db5f1;
+        -webkit-transition: all 300ms ease-in-out;
+        transition: all 300ms ease-in-out;
+        margin: 10px auto;
+        display: block;
+    }
+
+    .input-class:focus {
+        box-shadow: 0 0 5px #6db5f1;
+        width: 500px;
+    }
 }

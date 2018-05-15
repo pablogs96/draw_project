@@ -45,28 +45,30 @@
     </div>
 </nav>
 
-    <div class="container justify-content-center text-center" id="contenedor" style="padding-top:150px;padding-bottom:20px;">
+    <div class="container justify-content-center text-center" style="padding-top:150px;padding-bottom:20px;">
 
         <div class="row justify-content-center text-center" id="edge" STYLE="padding-bottom:70px">
             <h1 class="sizedPageTitle">ENCUESTAS DE IDENTIFICATEST</h1>
         </div>
 
-        {% for encuesta in encuestas %}
-        <div class="container rounded" style="color: white; margin-bottom: 5%;">
-            <div class="row justify-content-center" id="beforeEncuestas">
-                <div class="col-9 rounded" style="background-color: #EDDBF3">
-                    <a href="/home/encuesta/{{ encuesta.id }}" id="portLink">
-                        <div class="row justify-content-center">
-                            <h1 id="h1po" class="sizedh1">{{ encuesta.title }}</h1>
+        <div id="contenedor">
+            {% for encuesta in encuestas %}
+                <div class="container rounded" style="color: white; margin-bottom: 5%;">
+                    <div class="row justify-content-center" id="beforeEncuestas">
+                        <div class="col-9 rounded" style="background-color: #EDDBF3">
+                            <a href="/home/encuesta/{{ encuesta.id }}" id="portLink">
+                                <div class="row justify-content-center">
+                                    <h1 id="h1po" class="sizedh1">{{ encuesta.title }}</h1>
+                                </div>
+                                <div class="row justify-content-center" id="portfolio">
+                                    <img src={{ encuesta.img }} id="imgPort" class="sizedimg">
+                                </div>
+                            </a>
                         </div>
-                        <div class="row justify-content-center" id="portfolio">
-                            <img src={{ encuesta.img }} id="imgPort" class="sizedimg">
-                        </div>
-                    </a>
+                    </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 
     <div class="container" id="paginador">
@@ -91,11 +93,13 @@
         } else {
             $("#prev").fadeIn(1000);
             if (min === max) {
-                max = max -1;
-                min = min -4;
+                max = max + 3;
+            } else if ((max - min) === 2) {
+                max = max + 1;
+            } else if ((max - min) === 1) {
+                max = max + 2;
             }
             var data = {"min": min - 4, "max": max - 4};
-            console.log(data);
             $.ajax({
                 data:  data, //datos que se envian a traves de ajax
                 url:   '/home/encuestas/next-prev', //archivo que recibe la peticion
@@ -116,7 +120,6 @@
         } else {
             $("#next").fadeIn(1000);
             var data = {"min": min + 4, "max": max + 4};
-            console.log(data);
             $.ajax({
                 data:  data, //datos que se envian a traves de ajax
                 url:   '/home/encuestas/next-prev', //archivo que recibe la peticion
@@ -140,22 +143,6 @@
         $contenedor.empty();
 
         $encuestas2 = JSON.parse(np_encuestas);
-        console.log($encuestas2);
-
-        //titulo pagina
-        var divT = document.createElement("div");
-        divT.setAttribute("class", "row justify-content-center text-center");
-        divT.setAttribute("id", "edge");
-        divT.setAttribute("style","padding-bottom:70px");
-
-        var h1T = document.createElement("h1");
-        h1T.innerText = "ENCUESTAS DE IDENTIFICATEST";
-
-
-
-        //appends titulo
-        $(divT).hide().appendTo($("#contenedor")).fadeIn(1000);
-        $(h1T).hide().appendTo(divT).fadeIn(1000);
 
         for (var i = 0; i < $encuestas2.length; i++){
 
@@ -206,11 +193,6 @@
 
         min = $encuestas2[0].id;
         max = $encuestas2[$encuestas2.length -1].id;
-
-
-        console.log(min);
-        console.log(max);
-        console.log("tamaño: " + $encuestas2.length);
 
         if (max === {{ size }}) {
             console.log("se esta mostrando la ultima");

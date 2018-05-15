@@ -1,0 +1,22 @@
+@media screen and (min-width: 1000px) {
+    .input-class {
+        padding: 5px;
+        width: 350px;
+        border: 1px solid #6db5f1;
+        -webkit-transition: all 300ms ease-in-out;
+        transition: all 300ms ease-in-out;
+        margin: 10px auto;
+        display: block;
+    }
+
+    .input-class:focus {
+        box-shadow: 0 0 5px #6db5f1;
+        width: 500px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .sizedPageTitle{
+        font-size: 25px;
+    }
+}

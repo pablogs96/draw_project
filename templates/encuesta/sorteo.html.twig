@@ -18,8 +18,12 @@
 <script>
     var min = {{ min }};
     var max = {{ max }};
+
     $(document).ready(function () {
         $("#prev").hide();
+        if (max === 1) {
+            $("#next").hide();
+        }
     });
 </script>
 <!-- Barra navegación-->
@@ -76,7 +80,7 @@
                         <div class="col-8">
                             <div class="form-group">
                                 <label for="email">Email:</label>
-                                <input type="email" class="form-control" id="email" name="email">
+                                <input type="email" class="form-control input-class" id="usermail" name="email">
                             </div>
                         </div>
                     </div>
@@ -84,17 +88,17 @@
                         <div class="col-8">
                             <div class="form-group">
                                 <label for="pwd">Contaseña:</label>
-                                <input type="password" class="form-control" id="pwd" name="pwd">
+                                <input type="password" class="form-control input-class" id="userpass" name="pwd">
                             </div>
                         </div>
                     </div>
                     <div class="form-check">
-                        <label><input type="checkbox" name="validate">Validar</label>
+                        <label><input type="checkbox" name="validate" id="validate">Validar</label>
                     </div>
                 </form>
             </div>
             <div class="modal-footer justify-content-center" style="background-color:  #EDDBF3">
-                <a href="#"><button type="button" class="btn btn-success">Borrarse</button></a>
+                <a href="#"><button type="button" class="btn btn-success" onclick="borrarse()">Borrarse</button></a>
                 <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
             </div>
         </div>
@@ -112,10 +116,10 @@
             <h1 class="sizedPageTitle"><b>¡BIENVENIDO AL SORTEO DE IDENTIFICATEST!</b></h1>
         </div>
         <div class="row justify-content-center text-center">
-            <div class="col-sm-6 col-10 justify-content-center text-center">
+            <div class="col-sm-6 col-10 justify-content-center text-left">
                 <h6>Este sorteo es totalmente gratuito y opcional. El requisito para poder participar es únicamente realizar al menos una encuesta.
-                    Se realizará el sorteo una vez haya 50 participantes inscritos.
-                    Si estas deseando saber si te ha tocado o no, avisa a un amigo y asi lo sabrás antes!</h6>
+                    Solamente habrá un sorteo activo por mes y solamente te puedes suscribir al sorteo activo una vez. Si quieres saber que sorteos
+                    has ganado en la sección de <i>Historial de sorteos</i> puedes hacer esta operación.</h6>
             </div>
         </div>
         <div class="row justify-content-center" style="padding-top: 5%">
@@ -125,8 +129,8 @@
                         SORTEO ACTUAL ( {{ actual.id }} )
                     </button>
                     <button type="button" class="list-group-item list-group-item-action"><b>PREMIO:</b> {{ actual.premio }}</button>
-                    <button type="button" class="list-group-item list-group-item-action"><b>PARTICIPANTES:</b> 50</button>
-                    <button type="button" class="list-group-item list-group-item-action"><b>FECHA:</b> {{ actual.fecha|date('Y-m-d') }}</button>
+                    <button type="button" class="list-group-item list-group-item-action"><b>PARTICIPANTES:</b> {{ actual.usuarios|length }}</button>
+                    <button type="button" class="list-group-item list-group-item-action"><b>FECHA:</b> {{ actual.fecha|date('d/m/Y') }}</button>
                     <button type="button" class="list-group-item list-group-item-action"><b>GANADOR:</b> Pendiente</button>
                 </div>
             </div>
@@ -145,26 +149,33 @@
 
 <!-- 3ª Sección (Sección del sorteo) -->
 <section>
-    <div class="container rounded" id="contenedor" style="padding-top:70px;padding-bottom:70px; background-color: #EDDBF3; margin-top: 7%; margin-bottom: 1%">
+    <div class="container rounded" style="padding-top:70px;padding-bottom:70px; background-color: #EDDBF3; margin-top: 7%; margin-bottom: 1%">
         <div class="row justify-content-center" style="padding-bottom: 3%">
-            <h3 class="sizedPageTitle">HISTORIAL DE SORTEOS</h3>
-        </div>
-        {% for sorteo in historial %}
-        <div class="row">
-            <div class="col-sm-6 offset-sm-3 text-left" style="margin-bottom: 50px">
-                <div class="list-group">
-                    <button type="button" class="list-group-item list-group-item-action bg-warning text-dark text-center">
-                        SORTEO {{ sorteo.id }}
-                    </button>
-                    <button type="button" class="list-group-item list-group-item-action" disabled>Premio: {{ sorteo.premio }}</button>
-                    <button type="button" class="list-group-item list-group-item-action" disabled>Participantes: 50</button>
-                    <button type="button" class="list-group-item list-group-item-action" disabled>Fecha: {{ sorteo.fecha|date('Y-m-d') }}</button>
-                    <button type="button" class="list-group-item list-group-item-action">Ganador: {{ sorteo.ganador }}</button>
-                    {{ dump(sorteo.ganador) }}
-                </div>
+            <div class="col-sm-6 offset-sm-2 justify-content-sm-right text-sm-right justify-content-center text-center">
+                <h3 class="sizedPageTitle">HISTORIAL DE SORTEOS</h3>
             </div>
+            <div class="col-sm-4 justify-content-sm-right text-sm-right justify-content-center text-center">
+                <a href="/home/sorteo/login"><button type="button" class="btn btn-info">Comprobar sorteos</button></a>
+            </div>
+
         </div>
-        {% endfor %}
+        <div id="contenedor">
+            {% for sorteo in historial %}
+                <div class="row">
+                    <div class="col-sm-6 offset-sm-3 text-left" style="margin-bottom: 50px">
+                        <div class="list-group">
+                            <button type="button" class="list-group-item list-group-item-action bg-warning text-dark text-center">
+                                SORTEO {{ sorteo.id }}
+                            </button>
+                            <button type="button" class="list-group-item list-group-item-action" disabled>Premio: {{ sorteo.premio }}</button>
+                            <button type="button" class="list-group-item list-group-item-action" disabled>Participantes: {{  sorteo.usuarios|length }}</button>
+                            <button type="button" class="list-group-item list-group-item-action" disabled>Fecha: {{ sorteo.fecha|date('d/m/Y') }}</button>
+                            <button type="button" class="list-group-item list-group-item-action">Ganador: Usuario {{ sorteo.ganador.id }}</button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 
     <div class="container" id="paginador">
@@ -193,30 +204,22 @@
 <script>
     //funciones para la paginacion del historial
     function previous(){
-        if (min === 1) {
-            $("#next").hide();
-        } else {
-            $("#prev").fadeIn(1000);
-            var data = {"min": min + 4, "max": max + 4};
-            $.ajax({
-                data:  data, //datos que se envian a traves de ajax
-                url:   '/home/sorteo/historial', //archivo que recibe la peticion
-                type:  'get', //método de envio
-                beforeSend: function () {
-                    console.log("Procesando, espere por favor...");
-                },
-                success:  function (np_sorteos) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-                    cambiar(np_sorteos);
-                }
-            });
-        }
+        $("#prev").fadeIn(1000);
+        var data = {"min": min + 4, "max": min + 1};
+        $.ajax({
+            data:  data, //datos que se envian a traves de ajax
+            url:   '/home/sorteo/historial', //archivo que recibe la peticion
+            type:  'get', //método de envio
+            beforeSend: function () {
+                console.log("Procesando, espere por favor...");
+            },
+            success:  function (np_sorteos) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+                cambiar(np_sorteos);
+            }
+        });
     }
 
     function next(){
-        if (min === max) {
-            max = max -1;
-            min = min -4;
-        }
         var data = {"min": min - 4, "max": max - 4};
         $.ajax({
             data:  data, //datos que se envian a traves de ajax
@@ -236,19 +239,6 @@
         $contenedor.empty();
 
         $sorteos2 = JSON.parse(np_sorteos);
-
-
-        var divT = document.createElement("div");
-        divT.setAttribute("class", "row justify-content-center");
-        divT.setAttribute("style", "padding-bottom: 3%");
-
-        var h3T = document.createElement("h3");
-        h3T.setAttribute("class", "sizedPageTitle");
-        h3T.innerText = "HISTORIAL DE SORTEOS";
-
-        //appends titulo
-        $(divT).hide().appendTo($contenedor).fadeIn(1000);
-        $(h3T).hide().appendTo(divT).fadeIn(1000);
 
         for (var i = 0; i < $sorteos2.length; i++){
 
@@ -276,21 +266,20 @@
             var b3 = document.createElement("button");
             b3.setAttribute("type", "button");
             b3.setAttribute("class", "list-group-item list-group-item-action");
-            b3.value = "Participantes: 50";
+            b3.innerHTML = "Participantes: " + $sorteos2[i].usuarios.length;
 
             var b4 = document.createElement("button");
             b4.setAttribute("type", "button");
             b4.setAttribute("class", "list-group-item list-group-item-action");
-            b4.innerHTML = "Fecha: ";
-
-            console.log($sorteos2[i].fecha.toString());
-            console.log($sorteos2[i].fecha);
+            $fecha = $sorteos2[i].fecha;
+            $fechagmt = new Date($fecha.timestamp * 1000);
+            b4.innerHTML = "Fecha: " + $fechagmt.toLocaleDateString();
 
 
             var b5 = document.createElement("button");
             b5.setAttribute("type", "button");
             b5.setAttribute("class", "list-group-item list-group-item-action");
-            b5.innerHTML = "Ganador: " + $sorteos2[i].ganador;
+            b5.innerHTML = "Ganador: Usuario " + $sorteos2[i].ganador.id;
 
 
 
@@ -305,35 +294,91 @@
             $(b5).hide().appendTo(div).fadeIn(1000);
         }
 
-        /*<div class="row">
-            <div class="col-sm-6 offset-sm-3 text-left" style="margin-bottom: 50px">
-                <div class="list-group">
-                    <button type="button" class="list-group-item list-group-item-action bg-warning text-dark text-center">
-                        SORTEO
-                    </button>
-                    <button type="button" class="list-group-item list-group-item-action" disabled>Premio:</button>
-                    <button type="button" class="list-group-item list-group-item-action" disabled>Participantes: 50</button>
-                    <button type="button" class="list-group-item list-group-item-action" disabled>Fecha: </button>
-                    <button type="button" class="list-group-item list-group-item-action">Ganador: </button>
-                </div>
-            </div>
-        </div>*/
-
         min = $sorteos2[0].id;
         max = $sorteos2[$sorteos2.length -1].id;
 
-        if (max === {{ size }}) {
-            console.log("se esta mostrando el ultimo");
-            $("#next").hide();
-        } else {
-            $("#next").fadeIn(1000);
-        }
-        if (min === 1) {
+        if (min === {{ size }}) {
             console.log("se esta mostrando el primero");
             $("#prev").hide();
         } else {
             $("#prev").fadeIn(1000);
         }
+        if (max === 1) {
+            console.log("se esta mostrando el ultimo");
+            $("#next").hide();
+        } else {
+            $("#next").fadeIn(1000);
+        }
+    }
+
+    function borrarse() {
+        $userEmail = $("#usermail").val();
+        $userPass = $("#userpass").val();
+        $check = $("#validate");
+        if ($userEmail !== "") {
+            if ($userPass !== "") {
+                if ($check.is(':checked')){
+                    $userdata = {"mail": $userEmail, "pass": $userPass};
+                    $.ajax({
+                        data:  $userdata, //datos que se envian a traves de ajax
+                        url:   '/home/sorteo/leave', //archivo que recibe la peticion
+                        type:  'post', //método de envio
+                        beforeSend: function () {
+                            console.log("Borrando usuario del sorteo...");
+                        },
+                        success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+                            limpiarModal();
+                            console.log(response);
+                            showAlert(response[0], response[1]);
+                        }
+                    });
+                }
+            }
+        }
+    }
+    //funcion que limpialosinputs del modal
+    function limpiarModal() {
+        $("#usermail").val("");
+        $("#userpass").val("");
+        $("#validate").attr('checked', 'false');
+    }
+    // funcion que crea una alerta para avisar de que se ha suscrito correctamente
+    function showAlert(title, message) {
+        $("#borrarseModal").empty();
+        var al = document.createElement("div");
+        al.setAttribute("class", "bg-success text-white rounded");
+        al.setAttribute("role", "alert");
+        al.setAttribute("style", "margin: 350px 650px 0px 650px; padding: 0.5%");
+
+        var al_title = document.createElement("h4");
+        al_title.setAttribute("class", "text-center");
+        al_title.innerText = title;
+
+        var al_p = document.createElement("p");
+        al_p.setAttribute("class", "text-center");
+        al_p.innerText = message;
+
+        var row = document.createElement("row");
+        row.setAttribute("class", "row justify-content-center");
+
+        var redir = document.createElement("a");
+        redir.setAttribute("class", "btn btn-warning btn-large text-center");
+        redir.setAttribute("type", "button");
+        redir.setAttribute("href", "/home/sorteo");
+        redir.innerText = "Aceptar";
+
+
+        $(al_title).hide().appendTo(al).fadeIn(1000);
+        $(al_p).hide().appendTo(al).fadeIn(1000);
+        $(row).hide().appendTo(al).fadeIn(1000);
+        $(redir).hide().appendTo(row).fadeIn(1000);
+
+
+        $(al).hide().appendTo("#borrarseModal").fadeIn(1000);
+    }
+
+    function checkSorteos(){
+
     }
 </script>
 </body>

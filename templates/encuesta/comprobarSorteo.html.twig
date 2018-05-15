@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sorteos Ganados</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Secular+One" rel="stylesheet" />
+</head>
+<body style="background-color: black">
+<!-- Barra navegación-->
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top navSize" id="nav" style="background-color: #e7bdf5;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="true" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse navbar-center" id="navbarToggler">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="/home">HOME<span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/home/encuestas">ENCUESTAS</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/home/sorteo">SORTEO</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- HEADER -->
+
+<header id="header">
+    <div class="container rounded" style="padding-top:70px;padding-bottom:70px; background-color: #e7bdf5; margin-top: 7%; margin-bottom: 5%">
+        <div class="row justify-content-center" id="edge">
+            <a href="https://www.opositatest.com/"></a>
+        </div>
+        <div class="row text-center justify-content-center" style="padding-bottom: 20px">
+            <h1 class="sizedPageTitle"><b>ÁREA PERSONAL</b></h1>
+        </div>
+        <div class="row text-center justify-content-center">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Panel with panel-default class</div>
+                <div class="panel-body">Panel Content</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Footer-->
+<footer>
+    <div class="container-fluid text-center">
+        <p>2018&copy; Pablo García Saleta | Todos los derechos reservados</p>
+    </div>
+</footer>
+</body>
+</html>

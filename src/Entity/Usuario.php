@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -9,13 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Usuario
 {
-    /**
-     * Many Usuarios have One Sorteo.
-     * @ORM\ManyToOne(targetEntity="Sorteo", inversedBy="usuario")
-     * @ORM\JoinColumn(name="sorteo_id", referencedColumnName="id")
-     */
-    private $sorteo;
-
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -37,6 +32,22 @@ class Usuario
      * @ORM\Column(type="string", length=255)
      */
     private $password;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Sorteo", mappedBy="usuarios")
+     */
+    private $sorteos;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Sorteo", mappedBy="ganador")
+     */
+    private $sorteos_ganados;
+
+    public function __construct()
+    {
+        $this->sorteos = new ArrayCollection();
+        $this->sorteos_ganados = new ArrayCollection();
+    }
 
     public function getId()
     {
@@ -80,18 +91,61 @@ class Usuario
     }
 
     /**
-     * @return mixed
+     * @return Collection|Sorteo[]
      */
-    public function getSorteo()
+    public function getSorteos(): Collection
     {
-        return $this->sorteo;
+        return $this->sorteos;
+    }
+
+    public function addSorteo(Sorteo $sorteo): self
+    {
+        if (!$this->sorteos->contains($sorteo)) {
+            $this->sorteos[] = $sorteo;
+            $sorteo->addUsuario($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSorteo(Sorteo $sorteo): self
+    {
+        if ($this->sorteos->contains($sorteo)) {
+            $this->sorteos->removeElement($sorteo);
+            $sorteo->removeUsuario($this);
+        }
+
+        return $this;
     }
 
     /**
-     * @param mixed $sorteo
+     * @return Collection|Sorteo[]
      */
-    public function setsorteo($sorteo): void
+    public function getSorteosGanados(): Collection
     {
-        $this->sorteo = $sorteo;
+        return $this->sorteos_ganados;
+    }
+
+    public function addSorteosGanado(Sorteo $sorteosGanado): self
+    {
+        if (!$this->sorteos_ganados->contains($sorteosGanado)) {
+            $this->sorteos_ganados[] = $sorteosGanado;
+            $sorteosGanado->setGanador($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSorteosGanado(Sorteo $sorteosGanado): self
+    {
+        if ($this->sorteos_ganados->contains($sorteosGanado)) {
+            $this->sorteos_ganados->removeElement($sorteosGanado);
+            // set the owning side to null (unless already changed)
+            if ($sorteosGanado->getGanador() === $this) {
+                $sorteosGanado->setGanador(null);
+            }
+        }
+
+        return $this;
     }
 }
