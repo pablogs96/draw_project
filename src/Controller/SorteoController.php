@@ -8,6 +8,9 @@ use App\Entity\Usuario;
 use App\Repository\SorteoRepository;
 use DateInterval;
 use DateTime;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -371,7 +374,45 @@ class SorteoController extends Controller
     /**
      * @route ("/home/sorteo/login", name="login")
      */
-    public function loginAction(){
-        return $this->render('encuesta/login.html.twig');
+    public function loginAction(Request $request){
+        $user = new Usuario();
+
+        $form = $this->createFormBuilder($user)
+            ->add('email', EmailType::class, array('label' => 'Email'))
+            ->add('password', PasswordType::class, array('label' => 'Contraseña'))
+            ->add('save', SubmitType::class, array('label' => 'Aceptar'))
+        ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+             $entityManager = $this->getDoctrine()->getManager();
+             /** @var Usuario $usuario */
+             $usuario = $entityManager->getRepository(Usuario::class)->findOneBy(array('email' => $user->getEmail()));
+             $sorteos = $usuario->getSorteos();
+             $ganados = $usuario->getSorteosGanados();
+             dump($sorteos->getValues());
+             dump($ganados->getValues());
+
+             if($usuario) {
+                 $hash = $usuario->getPassword();
+                 if (password_verify($user->getPassword(), $hash)){
+                     return $this->render('encuesta/comprobarSorteo.html.twig', array('usuario' => $usuario, 'sorteos' => $sorteos, 'ganados' => $ganados));
+                 } else {
+                     $respuesta = "Contraseña incorrecta. Vuelve a introducir tu contraseña.";
+                     return new JsonResponse($respuesta);
+                 }
+             } else {
+                 $respuesta = "Este usuario no ha sido registrado en ningún sorteo.";
+                 return new JsonResponse($respuesta);
+             }
+        }
+
+
+        return $this->render('encuesta/login.html.twig', array(
+            'form' => $form->createView(),
+        ));
+//        return $this->render('encuesta/login.html.twig');
     }
 }

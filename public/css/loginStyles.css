@@ -20,3 +20,21 @@
         font-size: 25px;
     }
 }
+
+@media screen and (min-width: 2000px) {
+    .container-responsive {
+        width: 35%;
+    }
+}
+
+@media screen and (max-width: 2000px) {
+    .container-responsive {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .sizedPageTitle{
+        font-size: 25px;
+    }
+}

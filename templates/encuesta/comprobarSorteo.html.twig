@@ -16,7 +16,7 @@
 <body style="background-color: black">
 <!-- Barra navegación-->
 
-<nav class="navbar navbar-expand-lg navbar-light fixed-top navSize" id="nav" style="background-color: #e7bdf5;">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top navSize" id="nav" style="background-color: #EDDBF3;">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="true" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -38,21 +38,81 @@
 <!-- HEADER -->
 
 <header id="header">
-    <div class="container rounded" style="padding-top:70px;padding-bottom:70px; background-color: #e7bdf5; margin-top: 7%; margin-bottom: 5%">
+    <div class="container rounded" style="padding-top:70px;padding-bottom:70px; margin-top: 4%;">
         <div class="row justify-content-center" id="edge">
-            <a href="https://www.opositatest.com/"></a>
-        </div>
-        <div class="row text-center justify-content-center" style="padding-bottom: 20px">
-            <h1 class="sizedPageTitle"><b>ÁREA PERSONAL</b></h1>
-        </div>
-        <div class="row text-center justify-content-center">
-            <div class="panel panel-primary">
-                <div class="panel-heading">Panel with panel-default class</div>
-                <div class="panel-body">Panel Content</div>
-            </div>
+            <h1 class="sizedPageTitle bigTitle" style="color: white;">MIS SORTEOS</h1>
         </div>
     </div>
 </header>
+
+
+{#<div class="container rounded" style="padding-top:70px;padding-bottom:70px; background-color: #EDDBF3; margin-bottom: 5%">#}
+    {#<div class="row justify-content-center" id="edge">#}
+        {#<a href="https://www.opositatest.com/"></a>#}
+    {#</div>#}
+    {#<div class="row text-center justify-content-center">#}
+        {#<h1 class="sizedPageTitle"><b>MIS DATOS</b></h1>#}
+    {#</div>#}
+{#</div>#}
+
+<div class="container rounded" style="padding-top:70px;padding-bottom:70px; background-color: #EDDBF3; margin-bottom: 5%">
+    <div class="row justify-content-center" id="edge">
+        <a href="https://www.opositatest.com/"></a>
+    </div>
+    <div class="row text-center justify-content-center">
+        <h1 class="sizedPageTitle"><b>HAS PARTICIPADO EN {{ sorteos|length }} SORTEOS</b></h1>
+    </div>
+
+    {% for sorteo in sorteos | reverse %}
+        {% if ganados|length > 0 %}
+            {%  for ganado in ganados %}
+                {% if sorteo.ganador %}
+                    {% if ganado.ganador.id == sorteo.ganador.id %}
+                        <div class="row">
+                            <div class="col-sm-6 offset-sm-3 text-left" style="margin-bottom: 50px">
+                                <div class="list-group">
+                                    <button type="button" class="list-group-item list-group-item-action text-dark text-center" style="background-color: chartreuse">
+                                        SORTEO {{ sorteo.id }}
+                                    </button>
+                                    <button type="button" class="list-group-item list-group-item-action" disabled>Premio: {{ sorteo.premio }}</button>
+                                    <button type="button" class="list-group-item list-group-item-action" disabled>Fecha: {{ sorteo.fecha|date('d/m/Y') }}</button>
+                                    <button type="button" class="list-group-item list-group-item-action">Resultado: GANADO</button>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <div class="row">
+                        <div class="col-sm-6 offset-sm-3 text-left" style="margin-bottom: 50px">
+                            <div class="list-group">
+                                <button type="button" class="list-group-item list-group-item-action text-dark text-center" style="background-color: red">
+                                    SORTEO {{ sorteo.id }}
+                                </button>
+                                <button type="button" class="list-group-item list-group-item-action" disabled>Premio: {{ sorteo.premio }}</button>
+                                <button type="button" class="list-group-item list-group-item-action" disabled>Fecha: {{ sorteo.fecha|date('d/m/Y') }}</button>
+                                <button type="button" class="list-group-item list-group-item-action">Resultado: PERDIDO</button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {%  endfor %}
+        {% else %}
+            <div class="row">
+                <div class="col-sm-6 offset-sm-3 text-left" style="margin-bottom: 50px">
+                    <div class="list-group">
+                        <button type="button" class="list-group-item list-group-item-action text-dark text-center" style="background-color: red">
+                            SORTEO {{ sorteo.id }}
+                        </button>
+                        <button type="button" class="list-group-item list-group-item-action" disabled>Premio: {{ sorteo.premio }}</button>
+                        <button type="button" class="list-group-item list-group-item-action" disabled>Fecha: {{ sorteo.fecha|date('d/m/Y') }}</button>
+                        <button type="button" class="list-group-item list-group-item-action">Resultado: PERDIDO</button>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+</div>
 
 <!-- Footer-->
 <footer>

@@ -99,6 +99,12 @@ footer {
     }
 }
 
+@media screen and (min-width: 600px) {
+    .bigTitle{
+        font-size: 60px;
+    }
+}
+
 #portLink {
     text-decoration: none;
     padding: 2%;
