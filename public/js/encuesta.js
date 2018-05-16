@@ -25,7 +25,7 @@ function imprimirEncuesta(id_encuesta){
     h1.setAttribute("id", "titulo_encuesta_h1");
     h1.setAttribute("style", "max-width: 1230px");
     h1.innerHTML = titulo;
-    $(h1).hide().appendTo("#edge").fadeIn(1000);
+    $(h1).hide().appendTo("#title").fadeIn(1000);
     imprimirPreguntas(id_encuesta, this.pos, getPPos());
 }
 

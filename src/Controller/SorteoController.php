@@ -2,15 +2,18 @@
 
 namespace App\Controller;
 
+use App\Entity\Encuesta;
 use App\Entity\Premio;
 use App\Entity\Sorteo;
 use App\Entity\Usuario;
+use App\Repository\EncuestaRepository;
 use App\Repository\SorteoRepository;
 use DateInterval;
 use DateTime;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -88,8 +91,6 @@ class SorteoController extends Controller
         if ($date < $fecha_sorteo) {
             if ($sorteo_actual->getGanador()) {
                 // SORTEO ACTIVO CON GANADOR ---> error, no debería de pasar nunca
-
-                dump("neno");
                 $respuesta = "¡Vaya! Parece que ha habido un error.";
                 $titulo = "ERROR";
                 $data = [$titulo, $respuesta];
@@ -264,14 +265,26 @@ class SorteoController extends Controller
 
     private function runSorteo(Sorteo $sorteo_actual)
     {
-        $usuarios_sorteo = $sorteo_actual->getUsuarios();
-        /** @var Usuario $ganador */
-        $ganador = $usuarios_sorteo[rand(0, count($usuarios_sorteo) - 1)];
-
-        $sorteo_actual->setGanador($ganador);
-
         $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($sorteo_actual);
+        $usuarios_sorteo = $sorteo_actual->getUsuarios();
+        if (count($usuarios_sorteo) > 0) {
+            if (count($usuarios_sorteo) > 1){
+                /** @var Usuario $ganador */
+                $ganador = $usuarios_sorteo[rand(0, count($usuarios_sorteo) - 1)];
+
+                $sorteo_actual->setGanador($ganador);
+                $entityManager->persist($sorteo_actual);
+            }else if (count($usuarios_sorteo) == 1) {
+                /** @var Usuario $ganador */
+                $ganador = $usuarios_sorteo[0];
+
+                $sorteo_actual->setGanador($ganador);
+                $entityManager->persist($sorteo_actual);
+            }
+
+        } else if (count($usuarios_sorteo) == 0){
+            dump("no hay usuarios");
+        }
         $entityManager->flush();
     }
 
@@ -338,6 +351,7 @@ class SorteoController extends Controller
                     if ($num == 0 ) {
                         $titulo = "ERROR";
                         $respuesta = "Este usuario no está inscrito al sorteo actual";
+                        $data = [$titulo, $respuesta];
                     } else if ($num > 0) {
                         $user->removeSorteo($actual);
                         $entityManager->persist($user);
@@ -390,22 +404,29 @@ class SorteoController extends Controller
              $entityManager = $this->getDoctrine()->getManager();
              /** @var Usuario $usuario */
              $usuario = $entityManager->getRepository(Usuario::class)->findOneBy(array('email' => $user->getEmail()));
-             $sorteos = $usuario->getSorteos();
-             $ganados = $usuario->getSorteosGanados();
-             dump($sorteos->getValues());
-             dump($ganados->getValues());
 
              if($usuario) {
+                 $sorteos = $usuario->getSorteos();
+                 $ganados = $usuario->getSorteosGanados();
                  $hash = $usuario->getPassword();
+                 $encuesta = $this->getEncuesta();
+                 $actual = $entityManager->getRepository(Sorteo::class)->findBy(array(), array('fecha' => 'DESC'), 1, 0);
+                 /** @var Sorteo $sort_actual */
+                 $sort_actual = $actual[0];
                  if (password_verify($user->getPassword(), $hash)){
-                     return $this->render('encuesta/comprobarSorteo.html.twig', array('usuario' => $usuario, 'sorteos' => $sorteos, 'ganados' => $ganados));
+                     return $this->render('encuesta/comprobarSorteo.html.twig', array('usuario' => $usuario, 'sorteos' => $sorteos,
+                         'ganados' => $ganados, 'encuesta' => $encuesta, 'id_actual' => $sort_actual->getId()));
                  } else {
-                     $respuesta = "Contraseña incorrecta. Vuelve a introducir tu contraseña.";
-                     return new JsonResponse($respuesta);
+                     return $this->render('encuesta/login.html.twig', array(
+                         'form' => $form->createView(),
+                         'errorc' => "Contraseña incorrecta",
+                     ));
                  }
              } else {
-                 $respuesta = "Este usuario no ha sido registrado en ningún sorteo.";
-                 return new JsonResponse($respuesta);
+                 return $this->render('encuesta/login.html.twig', array(
+                     'form' => $form->createView(),
+                     'erroru' => "Usuario incorrecto",
+                 ));
              }
         }
 
@@ -413,6 +434,25 @@ class SorteoController extends Controller
         return $this->render('encuesta/login.html.twig', array(
             'form' => $form->createView(),
         ));
-//        return $this->render('encuesta/login.html.twig');
+    }
+
+    private function getEncuesta() {
+        $encoder = new JsonEncoder();
+        $normalizer = new ObjectNormalizer();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $last = $entityManager->getRepository(Encuesta::class)->findBy(array(), array('id' => 'DESC'), 1, 0);
+
+        /** @var Encuesta $encuesta */
+        $encuesta= $last[0];
+
+        $normalizer->setCircularReferenceHandler(function ($encuesta) {
+            return $encuesta->getId();
+        });
+
+        $serializer = new Serializer(array($normalizer), array($encoder));
+        $jsonContent = $serializer->serialize($encuesta, 'json');
+
+        return $jsonContent;
     }
 }

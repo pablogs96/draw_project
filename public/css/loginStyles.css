@@ -38,3 +38,14 @@
         font-size: 25px;
     }
 }
+
+.input-error{
+    animation-name: swapColor;
+    animation-duration: 3s;
+
+}
+@keyframes swapColor {
+    0%   {color: red;}
+
+    50%  {color: black;}
+}

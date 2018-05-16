@@ -19,15 +19,18 @@
 </div>
 
 {{ form_start(form) }}
-
+{{ form_errors(form) }}
     <div class="container rounded container-responsive" style="margin-bottom: 5%; background-color: #EDDBF3; padding: 2%; color: black;">
         <div class="row justify-content-center text-center" style="padding-bottom: 3%;">
             <div class="col-sm-2 offset-sm-3 justify-content-sm-center text-sm-left">
                 {{ form_label(form.email) }}
             </div>
             <div class="col-sm-6 justify-content-sm-center text-sm-left">
-                {{ form_errors(form.email) }}
-                {{ form_widget(form.email) }}
+                {% if erroru is defined %}
+                    {{ form_widget(form.email, {'attr': {'data-toggle': 'tooltip', "title": "Usuario incorrecto", "class": "input-error"}}) }}
+                {% else %}
+                    {{ form_widget(form.email) }}
+                {% endif %}
             </div>
         </div>
 
@@ -36,8 +39,11 @@
                 {{ form_label(form.password) }}
             </div>
             <div class="col-sm-6 justify-content-sm-center text-sm-left">
-                {{ form_errors(form.password) }}
-                {{ form_widget(form.password) }}
+                {% if errorc is defined %}
+                    {{ form_widget(form.password, {'attr': {'data-toggle': 'tooltip', "title": "Contraseña incorrecta", "class": "input-error"}}) }}
+                {% else %}
+                    {{ form_widget(form.password) }}
+                {% endif %}
             </div>
         </div>
 
@@ -48,5 +54,7 @@
 
         {{ form_end(form) }}
     </div>
+
+
 </body>
 </html>

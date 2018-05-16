@@ -1,0 +1,11 @@
+easy_admin:
+    entities:
+        # List the entity class name you want to manage
+        - App\Entity\Encuesta
+        - App\Entity\Sorteo
+        - App\Entity\Usuario
+        - App\Entity\Pregunta
+        - App\Entity\Premio
+        - App\Entity\Respuesta
+        - App\Entity\Resultado
+        - App\Entity\Comentario
