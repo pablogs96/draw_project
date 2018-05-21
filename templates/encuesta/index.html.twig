@@ -1,20 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }}!{% endblock %}
-
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'src/Controller/EncuestaController.php'|file_link(0) }}">src/Controller/EncuestaController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'templates/encuesta/index.html.twig'|file_link(0) }}">templates/encuesta/index.html.twig</a></code></li>
-    </ul>
-</div>
+{% block body_nav %}
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top navSize" id="nav" style="background-color: #EDDBF3;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="true" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse navbar-center" id="navbarToggler">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item {% block home_active %}{% endblock %}">
+                    <a class="nav-link" href="/home">HOME<span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item {% block encuestas_active %}{% endblock %}">
+                    <a class="nav-link" href="/home/encuestas">ENCUESTAS</a>
+                </li>
+                <li class="nav-item {% block sorteo_active %}{% endblock %}">
+                    <a class="nav-link" href="/home/sorteo">SORTEO</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+{% endblock %}
+{% block footer %}
+    <footer>
+        <div class="container-fluid text-center">
+            <p>2018&copy; | Pablo García Saleta | Todos los derechos reservados</p>
+        </div>
+    </footer>
 {% endblock %}

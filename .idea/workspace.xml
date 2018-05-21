@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f1313c2e-7787-4856-b574-e1794c131bbb" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/public/js/animateJS.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/icons.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/bootstrap-social.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/encuesta/comprobarSorteo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/encuesta/comprobarSorteo.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/encuesta/encuesta.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/encuesta/encuesta.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/encuesta/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/encuesta/home.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/encuesta/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/encuesta/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/encuesta/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/encuesta/login.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/encuesta/mostrarEncuestas.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/encuesta/mostrarEncuestas.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/encuesta/sorteo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/encuesta/sorteo.html.twig" afterDir="false" />
     </list>
@@ -22,59 +25,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="sorteo.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/encuesta/sorteo.html.twig">
+      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1434">
-              <caret line="298" column="30" selection-start-line="298" selection-start-column="30" selection-end-line="298" selection-end-column="30" />
+            <state relative-caret-position="150">
+              <caret line="10" column="99" selection-start-line="10" selection-start-column="99" selection-end-line="10" selection-end-column="99" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SorteoController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/SorteoController.php">
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/encuesta/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4950">
-              <caret line="353" column="54" selection-start-line="353" selection-start-column="54" selection-end-line="353" selection-end-column="54" />
+            <state relative-caret-position="435">
+              <caret line="29" selection-start-line="29" selection-end-line="29" />
               <folding>
-                <element signature="e#34#58#0#PHP" expanded="true" />
+                <element signature="e#1189#1195#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="comprobarSorteo.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/encuesta/comprobarSorteo.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="82" column="143" selection-start-line="82" selection-start-column="143" selection-end-line="82" selection-end-column="143" />
-              <folding>
-                <element signature="n#style#0;n#span#0;n#button#3;n#div#0;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#button#3;n#div#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#button#3;n#div#0;n#div#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#button#3;n#div#0;n#div#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="home.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/encuesta/home.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="112" column="152" selection-start-line="112" selection-start-column="152" selection-end-line="112" selection-end-column="152" />
+            <state relative-caret-position="210">
+              <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
               <folding>
-                <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#3;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#3;n#div#0;n#section#2;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bootstrap-social.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/css/bootstrap-social.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2190">
-              <caret line="146" column="54" selection-start-line="146" selection-start-column="54" selection-end-line="146" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -82,8 +61,63 @@
       <file leaf-file-name="mostrarEncuestas.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/encuesta/mostrarEncuestas.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="191" column="34" selection-start-line="191" selection-start-column="34" selection-end-line="191" selection-end-column="34" />
+            <state relative-caret-position="594">
+              <caret line="165" column="41" selection-start-line="165" selection-start-column="41" selection-end-line="165" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="encuesta.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/encuesta/encuesta.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="594">
+              <caret line="107" column="64" selection-start-line="107" selection-start-column="64" selection-end-line="107" selection-end-column="64" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sorteo.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/encuesta/sorteo.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-90">
+              <caret line="267" column="62" selection-start-line="267" selection-start-column="62" selection-end-line="267" selection-end-column="62" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/encuesta/login.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-6" />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="comprobarSorteo.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/encuesta/comprobarSorteo.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3795">
+              <caret line="253" column="63" selection-start-line="253" selection-start-column="63" selection-end-line="253" selection-end-column="63" />
+              <folding>
+                <element signature="e#4707#4730#0#HTML" expanded="true" />
+                <element signature="e#5817#5843#0#HTML" expanded="true" />
+                <element signature="e#6857#6876#0#HTML" expanded="true" />
+                <element signature="e#7894#7920#0#HTML" expanded="true" />
+                <element signature="e#8831#8850#0#HTML" expanded="true" />
+                <element signature="e#7939#7958#0#HTML" expanded="true" />
+                <element signature="e#8028#8054#0#HTML" expanded="true" />
+                <element signature="e#11271#11292#0#HTML" expanded="true" />
+                <element signature="e#13907#13999#0#HTML" expanded="true" />
+                <element signature="e#14116#14150#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="encuesta.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/js/encuesta.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="284" column="65" selection-start-line="284" selection-start-column="65" selection-end-line="284" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -94,8 +128,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -178,17 +212,20 @@
         <option value="$PROJECT_DIR$/templates/encuesta/login.html" />
         <option value="$PROJECT_DIR$/public/js/loginJS.js" />
         <option value="$PROJECT_DIR$/public/css/styles.css" />
-        <option value="$PROJECT_DIR$/templates/encuesta/encuesta.html.twig" />
         <option value="$PROJECT_DIR$/public/js/encuesta.js" />
-        <option value="$PROJECT_DIR$/templates/encuesta/login.html.twig" />
         <option value="$PROJECT_DIR$/public/css/loginStyles.css" />
         <option value="$PROJECT_DIR$/src/Controller/SorteoController.php" />
         <option value="$PROJECT_DIR$/config/packages/easy_admin.yaml" />
-        <option value="$PROJECT_DIR$/templates/encuesta/comprobarSorteo.html.twig" />
-        <option value="$PROJECT_DIR$/templates/encuesta/mostrarEncuestas.html.twig" />
-        <option value="$PROJECT_DIR$/templates/encuesta/sorteo.html.twig" />
         <option value="$PROJECT_DIR$/public/css/bootstrap-social.css" />
+        <option value="$PROJECT_DIR$/templates/encuesta/index.html.twig" />
         <option value="$PROJECT_DIR$/templates/encuesta/home.html.twig" />
+        <option value="$PROJECT_DIR$/templates/encuesta/login.html.twig" />
+        <option value="$PROJECT_DIR$/templates/base.html.twig" />
+        <option value="$PROJECT_DIR$/templates/encuesta/mostrarEncuestas.html.twig" />
+        <option value="$PROJECT_DIR$/templates/encuesta/encuesta.html.twig" />
+        <option value="$PROJECT_DIR$/public/js/animateJS.js" />
+        <option value="$PROJECT_DIR$/templates/encuesta/sorteo.html.twig" />
+        <option value="$PROJECT_DIR$/templates/encuesta/comprobarSorteo.html.twig" />
       </list>
     </option>
   </component>
@@ -335,6 +372,23 @@
             <path>
               <item name="project_end" type="b2602c69:ProjectViewProjectNode" />
               <item name="project_end" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="public" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="js" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="project_end" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project_end" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="project_end" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project_end" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="encuesta" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="project_end" type="b2602c69:ProjectViewProjectNode" />
+              <item name="project_end" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="tests" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
@@ -351,14 +405,15 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/encuesta" />
+      <recent name="$PROJECT_DIR$/templates" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/templates/encuesta" />
       <recent name="$PROJECT_DIR$/public/js" />
       <recent name="$PROJECT_DIR$/public/img" />
       <recent name="$PROJECT_DIR$/public" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/templates/encuesta" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -400,12 +455,12 @@
       <workItem from="1526283414179" duration="28622000" />
       <workItem from="1526369682688" duration="24212000" />
       <workItem from="1526455283421" duration="22155000" />
-      <workItem from="1526888417266" duration="7532000" />
+      <workItem from="1526888417266" duration="19584000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="303257000" />
+    <option name="totallyTimeSpent" value="315309000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
@@ -417,7 +472,7 @@
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18867925" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18867925" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32991803" />
@@ -445,13 +500,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/bundles.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/packages/easy_admin.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -464,13 +512,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="8" lean-forward="true" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -500,13 +541,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="750">
           <caret line="50" selection-start-line="50" selection-end-line="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/encuesta/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
@@ -659,13 +693,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/encuesta/login.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" column="73" selection-start-line="40" selection-start-column="73" selection-end-line="40" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/loginStyles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="735">
@@ -684,33 +711,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="349">
           <caret line="26" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/encuesta.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="27" column="33" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/encuesta/encuesta.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="90" selection-start-line="90" selection-end-line="90" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/SorteoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4950">
-          <caret line="353" column="54" selection-start-line="353" selection-start-column="54" selection-end-line="353" selection-end-column="54" />
-          <folding>
-            <element signature="e#34#58#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -735,33 +735,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/encuesta/comprobarSorteo.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="82" column="143" selection-start-line="82" selection-start-column="143" selection-end-line="82" selection-end-column="143" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#button#3;n#div#0;n#div#0;n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#button#3;n#div#0;n#div#0;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#button#3;n#div#0;n#div#0;n#div#5;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#button#3;n#div#0;n#div#0;n#div#6;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/encuesta/mostrarEncuestas.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="191" column="34" selection-start-line="191" selection-start-column="34" selection-end-line="191" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/encuesta/sorteo.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1434">
-          <caret line="298" column="30" selection-start-line="298" selection-start-column="30" selection-end-line="298" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/bootstrap-social.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -772,6 +745,16 @@
     <entry file="file://$PROJECT_DIR$/tests/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/SorteoController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="353" column="54" selection-start-line="353" selection-start-column="54" selection-end-line="353" selection-end-column="54" />
+          <folding>
+            <element signature="e#34#58#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/bootstrap-social.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2190">
@@ -779,12 +762,91 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/encuesta/login.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/encuesta/mostrarEncuestas.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="165" column="41" selection-start-line="165" selection-start-column="41" selection-end-line="165" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/encuesta.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="284" column="65" selection-start-line="284" selection-start-column="65" selection-end-line="284" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/encuesta/encuesta.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="107" column="64" selection-start-line="107" selection-start-column="64" selection-end-line="107" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/animateJS.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2424">
+          <caret line="182" column="11" selection-start-line="182" selection-start-column="11" selection-end-line="182" selection-end-column="11" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/encuesta/sorteo.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-90">
+          <caret line="267" column="62" selection-start-line="267" selection-start-column="62" selection-end-line="267" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/encuesta/comprobarSorteo.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3795">
+          <caret line="253" column="63" selection-start-line="253" selection-start-column="63" selection-end-line="253" selection-end-column="63" />
+          <folding>
+            <element signature="e#4707#4730#0#HTML" expanded="true" />
+            <element signature="e#5817#5843#0#HTML" expanded="true" />
+            <element signature="e#6857#6876#0#HTML" expanded="true" />
+            <element signature="e#7894#7920#0#HTML" expanded="true" />
+            <element signature="e#8831#8850#0#HTML" expanded="true" />
+            <element signature="e#7939#7958#0#HTML" expanded="true" />
+            <element signature="e#8028#8054#0#HTML" expanded="true" />
+            <element signature="e#11271#11292#0#HTML" expanded="true" />
+            <element signature="e#13907#13999#0#HTML" expanded="true" />
+            <element signature="e#14116#14150#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="99" selection-start-line="10" selection-start-column="99" selection-end-line="10" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/encuesta/home.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="112" column="152" selection-start-line="112" selection-start-column="152" selection-end-line="112" selection-end-column="152" />
+        <state relative-caret-position="210">
+          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
           <folding>
-            <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#3;n#div#0;n#section#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#1;n#ul#0;n#div#3;n#div#0;n#section#2;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/encuesta/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="e#1189#1195#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>

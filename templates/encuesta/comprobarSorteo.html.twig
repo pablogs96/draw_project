@@ -1,90 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'encuesta/index.html.twig' %}
 
-<head>
-    <title>Sorteos Ganados</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
-    <script src="{{ asset('js/encuesta.js') }}"></script>
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Secular+One" rel="stylesheet" />
-</head>
-<body style="background-color: black" onload="cargar()">
-<script>
-    var encuesta = {{ encuesta|raw }};
-</script>
-<!-- Barra navegación-->
+    {% block title %}
+        Sorteos Ganados
+    {% endblock title %}
 
-<nav class="navbar navbar-expand-lg navbar-light fixed-top navSize" id="nav" style="background-color: #EDDBF3;">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="true" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse navbar-center" id="navbarToggler">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-                <a class="nav-link" href="/home">HOME<span class="sr-only"></span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/home/encuestas">ENCUESTAS</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/home/sorteo">SORTEO</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+    {% block stylesheets %}
+        <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
+        {{ parent() }}
+    {% endblock %}
 
-<!-- HEADER -->
+{% block body_tag %}style="background-color: black" onload="cargar()"{% endblock %}
+    {% block sorteo_active %}active{% endblock %}
+    {% block body_content %}
 
-<header id="header">
-    <div class="container rounded" style="padding-top:70px;padding-bottom:70px; margin-top: 4%;">
+        <!-- HEADER -->
+
+        <header id="header">
+            <div class="container rounded" style="padding-top:70px;padding-bottom:70px; margin-top: 4%;">
+                <div class="row justify-content-center" id="edge">
+                    <h1 class="sizedPageTitle bigTitle" style="color: white;">MIS SORTEOS</h1>
+                </div>
+            </div>
+        </header>
+
+        <div class="container rounded" style="padding-top:70px;padding-bottom:70px; background-color: #EDDBF3; margin-bottom: 5%">
         <div class="row justify-content-center" id="edge">
-            <h1 class="sizedPageTitle bigTitle" style="color: white;">MIS SORTEOS</h1>
+            <a href="https://www.opositatest.com/"></a>
         </div>
-    </div>
-</header>
-
-
-{#<div class="container rounded" style="padding-top:70px;padding-bottom:70px; background-color: #EDDBF3; margin-bottom: 5%">#}
-    {#<div class="row justify-content-center" id="edge">#}
-        {#<a href="https://www.opositatest.com/"></a>#}
-    {#</div>#}
-    {#<div class="row text-center justify-content-center">#}
-        {#<h1 class="sizedPageTitle"><b>MIS DATOS</b></h1>#}
-    {#</div>#}
-{#</div>#}
-
-<div class="container rounded" style="padding-top:70px;padding-bottom:70px; background-color: #EDDBF3; margin-bottom: 5%">
-    <div class="row justify-content-center" id="edge">
-        <a href="https://www.opositatest.com/"></a>
-    </div>
-    <div class="row text-center justify-content-center" style="margin-bottom: 5%">
-        <h1 class="sizedPageTitle"><b>HAS PARTICIPADO EN {{ sorteos|length }} SORTEO(S)</b></h1>
-    </div>
-{% if sorteos|length > 0 %}
-    {% for sorteo in sorteos | reverse %}
-        {% if ganados|length > 0 %}
-            {%  for ganado in ganados %}
-                {% if sorteo.ganador %}
-                    {% if ganado.ganador.id == sorteo.ganador.id %}
-                        <div class="row">
-                            <div class="col-sm-6 offset-sm-3 text-left" style="margin-bottom: 50px">
-                                <div class="list-group">
-                                    <button type="button" class="list-group-item list-group-item-action text-dark text-center bg-warning">
-                                        SORTEO {{ sorteo.id }}
-                                    </button>
-                                    <button type="button" class="list-group-item list-group-item-action" disabled>Premio: {{ sorteo.premio }}</button>
-                                    <button type="button" class="list-group-item list-group-item-action" disabled>Fecha: {{ sorteo.fecha|date('d/m/Y') }}</button>
-                                    <button type="button" class="list-group-item list-group-item-action">Resultado: <span style="color: #ffbb33;">GANADO</span></button>
+        <div class="row text-center justify-content-center" style="margin-bottom: 5%">
+            <h1 class="sizedPageTitle"><b>HAS PARTICIPADO EN {{ sorteos|length }} SORTEO(S)</b></h1>
+        </div>
+        {% if sorteos|length > 0 %}
+            {% for sorteo in sorteos | reverse %}
+                {% if ganados|length > 0 %}
+                    {%  for ganado in ganados %}
+                        {% if sorteo.ganador %}
+                            {% if ganado.ganador.id == sorteo.ganador.id %}
+                                <div class="row">
+                                    <div class="col-sm-6 offset-sm-3 text-left" style="margin-bottom: 50px">
+                                        <div class="list-group">
+                                            <button type="button" class="list-group-item list-group-item-action text-dark text-center bg-warning">
+                                                SORTEO {{ sorteo.id }}
+                                            </button>
+                                            <button type="button" class="list-group-item list-group-item-action" disabled>Premio: {{ sorteo.premio }}</button>
+                                            <button type="button" class="list-group-item list-group-item-action" disabled>Fecha: {{ sorteo.fecha|date('d/m/Y') }}</button>
+                                            <button type="button" class="list-group-item list-group-item-action">Resultado: <span style="color: #ffbb33;">GANADO</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% elseif sorteo.id == id_actual %}
+                            <div class="row">
+                                <div class="col-sm-6 offset-sm-3 text-left" style="margin-bottom: 50px">
+                                    <div class="list-group">
+                                        <button type="button" class="list-group-item list-group-item-action text-dark text-center" style="background-color: chartreuse">
+                                            SORTEO {{ sorteo.id }}
+                                        </button>
+                                        <button type="button" class="list-group-item list-group-item-action" disabled>Premio: {{ sorteo.premio }}</button>
+                                        <button type="button" class="list-group-item list-group-item-action" disabled>Fecha: {{ sorteo.fecha|date('d/m/Y') }}</button>
+                                        <button type="button" class="list-group-item list-group-item-action">Resultado: <span style="color: chartreuse;">PENDIENTE</span></button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    {% endif %}
+                        {% else %}
+                            <div class="row">
+                                <div class="col-sm-6 offset-sm-3 text-left" style="margin-bottom: 50px">
+                                    <div class="list-group">
+                                        <button type="button" class="list-group-item list-group-item-action text-dark text-center" style="background-color: red">
+                                            SORTEO {{ sorteo.id }}
+                                        </button>
+                                        <button type="button" class="list-group-item list-group-item-action" disabled>Premio: {{ sorteo.premio }}</button>
+                                        <button type="button" class="list-group-item list-group-item-action" disabled>Fecha: {{ sorteo.fecha|date('d/m/Y') }}</button>
+                                        <button type="button" class="list-group-item list-group-item-action">Resultado: <span style="color: red;">PERDIDO</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {%  endfor %}
                 {% elseif sorteo.id == id_actual %}
                     <div class="row">
                         <div class="col-sm-6 offset-sm-3 text-left" style="margin-bottom: 50px">
@@ -99,6 +91,7 @@
                         </div>
                     </div>
                 {% else %}
+
                     <div class="row">
                         <div class="col-sm-6 offset-sm-3 text-left" style="margin-bottom: 50px">
                             <div class="list-group">
@@ -112,165 +105,160 @@
                         </div>
                     </div>
                 {% endif %}
-            {%  endfor %}
-        {% elseif sorteo.id == id_actual %}
-            <div class="row">
-                <div class="col-sm-6 offset-sm-3 text-left" style="margin-bottom: 50px">
-                    <div class="list-group">
-                        <button type="button" class="list-group-item list-group-item-action text-dark text-center" style="background-color: chartreuse">
-                            SORTEO {{ sorteo.id }}
-                        </button>
-                        <button type="button" class="list-group-item list-group-item-action" disabled>Premio: {{ sorteo.premio }}</button>
-                        <button type="button" class="list-group-item list-group-item-action" disabled>Fecha: {{ sorteo.fecha|date('d/m/Y') }}</button>
-                        <button type="button" class="list-group-item list-group-item-action">Resultado: <span style="color: chartreuse;">PENDIENTE</span></button>
+            {% endfor %}
+            </div>
+        {%  else %}
+            </div>
+            <div class="container rounded" style="padding-top:70px;padding-bottom:70px; background-color: #EDDBF3; margin-bottom: 5%">
+                <div class="row text-center justify-content-center">
+                    <h3>¡REALIZA UNA ENCUESTA PARA UNIRTE A UN SORTEO!</h3>
+                </div>
+                <div class="row text-center justify-content-center" style="margin-top: 2%">
+                    <a href="/home/encuestas"><input type="button" class="btn btn-warning" value="Ver todas las encuestas"></a>
+                </div>
+            </div>
+
+            <div class="container" style="padding: 1%">
+                <div class="row justify-content-center text-center" style="padding-bottom: 2%">
+                    <input id="showBtn" type="button" class="btn btn-danger" onclick="mostrarEncuesta()" value="Mostrar encuesta">
+                </div>
+            </div>
+
+            <!-- modal box to subscription-->
+
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header justify-content-center text-center" style="background-color:  #EDDBF3;">
+                            <h4 class="modal-title">UNIRSE GRATIS AL SORTEO</h4>
+                        </div>
+                        <div class="modal-body justify-content-center text-center" style="background-color: #EDDBF3">
+                            <form action="">
+                                <div class="row justify-content-center text-center">
+                                    <div class="col-8">
+                                        <div class="form-group">
+                                            <label for="nombre">Nombre*:</label>
+                                            <input type="text" class="form-control input-class" id="userName" name="nombre" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center text-center">
+                                    <div class="col-8">
+                                        <div class="form-group">
+                                            <label for="email">Email*:</label>
+                                            <input type="email" class="form-control input-class" id="userEmail" name="email" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center text-center">
+                                    <div class="col-8">
+                                        <div class="form-group">
+                                            <label for="pwd">Contaseña*:</label>
+                                            <input type="password" class="form-control input-class" id="userPass" name="pwd" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <label><input type="checkbox" name="validate" id="validate" required>Validar</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer justify-content-center" style="background-color:  #EDDBF3">
+                            <button type="button" class="btn btn-success" onclick="addUser()">Unirse</button>
+                            <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        {% else %}
 
-            <div class="row">
-                <div class="col-sm-6 offset-sm-3 text-left" style="margin-bottom: 50px">
-                    <div class="list-group">
-                        <button type="button" class="list-group-item list-group-item-action text-dark text-center" style="background-color: red">
-                            SORTEO {{ sorteo.id }}
-                        </button>
-                        <button type="button" class="list-group-item list-group-item-action" disabled>Premio: {{ sorteo.premio }}</button>
-                        <button type="button" class="list-group-item list-group-item-action" disabled>Fecha: {{ sorteo.fecha|date('d/m/Y') }}</button>
-                        <button type="button" class="list-group-item list-group-item-action">Resultado: <span style="color: red;">PERDIDO</span></button>
+            <!-- SECCIÓN PREGUNTAS/RESPUESTA -->
+
+            <section id="top" style="display: none">
+                <div class="container rounded" style="background-color: #EDDBF3; padding-bottom:20px; padding-top: 70px">
+                    <div class="row justify-content-center text-center" id="title">
                     </div>
+                    <div class="row">
+                        <div class="col-sm-8 container-fluid justify-content-center text-center rounded" style="height: 850px; padding-top:50px; background-color: #EDDBF3; height: auto; width: auto;">
+                            <div class="row justify-content-center text-center" id="titulo_encuesta" style="padding-bottom:20px">
+                            </div>
+                            <div class="row justify-content-center" id="img_encuesta" style="padding-bottom:20px">
+                            </div>
+                            <div class="row justify-content-center text-center">
+                                <div class="col-sm-6" id="pregunta">
+                                </div>
+                            </div>
+                            <div class="row justify-content-center text-center" id="div_respuestas" style="padding-bottom:20px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+
+                <div class="row justify-content-center">
+                    <div class="col-9 col-sm-4" style="height: 25px">
+                        <div class="progress" style="background-color: grey">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" id="PBar" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"
+                                 style="width:1%; position: relative; background-color: green">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+                <!-- SECCIÓN COMENTARIOS -->
+
+                <div class="container rounded" style="background-color: #EDDBF3; padding-bottom:20px; padding-top: 70px; margin-bottom: 4%">
+                    <div class="row">
+                        <div class="col-sm-8 container-fluid justify-content-center rounded" style=" background-color: #EDDBF3">
+                            <div class="col-sm-9">
+                                <h4>Deja un comentario:</h4>
+                                <form role="form">
+                                    <div class="form-group">
+                                        <textarea id="coment" class="form-control" rows="3" required></textarea>
+                                    </div>
+                                    <button type="button" class="btn btn-success" onclick="imprimirComentarios()">Enviar</button>
+                                </form>
+                                <br><br>
+                                <p id="pComment"> <span class="badge badge-dark" id="number"></span> COMENTARIOS:</p><br>
+                                <div class="col-sm-9" id="rowComment">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+        {% if sorteos|length == 1 %}
+            <div class="container rounded" style="padding-top:70px;padding-bottom:70px; background-color: #EDDBF3; margin-bottom: 5%">
+                <div class="row text-center justify-content-center">
+                    <h3>¡REALIZA OTRA ENCUESTA PARA UNIRTE A MÁS SORTEOS!</h3>
+                </div>
+                <div class="row text-center justify-content-center" style="margin-top: 2%">
+                    <a href="/home/encuestas"><input type="button" class="btn btn-warning" value="Ver todas las encuestas"></a>
                 </div>
             </div>
         {% endif %}
-    {% endfor %}
-</div>
-{%  else %}
-</div>
-<div class="container rounded" style="padding-top:70px;padding-bottom:70px; background-color: #EDDBF3; margin-bottom: 5%">
-    <div class="row text-center justify-content-center">
-        <h3>¡REALIZA UNA ENCUESTA PARA UNIRTE A UN SORTEO!</h3>
-    </div>
-    <div class="row text-center justify-content-center" style="margin-top: 2%">
-        <a href="/home/encuestas"><input type="button" class="btn btn-warning" value="Ver todas las encuestas"></a>
-    </div>
-</div>
-    <!-- modal box to subscription-->
+    {% endblock %}
 
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header justify-content-center text-center" style="background-color:  #EDDBF3;">
-                    <h4 class="modal-title">UNIRSE GRATIS AL SORTEO</h4>
-                </div>
-                <div class="modal-body justify-content-center text-center" style="background-color: #EDDBF3">
-                    <form action="">
-                        <div class="row justify-content-center text-center">
-                            <div class="col-8">
-                                <div class="form-group">
-                                    <label for="nombre">Nombre*:</label>
-                                    <input type="text" class="form-control input-class" id="userName" name="nombre" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center text-center">
-                            <div class="col-8">
-                                <div class="form-group">
-                                    <label for="email">Email*:</label>
-                                    <input type="email" class="form-control input-class" id="userEmail" name="email" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row justify-content-center text-center">
-                            <div class="col-8">
-                                <div class="form-group">
-                                    <label for="pwd">Contaseña*:</label>
-                                    <input type="password" class="form-control input-class" id="userPass" name="pwd" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-check">
-                            <label><input type="checkbox" name="validate" id="validate" required>Validar</label>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer justify-content-center" style="background-color:  #EDDBF3">
-                    <button type="button" class="btn btn-success" onclick="addUser()">Unirse</button>
-                    <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    {%  block javaScript %}
+        <script src="{{ asset('js/main.js') }}"></script>
+        <script src="{{ asset('js/encuesta.js') }}"></script>
+        <script src="{{ asset('js/animateJS.js') }}"></script>
+        <script>
+            var encuesta = {{ encuesta|raw }};
 
-    <!-- SECCIÓN PREGUNTAS/RESPUESTA -->
-
-    <section id="top">
-        <div class="container rounded" style="background-color: #EDDBF3; padding-bottom:20px; padding-top: 70px">
-            <div class="row justify-content-center text-center" id="title">
-            </div>
-            <div class="row">
-                <div class="col-sm-8 container-fluid justify-content-center text-center rounded" style="height: 850px; padding-top:50px; background-color: #EDDBF3; height: auto; width: auto;">
-                    <div class="row justify-content-center text-center" id="titulo_encuesta" style="padding-bottom:20px">
-                    </div>
-                    <div class="row justify-content-center" id="img_encuesta" style="padding-bottom:20px">
-                    </div>
-                    <div class="row justify-content-center text-center">
-                        <div class="col-sm-6" id="pregunta">
-                        </div>
-                    </div>
-                    <div class="row justify-content-center text-center" id="div_respuestas" style="padding-bottom:20px">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br><br>
-
-        <div class="row justify-content-center">
-            <div class="col-9 col-sm-4" style="height: 25px">
-                <div class="progress" style="background-color: grey">
-                    <div class="progress-bar progress-bar-striped progress-bar-animated" id="PBar" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"
-                         style="width:1%; position: relative; background-color: green">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br><br>
-        <!-- SECCIÓN COMENTARIOS -->
-
-        <div class="container rounded" style="background-color: #EDDBF3; padding-bottom:20px; padding-top: 70px; margin-bottom: 4%">
-            <div class="row">
-                <div class="col-sm-8 container-fluid justify-content-center rounded" style=" background-color: #EDDBF3">
-                    <div class="col-sm-9">
-                        <h4>Deja un comentario:</h4>
-                        <form role="form">
-                            <div class="form-group">
-                                <textarea id="coment" class="form-control" rows="3" required></textarea>
-                            </div>
-                            <button type="button" class="btn btn-success" onclick="imprimirComentarios()">Enviar</button>
-                        </form>
-                        <br><br>
-                        <p id="pComment"> <span id="number"></span> COMENTARIOS:</p><br>
-                        <div class="col-sm-9" id="rowComment">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-{% endif %}
-{% if sorteos|length == 1 %}
-<div class="container rounded" style="padding-top:70px;padding-bottom:70px; background-color: #EDDBF3; margin-bottom: 5%">
-    <div class="row text-center justify-content-center">
-        <h3>¡REALIZA OTRA ENCUESTA PARA UNIRTE A MÁS SORTEOS!</h3>
-    </div>
-    <div class="row text-center justify-content-center" style="margin-top: 2%">
-        <a href="/home/encuestas"><input type="button" class="btn btn-warning" value="Ver todas las encuestas"></a>
-    </div>
-</div>
-{% endif %}
-<!-- Footer-->
-<footer>
-    <div class="container-fluid text-center">
-        <p>2018&copy; Pablo García Saleta | Todos los derechos reservados</p>
-    </div>
-</footer>
-</body>
-</html>
+            function mostrarEncuesta() {
+                $("#top").hide().fadeIn(1000);
+                $("#showBtn").attr("value", "Ocultar encuesta");
+                $("#showBtn").attr("onclick", "ocultarEncuesta()");
+                $("#showBtn").animatescroll({scrollSpeed:2000,easing:'easeInOutBack'});
+                // https://plugins.compzets.com/animatescroll/#
+            }
+            
+            function ocultarEncuesta() {
+                $("#top").fadeOut(1000);
+                $("#showBtn").attr("value", "Mostrar encuesta");
+                $("#showBtn").attr("onclick", "mostrarEncuesta()");
+                $("#showBtn").animatescroll({scrollSpeed:2000,easing:'easeInOutBack'});
+            }
+        </script>
+    {% endblock %}

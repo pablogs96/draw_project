@@ -1,42 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'encuesta/index.html.twig' %}
 
-<head>
-    <title>IdentificaTest home</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
-    <link href="{{ asset('css/bootstrap-social.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Secular+One" rel="stylesheet" />
-</head>
+    {% block title %}
+        IdentificaTest
+    {% endblock title %}
 
-<body style="background-color: black">
-<!-- BARRA DE NAVEGACION -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top navSize" id="nav" style="background-color: #EDDBF3;">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="true" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse navbar-center" id="navbarToggler">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/home">HOME<span class="sr-only"></span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/home/encuestas">ENCUESTAS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/home/sorteo">SORTEO</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-<!-- SECCION DE EXPLICACION -->
+    {% block stylesheets %}
+        <link href="{{ asset('css/bootstrap-social.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
+        {{ parent() }}
+    {% endblock %}
+
+{% block body_tag %}style="background-color: black"{% endblock %}
+    {% block home_active %}active{% endblock %}
+    {% block body_content %}
+
+    <!-- SECCION DE EXPLICACION -->
     <header id="header">
         <div class="container rounded" style="padding-top:70px;padding-bottom:70px; margin-top: 8%; background-color: #EDDBF3">
             <div class="row text-center justify-content-center" id="edge" style="padding-bottom: 20px">
@@ -45,14 +23,14 @@
             <div class="row justify-content-center">
                 <div class="col-sm-6 col-10">
                     <h5>En esta web encontrarás múltiples encuestas con las que podrás divertirte respondiendo y averiguando tus resultados. Después de realizar una encuesta tendrás la
-                    opción de unirte a un sorteo de manera totalmente gratuita. Mucha suerte y espero que disfrutes de esta web!</h5>
+                        opción de unirte a un sorteo de manera totalmente gratuita. Mucha suerte y espero que disfrutes de esta web!</h5>
                 </div>
             </div>
             <div class="row">
             </div>
         </div>
     </header>
-<!-- SECCION DE ENCUESTAS -->
+    <!-- SECCION DE ENCUESTAS -->
     <section>
         <div class="container rounded text-center" style="padding-top:100px;padding-bottom:70px; margin-top: 4%; background-color: #EDDBF3">
             <h1 class="sizedPageTitle">ALGUNAS DE NUESTRAS ENCUESTAS</h1>
@@ -68,7 +46,7 @@
             </div>
         </div>
     </section>
-<!-- SECCION DE COLABORADORES -->
+    <!-- SECCION DE COLABORADORES -->
     <section>
         <div id="section3" class="container rounded text-center" style="padding-top:100px;padding-bottom:70px; margin-top: 4%; background-color: #EDDBF3">
             <div class="row justify-content-center text-center">
@@ -88,41 +66,38 @@
         </div>
     </section>
 
-<!-- SECCION DE SOBRE MI -->
-<section>
-    <div id="section3" class="container rounded text-center" style="padding-top:100px;padding-bottom:70px; margin-top: 4%; margin-bottom: 4%; background-color: #EDDBF3">
-        <h1 class="sizedPageTitle">SOBRE MÍ</h1>
-        <hr>
-        <div class="row justify-content-center">
-            <img class="mx-auto rounded-circle" src="https://png.icons8.com/metro/1600/gender-neutral-user.png" width="200px" height="200px">
+    <!-- SECCION DE SOBRE MI -->
+    <section>
+        <div id="section3" class="container rounded text-center" style="padding-top:100px;padding-bottom:70px; margin-top: 4%; margin-bottom: 4%; background-color: #EDDBF3">
+            <h1 class="sizedPageTitle">SOBRE MÍ</h1>
+            <hr>
+            <div class="row justify-content-center">
+                <img class="mx-auto rounded-circle" src="https://png.icons8.com/metro/1600/gender-neutral-user.png" width="200px" height="200px">
+            </div>
+            <div>
+                <h4>Pablo García Saleta</h4>
+            </div>
+            <div>
+                <p class="text-muted">Técnico superior en desarrollo de aplicaciones multiplataforma</p>
+            </div>
+            <div>
+                <ul class="list-inline social-buttons">
+                    <li class="list-inline-item">
+                        <a class="btn btn-lg btn-social-icon btn-github" href="https://github.com/pablogs96/draw_project" target="_blank" title="Find me at GitHub" rel="nofollow">
+                            <span class="fa fa-github"></span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a class="btn btn-lg btn-social-icon btn-linkedin" style="position: relative" href="https://www.linkedin.com/in/pablo-garcia-saleta/" target="_blank" title="Find me at LinkedIn" rel="nofollow">
+                            <span class="fa fa-linkedin"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div>
-            <h4>Pablo García Saleta</h4>
-        </div>
-        <div>
-            <p class="text-muted">Técnico superior en desarrollo de aplicaciones multiplataforma</p>
-        </div>
-        <div>
-            <ul class="list-inline social-buttons">
-                <li class="list-inline-item">
-                    <a class="btn btn-lg btn-social-icon btn-github" href="https://github.com/pablogs96/draw_project" target="_blank" title="Find me at GitHub" rel="nofollow">
-                        <span class="fa fa-github"></span>
-                    </a>
-                </li>
-                <li class="list-inline-item">
-                    <a class="btn btn-lg btn-social-icon btn-linkedin" style="position: relative" href="https://www.linkedin.com/in/pablo-garcia-saleta/" target="_blank" title="Find me at LinkedIn" rel="nofollow">
-                        <span class="fa fa-linkedin"></span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</section>
-<!-- FOOTER -->
-    <footer>
-        <div class="container-fluid text-center">
-            <p>2018&copy; Pablo García Saleta | Todos los derechos reservados</p>
-        </div>
-    </footer>
-</body>
-</html>
+    </section>
+    {% endblock %}
+
+    {%  block javaScript %}
+        <script src="{{ asset('js/main.js') }}"></script>
+    {% endblock %}

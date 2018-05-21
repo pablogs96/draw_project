@@ -1,384 +1,354 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'encuesta/index.html.twig' %}
 
-<head>
-    <title>IdentificaTest encuesta</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-    <script src="{{ asset('js/main.js') }}"></script>
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/bootstrap-social.css') }}" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Secular+One" rel="stylesheet" />
-</head>
-<body style="background-color: black">
-<script>
-    var min = {{ min }};
-    var max = {{ max }};
+    {% block title %}
+        IdentificaTest encuesta
+    {% endblock title %}
+    {% block stylesheets %}
+        <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
+        {{ parent() }}
+    {% endblock %}
 
-    $(document).ready(function () {
-        $("#prev").hide();
-        if (max === 1) {
-            $("#next").hide();
-        }
-    });
-</script>
-<!-- Barra navegación-->
+{% block body_tag %}data-spy="scroll" data-target=".navbar" data-offset="50" onload="cargar()" style="background-color: black"{% endblock %}
+    {% block sorteo_active %}active{% endblock %}
+    {% block body_content %}
+        <!-- modal box to subscription-->
 
-<nav class="navbar navbar-expand-lg navbar-light fixed-top navSize" id="nav" style="background-color: #EDDBF3;">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="true" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse navbar-center" id="navbarToggler">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-                <a class="nav-link" href="/home">HOME<span class="sr-only"></span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/home/encuestas">ENCUESTAS</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/home/sorteo">SORTEO</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
-<!-- modal box to subscription-->
-
-<div class="modal fade" id="unirseModal" role="dialog">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header justify-content-center text-center" style="background-color:  #EDDBF3;">
-                <h3 class="modal-title">UNIRSE GRATIS AL SORTEO</h3>
-            </div>
-            <div class="modal-body justify-content-center text-center" style="background-color: #EDDBF3">
-                <h6>Para poder participar en el sorteo debes <b>cubrir una encuesta</b>, y un usuario solo puede participar <b>una vez</b>.</h6>
-            </div>
-            <div class="modal-footer justify-content-center" style="background-color:  #EDDBF3">
-                <a href="/home/encuesta/1"><button type="button" class="btn btn-success">Realizar encuesta</button></a>
-                <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- modal box to borrarse-->
-
-<div class="modal fade" id="borrarseModal" role="dialog">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header justify-content-center text-center" style="background-color:  #EDDBF3;">
-                <h3 class="modal-title">¿QUIERES BORRARTE DEL SORTEO?</h3>
-            </div>
-            <div class="modal-body justify-content-center text-center" style="background-color: #EDDBF3">
-                <form action="">
-                    <div class="row justify-content-center text-center">
-                        <div class="col-8">
-                            <div class="form-group">
-                                <label for="email">Email:</label>
-                                <input type="email" class="form-control input-class" id="usermail" name="email">
-                            </div>
-                        </div>
+        <div class="modal fade" id="unirseModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center text-center" style="background-color:  #EDDBF3;">
+                        <h3 class="modal-title">UNIRSE GRATIS AL SORTEO</h3>
                     </div>
-                    <div class="row justify-content-center text-center">
-                        <div class="col-8">
-                            <div class="form-group">
-                                <label for="pwd">Contaseña:</label>
-                                <input type="password" class="form-control input-class" id="userpass" name="pwd">
-                            </div>
-                        </div>
+                    <div class="modal-body justify-content-center text-center" style="background-color: #EDDBF3">
+                        <h6>Para poder participar en el sorteo debes <b>cubrir una encuesta</b>, y un usuario solo puede participar <b>una vez</b>.</h6>
                     </div>
-                    <div class="form-check">
-                        <label><input type="checkbox" name="validate" id="validate">Validar</label>
+                    <div class="modal-footer justify-content-center" style="background-color:  #EDDBF3">
+                        <a href="/home/encuesta/1"><button type="button" class="btn btn-success">Realizar encuesta</button></a>
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer justify-content-center" style="background-color:  #EDDBF3">
-                <a href="#"><button type="button" class="btn btn-success" onclick="borrarse()">Borrarse</button></a>
-                <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- HEADER -->
-
-<header id="header">
-    <div class="container rounded" style="padding-top:70px;padding-bottom:70px; background-color: #EDDBF3; margin-top: 7%">
-        <div class="row justify-content-center" id="edge">
-            <a href="https://www.opositatest.com/"></a>
-        </div>
-        <div class="row text-center justify-content-center" style="padding-bottom: 20px">
-            <h1 class="sizedPageTitle"><b>¡BIENVENIDO AL SORTEO DE IDENTIFICATEST!</b></h1>
-        </div>
-        <div class="row justify-content-center text-center">
-            <div class="col-sm-6 col-10 justify-content-center text-left">
-                <h6>Este sorteo es totalmente gratuito y opcional. El requisito para poder participar es únicamente realizar al menos una encuesta.
-                    Solamente habrá un sorteo activo por mes y solamente te puedes suscribir al sorteo activo una vez. Si quieres saber que sorteos
-                    has ganado en la sección de <i>Historial de sorteos</i> puedes hacer esta operación.</h6>
-            </div>
-        </div>
-        <div class="row justify-content-center" style="padding-top: 5%">
-            <div class="col-9 text-left" style="margin-bottom: 50px">
-                <div class="list-group">
-                    <button type="button" class="list-group-item list-group-item-action text-dark text-center" style="background-color: chartreuse">
-                        SORTEO ACTUAL ( {{ actual.id }} )
-                    </button>
-                    <button type="button" class="list-group-item list-group-item-action"><b>PREMIO:</b> {{ actual.premio }}</button>
-                    <button type="button" class="list-group-item list-group-item-action"><b>PARTICIPANTES:</b> {{ actual.usuarios|length }}</button>
-                    <button type="button" class="list-group-item list-group-item-action"><b>FECHA:</b> {{ actual.fecha|date('d/m/Y') }}</button>
-                    <button type="button" class="list-group-item list-group-item-action"><b>GANADOR:</b> Pendiente</button>
                 </div>
             </div>
         </div>
-        <div class="row text-center justify-content-center" style="padding-bottom: 20px">
-            <div class="col-sm-5 unirse-pos" style="padding-bottom: 10px">
-                <input type="button" class="btn btn-success" value="Unirse" data-target="#unirseModal" data-toggle="modal">
-            </div>
-            <div class="col-sm-6 borrarse-pos">
-                <input type="button" class="btn btn-warning" value="Dejar de participar" data-target="#borrarseModal" data-toggle="modal">
+
+        <!-- modal box to borrarse-->
+
+        <div class="modal fade" id="borrarseModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header justify-content-center text-center" style="background-color:  #EDDBF3;">
+                        <h3 class="modal-title">¿QUIERES BORRARTE DEL SORTEO?</h3>
+                    </div>
+                    <div class="modal-body justify-content-center text-center" style="background-color: #EDDBF3">
+                        <form action="">
+                            <div class="row justify-content-center text-center">
+                                <div class="col-8">
+                                    <div class="form-group">
+                                        <label for="email">Email:</label>
+                                        <input type="email" class="form-control input-class" id="usermail" name="email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center text-center">
+                                <div class="col-8">
+                                    <div class="form-group">
+                                        <label for="pwd">Contaseña:</label>
+                                        <input type="password" class="form-control input-class" id="userpass" name="pwd">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-check">
+                                <label><input type="checkbox" name="validate" id="validate">Validar</label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer justify-content-center" style="background-color:  #EDDBF3">
+                        <a href="#"><button type="button" class="btn btn-success" onclick="borrarse()">Borrarse</button></a>
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</header>
 
+        <!-- HEADER -->
 
-<!-- 3ª Sección (Sección del sorteo) -->
-<section>
-    <div class="container rounded" id="scroll" style="padding-top:70px;padding-bottom:70px; background-color: #EDDBF3; margin-top: 7%; margin-bottom: 1%">
-        <div class="row justify-content-center" style="padding-bottom: 3%">
-            <div class="col-sm-6 offset-sm-1 justify-content-sm-right text-sm-right justify-content-center text-center">
-                <h3 class="sizedPageTitle">HISTORIAL DE SORTEOS</h3>
-            </div>
-            <div class="col-sm-3 justify-content-sm-right text-sm-right justify-content-center text-center">
-                <a href="/home/sorteo/login"><button type="button" class="btn btn-info">VER MIS SORTEOS</button></a>
-            </div>
-
-        </div>
-        <div id="contenedor">
-            {% for sorteo in historial %}
-                <div class="row">
-                    <div class="col-sm-6 offset-sm-3 text-left" style="margin-bottom: 50px">
+        <header id="header">
+            <div class="container rounded" style="padding-top:70px;padding-bottom:70px; background-color: #EDDBF3; margin-top: 7%">
+                <div class="row justify-content-center" id="edge">
+                    <a href="https://www.opositatest.com/"></a>
+                </div>
+                <div class="row text-center justify-content-center" style="padding-bottom: 20px">
+                    <h1 class="sizedPageTitle"><b>¡BIENVENIDO AL SORTEO DE IDENTIFICATEST!</b></h1>
+                </div>
+                <div class="row justify-content-center text-center">
+                    <div class="col-sm-6 col-10 justify-content-center text-left">
+                        <h6>Este sorteo es totalmente gratuito y opcional. El requisito para poder participar es únicamente realizar al menos una encuesta.
+                            Solamente habrá un sorteo activo por mes y solamente te puedes suscribir al sorteo activo una vez. Si quieres saber que sorteos
+                            has ganado en la sección de <i>Historial de sorteos</i> puedes hacer esta operación.</h6>
+                    </div>
+                </div>
+                <div class="row justify-content-center" style="padding-top: 5%">
+                    <div class="col-9 text-left" style="margin-bottom: 50px">
                         <div class="list-group">
-                            <button type="button" class="list-group-item list-group-item-action bg-warning text-dark text-center">
-                                SORTEO {{ sorteo.id }}
+                            <button type="button" class="list-group-item list-group-item-action text-dark text-center" style="background-color: chartreuse">
+                                SORTEO ACTUAL ( {{ actual.id }} )
                             </button>
-                            <button type="button" class="list-group-item list-group-item-action" disabled>Premio: {{ sorteo.premio }}</button>
-                            <button type="button" class="list-group-item list-group-item-action" disabled>Participantes: {{  sorteo.usuarios|length }}</button>
-                            <button type="button" class="list-group-item list-group-item-action" disabled>Fecha: {{ sorteo.fecha|date('d/m/Y') }}</button>
-                            <button type="button" class="list-group-item list-group-item-action">Ganador: Usuario {{ sorteo.ganador.id }}</button>
+                            <button type="button" class="list-group-item list-group-item-action"><b>PREMIO:</b> {{ actual.premio }}</button>
+                            <button type="button" class="list-group-item list-group-item-action"><b>PARTICIPANTES:</b> {{ actual.usuarios|length }}</button>
+                            <button type="button" class="list-group-item list-group-item-action"><b>FECHA:</b> {{ actual.fecha|date('d/m/Y') }}</button>
+                            <button type="button" class="list-group-item list-group-item-action"><b>GANADOR:</b> Pendiente</button>
                         </div>
                     </div>
                 </div>
-            {% endfor %}
-        </div>
-    </div>
-
-    <div class="container" id="paginador">
-        <div class="row">
-            <div class="col-sm-10 col-6">
-                <ul class="pagination" id="menu">
-                    <li class="page-item"><input type="button" class="page-link" onclick="previous()" id="prev" value="Anterior"></li>
-                </ul>
+                <div class="row text-center justify-content-center" style="padding-bottom: 20px">
+                    <div class="col-sm-5 unirse-pos" style="padding-bottom: 10px">
+                        <input type="button" class="btn btn-success" value="Unirse" data-target="#unirseModal" data-toggle="modal">
+                    </div>
+                    <div class="col-sm-6 borrarse-pos">
+                        <input type="button" class="btn btn-warning" value="Dejar de participar" data-target="#borrarseModal" data-toggle="modal">
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-2 col-6">
-                <ul class="pagination ul-pos" id="menu">
-                    <li class="page-item"><input type="button" class="page-link" onclick="next()" id="next" value="Siguiente"></li>
-                </ul>
+        </header>
+
+
+        <!-- 3ª Sección (Sección del sorteo) -->
+        <section>
+            <div class="container rounded" id="scroll" style="padding-top:70px;padding-bottom:70px; background-color: #EDDBF3; margin-top: 7%; margin-bottom: 1%">
+                <div class="row justify-content-center" style="padding-bottom: 3%">
+                    <div class="col-sm-6 offset-sm-1 justify-content-sm-right text-sm-right justify-content-center text-center">
+                        <h3 class="sizedPageTitle">HISTORIAL DE SORTEOS</h3>
+                    </div>
+                    <div class="col-sm-3 justify-content-sm-right text-sm-right justify-content-center text-center">
+                        <a href="/home/sorteo/login"><button type="button" class="btn btn-info">VER MIS SORTEOS</button></a>
+                    </div>
+
+                </div>
+                <div id="contenedor">
+                    {% for sorteo in historial %}
+                        <div class="row">
+                            <div class="col-sm-6 offset-sm-3 text-left" style="margin-bottom: 50px">
+                                <div class="list-group">
+                                    <button type="button" class="list-group-item list-group-item-action bg-warning text-dark text-center">
+                                        SORTEO {{ sorteo.id }}
+                                    </button>
+                                    <button type="button" class="list-group-item list-group-item-action" disabled>Premio: {{ sorteo.premio }}</button>
+                                    <button type="button" class="list-group-item list-group-item-action" disabled>Participantes: {{  sorteo.usuarios|length }}</button>
+                                    <button type="button" class="list-group-item list-group-item-action" disabled>Fecha: {{ sorteo.fecha|date('d/m/Y') }}</button>
+                                    <button type="button" class="list-group-item list-group-item-action">Ganador: Usuario {{ sorteo.ganador.id }}</button>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
-        </div>
-    </div>
-</section>
 
-<!-- Footer-->
-<footer>
-    <div class="container-fluid text-center">
-        <p>2018&copy; Pablo García Saleta | Todos los derechos reservados</p>
-    </div>
-</footer>
+            <div class="container" id="paginador">
+                <div class="row">
+                    <div class="col-sm-10 col-6">
+                        <ul class="pagination" id="menu">
+                            <li class="page-item"><input type="button" class="page-link" onclick="previous()" id="prev" value="Anterior"></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-2 col-6">
+                        <ul class="pagination ul-pos" id="menu">
+                            <li class="page-item"><input type="button" class="page-link" onclick="next()" id="next" value="Siguiente"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endblock %}
+    {% block javaScript %}
+        <script src="{{ asset('js/main.js') }}"></script>
+        <script src="{{ asset('js/animateJS.js') }}"></script>
 
-<script>
-    //funciones para la paginacion del historial
-    function previous(){
-        $("#prev").fadeIn(1000);
-        var data = {"min": min + 4, "max": min + 1};
-        $.ajax({
-            data:  data, //datos que se envian a traves de ajax
-            url:   '/home/sorteo/historial', //archivo que recibe la peticion
-            type:  'get', //método de envio
-            beforeSend: function () {
-                console.log("Procesando, espere por favor...");
-            },
-            success:  function (np_sorteos) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-                cambiar(np_sorteos);
+        <script>
+            var min = {{ min }};
+            var max = {{ max }};
+
+            $(document).ready(function () {
+                $("#prev").hide();
+                if (max === 1) {
+                    $("#next").hide();
+                }
+            });
+
+            //funciones para la paginacion del historial
+            function previous(){
+                $("#prev").fadeIn(1000);
+                var data = {"min": min + 4, "max": min + 1};
+                $.ajax({
+                    data:  data, //datos que se envian a traves de ajax
+                    url:   '/home/sorteo/historial', //archivo que recibe la peticion
+                    type:  'get', //método de envio
+                    beforeSend: function () {
+                        console.log("Procesando, espere por favor...");
+                    },
+                    success:  function (np_sorteos) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+                        cambiar(np_sorteos);
+                    }
+                });
             }
-        });
-    }
 
-    function next(){
-        var data = {"min": min - 4, "max": max - 4};
-        $.ajax({
-            data:  data, //datos que se envian a traves de ajax
-            url:   '/home/sorteo/historial', //archivo que recibe la peticion
-            type:  'get', //método de envio
-            beforeSend: function () {
-                console.log("Procesando, espere por favor...");
-            },
-            success:  function (np_sorteos) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-                cambiar(np_sorteos);
+            function next(){
+                var data = {"min": min - 4, "max": max - 4};
+                $.ajax({
+                    data:  data, //datos que se envian a traves de ajax
+                    url:   '/home/sorteo/historial', //archivo que recibe la peticion
+                    type:  'get', //método de envio
+                    beforeSend: function () {
+                        console.log("Procesando, espere por favor...");
+                    },
+                    success:  function (np_sorteos) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+                        cambiar(np_sorteos);
+                    }
+                });
             }
-        });
-    }
 
-    function cambiar(np_sorteos){
-        $contenedor = $("#contenedor");
-        $contenedor.empty();
+            function cambiar(np_sorteos){
+                $contenedor = $("#contenedor");
+                $contenedor.empty();
 
-        $sorteos2 = JSON.parse(np_sorteos);
+                $sorteos2 = JSON.parse(np_sorteos);
 
-        for (var i = 0; i < $sorteos2.length; i++){
+                for (var i = 0; i < $sorteos2.length; i++){
 
-            //sorteos
-            var row = document.createElement("div");
-            row.setAttribute("class", "row justify-content-center");
+                    //sorteos
+                    var row = document.createElement("div");
+                    row.setAttribute("class", "row justify-content-center");
 
-            var col = document.createElement("div");
-            col.setAttribute("class", "col-sm-6 text-left");
-            col.setAttribute("style", "margin-bottom: 50px");
+                    var col = document.createElement("div");
+                    col.setAttribute("class", "col-sm-6 text-left");
+                    col.setAttribute("style", "margin-bottom: 50px");
 
-            var div = document.createElement("div");
-            div.setAttribute("class", "list-group");
+                    var div = document.createElement("div");
+                    div.setAttribute("class", "list-group");
 
-            var b1 = document.createElement("button");
-            b1.setAttribute("type", "button");
-            b1.setAttribute("class", "list-group-item list-group-item-action bg-warning text-dark text-center");
-            b1.innerHTML = "SORTEO " + $sorteos2[i].id;
+                    var b1 = document.createElement("button");
+                    b1.setAttribute("type", "button");
+                    b1.setAttribute("class", "list-group-item list-group-item-action bg-warning text-dark text-center");
+                    b1.innerHTML = "SORTEO " + $sorteos2[i].id;
 
-            var b2 = document.createElement("button");
-            b2.setAttribute("type", "button");
-            b2.setAttribute("class", "list-group-item list-group-item-action");
-            b2.innerHTML = "Premio: " + $sorteos2[i].premio;
+                    var b2 = document.createElement("button");
+                    b2.setAttribute("type", "button");
+                    b2.setAttribute("class", "list-group-item list-group-item-action");
+                    b2.innerHTML = "Premio: " + $sorteos2[i].premio;
 
-            var b3 = document.createElement("button");
-            b3.setAttribute("type", "button");
-            b3.setAttribute("class", "list-group-item list-group-item-action");
-            b3.innerHTML = "Participantes: " + $sorteos2[i].usuarios.length;
+                    var b3 = document.createElement("button");
+                    b3.setAttribute("type", "button");
+                    b3.setAttribute("class", "list-group-item list-group-item-action");
+                    b3.innerHTML = "Participantes: " + $sorteos2[i].usuarios.length;
 
-            var b4 = document.createElement("button");
-            b4.setAttribute("type", "button");
-            b4.setAttribute("class", "list-group-item list-group-item-action");
-            $fecha = $sorteos2[i].fecha;
-            $fechagmt = new Date($fecha.timestamp * 1000);
-            b4.innerHTML = "Fecha: " + $fechagmt.toLocaleDateString();
+                    var b4 = document.createElement("button");
+                    b4.setAttribute("type", "button");
+                    b4.setAttribute("class", "list-group-item list-group-item-action");
+                    $fecha = $sorteos2[i].fecha;
+                    $fechagmt = new Date($fecha.timestamp * 1000);
+                    b4.innerHTML = "Fecha: " + $fechagmt.toLocaleDateString();
 
 
-            var b5 = document.createElement("button");
-            b5.setAttribute("type", "button");
-            b5.setAttribute("class", "list-group-item list-group-item-action");
-            b5.innerHTML = "Ganador: Usuario " + $sorteos2[i].ganador.id;
+                    var b5 = document.createElement("button");
+                    b5.setAttribute("type", "button");
+                    b5.setAttribute("class", "list-group-item list-group-item-action");
+                    b5.innerHTML = "Ganador: Usuario " + $sorteos2[i].ganador.id;
 
 
 
-            //appends encuestas
-            $(row).hide().appendTo($("#contenedor")).fadeIn(1000);
-            $(col).hide().appendTo(row).fadeIn(1000);
-            $(div).hide().appendTo(col).fadeIn(1000);
-            $(b1).hide().appendTo(div).fadeIn(1000);
-            $(b2).hide().appendTo(div).fadeIn(1000);
-            $(b3).hide().appendTo(div).fadeIn(1000);
-            $(b4).hide().appendTo(div).fadeIn(1000);
-            $(b5).hide().appendTo(div).fadeIn(1000);
+                    //appends encuestas
+                    $(row).hide().appendTo($("#contenedor")).fadeIn(1000);
+                    $(col).hide().appendTo(row).fadeIn(1000);
+                    $(div).hide().appendTo(col).fadeIn(1000);
+                    $(b1).hide().appendTo(div).fadeIn(1000);
+                    $(b2).hide().appendTo(div).fadeIn(1000);
+                    $(b3).hide().appendTo(div).fadeIn(1000);
+                    $(b4).hide().appendTo(div).fadeIn(1000);
+                    $(b5).hide().appendTo(div).fadeIn(1000);
 
-            window.scrollTo($("#scroll"));
-        }
+                    // window.scrollTo($("#scroll"));
+                    $("#scroll").animatescroll({scrollSpeed:3000,easing:'easeOutQuint'});
+                }
 
-        min = $sorteos2[0].id;
-        max = $sorteos2[$sorteos2.length -1].id;
+                min = $sorteos2[0].id;
+                max = $sorteos2[$sorteos2.length -1].id;
 
-        if (min === {{ size }}) {
-            console.log("se esta mostrando el primero");
-            $("#prev").hide();
-        } else {
-            $("#prev").fadeIn(1000);
-        }
-        if (max === 1) {
-            console.log("se esta mostrando el ultimo");
-            $("#next").hide();
-        } else {
-            $("#next").fadeIn(1000);
-        }
-    }
-
-    function borrarse() {
-        $userEmail = $("#usermail").val();
-        $userPass = $("#userpass").val();
-        $check = $("#validate");
-        if ($userEmail !== "") {
-            if ($userPass !== "") {
-                if ($check.is(':checked')){
-                    $userdata = {"mail": $userEmail, "pass": $userPass};
-                    $.ajax({
-                        data:  $userdata, //datos que se envian a traves de ajax
-                        url:   '/home/sorteo/leave', //archivo que recibe la peticion
-                        type:  'post', //método de envio
-                        beforeSend: function () {
-                            console.log("Borrando usuario del sorteo...");
-                        },
-                        success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-                            limpiarModal();
-                            console.log(response);
-                            showAlert(response[0], response[1]);
-                        }
-                    });
+                if (min === {{ size }}) {
+                    console.log("se esta mostrando el primero");
+                    $("#prev").hide();
+                } else {
+                    $("#prev").fadeIn(1000);
+                }
+                if (max === 1) {
+                    console.log("se esta mostrando el ultimo");
+                    $("#next").hide();
+                } else {
+                    $("#next").fadeIn(1000);
                 }
             }
-        }
-    }
-    //funcion que limpialosinputs del modal
-    function limpiarModal() {
-        $("#usermail").val("");
-        $("#userpass").val("");
-        $("#validate").attr('checked', 'false');
-    }
-    // funcion que crea una alerta para avisar de que se ha suscrito correctamente
-    function showAlert(title, message) {
-        $("#borrarseModal").empty();
-        var al = document.createElement("div");
-        al.setAttribute("class", "bg-success text-white rounded");
-        al.setAttribute("role", "alert");
-        al.setAttribute("style", "margin: 350px 650px 0px 650px; padding: 0.5%");
 
-        var al_title = document.createElement("h4");
-        al_title.setAttribute("class", "text-center");
-        al_title.innerText = title;
+            function borrarse() {
+                $userEmail = $("#usermail").val();
+                $userPass = $("#userpass").val();
+                $check = $("#validate");
+                if ($userEmail !== "") {
+                    if ($userPass !== "") {
+                        if ($check.is(':checked')){
+                            $userdata = {"mail": $userEmail, "pass": $userPass};
+                            $.ajax({
+                                data:  $userdata, //datos que se envian a traves de ajax
+                                url:   '/home/sorteo/leave', //archivo que recibe la peticion
+                                type:  'post', //método de envio
+                                beforeSend: function () {
+                                    console.log("Borrando usuario del sorteo...");
+                                },
+                                success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+                                    limpiarModal();
+                                    console.log(response);
+                                    showAlert(response[0], response[1]);
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+            //funcion que limpialosinputs del modal
+            function limpiarModal() {
+                $("#usermail").val("");
+                $("#userpass").val("");
+                $("#validate").attr('checked', 'false');
+            }
+            // funcion que crea una alerta para avisar de que se ha suscrito correctamente
+            function showAlert(title, message) {
+                $("#borrarseModal").empty();
+                var al = document.createElement("div");
+                al.setAttribute("class", "bg-success text-white rounded");
+                al.setAttribute("role", "alert");
+                al.setAttribute("style", "margin: 350px 650px 0px 650px; padding: 0.5%");
 
-        var al_p = document.createElement("p");
-        al_p.setAttribute("class", "text-center");
-        al_p.innerText = message;
+                var al_title = document.createElement("h4");
+                al_title.setAttribute("class", "text-center");
+                al_title.innerText = title;
 
-        var row = document.createElement("row");
-        row.setAttribute("class", "row justify-content-center");
+                var al_p = document.createElement("p");
+                al_p.setAttribute("class", "text-center");
+                al_p.innerText = message;
 
-        var redir = document.createElement("a");
-        redir.setAttribute("class", "btn btn-warning btn-large text-center");
-        redir.setAttribute("type", "button");
-        redir.setAttribute("href", "/home/sorteo");
-        redir.innerText = "Aceptar";
+                var row = document.createElement("row");
+                row.setAttribute("class", "row justify-content-center");
 
-
-        $(al_title).hide().appendTo(al).fadeIn(1000);
-        $(al_p).hide().appendTo(al).fadeIn(1000);
-        $(row).hide().appendTo(al).fadeIn(1000);
-        $(redir).hide().appendTo(row).fadeIn(1000);
+                var redir = document.createElement("a");
+                redir.setAttribute("class", "btn btn-warning btn-large text-center");
+                redir.setAttribute("type", "button");
+                redir.setAttribute("href", "/home/sorteo");
+                redir.innerText = "Aceptar";
 
 
-        $(al).hide().appendTo("#borrarseModal").fadeIn(1000);
-    }
+                $(al_title).hide().appendTo(al).fadeIn(1000);
+                $(al_p).hide().appendTo(al).fadeIn(1000);
+                $(row).hide().appendTo(al).fadeIn(1000);
+                $(redir).hide().appendTo(row).fadeIn(1000);
 
-</script>
-</body>
-</html>
+
+                $(al).hide().appendTo("#borrarseModal").fadeIn(1000);
+            }
+        </script>
+    {% endblock %}
