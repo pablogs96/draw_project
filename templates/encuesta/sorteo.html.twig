@@ -11,7 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/icons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/bootstrap-social.css') }}" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Secular+One" rel="stylesheet" />
 </head>
 <body style="background-color: black">
@@ -149,7 +149,7 @@
 
 <!-- 3ª Sección (Sección del sorteo) -->
 <section>
-    <div class="container rounded" style="padding-top:70px;padding-bottom:70px; background-color: #EDDBF3; margin-top: 7%; margin-bottom: 1%">
+    <div class="container rounded" id="scroll" style="padding-top:70px;padding-bottom:70px; background-color: #EDDBF3; margin-top: 7%; margin-bottom: 1%">
         <div class="row justify-content-center" style="padding-bottom: 3%">
             <div class="col-sm-6 offset-sm-1 justify-content-sm-right text-sm-right justify-content-center text-center">
                 <h3 class="sizedPageTitle">HISTORIAL DE SORTEOS</h3>
@@ -292,6 +292,8 @@
             $(b3).hide().appendTo(div).fadeIn(1000);
             $(b4).hide().appendTo(div).fadeIn(1000);
             $(b5).hide().appendTo(div).fadeIn(1000);
+
+            window.scrollTo($("#scroll"));
         }
 
         min = $sorteos2[0].id;

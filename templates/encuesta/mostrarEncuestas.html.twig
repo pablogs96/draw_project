@@ -11,7 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/icons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/bootstrap-social.css') }}" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Secular+One" rel="stylesheet" />
 </head>
 
@@ -189,6 +189,7 @@
             $(h1).hide().appendTo(row2).fadeIn(1000);
             $(row2_1).hide().appendTo(a).fadeIn(1000);
             $(img).hide().appendTo(row2_1).fadeIn(1000);
+            window.scrollTo(0, 0);
         }
 
         min = $encuestas2[0].id;
