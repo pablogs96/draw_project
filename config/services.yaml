@@ -26,3 +26,14 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    SubscriptionService:
+        class: App\Services\SubscriptionService
+        public: true
+        arguments:
+            $entityManager: "@doctrine.orm.entity_manager"
+
+    BorrarseService:
+        class: App\Services\BorrarseService
+        public: true
+        arguments:
+            $entityManager: "@doctrine.orm.entity_manager"

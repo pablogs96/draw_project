@@ -43,17 +43,19 @@ class EncuestaController extends Controller
     /**
      * @Route ("/home/encuesta/comment/save", name="comentario")
      */
-    public function saveAction(){
-        $data = [$_POST['texto'], $_POST['encuesta']];
+    public function saveCommentAction(Request $request){
+        $texto = $request->get('texto');
+        $encuesta_ = $request->get('encuesta');
+
 
         $entityManager = $this->getDoctrine()->getManager();
 
         //recupero la encuesta porque no se puede pasar un array, hay que pasarle un objeto Encuesta()
-        $encuesta = $entityManager->getRepository(Encuesta::class)->find($_POST['encuesta']['id']);
+        $encuesta = $entityManager->getRepository(Encuesta::class)->find($encuesta_['id']);
 
 
         $comentario = new Comentario();
-        $comentario->setText($data[0]);
+        $comentario->setText($texto);
         $comentario->setEncuesta($encuesta);
 
         $entityManager->persist($comentario);
@@ -97,9 +99,9 @@ class EncuestaController extends Controller
      * @param Request $request
      * @return Response
      */
-    public function pagination(Request $request){
-        $min = $request->query->get('min');
-        $max = $request->query->get('max');
+    public function paginationAction(Request $request){
+        $min = $request->get('min');
+        $max = $request->get('max');
 
         $entityManager = $this->getDoctrine()->getManager();
         /** @var EncuestaRepository $encuestaRespository */
