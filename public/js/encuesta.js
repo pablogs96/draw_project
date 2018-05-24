@@ -298,9 +298,13 @@ function saveComment(){
         beforeSend: function () {
             console.log("Procesando, espere por favor...");
         },
-        success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-            $new =  parseInt($("#number").text()) + 1;
-            $("#number").text($new);
+        success:  function (respuesta) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+            if(respuesta){
+                alert(respuesta);
+            } else {
+                $new =  parseInt($("#number").text()) + 1;
+                $("#number").text($new);
+            }
         }
     });
 }
@@ -346,7 +350,6 @@ function addUser() {
                         },
                         success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
                             limpiarModal();
-                            console.log(response);
                             showAlert(response[0], response[1]);
                         }
                     });

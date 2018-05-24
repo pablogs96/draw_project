@@ -20,15 +20,20 @@ use Doctrine\ORM\EntityManager;
 use Exception;
 use Psr\Log\LoggerInterface;
 
-class SubscriptionService
+class SorteoService
 {
     private $entityManager;
     private $logger;
+    private $usuarioService;
+    private $sorteoClass;
 
-    public function __construct(EntityManager $entityManager, LoggerInterface $logger)
+    public function __construct(EntityManager $entityManager, LoggerInterface $logger,
+                                UsuarioService $usuarioService, $sorteoClass)
     {
         $this->entityManager = $entityManager;
         $this->logger = $logger;
+        $this->usuarioService = $usuarioService;
+        $this->sorteoClass = $sorteoClass;
     }
 
     /**
@@ -52,7 +57,7 @@ class SubscriptionService
                 // SORTEO ACTIVO SIN GANADOR ---> añado usuario a sorteo
 
                 try {
-                    $this->addUser($userData, $sorteo_actual);
+                    $this->usuarioService->addUser($userData, $sorteo_actual);
                     $respuesta = "Te has inscrito al sorteo. ¡Mucha suerte!";
                     $titulo ="ENHORABUENA";
                     $data = [$titulo, $respuesta];
@@ -78,7 +83,6 @@ class SubscriptionService
             } else {
                 // SORTEO NO ACTIVO (FECHA MENOR) Y SIN GANADOR ---> ejecuto sorteo/creo sorteo/añado usuario
 
-
                 $this->runSorteo($sorteo_actual);
 
                 /** @var Sorteo $newSorteo */
@@ -89,68 +93,7 @@ class SubscriptionService
         }
     }
 
-    /**
-     *@throws Exception
-     */
-    private function addUser($data, Sorteo $sorteoActual)
-    {
-        $entityManager = $this->entityManager;
 
-        // usuario
-        /** @var Usuario $usuario */
-        $usuario = $entityManager->getRepository(Usuario::class)->findOneBy(array('email' => $data[1]));
-
-        if (!$usuario) {
-            // NO EXISTE USUARIO EN BD ---> lo añado
-
-            $pass = $data[2];
-            $coded = password_hash($pass, PASSWORD_BCRYPT);
-            $newUser = new Usuario();
-            $newUser->setNombre($data[0]);
-            $newUser->setEmail($data[1]);
-            $newUser->setPassword($coded);
-            $newUser->addSorteo($sorteoActual);
-
-            $entityManager->persist($newUser);
-            $entityManager->flush();
-            return true;
-        } else if ($usuario) {
-            // EXISTE USUARIO EN BD ---> compruebo contraseña correcta
-
-            $hash = $usuario->getPassword();
-
-            if (password_verify($data[2], $hash)) {
-                // CONTRASEÑA CORRECTA ---> compruebo que no este en el sorteo actual
-                $num = 0;
-                $sorteos = $usuario->getSorteos()->getValues();
-                /** @var Sorteo $sorteo */
-                foreach ($sorteos as $sorteo) {
-                    if ($sorteo->getId() === $sorteoActual->getId()) {
-                        $num = $num + 1;
-                    } else {
-                        $num = $num + 0;
-                    }
-                }
-
-                if ($num === 0) {
-                    // NO TIENE EL SORTEO ASOCIADO
-
-                    $usuario->setNombre($data[0]);
-                    $usuario->addSorteo($sorteoActual);
-
-                    $entityManager->persist($usuario);
-                    $entityManager->flush();
-                    return true;
-                } else {
-                    // YA ESTA INSCRITO EN EL SORTEO
-                    throw new AlreadySubscribedException('¡Ya estás inscrito en el sorteo!');
-                }
-            } else {
-                // CONTRASEÑA INCORRECTA
-                throw new PasswordIncorrectException('Ha habido un error al añadirte al sorteo, comprueba tu email y contraseña');
-            }
-        }
-    }
 
     private function createSorteo($fecha_sorteo)
     {
@@ -177,10 +120,9 @@ class SubscriptionService
         }
     }
 
-
     private function runSorteo(Sorteo $sorteo_actual)
     {
-        $entityManager = $this->entityManager;
+
         $usuarios_sorteo = $sorteo_actual->getUsuarios();
         try{
             if (count($usuarios_sorteo) > 0) {
@@ -189,12 +131,12 @@ class SubscriptionService
                     $ganador = $usuarios_sorteo[rand(0, count($usuarios_sorteo) - 1)];
 
                     $sorteo_actual->setGanador($ganador);
-                    $entityManager->persist($sorteo_actual);
+                    $this->entityManager->persist($sorteo_actual);
                 }
             } else if (count($usuarios_sorteo) == 0){
                 $this->logger->info('No hay usuarios.');
             }
-            $entityManager->flush();
+            $this->entityManager->flush();
         }catch (GanadorNotSettedException $gnse) {
             $this->logger->alert($gnse->getMessage());
         }catch (Exception $e) {
@@ -213,7 +155,7 @@ class SubscriptionService
     {
         try {
             if ($newSorteo) {
-                $this->addUser($userData, $newSorteo);
+                $this->usuarioService->addUser($userData, $newSorteo);
             }
             $respuesta = "Atención: El sorteo anterior ha caducado. Te has inscrito a un nuevo sorteo. ¡Mucha suerte!";
             $titulo ="ENHORABUENA";
@@ -231,4 +173,14 @@ class SubscriptionService
         return $data;
     }
 
+
+    public function getEncuestasOrderby($criteria, $order, $limit, $offset)
+    {
+    return $this->entityManager->getRepository($this->sorteoClass)->findBy($criteria, $order, $limit, $offset);
+    }
+
+    public function getSorteosBetween($min, $max)
+    {
+        return $this->entityManager->getRepository($this->sorteoClass)->findBetween($min, $max);
+    }
 }

@@ -26,14 +26,24 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
-    SubscriptionService:
-        class: App\Services\SubscriptionService
+    sorteo_service:
+        class: App\Services\SorteoService
         public: true
         arguments:
             $entityManager: "@doctrine.orm.entity_manager"
+            $usuarioService: "@usuario_service"
+            $sorteoClass: 'App\Entity\Sorteo'
 
-    BorrarseService:
-        class: App\Services\BorrarseService
+    encuesta_service:
+        class: App\Services\EncuestaService
         public: true
         arguments:
             $entityManager: "@doctrine.orm.entity_manager"
+            $encuestaClass: 'App\Entity\Encuesta'
+
+    usuario_service:
+        class: App\Services\UsuarioService
+        public: true
+        arguments:
+            $entityManager: "@doctrine.orm.entity_manager"
+            $usuarioClass: 'App\Entity\Usuario'
