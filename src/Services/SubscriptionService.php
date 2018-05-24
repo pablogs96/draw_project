@@ -24,7 +24,6 @@ class SubscriptionService
 {
     private $entityManager;
     private $logger;
-    private $hola;
 
     public function __construct(EntityManager $entityManager, LoggerInterface $logger)
     {
