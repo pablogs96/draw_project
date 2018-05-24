@@ -34,6 +34,11 @@ class Encuesta
         $this->comentarios = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->title;
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()

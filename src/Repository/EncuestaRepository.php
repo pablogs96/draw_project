@@ -31,7 +31,19 @@ class EncuestaRepository extends ServiceEntityRepository
             ->setParameter('max', $max)
             ->orderBy('enc.id', 'ASC')
             ->getQuery();
+        return $qb->execute();
+    }
 
+    /**
+     * @return array
+     */
+    public function contarEncuestas(): array
+    {
+        $qb = $this->createQueryBuilder('num')
+            ->select('DISTINCT COUNT(num.id)')
+            ->from('App\Entity\Encuesta' , 'enc')
+            ->groupBy('enc.id')
+            ->getQuery();
         return $qb->execute();
     }
 

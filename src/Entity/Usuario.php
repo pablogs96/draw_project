@@ -49,6 +49,11 @@ class Usuario
         $this->sorteos_ganados = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->email;
+    }
+
     public function getId()
     {
         return $this->id;

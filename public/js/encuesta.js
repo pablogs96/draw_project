@@ -14,6 +14,7 @@ function cargar(){
     imprimirSavedComments();
     actualizarComments();
     limpiarTextArea();
+    limpiarModal();
 }
 
 // FUNCION QUE SACA LAS PREGUNTAS Y RESPUESTAS
@@ -182,8 +183,7 @@ function limpiarModal() {
     $("#userName").val("");
     $("#userEmail").val("");
     $("#userPass").val("");
-    $("#validate").attr('checked', 'false');
-
+    $("#validate").prop('checked', false);
 }
 
 // funcion que saca por pantalla los comentarios ya guardados

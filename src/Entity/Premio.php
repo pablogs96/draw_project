@@ -10,6 +10,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Premio
 {
     /**
+     * One Premio has Many Sorteos.
+     * @ORM\OneToMany(targetEntity="Sorteo", mappedBy="premio")
+     */
+    private $sorteos;
+
+    /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -22,9 +28,30 @@ class Premio
     private $title;
 
     /**
+     * @return mixed
+     */
+    public function getSorteos()
+    {
+        return $this->sorteos;
+    }
+
+    /**
+     * @param mixed $sorteos
+     */
+    public function setSorteos($sorteos): void
+    {
+        $this->sorteos = $sorteos;
+    }
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $imagen;
+
+    public function __toString()
+    {
+        return $this->title;
+    }
 
     public function getId()
     {

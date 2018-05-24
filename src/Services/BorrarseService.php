@@ -26,7 +26,6 @@ class BorrarseService
 
     /**
      * @param $userData
-     * @param Usuario $user
      * @param Sorteo $actual
      * @param $num
      * @return array

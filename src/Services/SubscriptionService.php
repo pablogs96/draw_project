@@ -13,18 +13,22 @@ use App\Entity\Premio;
 use App\Entity\Sorteo;
 use App\Entity\Usuario;
 use App\Exceptions\AlreadySubscribedException;
+use App\Exceptions\GanadorNotSettedException;
 use App\Exceptions\PasswordIncorrectException;
 use DateInterval;
 use Doctrine\ORM\EntityManager;
 use Exception;
+use Psr\Log\LoggerInterface;
 
 class SubscriptionService
 {
     private $entityManager;
+    private $logger;
 
-    public function __construct(EntityManager $entityManager)
+    public function __construct(EntityManager $entityManager, LoggerInterface $logger)
     {
         $this->entityManager = $entityManager;
+        $this->logger = $logger;
     }
 
     /**
@@ -95,7 +99,6 @@ class SubscriptionService
         // usuario
         /** @var Usuario $usuario */
         $usuario = $entityManager->getRepository(Usuario::class)->findOneBy(array('email' => $data[1]));
-        dump($usuario);
 
         if (!$usuario) {
             // NO EXISTE USUARIO EN BD ---> lo añado
@@ -170,8 +173,7 @@ class SubscriptionService
 
             return $newSorteo;
         } catch (Exception $e) {
-            //@TODO Controlar este caso
-            dump($e->getMessage());
+            $this->logger->alert($e->getMessage());
         }
     }
 
@@ -188,22 +190,15 @@ class SubscriptionService
 
                     $sorteo_actual->setGanador($ganador);
                     $entityManager->persist($sorteo_actual);
-                }else if (count($usuarios_sorteo) == 1) {
-                    /** @var Usuario $ganador */
-                    $ganador = $usuarios_sorteo[0];
-
-                    $sorteo_actual->setGanador($ganador);
-                    $entityManager->persist($sorteo_actual);
                 }
-
             } else if (count($usuarios_sorteo) == 0){
-                //@TODO Controlar este caso
-                dump("no hay usuarios");
+                $this->logger->info('No hay usuarios.');
             }
             $entityManager->flush();
+        }catch (GanadorNotSettedException $gnse) {
+            $this->logger->alert($gnse->getMessage());
         }catch (Exception $e) {
-            //@TODO Controlar este caso
-            dump($e->getMessage());
+            $this->logger->info($e->getMessage());
         }
 
     }
@@ -211,15 +206,14 @@ class SubscriptionService
     /**
      * @param $newSorteo
      * @param $userData
-     * @param $usuario
      * @return array
      * @throws Exception
      */
-    private function beforeAdding($newSorteo, $userData, $usuario)
+    private function beforeAdding($newSorteo, $userData)
     {
         try {
             if ($newSorteo) {
-                $this->addUser($userData, $newSorteo, $usuario);
+                $this->addUser($userData, $newSorteo);
             }
             $respuesta = "Atención: El sorteo anterior ha caducado. Te has inscrito a un nuevo sorteo. ¡Mucha suerte!";
             $titulo ="ENHORABUENA";

@@ -28,6 +28,11 @@ class Comentario
      */
     private $text;
 
+    public function __toString()
+    {
+        return $this->text;
+    }
+
     public function getId()
     {
         return $this->id;

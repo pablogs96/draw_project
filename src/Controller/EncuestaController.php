@@ -69,13 +69,9 @@ class EncuestaController extends Controller
      */
     public function homeAction(){
         $entityManager = $this->getDoctrine()->getManager();
-        $encuestas = $entityManager->getRepository(Encuesta::class)->findAll();
+        $encuestas = $entityManager->getRepository(Encuesta::class)->findBy(array(), array('id' => 'DESC'), 6, 0);
 
-        $size = count($encuestas);
-
-        $encuestas6 = [$encuestas[$size-1], $encuestas[$size-2], $encuestas[$size-3], $encuestas[$size-4], $encuestas[$size-5], $encuestas[$size-6]];
-
-        return $this->render('encuesta/home.html.twig', array('encuestas' => $encuestas6));
+        return $this->render('encuesta/home.html.twig', array('encuestas' => $encuestas));
     }
 
     /**
@@ -83,15 +79,16 @@ class EncuestaController extends Controller
      */
     public function showEncuestasAction(){
         $entityManager = $this->getDoctrine()->getManager();
-        $encuestas = $entityManager->getRepository(Encuesta::class)->findAll();
+        $encuestas = $entityManager->getRepository(Encuesta::class)->findBy(array(), array('id' => 'ASC'), 4, 0);
 
-        $size = count($encuestas);
+        $num = $entityManager->getRepository(Encuesta::class)->contarEncuestas();
+
+        $size = $num[0]['1'];
+
         $min = 1;
         $max = 4;
 
-        $encuestas_ = [$encuestas[0], $encuestas[1], $encuestas[2], $encuestas[3]];
-
-        return $this->render('encuesta/mostrarEncuestas.html.twig', array('encuestas' => $encuestas_, 'size' => $size, 'min' => $min, 'max' => $max));
+        return $this->render('encuesta/mostrarEncuestas.html.twig', array('encuestas' => $encuestas, 'size' => $size, 'min' => $min, 'max' => $max));
     }
 
     /**

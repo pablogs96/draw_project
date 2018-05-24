@@ -1,11 +1,69 @@
 easy_admin:
+    design:
+        brand_color: 'purple'
     entities:
-        # List the entity class name you want to manage
-        - App\Entity\Encuesta
-        - App\Entity\Sorteo
-        - App\Entity\Usuario
-        - App\Entity\Pregunta
-        - App\Entity\Premio
-        - App\Entity\Respuesta
-        - App\Entity\Resultado
-        - App\Entity\Comentario
+        Encuesta:
+            class: App\Entity\Encuesta
+            form:
+                fields:
+                    - title
+                    - img
+                    - preguntas
+                    - resultados
+                    - comentarios
+        Sorteo:
+            class: App\Entity\Sorteo
+            form:
+                fields:
+                    - premio
+                    - img
+                    - fecha
+                    - usuarios
+                    - ganador
+        Usuario:
+            class: App\Entity\Usuario
+            form:
+                fields:
+                    - nombre
+                    - email
+                    - password
+                    - sorteos
+                    - sorteos_ganados
+        Pregunta:
+            class: App\Entity\Pregunta
+            form:
+                fields:
+                    - image
+                    - { property: 'text', type : 'textarea' }
+                    - encuesta
+                    - respuestas
+        Respuesta:
+            class: App\Entity\Respuesta
+            form:
+                fields:
+                    - { property: 'text', type : 'textarea' }
+                    - value
+                    - pregunta
+        Resultado:
+            class: App\Entity\Resultado
+            form:
+                fields:
+                    - { property: 'text', type : 'textarea' }
+                    - image
+                    - { property: 'explanation', type : 'textarea' }
+                    - { property: 'min_val', type : 'integer' }
+                    - { property: 'max_val', type : 'integer' }
+                    - encuesta
+        Comentario:
+            class: App\Entity\Comentario
+            form:
+                fields:
+                    - { property: 'text', type : 'textarea' }
+                    - encuesta
+        Premio:
+            class: App\Entity\Premio
+            form:
+                fields:
+                    - title
+                    - imagen
+                    - sorteos

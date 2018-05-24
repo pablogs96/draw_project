@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Exceptions\GanadorNotSettedException;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -11,6 +12,13 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Sorteo
 {
+    /**
+     * Many Sorteos have One Premio.
+     * @ORM\ManyToOne(targetEntity="Premio", inversedBy="sorteos")
+     * @ORM\JoinColumn(name="premio_id", referencedColumnName="id")
+     */
+    private $premio;
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -22,11 +30,6 @@ class Sorteo
      * @ORM\Column(type="string", length=255)
      */
     private $img;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $premio;
     
     /**
      * @ORM\Column(type="datetime")
@@ -48,6 +51,10 @@ class Sorteo
         $this->usuarios = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return (string)$this->id;
+    }
 
     public function getId()
     {
@@ -66,16 +73,20 @@ class Sorteo
         return $this;
     }
 
-    public function getPremio(): ?string
+    /**
+     * @return mixed
+     */
+    public function getPremio()
     {
         return $this->premio;
     }
 
-    public function setPremio(string $premio): self
+    /**
+     * @param mixed $premio
+     */
+    public function setPremio($premio): void
     {
         $this->premio = $premio;
-
-        return $this;
     }
 
     public function getFecha(): ?\DateTimeInterface
@@ -121,10 +132,21 @@ class Sorteo
         return $this->ganador;
     }
 
+    /**
+     * @param Usuario|null $ganador
+     * @return Sorteo
+     * @throws GanadorNotSettedException
+     */
     public function setGanador(?Usuario $ganador): self
     {
-        $this->ganador = $ganador;
+        $hoy = new \DateTime();
 
-        return $this;
+        if ($this->getFecha() > $hoy) {
+            throw new GanadorNotSettedException('No se ha podido añadir el ganador al sorteo '.$this->id.'. Fecha de sorteo > actual.');
+        } else {
+            $this->ganador = $ganador;
+            return $this;
+        }
+
     }
 }

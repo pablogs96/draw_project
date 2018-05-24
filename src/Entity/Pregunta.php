@@ -45,6 +45,12 @@ class Pregunta
      */
     private $text;
 
+    public function __toString()
+    {
+        $aux = (string)$this->id;
+        return $aux;
+    }
+
     public function getId()
     {
         return $this->id;

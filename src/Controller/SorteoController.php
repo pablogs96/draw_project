@@ -92,9 +92,7 @@ class SorteoController extends Controller
         $min = $request->query->get('min');
         $max = $request->query->get('max');
 
-
         $entityManager = $this->getDoctrine()->getManager();
-
 
         $sorteo = $entityManager->getRepository(Sorteo::class)->findBy(array(), array('fecha' => 'DESC'), 1, 0);
 
@@ -136,13 +134,9 @@ class SorteoController extends Controller
         /** @var Sorteo $actual */
         $actual = $sort[0];
         $num = 0;
-        dump($userData);
-        dump($actual);
-        dump($num);
 
         $borrarseService = $this->container->get('BorrarseService');
         $result = $borrarseService->borrarUser($userData, $actual, $num);
-
 
         return new JsonResponse($result);
     }
@@ -198,7 +192,6 @@ class SorteoController extends Controller
                  ));
              }
         }
-
 
         return $this->render('encuesta/login.html.twig', array(
             'form' => $form->createView(),

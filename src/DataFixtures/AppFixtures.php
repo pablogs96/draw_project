@@ -16,6 +16,7 @@ use App\Entity\Respuesta;
 use App\Entity\Resultado;
 use App\Entity\Sorteo;
 use App\Entity\Usuario;
+use App\Exceptions\GanadorNotSettedException;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -71,11 +72,23 @@ class AppFixtures extends Fixture
             }
         }
 
+        for ($i = 1; $i <= 10; $i ++){
+            $premio = new Premio();
+            $premio->setTitle("Viaje a Hawai para ".$i." persona(s)");
+            $premio->setImagen("https://www.trafalgar.com/~/media/images/home/destinations/north-america/hawaii/2016-licensed-images/hawaii-maui-2016-r-117211856.jpg?la=en&h=450&w=450&mw=450");
+            $manager->persist($premio);
+        }
+        $manager->flush();
+
         for($i = 1; $i <= 6; $i++) {
+
+            /** @var Premio $selfPremio */
+            $selfPremio = $manager->getRepository(Premio::class)->find(rand(1, 10));
+
             $sorteo = new Sorteo();
             $sorteo->setImg("https://www.trafalgar.com/~/media/images/home/destinations/north-america/hawaii/2016-licensed-images/hawaii-maui-2016-r-117211856.jpg?la=en&h=450&w=450&mw=450");
             $sorteo->setFecha(new \DateTime('2018-0'.$i.'-1T00:00:00'));
-            $sorteo->setPremio("Viaje a Hawai");
+            $sorteo->setPremio($selfPremio);
             $manager->persist($sorteo);
             for ($j = 1; $j <= 10; $j ++) {
                 $usuario = new Usuario();
@@ -90,20 +103,17 @@ class AppFixtures extends Fixture
 
             /** @var Sorteo $selfSorteo */
             $selfSorteo = $manager->getRepository(Sorteo::class)->find($i);
-
-            $usuarios_sorteo = $selfSorteo->getUsuarios();
-            $ganador = $usuarios_sorteo[mt_rand(0, count($usuarios_sorteo) - 1)];
-            $sorteo->setGanador($ganador);
-            $manager->persist($sorteo);
-
-        }
-        $manager->flush();
-
-        for ($i = 1; $i <= 5; $i ++){
-            $premio = new Premio();
-            $premio->setTitle("Viaje a Hawai para ".$i." personas");
-            $premio->setImagen("https://www.trafalgar.com/~/media/images/home/destinations/north-america/hawaii/2016-licensed-images/hawaii-maui-2016-r-117211856.jpg?la=en&h=450&w=450&mw=450");
-            $manager->persist($premio);
+            $hoy = new \DateTime();
+            if ($selfSorteo->getFecha() <= $hoy){
+                $usuarios_sorteo = $selfSorteo->getUsuarios();
+                $ganador = $usuarios_sorteo[mt_rand(0, count($usuarios_sorteo) - 1)];
+                try{
+                    $sorteo->setGanador($ganador);
+                } catch (GanadorNotSettedException $gnse) {
+                    dump($gnse->getMessage());
+                }
+                $manager->persist($sorteo);
+            }
         }
         $manager->flush();
     }

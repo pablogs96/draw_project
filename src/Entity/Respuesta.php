@@ -34,6 +34,11 @@ class Respuesta
      */
     private $value;
 
+    public function __toString()
+    {
+        return $this->text;
+    }
+
     public function getId()
     {
         return $this->id;
