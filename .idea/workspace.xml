@@ -2,28 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f1313c2e-7787-4856-b574-e1794c131bbb" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Exceptions/GanadorNotSettedException.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/easy_admin.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/easy_admin.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/encuesta.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/encuesta.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/EncuestaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EncuestaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SorteoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SorteoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Comentario.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Comentario.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Encuesta.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Encuesta.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Pregunta.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Pregunta.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Premio.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Premio.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Respuesta.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Respuesta.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Resultado.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Resultado.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Sorteo.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Sorteo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Usuario.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Usuario.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/EncuestaRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/EncuestaRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/BorrarseService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/BorrarseService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Services/SubscriptionService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/SubscriptionService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/encuesta/sorteo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/encuesta/sorteo.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -37,11 +17,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="easy_admin.yaml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="easy_admin.yaml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/packages/easy_admin.yaml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="294">
               <caret line="33" column="17" lean-forward="true" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -142,7 +131,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/DataFixtures/EncuestaFixtures.php" />
         <option value="$PROJECT_DIR$/templates/encuesta.html" />
         <option value="$PROJECT_DIR$/templates/encuesta/encuesta.html" />
         <option value="$PROJECT_DIR$/src/Controller/LuckyController.php" />
@@ -193,6 +181,7 @@
         <option value="$PROJECT_DIR$/templates/encuesta/sorteo.html.twig" />
         <option value="$PROJECT_DIR$/config/services.yaml" />
         <option value="$PROJECT_DIR$/src/Services/SubscriptionService.php" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -479,12 +468,12 @@
       <workItem from="1526888417266" duration="20288000" />
       <workItem from="1526974481036" duration="25702000" />
       <workItem from="1527060999841" duration="13982000" />
-      <workItem from="1527147286139" duration="1530000" />
+      <workItem from="1527147286139" duration="2345000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="357227000" />
+    <option name="totallyTimeSpent" value="358042000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
@@ -524,13 +513,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/security/Core/Tests/Encoder/BasePasswordEncoderTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/packages/security.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -868,6 +850,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="33" column="17" lean-forward="true" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
         </state>
       </provider>
     </entry>
