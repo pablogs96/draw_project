@@ -6,7 +6,6 @@
 
     {% block stylesheets %}
         <link href="{{ asset('css/bootstrap-social.css') }}" rel="stylesheet" />
-        <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
         {{ parent() }}
     {% endblock %}
 
@@ -16,7 +15,7 @@
 
     <!-- SECCION DE EXPLICACION -->
     <header id="header">
-        <div class="container rounded" style="padding-top:70px;padding-bottom:70px; margin-top: 8%; background-color: #EDDBF3">
+        <div class="container rounded colored" style="padding-top:70px;padding-bottom:70px; margin-top: 8%">
             <div class="row text-center justify-content-center" id="edge" style="padding-bottom: 20px">
                 <h1 class="sizedPageTitle"><b>¡BIENVENIDO A IDENTIFICATEST!</b></h1>
             </div>
@@ -32,23 +31,27 @@
     </header>
     <!-- SECCION DE ENCUESTAS -->
     <section>
-        <div class="container rounded text-center" style="padding-top:100px;padding-bottom:70px; margin-top: 4%; background-color: #EDDBF3">
+        <div class="container rounded text-center colored" style="padding-top:100px;padding-bottom:70px; margin-top: 4%;">
             <h1 class="sizedPageTitle">ALGUNAS DE NUESTRAS ENCUESTAS</h1>
-            <a href="/home/encuestas" type="button" class="btn btn-warning">Ver todas las encuestas</a>
             <hr>
+            <br>
+            <br>
             <div class="row justify-content-center text-center">
                 {% for encuesta in encuestas %}
                     <div class="col-md-6 col-lg-6" id="portfolio">
-                        <h1 id="h1po" class="sizedPageTitle">{{ encuesta.title }}</h1>
-                        <a href="/home/encuesta/{{ encuesta.id }}"><img src={{ encuesta.img }} id="imgPort"></a>
+                        <a href="/home/encuesta/{{ encuesta.id }}" id="portLink">
+                            <h1 id="h1po" class="sizedPageTitle">{{ encuesta.title }}</h1>
+                            <img src={{ encuesta.img }} id="imgPort">
+                        </a>
                     </div>
                 {% endfor %}
+                <a href="/home/encuestas" type="button" class="btn btn-dark">Ver todas las encuestas</a>
             </div>
         </div>
     </section>
     <!-- SECCION DE COLABORADORES -->
     <section>
-        <div id="section3" class="container rounded text-center" style="padding-top:100px;padding-bottom:70px; margin-top: 4%; background-color: #EDDBF3">
+        <div id="section3" class="container rounded text-center colored" style="padding-top:100px;padding-bottom:70px; margin-top: 4%;">
             <div class="row justify-content-center text-center">
                 <h1 class="sizedPageTitle">NUESTROS COLABORADORES</h1>
             </div>
@@ -68,7 +71,7 @@
 
     <!-- SECCION DE SOBRE MI -->
     <section>
-        <div id="section3" class="container rounded text-center" style="padding-top:100px;padding-bottom:70px; margin-top: 4%; margin-bottom: 4%; background-color: #EDDBF3">
+        <div id="section3" class="container rounded text-center colored" style="padding-top:100px;padding-bottom:70px; margin-top: 4%; margin-bottom: 4%;">
             <h1 class="sizedPageTitle">SOBRE MÍ</h1>
             <hr>
             <div class="row justify-content-center">
@@ -78,7 +81,7 @@
                 <h4>Pablo García Saleta</h4>
             </div>
             <div>
-                <p class="text-muted">Técnico superior en desarrollo de aplicaciones multiplataforma</p>
+                <p style="color: #969896">Técnico superior en desarrollo de aplicaciones multiplataforma</p>
             </div>
             <div>
                 <ul class="list-inline social-buttons">

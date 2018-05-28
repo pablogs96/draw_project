@@ -82,7 +82,6 @@ class SorteoService
                 return $this->beforeAdding($newSorteo, $userData);
             } else {
                 // SORTEO NO ACTIVO (FECHA MENOR) Y SIN GANADOR ---> ejecuto sorteo/creo sorteo/añado usuario
-
                 $this->runSorteo($sorteo_actual);
 
                 /** @var Sorteo $newSorteo */
@@ -97,22 +96,20 @@ class SorteoService
 
     private function createSorteo($fecha_sorteo)
     {
-        $entityManager = $this->entityManager;
         try {
             $newFecha = $fecha_sorteo->add(new DateInterval('P1M'));
 
-
-            $premios = $entityManager->getRepository(Premio::class)->findAll();
+            $premios = $this->entityManager->getRepository(Premio::class)->findAll();
             /** @var Premio $randomPremio */
             $randomPremio = $premios[rand(0, count($premios) - 1)];
 
             $newSorteo = new Sorteo();
-            $newSorteo->setPremio($randomPremio->getTitle());
+            $newSorteo->setPremio($randomPremio);
             $newSorteo->setImg($randomPremio->getImagen());
             $newSorteo->setFecha($newFecha);
 
-            $entityManager->persist($newSorteo);
-            $entityManager->flush();
+            $this->entityManager->persist($newSorteo);
+            $this->entityManager->flush();
 
             return $newSorteo;
         } catch (Exception $e) {
@@ -122,13 +119,13 @@ class SorteoService
 
     private function runSorteo(Sorteo $sorteo_actual)
     {
-
         $usuarios_sorteo = $sorteo_actual->getUsuarios();
         try{
             if (count($usuarios_sorteo) > 0) {
-                if (count($usuarios_sorteo) > 1){
+                if (count($usuarios_sorteo) > 0){
+                    $random = rand(0, count($usuarios_sorteo) - 1);
                     /** @var Usuario $ganador */
-                    $ganador = $usuarios_sorteo[rand(0, count($usuarios_sorteo) - 1)];
+                    $ganador = $usuarios_sorteo[$random];
 
                     $sorteo_actual->setGanador($ganador);
                     $this->entityManager->persist($sorteo_actual);
@@ -174,7 +171,7 @@ class SorteoService
     }
 
 
-    public function getEncuestasOrderby($criteria, $order, $limit, $offset)
+    public function getSorteosOrderby($criteria, $order, $limit, $offset)
     {
     return $this->entityManager->getRepository($this->sorteoClass)->findBy($criteria, $order, $limit, $offset);
     }
@@ -182,5 +179,10 @@ class SorteoService
     public function getSorteosBetween($min, $max)
     {
         return $this->entityManager->getRepository($this->sorteoClass)->findBetween($min, $max);
+    }
+
+    public function contarSorteos()
+    {
+        return $this->entityManager->getRepository($this->sorteoClass)->contarSorteos();
     }
 }

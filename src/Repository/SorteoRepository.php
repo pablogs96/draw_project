@@ -35,6 +35,19 @@ class SorteoRepository extends ServiceEntityRepository
         return $qb->execute();
     }
 
+    /**
+     * @return array
+     */
+    public function contarSorteos(): array
+    {
+        $qb = $this->createQueryBuilder('num')
+            ->select('DISTINCT COUNT(num.id)')
+            ->from('App\Entity\Sorteo' , 'sor')
+            ->groupBy('sor.id')
+            ->getQuery();
+        return $qb->execute();
+    }
+
 //    /**
 //     * @return Sorteo[] Returns an array of Sorteo objects
 //     */

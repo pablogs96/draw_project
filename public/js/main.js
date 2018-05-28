@@ -20,34 +20,30 @@ function navbar(){
 	var stop = Math.round($(window).scrollTop());
 	if (key) {
     	if (stop >= encuesta) {
-	    	$("#nav").removeClass("navbar-light");
-	        $('#nav').addClass('navbar-dark');
-	        $('#nav').css("background-color", "black");
-	        $("#nav").animate({height: "60px"});
+	    	$("#nav").removeClass("colored-nav");
+	        $('#nav').addClass('colored-nav2');
+	        $("#nav").animate({height: "85px"});
 	        key = false;
     	}
     } else if (!key){
     	if (stop < encuesta) {
-	    	$("#nav").removeClass("navbar-dark");
-	        $('#nav').css("background-color", "#EDDBF3");
-	        $('#nav').addClass('navbar-light');
-	        $("#nav").animate({height: "85px"});
+	    	$("#nav").removeClass("colored-nav2");
+	        $('#nav').addClass('colored-nav');
+	        $("#nav").animate({height: "150px"});
 	        key = true;
 	    }
     }  
 
     if (key == null){
     	if (stop >= encuesta) {
-	    	$("#nav").removeClass("navbar-light");
-	        $('#nav').addClass('navbar-dark');
-	        $('#nav').css("background-color", "black");
-	        $("#nav").css("height", "60px");
+	    	$("#nav").removeClass("colored-nav");
+	        $('#nav').addClass('colored-nav2');
+            $("#nav").css("height", "85px");
 	        key = false;
     	} else if (stop < encuesta) {
-	    	$("#nav").removeClass("navbar-dark");
-	        $('#nav').css("background-color", "#EDDBF3");
-	        $('#nav').addClass('navbar-light');
-	        $("#nav").css("height", "85px");
+	    	$("#nav").removeClass("colored-nav2");
+	        $('#nav').addClass('colored-nav');
+	        $("#nav").css("height", "150px");
 	        key = true;
 	    }
     }  	

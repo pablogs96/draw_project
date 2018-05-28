@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7dd0f88f7e99303a5e994f622b910d09",
-    "content-hash": "7f55fe3bc8702824f0768d4601593a21",
+    "hash": "73099417aa515be3521d881891a68ed7",
+    "content-hash": "6be8613b22a6b11121d9c4773d5ac8ae",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -3909,7 +3909,7 @@
         },
         {
             "name": "symfony/security-bundle",
-            "version": "v4.0.8",
+            "version": "v4.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-bundle.git",

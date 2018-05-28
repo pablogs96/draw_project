@@ -15,6 +15,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SorteoController extends BaseController
 {
+    const NUM_SORTEOS_INDEX = 4;
+    private $offset = 1;
 
     /**
      * @Route ("/home/sorteo", name="sorteo")
@@ -23,18 +25,24 @@ class SorteoController extends BaseController
     {
         $sorteoService = $this->get('sorteo_service');
 
-        $last4 = $sorteoService->getEncuestasOrderby(array(), array('fecha' => 'DESC'), 4, 1);
-        $sorteo = $sorteoService->getEncuestasOrderby(array(), array('fecha' => 'DESC'), 1, 0);
+        $last4 = $sorteoService->getSorteosOrderby(array(), array('fecha' => 'DESC'), self::NUM_SORTEOS_INDEX, $this->offset);
+        $actual = $sorteoService->getSorteosOrderby(array(), array('fecha' => 'DESC'), 1, 0);
+        $ultimo = $sorteoService->getSorteosOrderby(array(), array('fecha' => 'DESC'), 1, 1);
+        $primero = $sorteoService->getSorteosOrderby(array(), array('fecha' => 'ASC'), 1, 0);
+        $total = $sorteoService->contarSorteos();
+        $size = $total[0]['1'] - 1;
 
         /** @var Sorteo $sorteo_actual */
-        $sorteo_actual = $sorteo[0];
+        $sorteo_actual = $actual[0];
 
-        $size = $last4[0]->getId();
-        $min = $size;
-        $max = $size - 3;
+        /** @var Sorteo $ultimo_sorteo */
+        $ultimo_sorteo = $ultimo[0];
+
+        /** @var Sorteo $primer_sorteo */
+        $primer_sorteo = $primero[0];
 
         return $this->render('encuesta/sorteo.html.twig', array('historial' => $last4, 'actual' => $sorteo_actual,
-            'size' => $size, 'min' => $min, 'max' => $max));
+            'offset' => $this->offset, 'ultimo' => $ultimo_sorteo->getId(), 'primero' => $primer_sorteo->getId(), 'total' => $size));
     }
 
     /**
@@ -51,8 +59,7 @@ class SorteoController extends BaseController
 
         $sorteoService = $this->get('sorteo_service');
 
-        $sorteo = $sorteoService->getEncuestasOrderby(array(), array('fecha' => 'DESC'), 1, 0);
-
+        $sorteo = $sorteoService->getSorteosOrderby(array(), array('fecha' => 'DESC'), 1, 0);
 
         /** @var Sorteo $sorteo_actual */
         $sorteo_actual = $sorteo[0];
@@ -75,25 +82,34 @@ class SorteoController extends BaseController
      */
     public function historialAction(Request $request)
     {
-        $min = $request->query->get('min');
-        $max = $request->query->get('max');
+        $op = $request->query->get('operation');
+        $offset = $request->query->get('offset');
 
         $sorteoService = $this->get('sorteo_service');
 
-        $sorteo = $sorteoService->getEncuestasOrderby(array(), array('fecha' => 'DESC'), 1, 0);
+//        $sorteo = $sorteoService->getSorteosOrderby(array(), array('fecha' => 'DESC'), 1, 0);
+//
+//        /** @var Sorteo $last */
+//        $last = $sorteo[0];
+//        dump($last);
+//
+//        if ($min == $last->getId()) {
+//            $min = $min - 1;
+//        }
+        if ($op == 'next'){
+            $offset += self::NUM_SORTEOS_INDEX;
+            dump($offset);
+        } elseif ($op == 'prev')
+            $offset -= self::NUM_SORTEOS_INDEX;
 
-        /** @var Sorteo $last */
-        $last = $sorteo[0];
-
-        if ($min == $last->getId()) {
-            $min = $min - 1;
-        }
-
-        $show_sorteos = $sorteoService->getEncuestasBetween($min, $max);
+        $show_sorteos = $sorteoService->getSorteosOrderby(array(), array('fecha' => 'DESC'), self::NUM_SORTEOS_INDEX, $offset);
+        dump($show_sorteos);
 
         $jsonContent = $this->serializar($show_sorteos);
 
-        return new JsonResponse($jsonContent);
+        $data = [$jsonContent, $offset];
+
+        return new JsonResponse($data);
     }
 
     /**
@@ -107,7 +123,7 @@ class SorteoController extends BaseController
 
         $sorteoService = $this->get('sorteo_service');
 
-        $sort = $sorteoService->getEncuestasOrderby(array(), array('fecha' => 'DESC'), 1, 0);
+        $sort = $sorteoService->getSorteosOrderby(array(), array('fecha' => 'DESC'), 1, 0);
 
         /** @var Sorteo $actual */
         $actual = $sort[0];
@@ -154,7 +170,7 @@ class SorteoController extends BaseController
                  $encuesta = $this->getEncuesta();
 
                  $sorteoService = $this->get('sorteo_service');
-                 $actual = $sorteoService->getEncuestasOrderby(array(), array('fecha' => 'DESC'), 1, 0);
+                 $actual = $sorteoService->getSorteosOrderby(array(), array('fecha' => 'DESC'), 1, 0);
 
                  /** @var Sorteo $sort_actual */
                  $sort_actual = $actual[0];

@@ -103,6 +103,7 @@ function imprimirSolucion(pos){
             img.setAttribute("src", ruta);
             img.setAttribute("height", "400px");
             img.setAttribute("width", "400px");
+            img.setAttribute("class", "img-fluid rounded");
             $(img).hide().appendTo("#img_encuesta").fadeIn(1000);
 
             var result = document.createElement("p");
@@ -118,20 +119,19 @@ function imprimirSolucion(pos){
 
             var btnSorteo = document.createElement("button");
             btnSorteo.setAttribute("type", "button");
-            btnSorteo.setAttribute("class", "btn btn-warning btn-lg");
-            btnSorteo.setAttribute("style", "padding: 12px;");
+            btnSorteo.setAttribute("class", "btn btn-warning btn-lg btn-mar");
             btnSorteo.setAttribute("data-toggle", "modal");
             btnSorteo.setAttribute("data-target", "#myModal");
-            btnSorteo.setAttribute("onclick", "limpiarModal()")
+            btnSorteo.setAttribute("onclick", "limpiarModal()");
             btnSorteo.innerHTML = "Suscríbete al sorteo";
 
             var col = document.createElement("div");
-            col.setAttribute("class", "col-6 justify-content-center text-right");
+            col.setAttribute("class", "col-sm-6 justify-content-center text-sm-right");
             col.setAttribute("id", "colRedo");
             $(col).appendTo("#div_respuestas");
 
             var col1 = document.createElement("div");
-            col1.setAttribute("class", "col-6 justify-content-center text-left");
+            col1.setAttribute("class", "col-sm-6 justify-content-center text-sm-left");
             col1.setAttribute("id", "colSorteo");
             $(col1).appendTo("#div_respuestas");
 
@@ -226,7 +226,7 @@ function imprimirSavedComments(){
         $(div2).hide().appendTo(div).fadeIn(1000);
 
         //meto div row en div row rowComment
-        $(div).hide().appendTo("#rowComment").fadeIn(1000);
+        $(div).hide().prependTo("#rowComment").fadeIn(1000);
 
     }
 }
@@ -277,7 +277,7 @@ function imprimirComentarios(){
         $(div2).hide().appendTo(div).fadeIn(1000);
 
         //meto div row en div row rowComment
-        $(div).hide().appendTo("#rowComment").fadeIn(1000);
+        $(div).hide().prependTo("#rowComment").fadeIn(1000);
         $("#coment").val("");
         limpiarTextArea();
 

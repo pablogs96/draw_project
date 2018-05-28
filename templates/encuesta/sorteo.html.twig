@@ -4,7 +4,6 @@
         IdentificaTest sorteo
     {% endblock title %}
     {% block stylesheets %}
-        <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
         {{ parent() }}
     {% endblock %}
 
@@ -134,7 +133,14 @@
                                     <button type="button" class="list-group-item list-group-item-action" disabled>Premio: {{ sorteo.premio }}</button>
                                     <button type="button" class="list-group-item list-group-item-action" disabled>Participantes: {{  sorteo.usuarios|length }}</button>
                                     <button type="button" class="list-group-item list-group-item-action" disabled>Fecha: {{ sorteo.fecha|date('d/m/Y') }}</button>
-                                    <button type="button" class="list-group-item list-group-item-action">Ganador: Usuario {{ sorteo.ganador.id }}</button>
+                                    <button type="button" class="list-group-item list-group-item-action">
+                                        Ganador:
+                                        {% if (sorteo.ganador) %}
+                                            Usuario {{ sorteo.ganador.id }}
+                                        {% else %}
+                                            No ha habido participantes
+                                        {% endif %}
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -163,20 +169,26 @@
         <script src="{{ asset('js/animateJS.js') }}"></script>
 
         <script>
-            var min = {{ min }};
-            var max = {{ max }};
+            var offset = {{ offset }};
+            var last = {{ ultimo }};
+            var first = {{ primero }};
+
+
+            {% for sorteo in historial %}
+                {% if sorteo.id == primero %}
+                    console.log("se esta mostrando el ultimo");
+                    $("#next").hide();
+                {% endif %}
+            {% endfor %}
 
             $(document).ready(function () {
                 $("#prev").hide();
-                if (max === 1) {
-                    $("#next").hide();
-                }
             });
+
 
             //funciones para la paginacion del historial
             function previous(){
-                $("#prev").fadeIn(1000);
-                var data = {"min": min + 4, "max": min + 1};
+                var data = {"operation": 'prev', "offset": offset};
                 $.ajax({
                     data:  data, //datos que se envian a traves de ajax
                     url:   '/home/sorteo/historial', //archivo que recibe la peticion
@@ -184,14 +196,15 @@
                     beforeSend: function () {
                         console.log("Procesando, espere por favor...");
                     },
-                    success:  function (np_sorteos) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-                        cambiar(np_sorteos);
+                    success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+                        cambiar(response);
                     }
                 });
             }
 
             function next(){
-                var data = {"min": min - 4, "max": max - 4};
+                var operation = "next"
+                var data = {"operation": operation, "offset": offset};
                 $.ajax({
                     data:  data, //datos que se envian a traves de ajax
                     url:   '/home/sorteo/historial', //archivo que recibe la peticion
@@ -199,17 +212,17 @@
                     beforeSend: function () {
                         console.log("Procesando, espere por favor...");
                     },
-                    success:  function (np_sorteos) { //una vez que el archivo recibe el request lo procesa y lo devuelve
-                        cambiar(np_sorteos);
+                    success:  function (response) { //una vez que el archivo recibe el request lo procesa y lo devuelve
+                        cambiar(response);
                     }
                 });
             }
 
-            function cambiar(np_sorteos){
+            function cambiar(response){
                 $contenedor = $("#contenedor");
                 $contenedor.empty();
 
-                $sorteos2 = JSON.parse(np_sorteos);
+                $sorteos2 = JSON.parse(response[0]);
 
                 for (var i = 0; i < $sorteos2.length; i++){
 
@@ -250,9 +263,11 @@
                     var b5 = document.createElement("button");
                     b5.setAttribute("type", "button");
                     b5.setAttribute("class", "list-group-item list-group-item-action");
-                    b5.innerHTML = "Ganador: Usuario " + $sorteos2[i].ganador.id;
-
-
+                    if ($sorteos2[i].ganador){
+                        b5.innerHTML = "Ganador: Usuario " + $sorteos2[i].ganador.id;
+                    } else {
+                        b5.innerHTML = "Ganador: No ha habido participantes";
+                    }
 
                     //appends encuestas
                     $(row).hide().appendTo($("#contenedor")).fadeIn(1000);
@@ -265,36 +280,33 @@
                     $(b5).hide().appendTo(div).fadeIn(1000);
 
                     // window.scrollTo($("#scroll"));
-                    $("#scroll").animatescroll({scrollSpeed:3000,easing:'easeOutQuint'});
+                    $("#scroll").animatescroll({scrollSpeed:1000,easing:'easeOutQuint'});
                 }
 
-                min = $sorteos2[0].id;
-                max = $sorteos2[$sorteos2.length -1].id;
-
-                if (min === {{ size }}) {
-                    console.log("se esta mostrando el primero");
-                    $("#prev").hide();
-                } else {
-                    $("#prev").fadeIn(1000);
-                }
-                if (max === 1) {
-                    console.log("se esta mostrando el ultimo");
+                if ($sorteos2[$sorteos2.length - 1].id === first) {
                     $("#next").hide();
                 } else {
                     $("#next").fadeIn(1000);
                 }
+                if ($sorteos2[0].id === last) {
+                    $("#prev").hide();
+                } else {
+                    $("#prev").fadeIn(1000);
+                }
+
+                offset = response[1];
             }
 
             function borrarse() {
-                $userEmail = $("#usermail").val();
-                $userPass = $("#userpass").val();
-                $check = $("#validate");
-                if ($userEmail !== "") {
-                    if ($userPass !== "") {
-                        if ($check.is(':checked')){
-                            $userdata = {"mail": $userEmail, "pass": $userPass};
+                var userEmail = $("#usermail").val();
+                var userPass = $("#userpass").val();
+                var check = $("#validate");
+                if (userEmail !== "") {
+                    if (userPass !== "") {
+                        if (check.is(':checked')){
+                            var userdata = {"mail": userEmail, "pass": userPass};
                             $.ajax({
-                                data:  $userdata, //datos que se envian a traves de ajax
+                                data:  userdata, //datos que se envian a traves de ajax
                                 url:   '/home/sorteo/leave', //archivo que recibe la peticion
                                 type:  'post', //método de envio
                                 beforeSend: function () {

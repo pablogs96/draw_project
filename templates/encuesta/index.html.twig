@@ -1,7 +1,12 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
+    {{ parent() }}
+{% endblock %}
+
 {% block body_nav %}
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top navSize" id="nav" style="background-color: #EDDBF3;">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top navSize colored-nav" id="nav" style="color: white">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="true" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
