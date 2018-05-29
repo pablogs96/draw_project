@@ -15,7 +15,7 @@ class Sorteo
     /**
      * Many Sorteos have One Premio.
      * @ORM\ManyToOne(targetEntity="Premio", inversedBy="sorteos")
-     * @ORM\JoinColumn(name="premio_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="premio_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $premio;
 

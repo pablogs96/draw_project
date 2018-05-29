@@ -7,7 +7,7 @@
         {{ parent() }}
     {% endblock %}
 
-{% block body_tag %}data-spy="scroll" data-target=".navbar" data-offset="50" onload="cargar()" style="background-color: black"{% endblock %}
+{% block body_tag %}data-spy="scroll" data-target=".navbar" data-offset="50" onload="cargar()"{% endblock %}
     {% block encuestas_active %}active{% endblock %}
     {% block body_content %}
       <!-- modal box to subscription-->
@@ -15,10 +15,10 @@
       <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <div class="modal-header justify-content-center text-center" style="background-color:  #EDDBF3;">
+            <div class="modal-header justify-content-center text-center colored">
               <h4 class="modal-title">UNIRSE GRATIS AL SORTEO</h4>
             </div>
-            <div class="modal-body justify-content-center text-center" style="background-color: #EDDBF3">
+            <div class="modal-body justify-content-center text-center colored">
               <form action="">
                 <div class="row justify-content-center text-center">
                   <div class="col-8">
@@ -49,7 +49,7 @@
                 </div>
               </form>
             </div>
-            <div class="modal-footer justify-content-center" style="background-color:  #EDDBF3">
+            <div class="modal-footer justify-content-center colored">
               <button type="button" class="btn btn-success" onclick="addUser()">Unirse</button>
               <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
             </div>
@@ -60,11 +60,11 @@
       <!-- SECCIÓN PREGUNTAS/RESPUESTA -->
 
       <section id="top">
-        <div class="container rounded" id="edge" style="background-color: #EDDBF3; padding-bottom:20px; padding-top: 70px; margin-top: 8%">
+        <div class="container" id="edge" style="padding-bottom:20px; padding-top: 70px; margin-top: 8%">
           <div class="row justify-content-center text-center" id="title">
           </div>
           <div class="row">
-            <div class="col-sm-8 container-fluid justify-content-center text-center rounded" style="height: 850px; padding-top:50px; background-color: #EDDBF3; height: auto; width: auto;">
+            <div class="col-sm-8 container-fluid justify-content-center text-center" style="padding-top:50px; height: auto; width: auto;">
               <div class="row justify-content-center text-center" id="titulo_encuesta" style="padding-bottom:20px">
               </div>
               <div class="row justify-content-center" id="img_encuesta" style="padding-bottom:20px">
@@ -92,21 +92,27 @@
         <br><br>
         <!-- SECCIÓN COMENTARIOS -->
 
-        <div class="container rounded" style="background-color: #EDDBF3; padding-bottom:20px; padding-top: 70px; margin-bottom: 4%">
+        <div class="container" style="padding-bottom:20px; padding-top: 70px; margin-bottom: 4%">
           <div class="row">
-            <div class="col-sm-8 container-fluid justify-content-center rounded" style=" background-color: #EDDBF3">
-              <div class="col-sm-9">
-                <h4>Deja un comentario:</h4>
-                <form role="form">
-                  <div class="form-group">
-                    <textarea id="coment" class="form-control" rows="3" required></textarea>
-                  </div>
-                  <button type="button" class="btn btn-success" onclick="imprimirComentarios()">Enviar</button>
-                </form>
-                <br><br>
-                <p id="pComment"> <span class="badge badge-dark" id="number"></span> COMENTARIOS:</p><br>
-                <div class="col-sm-9" id="rowComment">
+            <div class="col-sm-8 container-fluid justify-content-center">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <h4>Deja un comentario:</h4>
+                    </div>
                 </div>
+                <div class="row">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="coment"></label>
+                            <textarea id="coment" class="form-control rounded" rows="3" style="width: 600px; background-color: black; color: white; resize: none"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-success" onclick="imprimirComentarios()">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+                <p id="pComment"> <span class="badge badge-dark" id="number"></span> COMENTARIOS:</p><br>
+              <div class="col-sm-12" id="rowComment">
               </div>
             </div>
           </div>

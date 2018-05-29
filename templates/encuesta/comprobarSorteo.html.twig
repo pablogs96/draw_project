@@ -8,21 +8,21 @@
         {{ parent() }}
     {% endblock %}
 
-{% block body_tag %}style="background-color: black" onload="cargar()"{% endblock %}
+{% block body_tag %}onload="cargar()"{% endblock %}
     {% block sorteo_active %}active{% endblock %}
     {% block body_content %}
 
         <!-- HEADER -->
 
         <header id="header">
-            <div class="container rounded" style="padding-top:70px;padding-bottom:70px; margin-top: 4%;">
+            <div class="container" style="padding-top:70px; margin-top: 4%;">
                 <div class="row justify-content-center" id="edge">
                     <h1 class="sizedPageTitle bigTitle" style="color: white;">MIS SORTEOS</h1>
                 </div>
             </div>
         </header>
 
-        <div class="container rounded" style="padding-top:70px;padding-bottom:70px; background-color: #EDDBF3; margin-bottom: 5%">
+        <div class="container" style="padding-top:70px; margin-bottom: 5%">
         <div class="row justify-content-center" id="edge">
             <a href="https://www.opositatest.com/"></a>
         </div>
@@ -108,30 +108,26 @@
             </div>
         {%  else %}
             </div>
-            <div class="container rounded" style="padding-top:70px;padding-bottom:70px; background-color: #EDDBF3; margin-bottom: 5%">
+            <div class="container" style="padding-top:70px;padding-bottom:200px; margin-bottom: 5%">
                 <div class="row text-center justify-content-center">
                     <h3>¡REALIZA UNA ENCUESTA PARA UNIRTE A UN SORTEO!</h3>
                 </div>
                 <div class="row text-center justify-content-center" style="margin-top: 2%">
                     <a href="/home/encuestas"><input type="button" class="btn btn-warning" value="Ver todas las encuestas"></a>
                 </div>
-            </div>
-
-            <div class="container" style="padding: 1%">
-                <div class="row justify-content-center text-center" style="padding-bottom: 2%">
+                <div class="row justify-content-center text-center" style="padding-bottom: 2%; margin-top: 2%">
                     <input id="showBtn" type="button" class="btn btn-danger" onclick="mostrarEncuesta()" value="Mostrar encuesta">
                 </div>
             </div>
-
             <!-- modal box to subscription-->
 
             <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <div class="modal-header justify-content-center text-center" style="background-color:  #EDDBF3;">
+                        <div class="modal-header justify-content-center text-center colored">
                             <h4 class="modal-title">UNIRSE GRATIS AL SORTEO</h4>
                         </div>
-                        <div class="modal-body justify-content-center text-center" style="background-color: #EDDBF3">
+                        <div class="modal-body justify-content-center text-center colored">
                             <form action="">
                                 <div class="row justify-content-center text-center">
                                     <div class="col-8">
@@ -162,7 +158,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="modal-footer justify-content-center" style="background-color:  #EDDBF3">
+                        <div class="modal-footer justify-content-center colored">
                             <button type="button" class="btn btn-success" onclick="addUser()">Unirse</button>
                             <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
                         </div>
@@ -173,11 +169,11 @@
             <!-- SECCIÓN PREGUNTAS/RESPUESTA -->
 
             <section id="top" style="display: none">
-                <div class="container rounded" style="background-color: #EDDBF3; padding-bottom:20px; padding-top: 70px">
+                <div class="container" style="padding-bottom:20px; padding-top: 70px">
                     <div class="row justify-content-center text-center" id="title">
                     </div>
                     <div class="row">
-                        <div class="col-sm-8 container-fluid justify-content-center text-center rounded" style="height: 850px; padding-top:50px; background-color: #EDDBF3; height: auto; width: auto;">
+                        <div class="col-sm-8 container-fluid justify-content-center text-center" style="padding-top:50px; height: auto; width: auto;">
                             <div class="row justify-content-center text-center" id="titulo_encuesta" style="padding-bottom:20px">
                             </div>
                             <div class="row justify-content-center" id="img_encuesta" style="padding-bottom:20px">
@@ -205,21 +201,27 @@
                 <br><br>
                 <!-- SECCIÓN COMENTARIOS -->
 
-                <div class="container rounded" style="background-color: #EDDBF3; padding-bottom:20px; padding-top: 70px; margin-bottom: 4%">
+                <div class="container" style="padding-bottom:20px; padding-top: 70px; margin-bottom: 4%">
                     <div class="row">
-                        <div class="col-sm-8 container-fluid justify-content-center rounded" style=" background-color: #EDDBF3">
-                            <div class="col-sm-9">
-                                <h4>Deja un comentario:</h4>
+                        <div class="col-sm-8 container-fluid justify-content-center">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <h4>Deja un comentario:</h4>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <form role="form">
                                     <div class="form-group">
-                                        <textarea id="coment" class="form-control" rows="3" required></textarea>
+                                        <label for="coment"></label>
+                                        <textarea id="coment" class="form-control rounded" rows="3" style="width: 600px; background-color: black; color: white; resize: none"></textarea>
                                     </div>
-                                    <button type="button" class="btn btn-success" onclick="imprimirComentarios()">Enviar</button>
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-success" onclick="imprimirComentarios()">Enviar</button>
+                                    </div>
                                 </form>
-                                <br><br>
-                                <p id="pComment"> <span class="badge badge-dark" id="number"></span> COMENTARIOS:</p><br>
-                                <div class="col-sm-9" id="rowComment">
-                                </div>
+                            </div>
+                            <p id="pComment"> <span class="badge badge-dark" id="number"></span> COMENTARIOS:</p><br>
+                            <div class="col-sm-12" id="rowComment">
                             </div>
                         </div>
                     </div>
@@ -227,7 +229,7 @@
             </section>
         {% endif %}
         {% if sorteos|length == 1 %}
-            <div class="container rounded" style="padding-top:70px;padding-bottom:70px; background-color: #EDDBF3; margin-bottom: 5%">
+            <div class="container" style="padding-top:70px;padding-bottom:70px; margin-bottom: 5%">
                 <div class="row text-center justify-content-center">
                     <h3>¡REALIZA OTRA ENCUESTA PARA UNIRTE A MÁS SORTEOS!</h3>
                 </div>

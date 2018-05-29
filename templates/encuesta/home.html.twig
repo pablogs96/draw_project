@@ -9,18 +9,18 @@
         {{ parent() }}
     {% endblock %}
 
-{% block body_tag %}style="background-color: black"{% endblock %}
     {% block home_active %}active{% endblock %}
     {% block body_content %}
 
     <!-- SECCION DE EXPLICACION -->
     <header id="header">
-        <div class="container rounded colored" style="padding-top:70px;padding-bottom:70px; margin-top: 8%">
+        <div class="container" style="padding-top:70px; margin-top: 4%">
             <div class="row text-center justify-content-center" id="edge" style="padding-bottom: 20px">
                 <h1 class="sizedPageTitle"><b>¡BIENVENIDO A IDENTIFICATEST!</b></h1>
             </div>
+            <hr style="background-color: black">
             <div class="row justify-content-center">
-                <div class="col-sm-6 col-10">
+                <div class="col-sm-10 col-10">
                     <h5>En esta web encontrarás múltiples encuestas con las que podrás divertirte respondiendo y averiguando tus resultados. Después de realizar una encuesta tendrás la
                         opción de unirte a un sorteo de manera totalmente gratuita. Mucha suerte y espero que disfrutes de esta web!</h5>
                 </div>
@@ -31,31 +31,31 @@
     </header>
     <!-- SECCION DE ENCUESTAS -->
     <section>
-        <div class="container rounded text-center colored" style="padding-top:100px;padding-bottom:70px; margin-top: 4%;">
+        <div class="container text-center" style="padding-top:70px;padding-bottom:70px; margin-top: 2%;">
             <h1 class="sizedPageTitle">ALGUNAS DE NUESTRAS ENCUESTAS</h1>
-            <hr>
+            <hr style="background-color: black">
             <br>
             <br>
             <div class="row justify-content-center text-center">
                 {% for encuesta in encuestas %}
-                    <div class="col-md-6 col-lg-6" id="portfolio">
-                        <a href="/home/encuesta/{{ encuesta.id }}" id="portLink">
-                            <h1 id="h1po" class="sizedPageTitle">{{ encuesta.title }}</h1>
+                <a href="/home/encuesta/{{ encuesta.id }}" id="portLink">
+                    <div class="col-md-12 col-lg-12 rounded roundedhov" style="margin: 3%;" id="portfolio">
+                            <h5 id="h1po" class="sizedPageTitle" style="padding: 2%">{{ encuesta.title }}</h5>
                             <img src={{ encuesta.img }} id="imgPort">
-                        </a>
                     </div>
+                </a>
                 {% endfor %}
-                <a href="/home/encuestas" type="button" class="btn btn-dark">Ver todas las encuestas</a>
             </div>
+            <a href="/home/encuestas" type="button" class="btn btn-warning">Ver todas las encuestas</a>
         </div>
     </section>
     <!-- SECCION DE COLABORADORES -->
     <section>
-        <div id="section3" class="container rounded text-center colored" style="padding-top:100px;padding-bottom:70px; margin-top: 4%;">
+        <div id="section3" class="container text-center" style="padding-top:70px;padding-bottom:70px; margin-top: 2%;">
             <div class="row justify-content-center text-center">
                 <h1 class="sizedPageTitle">NUESTROS COLABORADORES</h1>
             </div>
-            <hr>
+            <hr style="background-color: black">
             <br>
             <br>
             <div class="row">
@@ -71,9 +71,9 @@
 
     <!-- SECCION DE SOBRE MI -->
     <section>
-        <div id="section3" class="container rounded text-center colored" style="padding-top:100px;padding-bottom:70px; margin-top: 4%; margin-bottom: 4%;">
+        <div id="section3" class="container text-center colored" style="padding-top:70px;padding-bottom:70px; margin-top: 2%">
             <h1 class="sizedPageTitle">SOBRE MÍ</h1>
-            <hr>
+            <hr style="background-color: black">
             <div class="row justify-content-center">
                 <img class="mx-auto rounded-circle" src="https://png.icons8.com/metro/1600/gender-neutral-user.png" width="200px" height="200px">
             </div>
@@ -81,7 +81,7 @@
                 <h4>Pablo García Saleta</h4>
             </div>
             <div>
-                <p style="color: #969896">Técnico superior en desarrollo de aplicaciones multiplataforma</p>
+                <p style="color: black">Técnico superior en desarrollo de aplicaciones multiplataforma</p>
             </div>
             <div>
                 <ul class="list-inline social-buttons">

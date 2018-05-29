@@ -112,7 +112,7 @@ function imprimirSolucion(pos){
 
             var redo = document.createElement("a");
             redo.setAttribute("type", "button");
-            redo.setAttribute("class", "btn btn-primary");
+            redo.setAttribute("class", "btn btn-danger");
             redo.setAttribute("style", "padding: 15px;");
             redo.setAttribute("href", "/home/encuesta/" + encuesta.id);
             redo.innerHTML = "Volver a jugar";
@@ -190,8 +190,8 @@ function limpiarModal() {
 function imprimirSavedComments(){
     for($i = 0; $i < encuesta.comentarios.length; $i++){
         var div = document.createElement("div");
-        div.setAttribute("class", "row");
-        div.setAttribute("style", "margin-bottom: 25px");
+        div.setAttribute("class", "row rounded");
+        div.setAttribute("style", "margin-bottom: 25px; padding: 5%; width 600px");
 
         // creo div col 1
         var div1 = document.createElement("div");
@@ -203,15 +203,15 @@ function imprimirSavedComments(){
         img.setAttribute("class", "img-circle");
         img.setAttribute("height", "65");
         img.setAttribute("width", "65");
+        img.setAttribute("style", "padding-bottom: 10px");
         img.setAttribute("alt", "avatar");
 
         // meto img en div1
         $(img).hide().appendTo(div1).fadeIn(1000);
-        //div1.append(img);
 
         // creo div col 2
         var div2 = document.createElement("div");
-        div2.setAttribute("class", "col-sm-10");
+        div2.setAttribute("class", "col-sm-11 text-sm-left");
         div2.setAttribute("style", "margin-bottom: 10px");
 
         // creo p de div2
@@ -242,8 +242,8 @@ function imprimirComentarios(){
 
         // creo div row
         var div = document.createElement("div");
-        div.setAttribute("class", "row");
-        div.setAttribute("style", "margin-bottom: 25px");
+        div.setAttribute("class", "row rounded");
+        div.setAttribute("style", "margin-bottom: 25px; padding: 5%; width 600px");
 
         // creo div col 1
         var div1 = document.createElement("div");
@@ -255,6 +255,7 @@ function imprimirComentarios(){
         img.setAttribute("class", "img-circle");
         img.setAttribute("height", "65");
         img.setAttribute("width", "65");
+        img.setAttribute("style", "padding-bottom: 10px");
         img.setAttribute("alt", "avatar");
 
         // meto img en div1
@@ -262,7 +263,7 @@ function imprimirComentarios(){
 
         // creo div col 2
         var div2 = document.createElement("div");
-        div2.setAttribute("class", "col-sm-10");
+        div2.setAttribute("class", "col-sm-11 text-sm-left");
         div2.setAttribute("style", "margin-bottom: 10px");
 
         // creo p de div2
@@ -280,11 +281,6 @@ function imprimirComentarios(){
         $(div).hide().prependTo("#rowComment").fadeIn(1000);
         $("#coment").val("");
         limpiarTextArea();
-
-
-        //actualizo el numero que aparece de comentarios escritos
-    } else {
-
     }
 }
 //llamada ajax

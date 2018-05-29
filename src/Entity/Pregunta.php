@@ -13,7 +13,7 @@ class Pregunta
     /**
      * Many Preguntas have One Encuesta.
      * @ORM\ManyToOne(targetEntity="Encuesta", inversedBy="preguntas")
-     * @ORM\JoinColumn(name="encuesta_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="encuesta_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $encuesta;
 

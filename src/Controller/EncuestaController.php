@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Encuesta;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -11,6 +12,7 @@ class EncuestaController extends BaseController
 {
     const NUM_ENCUESTAS_INDEX = 4;
     const NUM_ENCUESTAS_INDEX_HOME = 4;
+    private $offset = 0;
 
     /**
      * @Route("/home/encuesta/{id}", name="encuesta")
@@ -62,17 +64,19 @@ class EncuestaController extends BaseController
      */
     public function showEncuestasAction(Request $request){
         $encuestaService = $this->get('encuesta_service');
-        $offset = 0;
 
-        $encuestas = $encuestaService->getEncuestasOrderby(array(), array('id' => 'ASC'), self::NUM_ENCUESTAS_INDEX, $offset);
+        /** @var Encuesta $ultima */
+        $ultima = $encuestaService->getEncuestasOrderby(array(), array('id' => 'DESC'), 1, 0)[0];
+        /** @var Encuesta $primera */
+        $primera = $encuestaService->getEncuestasOrderby(array(), array('id' => 'ASC'), 1, 0)[0];
 
-        $num = $encuestaService->getTotalEncuestas();
+        $encuestas = $encuestaService->getEncuestasOrderby(array(), array('id' => 'DESC'),
+            self::NUM_ENCUESTAS_INDEX, $this->offset);
 
-        $size = $num[0]['1'];
-        $min = 1;
-        $max = 4;
+        $num = $encuestaService->getTotalEncuestas()[0]['1'];
 
-        return $this->render('encuesta/mostrarEncuestas.html.twig', array('encuestas' => $encuestas, 'size' => $size, 'min' => $min, 'max' => $max));
+        return $this->render('encuesta/mostrarEncuestas.html.twig', array('historial' => $encuestas,
+            'offset' => $this->offset, 'ultimo' => $ultima->getId(), 'primero' => $primera->getId(), 'total' => $num));
     }
 
     /**
@@ -81,15 +85,22 @@ class EncuestaController extends BaseController
      * @return Response
      */
     public function paginationAction(Request $request){
-        $min = $request->get('min');
-        $max = $request->get('max');
+        $op = $request->query->get('operation');
+        $offset = $request->query->get('offset');
 
         $encuestaService = $this->get('encuesta_service');
 
-        $encuestas = $encuestaService->getEncuestasBetween($min, $max);
+        if ($op == 'next'){
+            $offset += self::NUM_ENCUESTAS_INDEX;
+        } elseif ($op == 'prev')
+            $offset -= self::NUM_ENCUESTAS_INDEX;
+
+        $encuestas = $encuestaService->getEncuestasOrderby(array(), array('id' => 'DESC'), self::NUM_ENCUESTAS_INDEX, $offset);
 
         $jsonContent = $this->serializar($encuestas);
 
-        return new JsonResponse($jsonContent);
+        $data = [$jsonContent, $offset];
+
+        return new JsonResponse($data);
     }
 }

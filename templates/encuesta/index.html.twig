@@ -6,20 +6,20 @@
 {% endblock %}
 
 {% block body_nav %}
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top navSize colored-nav" id="nav" style="color: white">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top navSize" id="nav">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="true" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse navbar-center" id="navbarToggler">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item {% block home_active %}{% endblock %}">
-                    <a class="nav-link" href="/home">HOME<span class="sr-only"></span></a>
+                    <a class="nav-link" id="anav" href="/home">HOME<span class="sr-only"></span></a>
                 </li>
                 <li class="nav-item {% block encuestas_active %}{% endblock %}">
-                    <a class="nav-link" href="/home/encuestas">ENCUESTAS</a>
+                    <a class="nav-link" id="anav" href="/home/encuestas">ENCUESTAS</a>
                 </li>
                 <li class="nav-item {% block sorteo_active %}{% endblock %}">
-                    <a class="nav-link" href="/home/sorteo">SORTEO</a>
+                    <a class="nav-link" id="anav" href="/home/sorteo">SORTEO</a>
                 </li>
             </ul>
         </div>
@@ -27,7 +27,7 @@
 {% endblock %}
 {% block footer %}
     <footer>
-        <div class="container-fluid text-center">
+        <div class="container-fluid text-center text-white">
             <p>2018&copy; | Pablo García Saleta | Todos los derechos reservados</p>
         </div>
     </footer>

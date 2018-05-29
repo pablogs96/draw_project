@@ -1,3 +1,11 @@
+body{
+    font-family: 'Secular One', sans-serif;
+    background-image: url("https://nayn.co/wp-content/uploads/2016/09/son8.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    /*color: white;*/
+}
+
 @media screen and (min-width: 1000px) {
     .input-class {
         padding: 5px;
@@ -48,4 +56,11 @@
     0%   {color: red;}
 
     50%  {color: black;}
+}
+
+.rounded{
+    border-radius: .25rem !important;
+    box-shadow: 10px 10px 5px black;
+    border: 1px solid #9b9b9b;
+    background-color: white;
 }

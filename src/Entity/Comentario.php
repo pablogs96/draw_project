@@ -12,7 +12,7 @@ class Comentario
     /**
      * Many Comentarios have One Encuesta.
      * @ORM\ManyToOne(targetEntity="Encuesta", inversedBy="comentarios")
-     * @ORM\JoinColumn(name="encuesta_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="encuesta_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $encuesta;
 

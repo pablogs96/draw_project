@@ -7,7 +7,6 @@
         {{ parent() }}
     {% endblock %}
 
-{% block body_tag %}style="background-color: black"{% endblock %}
     {% block sorteo_active %}active{% endblock %}
     {% block body_content %}
         <!-- modal box to subscription-->
@@ -15,13 +14,13 @@
         <div class="modal fade" id="unirseModal" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
-                    <div class="modal-header justify-content-center text-center" style="background-color:  #EDDBF3;">
+                    <div class="modal-header justify-content-center text-center colored">
                         <h3 class="modal-title">UNIRSE GRATIS AL SORTEO</h3>
                     </div>
-                    <div class="modal-body justify-content-center text-center" style="background-color: #EDDBF3">
+                    <div class="modal-body justify-content-center text-center colored">
                         <h6>Para poder participar en el sorteo debes <b>cubrir una encuesta</b>, y un usuario solo puede participar <b>una vez</b>.</h6>
                     </div>
-                    <div class="modal-footer justify-content-center" style="background-color:  #EDDBF3">
+                    <div class="modal-footer justify-content-center colored">
                         <a href="/home/encuesta/1"><button type="button" class="btn btn-success">Realizar encuesta</button></a>
                         <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
                     </div>
@@ -34,10 +33,10 @@
         <div class="modal fade" id="borrarseModal" role="dialog">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
-                    <div class="modal-header justify-content-center text-center" style="background-color:  #EDDBF3;">
+                    <div class="modal-header justify-content-center text-center colored">
                         <h3 class="modal-title">¿QUIERES BORRARTE DEL SORTEO?</h3>
                     </div>
-                    <div class="modal-body justify-content-center text-center" style="background-color: #EDDBF3">
+                    <div class="modal-body justify-content-center text-center colored">
                         <form action="">
                             <div class="row justify-content-center text-center">
                                 <div class="col-8">
@@ -60,7 +59,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="modal-footer justify-content-center" style="background-color:  #EDDBF3">
+                    <div class="modal-footer justify-content-center colored">
                         <a href="#"><button type="button" class="btn btn-success" onclick="borrarse()">Borrarse</button></a>
                         <button type="button" class="btn btn-warning" data-dismiss="modal">Cancelar</button>
                     </div>
@@ -71,13 +70,14 @@
         <!-- HEADER -->
 
         <header id="header">
-            <div class="container rounded" style="padding-top:70px;padding-bottom:70px; background-color: #EDDBF3; margin-top: 7%">
+            <div class="container" style="padding-top:70px;padding-bottom:70px; margin-top: 7%">
                 <div class="row justify-content-center" id="edge">
                     <a href="https://www.opositatest.com/"></a>
                 </div>
                 <div class="row text-center justify-content-center" style="padding-bottom: 20px">
                     <h1 class="sizedPageTitle"><b>¡BIENVENIDO AL SORTEO DE IDENTIFICATEST!</b></h1>
                 </div>
+                <hr style="background-color: black">
                 <div class="row justify-content-center text-center">
                     <div class="col-sm-6 col-10 justify-content-center text-left">
                         <h6>Este sorteo es totalmente gratuito y opcional. El requisito para poder participar es únicamente realizar al menos una encuesta.
@@ -86,7 +86,7 @@
                     </div>
                 </div>
                 <div class="row justify-content-center" style="padding-top: 5%">
-                    <div class="col-9 text-left" style="margin-bottom: 50px">
+                    <div class="col-9 text-center" style="margin-bottom: 50px">
                         <div class="list-group">
                             <button type="button" class="list-group-item list-group-item-action text-dark text-center" style="background-color: chartreuse">
                                 SORTEO ACTUAL ( {{ actual.id }} )
@@ -112,20 +112,21 @@
 
         <!-- 3ª Sección (Sección del sorteo) -->
         <section>
-            <div class="container rounded" id="scroll" style="padding-top:70px;padding-bottom:70px; background-color: #EDDBF3; margin-top: 7%; margin-bottom: 1%">
+            <div class="container" id="scroll" style="padding-top:70px;padding-bottom:70px; margin-top: 7%; margin-bottom: 1%">
                 <div class="row justify-content-center" style="padding-bottom: 3%">
                     <div class="col-sm-6 offset-sm-1 justify-content-sm-right text-sm-right justify-content-center text-center">
-                        <h3 class="sizedPageTitle">HISTORIAL DE SORTEOS</h3>
+                        <h1 class="sizedPageTitle">HISTORIAL DE SORTEOS</h1>
                     </div>
                     <div class="col-sm-3 justify-content-sm-right text-sm-right justify-content-center text-center">
                         <a href="/home/sorteo/login"><button type="button" class="btn btn-info">VER MIS SORTEOS</button></a>
                     </div>
-
                 </div>
+                <hr style="background-color: black">
+
                 <div id="contenedor">
                     {% for sorteo in historial %}
-                        <div class="row">
-                            <div class="col-sm-6 offset-sm-3 text-left" style="margin-bottom: 50px">
+                        <div class="row justify-content-center">
+                            <div class="col-9 text-left" style="margin-bottom: 25px">
                                 <div class="list-group">
                                     <button type="button" class="list-group-item list-group-item-action bg-warning text-dark text-center">
                                         SORTEO {{ sorteo.id }}

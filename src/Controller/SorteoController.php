@@ -26,23 +26,15 @@ class SorteoController extends BaseController
         $sorteoService = $this->get('sorteo_service');
 
         $last4 = $sorteoService->getSorteosOrderby(array(), array('fecha' => 'DESC'), self::NUM_SORTEOS_INDEX, $this->offset);
-        $actual = $sorteoService->getSorteosOrderby(array(), array('fecha' => 'DESC'), 1, 0);
-        $ultimo = $sorteoService->getSorteosOrderby(array(), array('fecha' => 'DESC'), 1, 1);
-        $primero = $sorteoService->getSorteosOrderby(array(), array('fecha' => 'ASC'), 1, 0);
+        $actual = $sorteoService->getOneSorteoOrderby(array(), array('fecha' => 'DESC'), 1, 0);
+        $ultimo = $sorteoService->getOneSorteoOrderby(array(), array('fecha' => 'DESC'), 1, 1);
+        $primero = $sorteoService->getOneSorteoOrderby(array(), array('fecha' => 'ASC'), 1, 0);
         $total = $sorteoService->contarSorteos();
         $size = $total[0]['1'] - 1;
 
-        /** @var Sorteo $sorteo_actual */
-        $sorteo_actual = $actual[0];
 
-        /** @var Sorteo $ultimo_sorteo */
-        $ultimo_sorteo = $ultimo[0];
-
-        /** @var Sorteo $primer_sorteo */
-        $primer_sorteo = $primero[0];
-
-        return $this->render('encuesta/sorteo.html.twig', array('historial' => $last4, 'actual' => $sorteo_actual,
-            'offset' => $this->offset, 'ultimo' => $ultimo_sorteo->getId(), 'primero' => $primer_sorteo->getId(), 'total' => $size));
+        return $this->render('encuesta/sorteo.html.twig', array('historial' => $last4, 'actual' => $actual,
+            'offset' => $this->offset, 'ultimo' => $ultimo->getId(), 'primero' => $primero->getId(), 'total' => $size));
     }
 
     /**
@@ -87,15 +79,6 @@ class SorteoController extends BaseController
 
         $sorteoService = $this->get('sorteo_service');
 
-//        $sorteo = $sorteoService->getSorteosOrderby(array(), array('fecha' => 'DESC'), 1, 0);
-//
-//        /** @var Sorteo $last */
-//        $last = $sorteo[0];
-//        dump($last);
-//
-//        if ($min == $last->getId()) {
-//            $min = $min - 1;
-//        }
         if ($op == 'next'){
             $offset += self::NUM_SORTEOS_INDEX;
             dump($offset);
@@ -103,7 +86,6 @@ class SorteoController extends BaseController
             $offset -= self::NUM_SORTEOS_INDEX;
 
         $show_sorteos = $sorteoService->getSorteosOrderby(array(), array('fecha' => 'DESC'), self::NUM_SORTEOS_INDEX, $offset);
-        dump($show_sorteos);
 
         $jsonContent = $this->serializar($show_sorteos);
 

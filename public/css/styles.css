@@ -1,22 +1,19 @@
 body{
-  font-family: 'Secular One', sans-serif;
-}
-
-/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-.row.content {height: 450px}
-
-/* Set gray background color and 100% height */
-.sidenav {
-  padding-top: 20px;
-  background-color: #f1f1f1;
-  height: 100%;
+    font-family: 'Secular One', sans-serif;
+    background-image: url("https://nayn.co/wp-content/uploads/2016/09/son8.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    /*color: white;*/
 }
 
 /* Set black background color, white text and some padding */
 footer {
-  background-color: #EDDBF3;
-  color: black;
-  padding: 10px;
+    background: rgb(125,126,125);
+    background: -moz-linear-gradient(top, rgba(125,126,125,1) 0%, rgba(14,14,14,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%);
+    background: linear-gradient(to bottom, rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 );
+    padding: 10px;
 }
 
 /* On small screens, set height to 'auto' for sidenav and grid */
@@ -60,7 +57,7 @@ footer {
 
 @media screen and (min-width: 990px) {
   .navSize{
-    height: 150px;
+    height: 115px;
   }
 }
 
@@ -116,7 +113,7 @@ footer {
 }
 
 #portLink:hover {
-    filter: opacity(65%);
+
 }
 
 @media screen and (min-width: 1000px) {
@@ -136,24 +133,39 @@ footer {
     }
 }
 
-.colored{
-    background: -moz-linear-gradient(top, rgba(30,87,153,0) 0%, rgba(33,102,172,0.8) 15%, rgba(36,114,187,1) 27%, rgba(41,137,216,1) 50%, rgba(35,111,183,1) 76%, rgba(33,101,171,0.8) 86%, rgba(30,87,153,0) 100%);
-    background: -webkit-linear-gradient(top, rgba(30,87,153,0) 0%,rgba(33,102,172,0.8) 15%,rgba(36,114,187,1) 27%,rgba(41,137,216,1) 50%,rgba(35,111,183,1) 76%,rgba(33,101,171,0.8) 86%,rgba(30,87,153,0) 100%);
-    background: linear-gradient(to bottom, rgba(30,87,153,0) 0%,rgba(33,102,172,0.8) 15%,rgba(36,114,187,1) 27%,rgba(41,137,216,1) 50%,rgba(35,111,183,1) 76%,rgba(33,101,171,0.8) 86%,rgba(30,87,153,0) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#001e5799', endColorstr='#001e5799',GradientType=0 );
+@media screen and (min-width: 450px) and (max-width: 575px) {
+    #next{
+        margin-left: 50%;
+    }
 }
 
-.colored-nav{
-    background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
-    background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
-    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 );
+@media screen and (max-width: 450px) {
+    #next{
+        margin-left: 10%;
+    }
 }
 
-.colored-nav2{
-    color: white;
-    /*background: -moz-linear-gradient(top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.65) 73%, rgba(0,0,0,0) 100%);*/
-    /*background: -webkit-linear-gradient(top, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 73%,rgba(0,0,0,0) 100%);*/
-    /*background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.65) 73%,rgba(0,0,0,0) 100%);*/
-    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );*/
+.rounded{
+    border-radius: .25rem !important;
+    box-shadow: 10px 10px 5px black;
+    border: 1px solid #9b9b9b;
+    background-color: white;
+}
+
+.roundedDiv{
+    border-radius: .25rem !important;
+    box-shadow: 10px 10px 5px grey ;
+    border: 1px solid #9b9b9b;
+    background-color: slategrey;
+}
+
+.roundedhov:hover{
+    box-shadow: none;
+    filter: brightness(25%);
+}
+
+#nav{
+    border-bottom: 1px solid #9b9b9b;
+    background-color: white;
+    font-size: 25px;
 }
