@@ -26,9 +26,9 @@ class SorteoController extends BaseController
         $sorteoService = $this->get('sorteo_service');
 
         $last4 = $sorteoService->getSorteosOrderby(array(), array('fecha' => 'DESC'), self::NUM_SORTEOS_INDEX, $this->offset);
-        $actual = $sorteoService->getOneSorteoOrderby(array(), array('fecha' => 'DESC'), 1, 0);
-        $ultimo = $sorteoService->getOneSorteoOrderby(array(), array('fecha' => 'DESC'), 1, 1);
-        $primero = $sorteoService->getOneSorteoOrderby(array(), array('fecha' => 'ASC'), 1, 0);
+        $actual = $sorteoService->getSorteosOrderby(array(), array('fecha' => 'DESC'), 1, 0)[0];
+        $ultimo = $sorteoService->getSorteosOrderby(array(), array('fecha' => 'DESC'), 1, 1)[0];
+        $primero = $sorteoService->getSorteosOrderby(array(), array('fecha' => 'ASC'), 1, 0)[0];
         $total = $sorteoService->contarSorteos();
         $size = $total[0]['1'] - 1;
 

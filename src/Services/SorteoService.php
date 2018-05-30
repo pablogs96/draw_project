@@ -171,10 +171,6 @@ class SorteoService
     }
 
 
-    public function getOneSorteoOrderby($criteria, $order, $limit, $offset)
-    {
-    return $this->entityManager->getRepository($this->sorteoClass)->findOneBy($criteria, $order, $limit, $offset);
-    }
     public function getSorteosOrderby($criteria, $order, $limit, $offset)
     {
     return $this->entityManager->getRepository($this->sorteoClass)->findBy($criteria, $order, $limit, $offset);
