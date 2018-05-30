@@ -1,0 +1,32 @@
+.rounded{
+    border-radius: .25rem !important;
+    box-shadow: 10px 10px 5px black;
+    border: 1px solid #9b9b9b;
+    background-color: white;
+    padding: 1%;
+    margin-top: 2%;
+}
+
+
+
+.btn-shad{
+    margin-top: 50%;
+    box-shadow: 10px 10px 5px black;
+}
+
+#corregir:hover{
+    box-shadow: none;
+}
+
+.rounded2{
+    border-radius: .25rem !important;
+    box-shadow: 10px 10px 5px black;
+    border: 1px solid #9b9b9b;
+    padding: 5%;
+    margin-top: 2%;
+}
+.colored{
+    background-color: chartreuse;
+    -webkit-transition: background-color 1000ms linear;
+    transition: background-color 1000ms ease-in-out;
+}
