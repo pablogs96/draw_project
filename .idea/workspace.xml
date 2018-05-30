@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f1313c2e-7787-4856-b574-e1794c131bbb" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/public/css/correctionStyles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/correctionJS.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/CorreccionExamenController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/examCorrection/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/examCorrection/base.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,11 +43,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="correctionJS.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="correctionJS.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/correctionJS.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-315">
-              <caret line="66" column="39" lean-forward="true" selection-start-line="66" selection-start-column="39" selection-end-line="66" selection-end-column="39" />
+              <caret line="66" column="39" selection-start-line="66" selection-start-column="39" selection-end-line="66" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="607">
+              <caret line="106" column="46" selection-start-line="106" selection-start-column="46" selection-end-line="106" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -122,7 +127,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/encuesta/home.html" />
         <option value="$PROJECT_DIR$/templates/encuesta/sorteo.html" />
         <option value="$PROJECT_DIR$/templates/encuesta/mostrarEncuestas.html" />
         <option value="$PROJECT_DIR$/src/Repository/EncuestaRepository.php" />
@@ -173,6 +177,7 @@
         <option value="$PROJECT_DIR$/public/css/correctionStyles.css" />
         <option value="$PROJECT_DIR$/templates/examCorrection/index.html.twig" />
         <option value="$PROJECT_DIR$/public/js/correctionJS.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -415,12 +420,12 @@
       <workItem from="1527151089420" duration="17833000" />
       <workItem from="1527239101793" duration="48997000" />
       <workItem from="1527628873970" duration="6502000" />
-      <workItem from="1527666180689" duration="24857000" />
+      <workItem from="1527666180689" duration="25099000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="395665000" />
+    <option name="totallyTimeSpent" value="395907000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
@@ -692,13 +697,6 @@
     <entry file="file://$PROJECT_DIR$/tests/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/examCorrection/dd.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -733,24 +731,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/examCorrection/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/correctionStyles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="48" selection-start-line="30" selection-start-column="48" selection-end-line="30" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -772,7 +756,28 @@
     <entry file="file://$PROJECT_DIR$/public/js/correctionJS.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-315">
-          <caret line="66" column="39" lean-forward="true" selection-start-line="66" selection-start-column="39" selection-end-line="66" selection-end-column="39" />
+          <caret line="66" column="39" selection-start-line="66" selection-start-column="39" selection-end-line="66" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/examCorrection/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/correctionStyles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" column="48" selection-start-line="30" selection-start-column="48" selection-end-line="30" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="607">
+          <caret line="106" column="46" selection-start-line="106" selection-start-column="46" selection-end-line="106" selection-end-column="46" />
         </state>
       </provider>
     </entry>
