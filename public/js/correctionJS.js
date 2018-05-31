@@ -55,9 +55,9 @@ $(document).ready(function(){
 
 function clear() {
     $("[data-js='changeOpoSelect']").val("personalizado");
-    $("[data-js='ncorrectas']").val("0");
-    $("[data-js='nincorrectas']").val("0");
-    $("[data-js='nblanco']").val("0");
+    $("[data-js='numberCorrectQuestions']").val("0");
+    $("[data-js='numberIncorrectQuestions']").val("0");
+    $("[data-js='numberBlankQuestions']").val("0");
     $("[data-js='total']").val("0");
     $("[data-js='nota']").val("0");
 }
@@ -66,47 +66,47 @@ function changeOpos() {
     var selected = $("[data-js='changeOpoSelect']").val();
     for(var i=0; i < opos.length; i++){
         if (selected === opos[i]["value"]){
-            $("[data-js='pcorrectas']").prop('disabled', true);
-            $("[data-js='pincorrectas']").prop('disabled', true);
-            $("[data-js='pblanco']").prop('disabled', true);
-            $("[data-js='pcorrectas']").val(opos[i]["puntuacion"][0]);
-            $("[data-js='pincorrectas']").val(opos[i]["puntuacion"][1]);
-            $("[data-js='pblanco']").val(opos[i]["puntuacion"][2]);
+            $("[data-js='scoreCorrectQuestions']").prop('disabled', true);
+            $("[data-js='scoreIncorrectQuestions']").prop('disabled', true);
+            $("[data-js='scoreBlankQuestions']").prop('disabled', true);
+            $("[data-js='scoreCorrectQuestions']").val(opos[i]["puntuacion"][0]);
+            $("[data-js='scoreIncorrectQuestions']").val(opos[i]["puntuacion"][1]);
+            $("[data-js='scoreBlankQuestions']").val(opos[i]["puntuacion"][2]);
         } else if(selected === "personalizado") {
-            $("[data-js='pcorrectas']").prop('disabled', false);
-            $("[data-js='pincorrectas']").prop('disabled', false);
-            $("[data-js='pblanco']").prop('disabled', false);
-            $("[data-js='pcorrectas']").val("0");
-            $("[data-js='pincorrectas']").val("0");
-            $("[data-js='pblanco']").val("0");
+            $("[data-js='scoreCorrectQuestions']").prop('disabled', false);
+            $("[data-js='scoreIncorrectQuestions']").prop('disabled', false);
+            $("[data-js='scoreBlankQuestions']").prop('disabled', false);
+            $("[data-js='scoreCorrectQuestions']").val("0");
+            $("[data-js='scoreIncorrectQuestions']").val("0");
+            $("[data-js='scoreBlankQuestions']").val("0");
         }
     }
 }
 /*$("[data-js='phoneNumber']")*/
 
 function corregir(){
-    pcorrectas = $("[data-js='pcorrectas']").val();
-    pincorrectas = $("[data-js='pincorrectas']").val();
-    pblanco = $("[data-js='pblanco']").val();
+    scoreCorrectQuestions = $("[data-js='scoreCorrectQuestions']").val();
+    scoreIncorrectQuestions = $("[data-js='scoreIncorrectQuestions']").val();
+    scoreBlankQuestions = $("[data-js='scoreBlankQuestions']").val();
 
-    ncorrectas = $("[data-js='ncorrectas']").val();
-    nincorrectas = $("[data-js='nincorrectas']").val();
-    nblanco = $("[data-js='nblanco']").val();
+    ncorrectas = $("[data-js='numberCorrectQuestions']").val();
+    nincorrectas = $("[data-js='numberIncorrectQuestions']").val();
+    nblanco = $("[data-js='numberBlankQuestions']").val();
 
     total = $("[data-js='total']").val();
 
-    if ((pcorrectas === "0") || (pincorrectas === "0")) {
+    if ((scoreCorrectQuestions === "0") || (scoreIncorrectQuestions === "0")) {
         alert("Establezca un sistema de evaluación válido.");
     } else if (total === "0") {
         alert("Introduzca una cantidad superior a 0 de preguntas");
     } else {
-        totalCorrectas = parseFloat(pcorrectas) * parseInt(ncorrectas);
-        totalIncorrectas = parseFloat(pincorrectas) * parseInt(nincorrectas);
-        totalBlanco = parseFloat(pblanco) * parseInt(nblanco);
+        totalCorrectas = parseFloat(scoreCorrectQuestions) * parseInt(ncorrectas);
+        totalIncorrectas = parseFloat(scoreIncorrectQuestions) * parseInt(nincorrectas);
+        totalBlanco = parseFloat(scoreBlankQuestions) * parseInt(nblanco);
 
         nota = totalBlanco + totalCorrectas + totalIncorrectas;
 
-        $("[data-js='toPlaceMark']").text("Su nota es de " + nota + " sobre " + total * pcorrectas);
+        $("[data-js='toPlaceMark']").text("Su nota es de " + nota + " sobre " + total * scoreCorrectQuestions);
         $("[data-js='markCol']").addClass("colored");
     }
 }
@@ -127,21 +127,21 @@ function justNumbers(e)
 
 function sumaEvent() {
     total = $("[data-js='total']");
-    corr = $("[data-js='ncorrectas']").val();
-    incorr = $("[data-js='nincorrectas']").val();
-    blanco = $("[data-js='nblanco']").val();
+    corr = $("[data-js='numberCorrectQuestions']").val();
+    incorr = $("[data-js='numberIncorrectQuestions']").val();
+    blanco = $("[data-js='numberBlankQuestions']").val();
 
     if (corr === ""){
         corr = 0;
-        $("[data-js='ncorrectas']").val("0");
+        $("[data-js='numberCorrectQuestions']").val("0");
     }
     if (incorr === ""){
         incorr = 0;
-        $("[data-js='nincorrectas']").val("0");
+        $("[data-js='numberIncorrectQuestions']").val("0");
     }
     if  (blanco === ""){
         blanco = 0;
-        $("[data-js='nblanco']").val("0");
+        $("[data-js='numberBlankQuestions']").val("0");
     }
 
     suma = parseInt(corr) + parseInt(incorr) + parseInt(blanco);
@@ -149,47 +149,47 @@ function sumaEvent() {
 }
 
 function puntuacionEvent() {
-    pcorrectas = $("[data-js='pcorrectas']").val();
-    pincorrectas = $("[data-js='pincorrectas']").val();
-    pblanco = $("[data-js='pblanco']").val();
+    scoreCorrectQuestions = $("[data-js='scoreCorrectQuestions']").val();
+    scoreIncorrectQuestions = $("[data-js='scoreIncorrectQuestions']").val();
+    scoreBlankQuestions = $("[data-js='scoreBlankQuestions']").val();
 
-    if (pcorrectas === ""){
-        $("[data-js='pcorrectas']").val("0");
+    if (scoreCorrectQuestions === ""){
+        $("[data-js='scoreCorrectQuestions']").val("0");
     }
-    if (pincorrectas === ""){
-        $("[data-js='pincorrectas']").val("0");
+    if (scoreIncorrectQuestions === ""){
+        $("[data-js='scoreIncorrectQuestions']").val("0");
     }
-    if  (pblanco === "") {
-        $("[data-js='pblanco']").val("0");
+    if  (scoreBlankQuestions === "") {
+        $("[data-js='scoreBlankQuestions']").val("0");
     }
 }
 
 function startEvents() {
-    $("[data-js='pcorrectas']").on( "focusout", function( event ) {
+    $("[data-js='scoreCorrectQuestions']").on( "focusout", function( event ) {
         puntuacionEvent();
     });
-    $("[data-js='pincorrectas']").on( "focusout", function( event ) {
+    $("[data-js='scoreIncorrectQuestions']").on( "focusout", function( event ) {
         puntuacionEvent();
     });
-    $("[data-js='pblanco']").on( "focusout", function( event ) {
+    $("[data-js='scoreBlankQuestions']").on( "focusout", function( event ) {
         puntuacionEvent();
     });
-    $("[data-js='ncorrectas']").on( "focusout", function( event ) {
+    $("[data-js='numberCorrectQuestions']").on( "focusout", function( event ) {
         sumaEvent();
     });
-    $("[data-js='ncorrectas']").on( "keypress", function( event ) {
+    $("[data-js='numberCorrectQuestions']").on( "keypress", function( event ) {
         return justNumbers(event);
     });
-    $("[data-js='nincorrectas']").on( "focusout", function( event ) {
+    $("[data-js='numberIncorrectQuestions']").on( "focusout", function( event ) {
         sumaEvent();
     });
-    $("[data-js='nincorrectas']").on( "keypress", function( event ) {
+    $("[data-js='numberIncorrectQuestions']").on( "keypress", function( event ) {
         return justNumbers(event);
     });
-    $("[data-js='nblanco']").on( "focusout", function( event ) {
+    $("[data-js='numberBlankQuestions']").on( "focusout", function( event ) {
         sumaEvent();
     });
-    $("[data-js='nblanco']").on( "keypress", function( event ) {
+    $("[data-js='numberBlankQuestions']").on( "keypress", function( event ) {
         return justNumbers(event);
     });
     $("[data-js='corregir']").on( "click", function( event ) {

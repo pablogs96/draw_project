@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f1313c2e-7787-4856-b574-e1794c131bbb" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/examCorrection/basic.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/correctionStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/correctionStyles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/correctionJS.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/correctionJS.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CorreccionExamenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CorreccionExamenController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/examCorrection/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/examCorrection/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/examCorrection/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/examCorrection/index.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,57 +22,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/examCorrection/base.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/examCorrection/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+            <state relative-caret-position="420">
+              <caret line="109" column="26" selection-start-line="102" selection-start-column="20" selection-end-line="109" selection-end-column="26" />
               <folding>
                 <element signature="e#266#285#0#HTML" expanded="true" />
-                <element signature="e#785#810#0#HTML" expanded="true" />
-                <element signature="e#3030#3055#0#HTML" expanded="true" />
-                <element signature="e#3906#3928#0#HTML" expanded="true" />
-                <element signature="e#4140#4165#0#HTML" expanded="true" />
-                <element signature="e#4397#4422#0#HTML" expanded="true" />
+                <element signature="e#855#880#0#HTML" expanded="true" />
+                <element signature="e#5304#5329#0#HTML" expanded="true" />
+                <element signature="e#5573#5598#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="correctionJS.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="correctionJS.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/correctionJS.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
+            <state relative-caret-position="-111">
+              <caret line="150" column="9" selection-start-line="150" selection-start-column="9" selection-end-line="150" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="correctionStyles.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/css/correctionStyles.css">
+      <file leaf-file-name="basic.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/examCorrection/basic.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="48" selection-start-line="30" selection-start-column="48" selection-end-line="30" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CorreccionExamenController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/CorreccionExamenController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+            <state relative-caret-position="239">
+              <caret line="83" column="147" selection-start-line="83" selection-start-column="141" selection-end-line="83" selection-end-column="147" />
               <folding>
-                <element signature="e#115#172#0#PHP" expanded="true" />
+                <element signature="e#700#726#0#HTML" expanded="true" />
+                <element signature="e#3274#3305#0#HTML" expanded="true" />
+                <element signature="e#3153#3179#0#HTML" expanded="true" />
+                <element signature="e#7846#7871#0#HTML" expanded="true" />
+                <element signature="e#8174#8226#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -77,9 +67,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -104,11 +94,22 @@
       <find>id=</find>
       <find>$(&quot;#</find>
       <find>&quot;)&quot;)</find>
+      <find>rounded2</find>
+      <find>tool</find>
+      <find>bloque_gris</find>
+      <find>pblanco</find>
+      <find>ncorrectas</find>
+      <find>'ncorrectas</find>
+      <find>'nblanco</find>
+      <find>action</find>
     </findStrings>
     <replaceStrings>
       <replace>data-js=</replace>
       <replace>$(&quot;[data-js='phoneNumber']&quot;)</replace>
       <replace>&quot;)</replace>
+      <replace>scoreBlankQuestions</replace>
+      <replace>numberCorrectQuestions</replace>
+      <replace>'numberIncorrectQuestions</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -117,8 +118,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/encuesta/sorteo.html" />
-        <option value="$PROJECT_DIR$/templates/encuesta/mostrarEncuestas.html" />
         <option value="$PROJECT_DIR$/src/Repository/EncuestaRepository.php" />
         <option value="$PROJECT_DIR$/public/css/icons.css" />
         <option value="$PROJECT_DIR$/src/Entity/Usuario.php" />
@@ -161,13 +160,15 @@
         <option value="$PROJECT_DIR$/templates/encuesta/sorteo.html.twig" />
         <option value="$PROJECT_DIR$/templates/encuesta/comprobarSorteo.html.twig" />
         <option value="$PROJECT_DIR$/templates/examCorrection/index.html" />
-        <option value="$PROJECT_DIR$/templates/examCorrection/base.html.twig" />
         <option value="$PROJECT_DIR$/public/js/main.js" />
-        <option value="$PROJECT_DIR$/src/Controller/CorreccionExamenController.php" />
-        <option value="$PROJECT_DIR$/public/css/correctionStyles.css" />
-        <option value="$PROJECT_DIR$/templates/examCorrection/index.html.twig" />
-        <option value="$PROJECT_DIR$/public/js/correctionJS.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/templates/examCorrection/basic.html" />
+        <option value="$PROJECT_DIR$/src/Controller/CorreccionExamenController.php" />
+        <option value="$PROJECT_DIR$/templates/examCorrection/index.html.twig" />
+        <option value="$PROJECT_DIR$/public/css/correctionStyles.css" />
+        <option value="$PROJECT_DIR$/templates/examCorrection/base.html.twig" />
+        <option value="$PROJECT_DIR$/public/js/correctionJS.js" />
+        <option value="$PROJECT_DIR$/templates/examCorrection/basic.html.twig" />
       </list>
     </option>
   </component>
@@ -293,6 +294,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -309,19 +311,7 @@
               <item name="my_project" type="b2602c69:ProjectViewProjectNode" />
               <item name="my_project" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="bundles" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="my_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="my_project" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
               <item name="css" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="my_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="my_project" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="my_project" type="b2602c69:ProjectViewProjectNode" />
@@ -349,13 +339,18 @@
               <item name="my_project" type="b2602c69:ProjectViewProjectNode" />
               <item name="my_project" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="encuesta" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="my_project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="my_project" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="examCorrection" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -366,10 +361,10 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/templates/examCorrection" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/templates/examCorrection" />
     </key>
   </component>
@@ -421,31 +416,45 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="396298000" />
+    <option name="totallyTimeSpent" value="407334000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23904689" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3298193" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="11" />
+      <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="4" />
+      <window_info anchor="bottom" id="Run" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="2" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.24980783" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="0" />
+      <window_info anchor="bottom" id="Find" order="6" weight="0.3298193" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23904689" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3298193" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info active="true" anchor="bottom" id="Command Line Tools Console" order="11" visible="true" weight="0.32991803" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info id="Favorites" order="2" side_tool="true" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -460,21 +469,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/framework-bundle/Controller/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="35" column="28" lean-forward="true" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/BaseController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="25" column="11" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/BrandNewController.php" />
     <entry file="file://$PROJECT_DIR$/templates/brand_new/index.html.twig" />
     <entry file="file://$PROJECT_DIR$/templates/lucky/number.html.twig">
       <provider selected="true" editor-type-id="text-editor">
@@ -515,13 +509,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Services/UsuarioService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="52" column="36" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Services/UsuarioService.php" />
     <entry file="file://$PROJECT_DIR$/public/index.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -553,9 +541,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/Premio.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/Premio.php" />
     <entry file="file://$PROJECT_DIR$/src/Entity/Pregunta.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -591,13 +577,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/encuesta/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="77" selection-start-line="8" selection-start-column="77" selection-end-line="8" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/encuesta/mostrarEncuestas.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -612,27 +591,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/encuesta/home.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="73" column="123" selection-start-line="73" selection-start-column="123" selection-end-line="73" selection-end-column="123" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/SorteoController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Services/SorteoService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="173" column="37" selection-start-line="173" selection-start-column="20" selection-end-line="173" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/SorteoController.php" />
+    <entry file="file://$PROJECT_DIR$/src/Services/SorteoService.php" />
     <entry file="file://$PROJECT_DIR$/templates/encuesta/encuesta.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="387">
@@ -640,34 +600,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/encuesta/sorteo.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1785">
-          <caret line="290" column="17" selection-start-line="290" selection-start-column="17" selection-end-line="290" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/encuesta/login.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/encuesta/comprobarSorteo.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="235" column="37" selection-start-line="235" selection-start-column="37" selection-end-line="235" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/loginStyles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="65" column="1" selection-start-line="65" selection-start-column="1" selection-end-line="65" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/encuesta/login.html.twig" />
+    <entry file="file://$PROJECT_DIR$/templates/encuesta/comprobarSorteo.html.twig" />
+    <entry file="file://$PROJECT_DIR$/public/css/loginStyles.css" />
     <entry file="file://$PROJECT_DIR$/public/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
@@ -675,23 +610,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Services/EncuestaService.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Services/EncuestaService.php" />
     <entry file="file://$PROJECT_DIR$/tests/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/examCorrection/dd.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/examCorrection/dd.html" />
     <entry file="file://$PROJECT_DIR$/public/css/icons.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -730,49 +653,103 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/correctionStyles.css">
+    <entry file="file://$PROJECT_DIR$/templates/encuesta/home.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="48" selection-start-line="30" selection-start-column="48" selection-end-line="30" selection-end-column="48" />
+        <state relative-caret-position="1182">
+          <caret line="96" column="65" selection-start-line="96" selection-start-column="65" selection-end-line="96" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataFixtures/AppFixtures.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-45">
+          <folding>
+            <element signature="e#6#91#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/encuesta/sorteo.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="96" selection-start-line="96" selection-end-line="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/encuesta/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/examCorrection/basic.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/examCorrection/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/CorreccionExamenController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="23" column="1" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
+        <state relative-caret-position="240">
+          <caret line="21" column="50" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
           <folding>
             <element signature="e#115#172#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/examCorrection/base.html.twig">
+    <entry file="file://$PROJECT_DIR$/public/css/correctionStyles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/correctionJS.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
+        <state relative-caret-position="478">
+          <caret line="7835" column="1" selection-start-line="7835" selection-start-column="1" selection-end-line="7835" selection-end-column="1" />
+          <folding>
+            <element signature="e#337932#338017#2" expanded="true" />
+            <element signature="e#348926#351275#2" expanded="true" />
+            <element signature="e#425658#425757#1" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/examCorrection/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="14" lean-forward="true" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+        <state relative-caret-position="420">
+          <caret line="109" column="26" selection-start-line="102" selection-start-column="20" selection-end-line="109" selection-end-column="26" />
           <folding>
             <element signature="e#266#285#0#HTML" expanded="true" />
-            <element signature="e#785#810#0#HTML" expanded="true" />
-            <element signature="e#3030#3055#0#HTML" expanded="true" />
-            <element signature="e#3906#3928#0#HTML" expanded="true" />
-            <element signature="e#4140#4165#0#HTML" expanded="true" />
-            <element signature="e#4397#4422#0#HTML" expanded="true" />
+            <element signature="e#855#880#0#HTML" expanded="true" />
+            <element signature="e#5304#5329#0#HTML" expanded="true" />
+            <element signature="e#5573#5598#0#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/examCorrection/basic.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="83" column="147" selection-start-line="83" selection-start-column="141" selection-end-line="83" selection-end-column="147" />
+          <folding>
+            <element signature="e#700#726#0#HTML" expanded="true" />
+            <element signature="e#3274#3305#0#HTML" expanded="true" />
+            <element signature="e#3153#3179#0#HTML" expanded="true" />
+            <element signature="e#7846#7871#0#HTML" expanded="true" />
+            <element signature="e#8174#8226#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/correctionJS.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-111">
+          <caret line="150" column="9" selection-start-line="150" selection-start-column="9" selection-end-line="150" selection-end-column="9" />
         </state>
       </provider>
     </entry>

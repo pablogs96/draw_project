@@ -1,0 +1,109 @@
+
+{% extends 'examCorrection/base.html.twig' %}
+
+{% block title %}Corrección examen{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/correctionStyles.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block body_header %}
+{% endblock %}
+
+{% block body_content %}
+<div class="container">
+    <div class="row hidden-xs">
+        <div class="col-sm-12">
+            <h2 class="page-subtit examenes-personalizados">Plantilla corrección examen</h2>
+            <br>
+        </div>
+    </div>
+    <div class="row paneles">
+        <div class="col-sm-6">
+            <div class="examen-panel-2 text-center" id="panel-izqdo" style="height: 570px;">
+                <div class="panel-header text-center"><h3>Sistema de puntuación</h3></div>
+                <div class="panel-content">
+                    <form action="" method="POST">
+                        <div class="content">
+                            <label for="scoreCorrectQuestions"><span class="numero">1</span>Puntuación para las respuestas <b>correctas</b></label>
+                            <div class="options">
+                                <input data-js="scoreCorrectQuestions" class="input-gris n_preguntas" name="exam_correcting[scoreCorrectQuestions]" min="1" max="100" step="1" value="0" type="text">
+                            </div>
+                        </div>
+                        <div class="content">
+                            <label for="scoreIncorrectQuestions"><span class="numero">2</span>Puntuación para las respuestas <b>incorrectas</b></label>
+                            <div class="options">
+                                <input data-js="scoreIncorrectQuestions" class="input-gris n_preguntas" name="exam_correcting[scoreIncorrectQuestions]" min="1" max="100" step="1" value="0" type="text">
+                            </div>
+                        </div>
+                        <div class="content">
+                            <label for="scoreBlankQuestions"><span class="numero">3</span>Puntuación para las respuestas <b>en blanco</b></label>
+                            <div class="options">
+                                <input data-js="scoreBlankQuestions" class="input-gris n_preguntas" name="exam_correcting[scoreBlankQuestions]" min="1" max="100" step="1" value="0" type="text">
+                            </div>
+                        </div>
+                    </form>
+                    <div class="">
+                        <div class="form-group">
+                            <form role="form" id="changeOppostionForm" method="post" action="">
+                                <div class="form-group">
+                                    <select style="height: auto; width: 400px;" data-placement="bottom" id="changeOppostionSelect" name="changeOppostionSelect" class="form-control" role="button" data-toggle="popover" data-trigger="focus" title="" data-content="Debes seleccionar una oposición para obtener sus estadísiticas." data-original-title="Selecciona tu oposición"><option value="0">Personalizado</option><optgroup label="Jueces y Fiscales"><option value="1">Acceso a la Carrera Judicial y Fiscal</option></optgroup><optgroup label="Justicia"><option value="2">Letrados de la Administración de Justicia Turno Libre</option><option value="4">Letrados de la Administración de Justicia Promoción Interna</option><option value="5">Cuerpo de Gestión Procesal y Administrativa Turno Libre</option><option value="6">Cuerpo de Gestión Procesal y Administrativa Promoción Interna</option><option value="7">Cuerpo de Tramitación Procesal y Administrativa de la Administración de Justicia Turno Libre</option><option value="8">Cuerpo de Tramitación Procesal y Administrativa de la Administración de Justicia Promoción Interna</option><option value="10" selected="selected">Cuerpo de Auxilio Judicial</option></optgroup><optgroup label="Interior"><option value="11">Cuerpo de Ayudantes de Instituciones Penitenciarias</option></optgroup><optgroup label="Fuerzas y Cuerpos de Seguridad"><option value="13">Cuerpo Nacional de Policía Escala Básica</option><option value="14">Cuerpo Nacional de Policía Escala Ejecutiva</option><option value="19">Mossos d'Esquadra Generalitat de Catalunya</option><option value="30">Guardia Civil</option></optgroup><optgroup label="Hacienda"><option value="17">Agentes de la Hacienda Pública Turno Libre</option><option value="18">Agentes de la Hacienda Pública Promoción Interna</option></optgroup><optgroup label="Administración General"><option value="15">Cuerpo de Gestión de la Administración Civil del Estado Turno Libre</option><option value="20">Administrativos del Estado Promoción Interna</option><option value="23">Cuerpo de Gestión de la Administración Civil del Estado Promoción Interna</option><option value="24">Cuerpo General Auxiliar de la Administración del Estado</option><option value="33">Administrativos del Estado Turno Libre</option></optgroup><optgroup label="Sanidad"><option value="21">Médico de Urgencias Hospitalarias</option><option value="25">Enfermero Interno Residente</option><option value="27">Técnico/a en farmacia. Servicio Murciano de Salud</option></optgroup><optgroup label="Test Legislación"><option value="22">Ley 39/2015 del Procedimiento Administrativo Común de las Administraciones Públicas</option><option value="26">Código Penal</option><option value="28">Ley 40/2015, de 1 de octubre, de Régimen Jurídico del Sector Público.</option><option value="29">Texto refundido de la Ley del Estatuto Básico del Empleado Público</option><option value="31">Constitución Española</option></optgroup><optgroup label="Abogacía"><option value="16">Prueba Acceso a la profesión de Abogado</option></optgroup></select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="examen-panel-2 text-center" id="panel-dcho" style="height: 570px;">
+                <div class="panel-header text-center"><h3>Número de preguntas</h3></div>
+                <div class="panel-content">
+                    <form action="" method="POST">
+                        <div class="content">
+                            <label for="scoreCorrectQuestions"><span class="numero">1</span>Número de preguntas <b>correctas</b></label>
+                            <div class="options">
+                                <input data-js="numberCorrectQuestions" class="input-gris n_preguntas" name="exam_correcting[numberCorrectQuestions]" min="1" max="100" step="1" value="0" type="text">
+                            </div>
+                        </div>
+                        <div class="content">
+                            <label for="scoreIncorrectQuestions"><span class="numero">2</span>Número de preguntas <b>incorrectas</b></label>
+                            <div class="options">
+                                <input data-js="numberIncorrectQuestions" class="input-gris n_preguntas" name="exam_correcting[numberIncorrectQuestions]" min="1" max="100" step="1" value="0" type="text">
+                            </div>
+                        </div>
+                        <div class="content">
+                            <label for="scoreBlankQuestions"><span class="numero">3</span>Número de preguntas <b>en blanco</b></label>
+                            <div class="options">
+                                <input data-js="numberBlankQuestions" class="input-gris n_preguntas" name="exam_correcting[numberBlankQuestions]" min="1" max="100" step="1" value="0" type="text">
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-md-1" style="line-height: 40px">
+                                    <p class="submit text-center"><input data-js="corregir" class="btn_01 btn_medium" value="Corregir" type="submit"> </p>
+                                </div>
+                                <div class="col-md-7 offset-md-4 examen-panel-2" data-js="markCol" style="line-height: 40px; background-color: #969896">
+                                    <h4 data-js="toPlaceMark"></h4>
+                                </div>
+                            </div>
+                        </div><!-- content -->
+                        <input id="exam_training_create__token" name="exam_training_create[_token]" class=" form-control" value="k5v7znSoVN0KedUdF4m49f5SUkYxkTIK8q09A7nXUwQ" type="hidden">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div><!-- row-->
+</div><!-- container-->
+{% endblock %}
+
+{% block prefooter %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+
+{% block javaScript %}
+    <script src="{{ asset('js/correctionJS.js') }}"></script>
+{% endblock %}

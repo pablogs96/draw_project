@@ -19,6 +19,6 @@ class CorreccionExamenController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('examCorrection/index.html.twig');
+        return $this->render('examCorrection/basic.html.twig');
     }
 }
