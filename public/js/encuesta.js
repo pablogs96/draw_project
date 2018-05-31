@@ -199,7 +199,7 @@ function imprimirSavedComments(){
 
         // creo img de div1
         var img = document.createElement("img");
-        img.setAttribute("src", "https://png.icons8.com/metro/1600/gender-neutral-user.png");
+        img.setAttribute("src", "/img/user.png");
         img.setAttribute("class", "img-circle");
         img.setAttribute("height", "65");
         img.setAttribute("width", "65");
@@ -251,7 +251,7 @@ function imprimirComentarios(){
 
         // creo img de div1
         var img = document.createElement("img");
-        img.setAttribute("src", "https://png.icons8.com/metro/1600/gender-neutral-user.png");
+        img.setAttribute("src", "/img/user.png");
         img.setAttribute("class", "img-circle");
         img.setAttribute("height", "65");
         img.setAttribute("width", "65");

@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SorteoController extends BaseController
 {
-    const NUM_SORTEOS_INDEX = 4;
+    const NUM_SORTEOS_INDEX = 3;
     private $offset = 1;
 
     /**
@@ -81,7 +81,6 @@ class SorteoController extends BaseController
 
         if ($op == 'next'){
             $offset += self::NUM_SORTEOS_INDEX;
-            dump($offset);
         } elseif ($op == 'prev')
             $offset -= self::NUM_SORTEOS_INDEX;
 
