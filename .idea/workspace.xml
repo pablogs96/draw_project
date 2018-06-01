@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f1313c2e-7787-4856-b574-e1794c131bbb" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/examCorrection/basic.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/pabloCorrectionStyles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/examCorrection/styles.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/correctionStyles.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/correctionStyles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/correctionJS.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/correctionJS.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CorreccionExamenController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CorreccionExamenController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/examCorrection/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/examCorrection/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/examCorrection/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/examCorrection/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/examCorrection/basic.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/examCorrection/basic.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,17 +20,54 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/examCorrection/index.html.twig">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="CorreccionExamenController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/CorreccionExamenController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="109" column="26" selection-start-line="102" selection-start-column="20" selection-end-line="109" selection-end-column="26" />
+            <state relative-caret-position="300">
+              <caret line="25" column="39" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
               <folding>
-                <element signature="e#266#285#0#HTML" expanded="true" />
-                <element signature="e#855#880#0#HTML" expanded="true" />
-                <element signature="e#5304#5329#0#HTML" expanded="true" />
-                <element signature="e#5573#5598#0#HTML" expanded="true" />
+                <element signature="e#115#172#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="basic.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/examCorrection/basic.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="47" column="89" selection-start-line="47" selection-start-column="89" selection-end-line="47" selection-end-column="89" />
+              <folding>
+                <element signature="e#634#656#0#HTML" expanded="true" />
+                <element signature="e#6041#6063#0#HTML" expanded="true" />
+                <element signature="e#8288#8310#0#HTML" expanded="true" />
+                <element signature="e#8348#8402#0#HTML" expanded="true" />
+                <element signature="e#8373#8398#0#HTML" expanded="true" />
+                <element signature="e#8589#8622#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pabloCorrectionStyles.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/css/pabloCorrectionStyles.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="313">
+              <caret line="337" selection-start-line="337" selection-end-line="337" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="correctionStyles.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/css/correctionStyles.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="254">
+              <caret line="1934" column="20" selection-start-line="1934" selection-start-column="20" selection-end-line="1934" selection-end-column="20" />
+              <folding>
+                <element signature="e#337932#338017#2" expanded="true" />
+                <element signature="e#348926#351275#2" expanded="true" />
+                <element signature="e#425658#425757#1" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -40,24 +76,8 @@
       <file leaf-file-name="correctionJS.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/correctionJS.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-111">
-              <caret line="150" column="9" selection-start-line="150" selection-start-column="9" selection-end-line="150" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="basic.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/examCorrection/basic.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="83" column="147" selection-start-line="83" selection-start-column="141" selection-end-line="83" selection-end-column="147" />
-              <folding>
-                <element signature="e#700#726#0#HTML" expanded="true" />
-                <element signature="e#3274#3305#0#HTML" expanded="true" />
-                <element signature="e#3153#3179#0#HTML" expanded="true" />
-                <element signature="e#7846#7871#0#HTML" expanded="true" />
-                <element signature="e#8174#8226#0#HTML" expanded="true" />
-              </folding>
+            <state relative-caret-position="300">
+              <caret line="59" column="35" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -75,12 +95,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>service</find>
-      <find>UserNotFoundException</find>
-      <find>PasswordIncorrectException</find>
-      <find>AlreadySubscribedException</find>
-      <find>ArrayCollection</find>
-      <find>for</find>
       <find>dump</find>
       <find>offset2</find>
       <find>offset</find>
@@ -96,12 +110,21 @@
       <find>&quot;)&quot;)</find>
       <find>rounded2</find>
       <find>tool</find>
-      <find>bloque_gris</find>
       <find>pblanco</find>
       <find>ncorrectas</find>
       <find>'ncorrectas</find>
       <find>'nblanco</find>
       <find>action</find>
+      <find>action=</find>
+      <find>POST</find>
+      <find>&quot;POST&quot;</find>
+      <find>n_preguntas</find>
+      <find>input-gris</find>
+      <find>placeholder</find>
+      <find>bloque_gris</find>
+      <find>asc</find>
+      <find>shadow</find>
+      <find>total</find>
     </findStrings>
     <replaceStrings>
       <replace>data-js=</replace>
@@ -110,6 +133,9 @@
       <replace>scoreBlankQuestions</replace>
       <replace>numberCorrectQuestions</replace>
       <replace>'numberIncorrectQuestions</replace>
+      <replace>&quot;&quot;</replace>
+      <replace>valueº</replace>
+      <replace>sc</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -118,9 +144,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Repository/EncuestaRepository.php" />
-        <option value="$PROJECT_DIR$/public/css/icons.css" />
-        <option value="$PROJECT_DIR$/src/Entity/Usuario.php" />
         <option value="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" />
         <option value="$PROJECT_DIR$/src/Exceptions/PasswordIncorrect.php" />
         <option value="$PROJECT_DIR$/src/Exceptions/AlreadySubscribedException.php" />
@@ -163,12 +186,15 @@
         <option value="$PROJECT_DIR$/public/js/main.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/templates/examCorrection/basic.html" />
-        <option value="$PROJECT_DIR$/src/Controller/CorreccionExamenController.php" />
         <option value="$PROJECT_DIR$/templates/examCorrection/index.html.twig" />
         <option value="$PROJECT_DIR$/public/css/correctionStyles.css" />
         <option value="$PROJECT_DIR$/templates/examCorrection/base.html.twig" />
-        <option value="$PROJECT_DIR$/public/js/correctionJS.js" />
+        <option value="$PROJECT_DIR$/templates/examCorrection/styles.html" />
+        <option value="$PROJECT_DIR$/src/Controller/CorreccionExamenController.php" />
+        <option value="$PROJECT_DIR$/templates/examCorrection/styles.html.twig" />
+        <option value="$PROJECT_DIR$/public/css/pabloCorrectionStyles.css" />
         <option value="$PROJECT_DIR$/templates/examCorrection/basic.html.twig" />
+        <option value="$PROJECT_DIR$/public/js/correctionJS.js" />
       </list>
     </option>
   </component>
@@ -361,10 +387,10 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/templates/examCorrection" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/templates/examCorrection" />
     </key>
   </component>
@@ -412,49 +438,36 @@
       <workItem from="1527239101793" duration="48997000" />
       <workItem from="1527628873970" duration="6502000" />
       <workItem from="1527666180689" duration="25490000" />
+      <workItem from="1527838314850" duration="16293000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="407334000" />
+    <option name="totallyTimeSpent" value="423734000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info anchor="bottom" id="TODO" order="11" />
-      <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="4" />
-      <window_info anchor="bottom" id="Run" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.24980783" />
-      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
-      <window_info anchor="right" id="Database" order="0" />
-      <window_info anchor="bottom" id="Find" order="6" weight="0.3298193" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23904689" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3298193" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3298193" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info active="true" anchor="bottom" id="Command Line Tools Console" order="11" visible="true" weight="0.32991803" />
-      <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Terminal" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -469,13 +482,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/brand_new/index.html.twig" />
-    <entry file="file://$PROJECT_DIR$/templates/lucky/number.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-45" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/sorteo/index.html.twig" />
     <entry file="file://$PROJECT_DIR$/src/Services/BorrarUsuarioService.php" />
     <entry file="file://$PROJECT_DIR$/src/Services/AddUsuarioService.php" />
     <entry file="file://$PROJECT_DIR$/config/services.yaml">
@@ -662,11 +668,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DataFixtures/AppFixtures.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-45">
-          <folding>
-            <element signature="e#6#91#0#PHP" expanded="true" />
-          </folding>
-        </state>
+        <state relative-caret-position="-45" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/encuesta/sorteo.html.twig">
@@ -697,20 +699,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/examCorrection/styles.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="18" lean-forward="true" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/examCorrection/styles.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/examCorrection/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="104" column="42" selection-start-line="104" selection-start-column="42" selection-end-line="104" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/CorreccionExamenController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="21" column="50" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
+        <state relative-caret-position="300">
+          <caret line="25" column="39" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
           <folding>
             <element signature="e#115#172#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/pabloCorrectionStyles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="337" selection-start-line="337" selection-end-line="337" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/css/correctionStyles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="7835" column="1" selection-start-line="7835" selection-start-column="1" selection-end-line="7835" selection-end-column="1" />
+        <state relative-caret-position="254">
+          <caret line="1934" column="20" selection-start-line="1934" selection-start-column="20" selection-end-line="1934" selection-end-column="20" />
           <folding>
             <element signature="e#337932#338017#2" expanded="true" />
             <element signature="e#348926#351275#2" expanded="true" />
@@ -719,37 +749,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/examCorrection/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="109" column="26" selection-start-line="102" selection-start-column="20" selection-end-line="109" selection-end-column="26" />
-          <folding>
-            <element signature="e#266#285#0#HTML" expanded="true" />
-            <element signature="e#855#880#0#HTML" expanded="true" />
-            <element signature="e#5304#5329#0#HTML" expanded="true" />
-            <element signature="e#5573#5598#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/examCorrection/basic.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="83" column="147" selection-start-line="83" selection-start-column="141" selection-end-line="83" selection-end-column="147" />
+        <state relative-caret-position="45">
+          <caret line="47" column="89" selection-start-line="47" selection-start-column="89" selection-end-line="47" selection-end-column="89" />
           <folding>
-            <element signature="e#700#726#0#HTML" expanded="true" />
-            <element signature="e#3274#3305#0#HTML" expanded="true" />
-            <element signature="e#3153#3179#0#HTML" expanded="true" />
-            <element signature="e#7846#7871#0#HTML" expanded="true" />
-            <element signature="e#8174#8226#0#HTML" expanded="true" />
+            <element signature="e#634#656#0#HTML" expanded="true" />
+            <element signature="e#6041#6063#0#HTML" expanded="true" />
+            <element signature="e#8288#8310#0#HTML" expanded="true" />
+            <element signature="e#8348#8402#0#HTML" expanded="true" />
+            <element signature="e#8373#8398#0#HTML" expanded="true" />
+            <element signature="e#8589#8622#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/correctionJS.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-111">
-          <caret line="150" column="9" selection-start-line="150" selection-start-column="9" selection-end-line="150" selection-end-column="9" />
+        <state relative-caret-position="300">
+          <caret line="59" column="35" selection-start-line="59" selection-start-column="35" selection-end-line="59" selection-end-column="35" />
         </state>
       </provider>
     </entry>

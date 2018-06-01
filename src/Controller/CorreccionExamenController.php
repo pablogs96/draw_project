@@ -21,4 +21,12 @@ class CorreccionExamenController extends Controller
     {
         return $this->render('examCorrection/basic.html.twig');
     }
+
+    /**
+     * @Route ("/styles"), name="styles"
+     */
+    public function stylesAction()
+    {
+        return $this->render('examCorrection/styles.html.twig');
+    }
 }
