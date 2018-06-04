@@ -322,6 +322,10 @@
     /*}*/
 /*}*/
 
+body{
+    height: 3000px;
+}
+
 
 .exam-input{
     border: none;
@@ -348,6 +352,27 @@
     text-overflow:clip;
 }
 
-.exam-group-selec:hover{
+.selector_oposicion_pablo{
+    max-width: 100%;
+    margin:0 auto;
+    border-bottom:1px solid black;
+    border-top: none;
+    border-left: none;
+    border-radius: 3%;
+    background-color: #eaebec;
+    color: black;
+    padding: 2%;
+    text-overflow: ellipsis;
+}
 
+.exam-input-mark{
+    background-color: #c9cccf;
+    border: 2px solid black;
+    width: 400px;
+    height: 70px;
+}
+
+.exam-input-mark h4{
+    text-align: center;
+    padding: 3%;
 }
