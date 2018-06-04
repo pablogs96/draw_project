@@ -9,15 +9,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class LuckyController extends Controller
 {
 	/**
-      * @Route("/lucky/number/{id}", name="example")
+      * @Route("/pizarra", name="example")
       */
-    public function number($id)
+    public function number()
     {
-        $entityManager = $this->getDoctrine()->getManager();
-        $encuesta = $entityManager->getRepository(Encuesta::class)->find($id);
+//        $entityManager = $this->getDoctrine()->getManager();
+//        $encuesta = $entityManager->getRepository(Encuesta::class)->find($id);
 
-        return $this->render('lucky/number.html.twig', array(
-            'encuesta' => $encuesta
-        ));
+        return $this->render('basic.html'
+        );
     }
 }
