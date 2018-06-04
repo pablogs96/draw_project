@@ -4,13 +4,37 @@ easy_admin:
     entities:
         Encuesta:
             class: App\Entity\Encuesta
-            form:
+            list:
                 fields:
                     - title
+                    - { property: 'img', type: 'image', base_path: '../../img' }
                     - img
                     - preguntas
                     - resultados
                     - comentarios
+            show:
+                fields:
+                    - title
+                    - { property: 'img', type: 'image', base_path: '../../img' }
+                    - img
+                    - preguntas
+                    - resultados
+                    - comentarios
+            form:
+                fields:
+                    - title
+                    - { property: 'imageFile', type: 'vich_image' }
+                    - preguntas
+                    - resultados
+                    - comentarios
+            edit:
+                fields:
+                    - title
+                    - { property: 'imageFile', type: 'vich_image' }
+                    - preguntas
+                    - resultados
+                    - comentarios
+
         Sorteo:
             class: App\Entity\Sorteo
             form:

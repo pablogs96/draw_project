@@ -25,7 +25,8 @@
                                         <h1 id="h1po" class="sizedh1">{{ encuesta.title }}</h1>
                                     </div>
                                     <div class="row justify-content-center" id="portfolio">
-                                        <img src={{ encuesta.img }} id="imgPort" class="sizedimg">
+                                        {{ dump(encuesta.img) }}
+                                        <img src='../{{ encuesta.img }}' id="imgPort" class="sizedimg">
                                     </div>
                                 </a>
                             </div>
@@ -140,7 +141,7 @@
                     row2_1.setAttribute("id", "portfolio");
 
                     var img = document.createElement("img");
-                    img.setAttribute("src", $encuestas2[i].img);
+                    img.setAttribute("src", '../' + $encuestas2[i].img);
                     img.setAttribute("id", "imgPort");
                     img.setAttribute("class", "sizedimg")
 

@@ -24,7 +24,8 @@
         "symfony/validator": "^4.0",
         "symfony/web-link": "^4.0",
         "symfony/webpack-encore-pack": "*",
-        "symfony/yaml": "^4.0"
+        "symfony/yaml": "^4.0",
+        "vich/uploader-bundle": "^1.8"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.0",
@@ -78,6 +79,6 @@
             "id": "",
             "allow-contrib": false
         },
-        "symfony.id": "01CEJX9A76PTSDABX7EFB9X3CP"
+        "symfony.id": "01CF5JX0BE3NHYWCGS997DXQMG"
     }
 }
