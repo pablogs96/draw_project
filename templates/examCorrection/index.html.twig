@@ -1,0 +1,126 @@
+{% extends 'examCorrection/base.html.twig' %}
+
+{% block title %}Corrección examen{% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/correctionStyles.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block body_header %}
+    <h1 class="text-center" style="padding: 2%">Corrección Examenes</h1>
+{% endblock %}
+
+{% block body_content %}
+    <div class="container-fluid">
+        <div class="row paneles">
+            <div class="col-sm-6">
+                <div class="examen-panel-2 text-center">
+                    <div class="panel-header text-center">
+                        <h3>SISTEMA DE EVALUACIÓN</h3>
+                    </div>
+                    <div class="panel-content">
+                        <form action="" method="POST">
+
+                            <div class="row text-left justify-content-left">
+                                <div class="col-md-6" style="line-height: 40px">
+                                    <label for="pincorrectas">Puntuación incorrectas</label>
+                                    <label for="pblanco">Puntuación no contaestadas</label>
+                                </div>
+                                <div class="col-md-4" data-js="">
+                                    <input class="text-right" data-js="pcorrectas" name="pcorrectas" type="text">
+                                    <input class="text-right" data-js="pincorrectas" name="pincorrectas" type="text">
+                                    <input class="text-right" data-js="pblanco" name="pblanco" type="text">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-6 offset-md-6">
+                                    <select data-js="changeOpoSelect" name="changeOpoSelect">
+                                        <option value="personalizado">Personalizado</option>
+                                        <option value="jueces_fiscales">Jueces y Fiscales</option>
+                                        <option value="justicia">Justicia</option>
+                                        <option value="interior">Interior</option>
+                                        <option value="hacienda">Hacienda</option>
+                                        <option value="administracion_general">Administracion General</option>
+                                        <option value="fuerzas_y_cuerpos_seguridad">Fuerzas y Cuerpos de Seguridad</option>
+                                        <option value="sanidad">Sanidad</option>
+                                        <option value="legislacion">Test Legislación</option>
+                                        <option value="abogacia">Abogacía</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="rounded">
+                    <div class="row justify-content-center">
+                        <h4>CORRECCIÓN</h4>
+                    </div>
+                    <br>
+                    <form>
+                        <div class="form-row text-left justify-content-right">
+                            <div class="col-md-6">
+                                <label for="ncorrectas">Número de preguntas correctas</label>
+                            </div>
+                            <div class="col-md-4 offset-1">
+                                <input class="text-right" data-js="ncorrectas" name="ncorrectas" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-row text-left justify-content-right">
+                            <div class="col-md-6">
+                                <label for="nincorrectas">Número de preguntas incorrectas</label>
+                            </div>
+
+                            <div class="col-md-4 offset-1">
+                                <input class="text-right" data-js="nincorrectas" name="nincorrectas" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-row text-left justify-content-right">
+                            <div class="col-md-6">
+                                <label for="nblanco">Número de preguntas no contaestadas</label>
+                            </div>
+
+                            <div class="col-md-4 offset-1">
+                                <input class="text-right" data-js="nblanco" name="nblanco" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-row text-left justify-content-right">
+                            <div class="col-6">
+                                <label for="total">Total de preguntas</label>
+                            </div>
+                            <div class="col-4 offset-1">
+                                <input class="text-right" data-js="total" name="total" type="text" disabled value="0">
+                            </div>
+                        </div>
+                    </form>
+                    <br>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-2" style="line-height: 40px">
+                            <input type="button" class="btn btn-lg btn-warning btn-shad" data-js="corregir" value="CORREGIR">
+                        </div>
+                        <div class="col-md-7 offset-md-2 rounded2" data-js="markCol" style="line-height: 40px">
+                            <h4 data-js="toPlaceMark"></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block prefooter %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+
+{% block javaScript %}
+    <script src="{{ asset('js/correctionJS.js') }}"></script>
+{% endblock %}

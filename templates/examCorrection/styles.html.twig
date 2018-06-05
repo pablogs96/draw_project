@@ -1,0 +1,34 @@
+{% extends 'examCorrection/base.html.twig' %}
+
+{% block title %}Corrección examen{% endblock %}
+
+{% block stylesheets %}
+<link href="{{ asset('css/pabloCorrectionStyles.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block body_header %}
+{% endblock %}
+
+{% block body_content %}
+
+<section class="content">
+    <span class="input input--kaede">
+					<input class="input__field input__field--kaede" type="text" id="input-35" />
+					<label class="input__label input__label--kaede" for="input-35">
+						<span class="input__label-content input__label-content--kaede">Correctas</span>
+					</label>
+				</span>
+    <span class="input input--kaede">
+					<input class="input__field input__field--kaede" type="text" id="input-36" />
+					<label class="input__label input__label--kaede" for="input-36">
+						<span class="input__label-content input__label-content--kaede">Incorrectas</span>
+					</label>
+				</span>
+    <span class="input input--kaede">
+					<input class="input__field input__field--kaede" type="text" id="input-37" />
+					<label class="input__label input__label--kaede" for="input-37">
+						<span class="input__label-content input__label-content--kaede">En blanco</span>
+					</label>
+				</span>
+</section>
+{% endblock %}
