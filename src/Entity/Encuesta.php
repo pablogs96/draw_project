@@ -32,17 +32,6 @@ class Encuesta
      */
     private $comentarios;
 
-    public function __construct() {
-        $this->preguntas = new ArrayCollection();
-        $this->resultados = new ArrayCollection();
-        $this->comentarios = new ArrayCollection();
-    }
-
-    public function __toString()
-    {
-        return $this->title;
-    }
-
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -63,7 +52,7 @@ class Encuesta
 
     /**
      * This unmapped property stores the binary contents of the image file
-     * associated with the product.
+     * associated with the encuesta.
      *
      * @Vich\UploadableField(mapping="encuesta_imgs", fileNameProperty="img")
      *
@@ -77,6 +66,19 @@ class Encuesta
      */
     private $updatedAt;
 
+    /*************************************************************************************/
+    /*************************************************************************************/
+
+    public function __construct() {
+        $this->preguntas = new ArrayCollection();
+        $this->resultados = new ArrayCollection();
+        $this->comentarios = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->title;
+    }
 
     public function getId()
     {
@@ -148,7 +150,7 @@ class Encuesta
         return $this->img;
     }
 
-    public function setImg(string $img)
+    public function setImg($img)
     {
         $this->img = $img;
 

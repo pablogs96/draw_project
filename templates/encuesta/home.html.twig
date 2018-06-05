@@ -39,9 +39,9 @@
             <div class="row justify-content-center text-center">
                 {% for encuesta in encuestas %}
                 <a href="/home/encuesta/{{ encuesta.id }}" id="portLink">
-                    <div class="col-md-12 col-lg-12 rounded roundedhov" style="margin: 3%;" id="portfolio">
+                    <div class="col-md-12 rounded roundedhov" style="margin: 3%;" id="portfolio">
                             <h5 id="h1po" class="sizedPageTitle" style="padding: 2%">{{ encuesta.title }}</h5>
-                            <img src={{ encuesta.img }} id="imgPort">
+                            <img src='img/{{ encuesta.img }}' id="imgPort" width="350px" height="180px">
                     </div>
                 </a>
                 {% endfor %}
@@ -60,10 +60,10 @@
             <br>
             <div class="row">
                 <div class="col-sm-7 text-right">
-                    <a href="https://www.opositatest.com/"><img src="../../img/logo.png" class="img-fluid" width="400px" alt="logo" id="logoTop"></a>
+                    <a href="https://www.opositatest.com/"><img src="img/logo.png" class="img-fluid" width="400px" alt="logo" id="logoTop"></a>
                 </div>
                 <div class="col-sm-5 offset-2 offset-sm-0 text-left">
-                    <a href="http://www.liceolapaz.com"><img src="../../img/logo_liceo.png" class="img-fluid" width="200px" height="200px" alt="logo" id=""></a>
+                    <a href="http://www.liceolapaz.com"><img src="img/logo_liceo.png" class="img-fluid" width="200px" height="200px" alt="logo" id=""></a>
                 </div>
             </div>
         </div>

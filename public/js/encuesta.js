@@ -34,7 +34,7 @@ function imprimirPreguntas(id_encuesta, pos, pos_pregunta){
     //datos pregunta
     var id_pregunta = encuesta.preguntas[pos_pregunta].id;
     var enunciado_pregunta = encuesta.preguntas[pos_pregunta].text;
-    var ruta_img = encuesta.preguntas[pos_pregunta].image;
+    var ruta_img = "../../img/" + encuesta.preguntas[pos_pregunta].image;
 
     // create imagen de la pregunta
     var img = document.createElement("img");
@@ -92,7 +92,7 @@ function imprimirSolucion(pos){
     for (var i = 0; i < encuesta.resultados.length; i++){
         if ( (encuesta.resultados[i].minVal)  <= (this.puntuacion) && (this.puntuacion) <= (encuesta.resultados[i].maxVal) ){
             var solucion = encuesta.resultados[i].text;
-            var ruta = encuesta.resultados[i].image;
+            var ruta = "../../img/" + encuesta.resultados[i].image;
             var explicacion = encuesta.resultados[i].explanation;
 
             var h1 = document.createElement("h1");

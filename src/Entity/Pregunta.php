@@ -4,9 +4,12 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PreguntaRepository")
+ * @Vich\Uploadable
  */
 class Pregunta
 {
@@ -45,6 +48,25 @@ class Pregunta
      */
     private $text;
 
+    /**
+     * This unmapped property stores the binary contents of the image file
+     * associated with the encuesta.
+     *
+     * @Vich\UploadableField(mapping="encuesta_imgs", fileNameProperty="image")
+     *
+     * @var File
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /*************************************************************************************/
+    /*************************************************************************************/
+
     public function __toString()
     {
         $aux = (string)$this->id;
@@ -56,12 +78,12 @@ class Pregunta
         return $this->id;
     }
 
-    public function getImage(): ?string
+    public function getImage()
     {
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage($image)
     {
         $this->image = $image;
 
@@ -110,6 +132,46 @@ class Pregunta
     public function setRespuestas($respuestas): void
     {
         $this->respuestas = $respuestas;
+    }
+
+    /**
+     * @return File
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * @param File $imageFile
+     */
+    public function setImageFile(File $img = null)
+    {
+        $this->imageFile = $img;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($img) {
+            $this->updatedAt = new \DateTime('now');
+        }
+
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTime $updatedAt
+     */
+    public function setUpdatedAt(\DateTime $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
     }
 
 }

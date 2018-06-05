@@ -1,93 +1,107 @@
 easy_admin:
-    design:
-        brand_color: 'purple'
-    entities:
-        Encuesta:
-            class: App\Entity\Encuesta
-            list:
-                fields:
-                    - title
-                    - { property: 'img', type: 'image', base_path: '../../img' }
-                    - img
-                    - preguntas
-                    - resultados
-                    - comentarios
-            show:
-                fields:
-                    - title
-                    - { property: 'img', type: 'image', base_path: '../../img' }
-                    - img
-                    - preguntas
-                    - resultados
-                    - comentarios
-            form:
-                fields:
-                    - title
-                    - { property: 'imageFile', type: 'vich_image' }
-                    - preguntas
-                    - resultados
-                    - comentarios
-            edit:
-                fields:
-                    - title
-                    - { property: 'imageFile', type: 'vich_image' }
-                    - preguntas
-                    - resultados
-                    - comentarios
-
-        Sorteo:
-            class: App\Entity\Sorteo
-            form:
-                fields:
-                    - premio
-                    - img
-                    - fecha
-                    - usuarios
-                    - ganador
-        Usuario:
-            class: App\Entity\Usuario
-            form:
-                fields:
-                    - nombre
-                    - email
-                    - password
-                    - sorteos
-                    - sorteos_ganados
-        Pregunta:
-            class: App\Entity\Pregunta
-            form:
-                fields:
-                    - image
-                    - { property: 'text', type : 'textarea' }
-                    - encuesta
-                    - respuestas
-        Respuesta:
-            class: App\Entity\Respuesta
-            form:
-                fields:
-                    - { property: 'text', type : 'textarea' }
-                    - value
-                    - pregunta
-        Resultado:
-            class: App\Entity\Resultado
-            form:
-                fields:
-                    - { property: 'text', type : 'textarea' }
-                    - image
-                    - { property: 'explanation', type : 'textarea' }
-                    - { property: 'min_val', type : 'integer' }
-                    - { property: 'max_val', type : 'integer' }
-                    - encuesta
-        Comentario:
-            class: App\Entity\Comentario
-            form:
-                fields:
-                    - { property: 'text', type : 'textarea' }
-                    - encuesta
-        Premio:
-            class: App\Entity\Premio
-            form:
-                fields:
-                    - title
-                    - imagen
-                    - sorteos
+     design:
+         brand_color: 'purple'
+     entities:
+         Encuesta:
+             class: App\Entity\Encuesta
+             list:
+                 fields:
+                     - id
+                     - title
+                     - { property: 'img', type: 'image', base_path: '%app.path.encuesta_imgs%' }
+                     - preguntas
+                     - resultados
+                     - comentarios
+             form:
+                 fields:
+                     - title
+                     - { property: 'imageFile', type: 'file' }
+                     - preguntas
+                     - resultados
+                     - comentarios
+         Resultado:
+             class: App\Entity\Resultado
+             list:
+                 fields:
+                     - id
+                     - { property: 'text', type : 'textarea' }
+                     - { property: 'image', type: 'image', base_path: '%app.path.encuesta_imgs%' }
+                     - { property: 'explanation', type : 'textarea' }
+                     - { property: 'min_val', type : 'integer' }
+                     - { property: 'max_val', type : 'integer' }
+                     - encuesta
+             form:
+                 fields:
+                     - { property: 'text', type : 'textarea' }
+                     - { property: 'imageFile', type: 'file' }
+                     - { property: 'explanation', type : 'textarea' }
+                     - { property: 'min_val', type : 'integer' }
+                     - { property: 'max_val', type : 'integer' }
+                     - encuesta
+         Pregunta:
+             class: App\Entity\Pregunta
+             list:
+                 fields:
+                     - id
+                     - { property: 'image', type: 'image', base_path: '%app.path.encuesta_imgs%' }
+                     - text
+                     - encuesta
+                     - respuestas
+             form:
+                 fields:
+                     - { property: 'imageFile', type: 'file' }
+                     - { property: 'text', type : 'textarea' }
+                     - encuesta
+                     - respuestas
+         Respuesta:
+             class: App\Entity\Respuesta
+             form:
+                 fields:
+                     - { property: 'text', type : 'textarea' }
+                     - value
+                     - pregunta
+         Comentario:
+             class: App\Entity\Comentario
+             form:
+                 fields:
+                     - { property: 'text', type : 'textarea' }
+                     - encuesta
+         Sorteo:
+             class: App\Entity\Sorteo
+             list:
+                 fields:
+                     - id
+                     - premio
+                     - { property: 'img', type: 'image', base_path: '%app.path.encuesta_imgs%' }
+                     - fecha
+                     - usuarios
+                     - ganador
+             form:
+                 fields:
+                     - premio
+                     - { property: 'imageFile', type: 'file' }
+                     - fecha
+                     - usuarios
+                     - ganador
+         Premio:
+             class: App\Entity\Premio
+             list:
+                 fields:
+                     - id
+                     - title
+                     - { property: 'imagen', type: 'image', base_path: '%app.path.encuesta_imgs%' }
+                     - sorteos
+             form:
+                 fields:
+                     - title
+                     - { property: 'imageFile', type: 'file' }
+                     - sorteos
+         Usuario:
+             class: App\Entity\Usuario
+             form:
+                 fields:
+                     - nombre
+                     - email
+                     - password
+                     - sorteos
+                     - sorteos_ganados

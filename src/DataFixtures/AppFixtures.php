@@ -38,11 +38,11 @@ class AppFixtures extends Fixture
         for ($i = 1; $i <= 17; $i++) {
             $encuesta = new Encuesta();
             $encuesta->setTitle('Encuesta '.$i);
-            $encuesta->setImg('http://www.freakingnews.com/pictures/37000/Homer-Asleep-on-a-Sofa-37122.jpg');
+            $encuesta->setImg('homer.jpg');
             $manager->persist($encuesta);
             for ($j = 1; $j <= 4; $j++) {
                 $pregunta = new Pregunta();
-                $pregunta->setImage($Pimages[0]);
+                $pregunta->setImage("work-relax.jpeg");
                 $pregunta->setText('pregunta '. $j);
                 $pregunta->setEncuesta($encuesta);
                 $manager->persist($pregunta);
@@ -57,7 +57,7 @@ class AppFixtures extends Fixture
             for ($j = 1; $j <= 3; $j++){
                 $resultado = new Resultado();
                 $resultado->setText('Resultado '.$j);
-                $resultado->setImage('http://images.yodibujo.es/_uploads/_tiny_galerie/20130414/lisa-simpson-hija_6zs.jpg');
+                $resultado->setImage('lisa.jpg');
                 $resultado->setExplanation('Explanation '.$j);
                 $resultado->setMinVal(mt_rand(0, 10));
                 $resultado->setMaxVal(mt_rand(10, 20));
@@ -75,7 +75,7 @@ class AppFixtures extends Fixture
         for ($i = 1; $i <= 10; $i ++){
             $premio = new Premio();
             $premio->setTitle("Viaje a Hawai para ".$i." persona(s)");
-            $premio->setImagen("https://www.trafalgar.com/~/media/images/home/destinations/north-america/hawaii/2016-licensed-images/hawaii-maui-2016-r-117211856.jpg?la=en&h=450&w=450&mw=450");
+            $premio->setImagen("");
             $manager->persist($premio);
         }
         $manager->flush();
@@ -86,7 +86,7 @@ class AppFixtures extends Fixture
             $selfPremio = $manager->getRepository(Premio::class)->find(rand(1, 10));
 
             $sorteo = new Sorteo();
-            $sorteo->setImg("https://www.trafalgar.com/~/media/images/home/destinations/north-america/hawaii/2016-licensed-images/hawaii-maui-2016-r-117211856.jpg?la=en&h=450&w=450&mw=450");
+            $sorteo->setImg("");
             $sorteo->setFecha(new \DateTime('2018-0'.$i.'-1T00:00:00'));
             $sorteo->setPremio($selfPremio);
             $manager->persist($sorteo);
