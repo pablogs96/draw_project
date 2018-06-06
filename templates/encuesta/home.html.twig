@@ -6,6 +6,7 @@
 
     {% block stylesheets %}
         <link href="{{ asset('css/bootstrap-social.css') }}" rel="stylesheet" />
+        <link href="{{ asset('bundles/stylesheet/adminlte.min.css') }}" rel="stylesheet" />
         {{ parent() }}
     {% endblock %}
 
@@ -75,8 +76,9 @@
             <h1 class="sizedPageTitle">SOBRE MÍ</h1>
             <hr style="background-color: black">
             <div class="row justify-content-center">
-                <img class="mx-auto rounded-circle" src="img/user.png" width="200px" height="200px">
+                <img class="user" src="img/my_profile_burned.png">
             </div>
+            <br>
             <div>
                 <h4>Pablo García Saleta</h4>
             </div>
