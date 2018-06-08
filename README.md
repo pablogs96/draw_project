@@ -11,7 +11,7 @@ En este proyecto se utiliza LAMP con Symfony 4.
 Pasos para la instalación del proyecto:
 
 
-    - Instalacion de Apache2, MYSQL, PHP 7.1,
+    - Instalacion de Apache2, MYSQL, PHP **`7.1`**,
     - git clone del proyecto,
     - cd a la carpeta del proyecto,
     - seguir las instrucciones de https://getcomposer.org/download/
@@ -24,11 +24,26 @@ Pasos para la instalación del proyecto:
         - /encuestas
         - /encuesta/{id}
         - /sorteo
+        - /sorteo/login
+        
+
+Opcional: 
+    
+    - En caso de tener problemas importando base de datos,
+      ejecutar los siguientes comandos para crear base de datos
+      de prueba:
+            - php bin/console doctrine:database:create
+            - php bin/console doctrine:schema:update --force
+            - php bin/console doctrine:fixtures:load
     
     
 
-
+En caso de problemas, consultar los siguientes links:
 
 https://symfony.com/doc/current/reference/requirements.html
 
 https://symfony.com/doc/current/setup.html
+
+https://getcomposer.org
+
+https://geekytheory.com/linux-como-instalar-lamp
