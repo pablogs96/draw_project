@@ -19,7 +19,7 @@ class SorteoController extends BaseController
     private $offset = 1;
 
     /**
-     * @Route ("/home/sorteo", name="sorteo")
+     * @Route ("/sorteo", name="sorteo")
      */
     public function sorteoAction()
     {
@@ -38,7 +38,7 @@ class SorteoController extends BaseController
     }
 
     /**
-     * @Route ("/home/sorteo/add", name="subscription")
+     * @Route ("/sorteo/add", name="subscription")
      */
     public function subsciptionAction(Request $request)
     {
@@ -70,7 +70,7 @@ class SorteoController extends BaseController
     }
 
     /**
-     * @Route ("/home/sorteo/historial", name="historial")
+     * @Route ("/sorteo/historial", name="historial")
      */
     public function historialAction(Request $request)
     {
@@ -94,7 +94,7 @@ class SorteoController extends BaseController
     }
 
     /**
-     * @Route ("/home/sorteo/leave", name="borrar")
+     * @Route ("/sorteo/leave", name="borrar")
      */
     public function borrarUserAction(Request $request) {
         //get data from ajax
@@ -118,14 +118,14 @@ class SorteoController extends BaseController
     }
 
     /**
-     * @route ("/home/sorteo/area-personal", name="profile")
+     * @route ("/sorteo/area-personal", name="profile")
      */
     public function comprobarSorteoAction(){
         return $this->render('encuesta/comprobarSorteo.html.twig');
     }
 
     /**
-     * @route ("/home/sorteo/login", name="login")
+     * @route ("/sorteo/login", name="login")
      */
     public function loginAction(Request $request){
         $user = new Usuario();

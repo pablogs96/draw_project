@@ -20,7 +20,7 @@
                     <div class="container" style="color: white; margin-bottom: 5%;">
                         <div class="row justify-content-center" id="beforeEncuestas">
                             <div class="col-9 rounded roundedhov">
-                                <a href="/home/encuesta/{{ encuesta.id }}" id="portLink">
+                                <a href="/encuesta/{{ encuesta.id }}" id="portLink">
                                     <div class="row justify-content-center">
                                         <h1 id="h1po" class="sizedh1">{{ encuesta.title }}</h1>
                                     </div>
@@ -72,7 +72,7 @@
                 var data = {"operation": 'prev', "offset": offset};
                 $.ajax({
                     data:  data, //datos que se envian a traves de ajax
-                    url:   '/home/encuestas/next-prev', //archivo que recibe la peticion
+                    url:   '/encuestas/next-prev', //archivo que recibe la peticion
                     type:  'get', //método de envio
                     beforeSend: function () {
                         console.log("Procesando, espere por favor...");
@@ -84,11 +84,11 @@
             }
 
             function next(){
-                var operation = "next"
+                var operation = "next";
                 var data = {"operation": operation, "offset": offset};
                 $.ajax({
                     data:  data, //datos que se envian a traves de ajax
-                    url:   '/home/encuestas/next-prev', //archivo que recibe la peticion
+                    url:   '/encuestas/next-prev', //archivo que recibe la peticion
                     type:  'get', //método de envio
                     beforeSend: function () {
                         console.log("Procesando, espere por favor...");
@@ -124,7 +124,7 @@
                     col.setAttribute("class", "col-9 rounded roundedhov");
 
                     var a = document.createElement("a");
-                    a.setAttribute("href", "/home/encuesta/" + $encuestas2[i].id);
+                    a.setAttribute("href", "/encuesta/" + $encuestas2[i].id);
                     a.setAttribute("id", "portLink");
 
                     var row2 = document.createElement("div");

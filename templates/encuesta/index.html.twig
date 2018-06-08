@@ -6,24 +6,72 @@
 {% endblock %}
 
 {% block body_nav %}
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top navSize" id="nav">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="true" aria-label="Toggle navigation">
+    {#<nav class="navbar navbar-expand-lg navbar-light fixed-top navSize" id="nav">#}
+        {#<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="true" aria-label="Toggle navigation">#}
+            {#<span class="navbar-toggler-icon"></span>#}
+        {#</button>#}
+        {#<div class="collapse navbar-collapse navbar-center" id="navbarToggler">#}
+            {#<ul class="navbar-nav mr-auto mt-2 mt-lg-0">#}
+                {#<li class="nav-item {% block home_active %}{% endblock %}">#}
+                    {#<a class="nav-link" id="anav" href="/home">HOME<span class="sr-only"></span></a>#}
+                {#</li>#}
+                {#<li class="nav-item {% block encuestas_active %}{% endblock %}">#}
+                    {#<a class="nav-link" id="anav" href="/encuestas">ENCUESTAS</a>#}
+                {#</li>#}
+                {#<li class="nav-item {% block sorteo_active %}{% endblock %}">#}
+                    {#<a class="nav-link" id="anav" href="/sorteo">SORTEO</a>#}
+                {#</li>#}
+            {#</ul>#}
+        {#</div>#}
+    {#</nav>#}
+    <nav class="navbar navbar-expand-lg navbar-dark" id="nav">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navToggle" aria-controls="navToggle" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse navbar-center" id="navbarToggler">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item {% block home_active %}{% endblock %}">
-                    <a class="nav-link" id="anav" href="/home">HOME<span class="sr-only"></span></a>
+
+        <div class="collapse navbar-collapse justify-content-md-center" id="navToggle">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link {% block home_active %}{% endblock %}" href="/home">Home</a>
                 </li>
-                <li class="nav-item {% block encuestas_active %}{% endblock %}">
-                    <a class="nav-link" id="anav" href="/home/encuestas">ENCUESTAS</a>
+                <li class="nav-item">
+                    <a class="nav-link {% block encuestas_active %}{% endblock %}" href="/encuestas">Encuestas</a>
                 </li>
-                <li class="nav-item {% block sorteo_active %}{% endblock %}">
-                    <a class="nav-link" id="anav" href="/home/sorteo">SORTEO</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle {% block sorteo_active %}{% endblock %}" href="#" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sorteos</a>
+                    <div class="dropdown-menu drop-menu" aria-labelledby="dropdown">
+                        <a class="dropdown-item drop" style="border-bottom: 1px solid white" href="/sorteo">Todos los sorteos</a>
+                        <a class="dropdown-item drop" href="/sorteo/login">Mis sorteos</a>
+
+                    </div>
                 </li>
             </ul>
         </div>
     </nav>
+
+    <a href="#" id="js_up" class="boton-subir">
+        <i class="fa fa-sort-amount-up" aria-hidden="true"></i>
+    </a>
+    <script>
+        //invocamos al objeto (window) y a su método (scroll), solo se ejecutara si el usuario hace scroll en la página
+        $(window).scroll(function(){
+            if($(this).scrollTop() > 300){ //condición a cumplirse cuando el usuario aya bajado 301px a más.
+                $("#js_up").fadeIn(300); //se muestra el botón en 300 mili segundos
+            }else{ // si no
+                $("#js_up").fadeOut(300); //se oculta el botón en 300 mili segundos
+            }
+        });
+
+        //creamos una función accediendo a la etiqueta i en su evento click
+        $("#js_up i").on('click', function (e) {
+            e.preventDefault(); //evita que se ejecute el tag ancla (<a href="#">valor</a>).
+            $("body,html").animate({
+                scrollTop: 0 //al colocar el valor 0 a scrollTop me volverá a la parte inicial de la página
+            },700);
+            return false;
+        });
+    </script>
+
 {% endblock %}
 {% block footer %}
     <footer {% block footer_tag %}{% endblock %}>

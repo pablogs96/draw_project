@@ -114,7 +114,7 @@ function imprimirSolucion(pos){
             redo.setAttribute("type", "button");
             redo.setAttribute("class", "btn btn-danger");
             redo.setAttribute("style", "padding: 15px;");
-            redo.setAttribute("href", "/home/encuesta/" + encuesta.id);
+            redo.setAttribute("href", "/encuesta/" + encuesta.id);
             redo.innerHTML = "Volver a jugar";
 
             var btnSorteo = document.createElement("button");
@@ -289,7 +289,7 @@ function saveComment(){
     var data = {"texto": val, "encuesta":encuesta};
     $.ajax({
         data:  data, //datos que se envian a traves de ajax
-        url:   '/home/encuesta/comment/save', //archivo que recibe la peticion
+        url:   '/encuesta/comment/save', //archivo que recibe la peticion
         type:  'post', //método de envio
         beforeSend: function () {
             console.log("Procesando, espere por favor...");
@@ -339,7 +339,7 @@ function addUser() {
                     $userdata = {"name": $userName, "mail": $userEmail, "pass": $userPass};
                     $.ajax({
                         data:  $userdata, //datos que se envian a traves de ajax
-                        url:   '/home/sorteo/add', //archivo que recibe la peticion
+                        url:   '/sorteo/add', //archivo que recibe la peticion
                         type:  'post', //método de envio
                         beforeSend: function () {
                             console.log("Añadiendo usuario...");
@@ -359,9 +359,9 @@ function addUser() {
 function showAlert(title, message) {
     $("#myModal").empty();
     var al = document.createElement("div");
-    al.setAttribute("class", "bg-success text-white rounded");
+    al.setAttribute("class", "bg-success text-white");
     al.setAttribute("role", "alert");
-    al.setAttribute("style", "margin: 350px 650px 0px 650px; padding: 0.5%");
+    al.setAttribute("style", "margin: 350px 650px 0px 650px; padding: 1%; min-width: 225px");
 
     var al_title = document.createElement("h4");
     al_title.setAttribute("class", "text-center");
@@ -377,7 +377,7 @@ function showAlert(title, message) {
     var redir = document.createElement("a");
     redir.setAttribute("class", "btn btn-warning btn-large text-center");
     redir.setAttribute("type", "button");
-    redir.setAttribute("href", "/home/sorteo");
+    redir.setAttribute("href", "/sorteo");
     redir.innerText = "ver sorteo";
 
 

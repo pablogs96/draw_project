@@ -2,7 +2,7 @@ var key = null;
 
 // FUNCIÓN ONLOAD QUE INICIALIZA VARIAS FUNCIONES
 $(document).ready($(window).on('scroll' ,function(){
-    navbar();
+    // navbar();
     }
 ));
 
@@ -20,7 +20,7 @@ function navbar(){
 	        $("#nav").animate({height: "90px"});
 	        key = true;
 	    }
-    }  
+    }
 
     if (key == null){
     	if (stop >= encuesta) {
@@ -30,5 +30,5 @@ function navbar(){
 	        $("#nav").css("height", "90px");
 	        key = true;
 	    }
-    }  	
+    }
 }

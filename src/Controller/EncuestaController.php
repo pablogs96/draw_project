@@ -15,7 +15,7 @@ class EncuestaController extends BaseController
     private $offset = 0;
 
     /**
-     * @Route("/home/encuesta/{id}", name="encuesta")
+     * @Route("/encuesta/{id}", name="encuesta")
      */
     public function indexAction($id)
     {
@@ -30,7 +30,7 @@ class EncuestaController extends BaseController
     }
 
     /**
-     * @Route ("/home/encuesta/comment/save", name="comentario")
+     * @Route ("/encuesta/comment/save", name="comentario")
      */
     public function saveCommentAction(Request $request){
         $texto = $request->get('texto');
@@ -60,7 +60,7 @@ class EncuestaController extends BaseController
     }
 
     /**
-     * @Route ("/home/encuestas", name="encuestas")
+     * @Route ("/encuestas", name="encuestas")
      */
     public function showEncuestasAction(Request $request){
         $encuestaService = $this->get('encuesta_service');
@@ -80,7 +80,7 @@ class EncuestaController extends BaseController
     }
 
     /**
-     * @Route ("/home/encuestas/next-prev", name="encuestasN")
+     * @Route ("/encuestas/next-prev", name="encuestasN")
      * @param Request $request
      * @return Response
      */
