@@ -1,4 +1,4 @@
-<?php
+<?php   // ESTE CÓDIGO NO ES DEL PROYECTO FIN DE CICLO
 /**
  * Created by PhpStorm.
  * User: pablo

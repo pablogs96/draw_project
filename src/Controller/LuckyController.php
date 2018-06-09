@@ -1,4 +1,4 @@
-<?php
+<?php  // ESTE CÓDIGO NO ES DEL PROYECTO FIN DE CICLO
 // src/Controller/LuckyController.php
 namespace App\Controller;
 

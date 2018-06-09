@@ -6,11 +6,6 @@
 #body tr:hover{
 	opacity: 1;
 }
-/*THIS IS THE PLAY SECTION*/
-
-#play:hover{
-	box-shadow: 2px 2px 5px 5px #a6a6a6;
-}
 
 .links a{
 	color: white;

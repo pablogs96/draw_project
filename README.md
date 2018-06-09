@@ -38,12 +38,29 @@ Opcional:
     
     
 
-En caso de problemas, consultar los siguientes links:
+    - En caso de problemas, consultar los siguientes links:
 
-https://symfony.com/doc/current/reference/requirements.html
+        https://symfony.com/doc/current/reference/requirements.html
 
-https://symfony.com/doc/current/setup.html
+        https://symfony.com/doc/current/setup.html
+        
+        https://getcomposer.org
+        
+        https://geekytheory.com/linux-como-instalar-lamp
 
-https://getcomposer.org
+Código modificado por mi correspondiente al proyecto fin de ciclo:
 
-https://geekytheory.com/linux-como-instalar-lamp
+        - templates/encuesta/*
+        - templates/base.html.twig
+        - src/* excepto:
+                - Controller/CorreccionExamenController.php
+                - Controller/LuckyController.php
+        - public/css/* excepto:
+                - public/css/correctionStyles.css
+                - public/css/estilos.css
+                - public/css/pabloCorrectionStyles.css
+        - public/img/*
+        - public/js/* excepto:
+                - public/js/correctionJS.js
+                - public/js/draw.js
+        - config/*
