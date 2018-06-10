@@ -34,8 +34,8 @@ class AppFixtures extends Fixture
                     "https://vignette.wikia.nocookie.net/lossimpson/images/1/14/Ralph_Wiggum.png/revision/latest?cb=20150426070659&path-prefix=es"
             ];
 
-        // create 2 encuestas
-        for ($i = 1; $i <= 17; $i++) {
+        // create  encuestas
+        for ($i = 1; $i <= 13; $i++) {
             $encuesta = new Encuesta();
             $encuesta->setTitle('Encuesta '.$i);
             $encuesta->setImg('homer.jpg');
@@ -80,7 +80,7 @@ class AppFixtures extends Fixture
         }
         $manager->flush();
 
-        for($i = 1; $i <= 6; $i++) {
+        for($i = 1; $i <= 7; $i++) {
 
             /** @var Premio $selfPremio */
             $selfPremio = $manager->getRepository(Premio::class)->find(rand(1, 10));

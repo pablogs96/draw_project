@@ -27,7 +27,18 @@ Pasos para la instalación del proyecto:
         - /sorteo/login
         
 
-Opcional: 
+En caso de problemas, consultar los siguientes links:
+
+        https://symfony.com/doc/current/reference/requirements.html
+
+        https://symfony.com/doc/current/setup.html
+        
+        https://getcomposer.org
+        
+        https://geekytheory.com/linux-como-instalar-lamp
+        
+        
+Base de datos: 
     
     - En caso de tener problemas importando base de datos,
       ejecutar los siguientes comandos para crear base de datos
@@ -38,17 +49,8 @@ Opcional:
     
     
 
-    - En caso de problemas, consultar los siguientes links:
 
-        https://symfony.com/doc/current/reference/requirements.html
-
-        https://symfony.com/doc/current/setup.html
-        
-        https://getcomposer.org
-        
-        https://geekytheory.com/linux-como-instalar-lamp
-
-Código modificado por mi correspondiente al proyecto fin de ciclo:
+Código creado por mi correspondiente al proyecto fin de ciclo:
 
         - templates/encuesta/*
         - templates/base.html.twig

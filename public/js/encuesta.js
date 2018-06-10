@@ -40,6 +40,7 @@ function imprimirPreguntas(id_encuesta, pos, pos_pregunta){
     var img = document.createElement("img");
     img.setAttribute("src", ruta_img);
     img.setAttribute("class", "img-fluid rounded");
+    img.setAttribute("style", "width: 500px; height: 400px");
     $(img).hide().appendTo("#img_encuesta").fadeIn(1000);
     //$("#img_encuesta").append(img);
 
@@ -65,7 +66,7 @@ function imprimirPreguntas(id_encuesta, pos, pos_pregunta){
         respuesta.setAttribute("type", "button");
         respuesta.setAttribute("id", id_respuesta);
         respuesta.setAttribute("class", "btn btn-dark btn-responsive");
-        respuesta.setAttribute("style", "word-wrap: break-word; white-space:normal !important; max-width: 500px;");
+        respuesta.setAttribute("style", "word-wrap: break-word; white-space:normal !important; width: 400px;");
         respuesta.setAttribute("value", enunciado_respuesta);
         respuesta.setAttribute("data-idResponse", id_respuesta);
         respuesta.setAttribute("data-idQuestion", id_pregunta);
@@ -101,8 +102,7 @@ function imprimirSolucion(pos){
 
             var img = document.createElement("img");
             img.setAttribute("src", ruta);
-            img.setAttribute("height", "400px");
-            img.setAttribute("width", "400px");
+            img.setAttribute("style", "width: 400px; height: 400px");
             img.setAttribute("class", "img-fluid rounded");
             $(img).hide().appendTo("#img_encuesta").fadeIn(1000);
 

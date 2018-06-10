@@ -24,9 +24,9 @@ easy_admin:
              list:
                  fields:
                      - id
-                     - { property: 'text', type : 'textarea' }
+                     - text
                      - { property: 'image', type: 'image', base_path: '%app.path.encuesta_imgs%' }
-                     - { property: 'explanation', type : 'textarea' }
+                     - explanation
                      - { property: 'min_val', type : 'integer' }
                      - { property: 'max_val', type : 'integer' }
                      - encuesta
