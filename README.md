@@ -65,4 +65,7 @@ Código creado por mi correspondiente al proyecto fin de ciclo:
         - public/js/* excepto:
                 - public/js/correctionJS.js
                 - public/js/draw.js
-        - config/*
+        - config/packages/easy_admin.yaml
+        - config/packages/security.yaml
+        - config/packages/vich_uploader.yaml
+        - config/services.yaml
