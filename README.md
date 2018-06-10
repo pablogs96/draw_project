@@ -44,11 +44,10 @@ Base de datos:
       ejecutar los siguientes comandos para crear base de datos
       de prueba:
             - php bin/console doctrine:database:create
+            - Una vez hecho esto, indicar en el archivo .env (en la raíz del proyecto) la base de datos y usuario que se utiliza.
             - php bin/console doctrine:schema:update --force
             - php bin/console doctrine:fixtures:load
-            
-            - Una vez hecho esto, indicar en el archivo .env (en la raíz del proyecto) la base de datos y usuario que se utiliza.
-    
+                
 
 
 Código creado por mi correspondiente al proyecto fin de ciclo:
